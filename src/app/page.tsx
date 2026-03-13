@@ -5,6 +5,7 @@ import Image from "next/image";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import CounterAnimation from "@/components/CounterAnimation";
 import Parallax from "@/components/Parallax";
+import { asset } from "@/lib/basePath";
 
 /* ------------------------------------------------------------------ */
 /*  DATA                                                               */
@@ -117,9 +118,9 @@ export default function HomePage() {
             playsInline
             preload="auto"
             className="hero-bg-img"
-            poster="/assets/photos/hero-green-corridor.jpg"
+            poster={asset("/assets/photos/hero-green-corridor.jpg")}
           >
-            <source src="/assets/hero-video-web.mp4" type="video/mp4" />
+            <source src={asset("/assets/hero-video-web.mp4")} type="video/mp4" />
           </video>
         </Parallax>
         <div className="hero-overlay" />
