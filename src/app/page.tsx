@@ -58,15 +58,7 @@ const services = [
 
 const featuredProjects = [
   {
-    slug: "streit-group-idex",
-    title: "Defence Pavilion at IDEX",
-    client: "Defence Client",
-    size: "500+ sqm",
-    type: "Fortress Pavilion",
-    image: "/assets/photos/streit-idex-aerial.jpg",
-  },
-  {
-    slug: "vanderlande-airport",
+    slug: "vanderlande-airport-show-dubai",
     title: "Vanderlande at Airport Show Dubai",
     client: "Vanderlande",
     size: "60 sqm",
@@ -74,7 +66,15 @@ const featuredProjects = [
     image: "/assets/photos/vanderlande-airport.jpg",
   },
   {
-    slug: "altronix-intersec",
+    slug: "spark-breakbulk-me-2025",
+    title: "Spark at Breakbulk ME 2025",
+    client: "Spark",
+    size: "60 sqm",
+    type: "Custom Build",
+    image: "/assets/photos/spark-breakbulk.jpg",
+  },
+  {
+    slug: "altronix-intersec-dubai",
     title: "Altronix at Intersec Dubai",
     client: "Altronix",
     size: "25 sqm",
@@ -116,11 +116,11 @@ export default function HomePage() {
             muted
             loop
             playsInline
-            preload="none"
+            preload="auto"
             className="hero-bg-img"
-            poster={asset("/assets/photos/streit-idex-aerial.jpg")}
+            poster={asset("/assets/photos/hero-green-corridor.jpg")}
           >
-            <source src={asset("/assets/idex-2023-hero-web.mp4")} type="video/mp4" />
+            <source src={asset("/assets/hero-video-web.mp4")} type="video/mp4" />
           </video>
         </Parallax>
         <div className="hero-overlay" />
@@ -139,9 +139,9 @@ export default function HomePage() {
           <RevealOnScroll delay={0.35}>
             <p className="hero-sub">
               Exhibition stands from <strong>18&nbsp;sqm</strong> to{" "}
-              <strong>500+&nbsp;sqm</strong>. Trusted by{" "}
-              <strong>Microsoft</strong>,{" "}
-              <strong>Vanderlande</strong>, and brands across 6&nbsp;countries.
+              <strong>700&nbsp;sqm</strong>. Trusted by{" "}
+              <strong>Microsoft</strong>, <strong>Vanderlande</strong>,{" "}
+              <strong>Altronix</strong>, and brands across 6&nbsp;countries.
             </p>
           </RevealOnScroll>
 
@@ -211,7 +211,6 @@ export default function HomePage() {
                 width={120}
                 height={28}
                 className="trust-logo"
-                loading="lazy"
               />
             ))}
           </div>
@@ -219,7 +218,7 @@ export default function HomePage() {
       </section>
 
       {/* ========== 4. SERVICES OVERVIEW ========== */}
-      <section className="section-pad">
+      <section style={{ padding: "120px 0" }}>
         <div className="container">
           <RevealOnScroll>
             <span className="section-label">What We Do</span>
@@ -245,14 +244,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ========== 5. CINEMATIC DIVIDER — DEFENCE PAVILION ========== */}
+      {/* ========== 5. CINEMATIC DIVIDER — MICROSOFT ========== */}
       <section className="cine-divider">
         <Parallax className="cine-divider-bg">
           <Image
-            src="/assets/photos/streit-idex-exterior.jpg"
-            alt="Defence Pavilion at IDEX — 500+ sqm fortress pavilion"
+            src="/assets/photos/microsoft-leap.jpg"
+            alt="Microsoft booth at LEAP — 700 sqm double decker"
             fill
-            loading="lazy"
             style={{ objectFit: "cover" }}
           />
         </Parallax>
@@ -261,13 +259,12 @@ export default function HomePage() {
           <RevealOnScroll>
             <div>
               <h2>
-                500+&nbsp;sqm. Full-Scale Fortress.{" "}
-                <span className="accent">Defence Pavilion. IDEX.</span>
+                700&nbsp;sqm. Double Decker.{" "}
+                <span className="accent">Microsoft at LEAP.</span>
               </h2>
               <p>
-                A fortress pavilion housing live armoured vehicles, LED
-                installations, and drone technology — built across indoor and
-                outdoor zones at ADNEC Abu Dhabi.
+                Our largest build to date — a fully immersive, two-storey brand
+                experience designed to command the show floor.
               </p>
             </div>
           </RevealOnScroll>
@@ -275,7 +272,7 @@ export default function HomePage() {
       </section>
 
       {/* ========== 6. FEATURED PROJECTS ========== */}
-      <section className="section-pad">
+      <section style={{ padding: "120px 0" }}>
         <div className="container">
           <RevealOnScroll>
             <span className="section-label">Selected Work</span>
@@ -298,7 +295,6 @@ export default function HomePage() {
                         alt={project.title}
                         width={720}
                         height={450}
-                        loading="lazy"
                         style={{ width: "100%", height: "100%", objectFit: "cover" }}
                       />
                     </div>
@@ -325,7 +321,6 @@ export default function HomePage() {
             src="/assets/photos/altronix-intersec.jpg"
             alt="Altronix booth at Intersec Dubai"
             fill
-            loading="lazy"
             style={{ objectFit: "cover" }}
           />
         </Parallax>
@@ -374,61 +369,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ========== 9. TESTIMONIALS ========== */}
-      <section className="section-pad">
-        <div className="container">
-          <RevealOnScroll>
-            <span className="section-label">Client Feedback</span>
-            <h2 style={{ textAlign: "center", marginBottom: 56 }}>
-              What Our Clients <span className="accent">Say</span>
-            </h2>
-          </RevealOnScroll>
-          <div className="testimonials-grid">
-            {[
-              {
-                quote: "The team delivered outstanding results at Light + Building ME. Their creative approach to our stand design seamlessly integrated our product demonstrations into an engaging visitor experience.",
-                name: "Absolut Skandic",
-                role: "Exhibition Stand",
-                avatar: "/assets/logos/absolut-n.png",
-              },
-              {
-                quote: "Working with this team at Intersec was exceptional. They understood our product range perfectly and created a stand layout that showcased each solution effectively.",
-                name: "Altronix",
-                role: "Intersec Dubai",
-                avatar: "/assets/logos/altronix-client.png",
-              },
-              {
-                quote: "They captured our year-end corporate event brilliantly. The video coverage was comprehensive yet unobtrusive, and the final edit perfectly conveyed the energy of our annual results presentation.",
-                name: "SVN Capital",
-                role: "Corporate Videography",
-                avatar: "/assets/logos/svn-capital.png",
-              },
-              {
-                quote: "Four years of collaboration, and they've never missed a beat. Their consistency in delivering high-quality podcast and video content has been invaluable to growing my platform.",
-                name: "Simon Snelder",
-                role: "Photo & Video Production",
-                avatar: "/assets/logos/simon-snelder.png",
-              },
-            ].map((t, i) => (
-              <RevealOnScroll key={t.name} delay={i * 0.1}>
-                <div className="testimonial-card">
-                  <p className="testimonial-quote">&ldquo;{t.quote}&rdquo;</p>
-                  <div className="testimonial-author">
-                    <Image src={t.avatar} alt={t.name} width={40} height={40} className="testimonial-avatar" />
-                    <div>
-                      <strong>{t.name}</strong>
-                      <span className="text-muted" style={{ fontSize: "0.8rem", display: "block" }}>{t.role}</span>
-                    </div>
-                  </div>
-                </div>
-              </RevealOnScroll>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ========== 10. VOICEVAULT SECTION ========== */}
-      <section className="voicevault section-pad">
+      {/* ========== 9. VOICEVAULT SECTION ========== */}
+      <section className="voicevault" style={{ padding: "120px 0" }}>
         <div className="container">
           <div className="vv-grid">
             {/* Text column */}
@@ -504,7 +446,7 @@ export default function HomePage() {
       </section>
 
       {/* ========== 10. ABOUT SNAPSHOT ========== */}
-      <section className="section-pad">
+      <section style={{ padding: "120px 0" }}>
         <div className="container">
           <div className="about-grid">
             {/* Text */}
@@ -521,7 +463,7 @@ export default function HomePage() {
                   className="text-muted"
                   style={{ lineHeight: 1.8, marginBottom: 16, fontSize: "1.05rem" }}
                 >
-                  The Butter Duck is a Dubai-based exhibition and event production
+                  PerDuck Events is a Dubai-based exhibition and event production
                   company with global reach. We design and build custom stands for
                   the world&apos;s biggest trade shows — from concept sketches to
                   on-site installation, across six countries and counting.
@@ -556,10 +498,9 @@ export default function HomePage() {
                 <div className="about-img">
                   <Image
                     src="/assets/photos/duck-brand.jpg"
-                    alt="The Butter Duck — the team behind your booth"
+                    alt="PerDuck Events — the team behind your booth"
                     width={640}
                     height={480}
-                    loading="lazy"
                     style={{ width: "100%", height: "auto" }}
                   />
                 </div>
@@ -583,7 +524,7 @@ export default function HomePage() {
               <Link href="/contact" className="btn">
                 Start Your Project <span className="arrow">&rarr;</span>
               </Link>
-              <Link href="/portfolio" className="btn btn-outline">
+              <Link href="/portfolio" className="btn" style={{ background: "transparent", border: "1px solid rgba(0,0,0,0.2)" }}>
                 See Our Work
               </Link>
             </div>

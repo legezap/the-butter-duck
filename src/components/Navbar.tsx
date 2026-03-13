@@ -57,7 +57,6 @@ export default function Navbar() {
     { label: "Spark @ Breakbulk", href: "/projects/spark-breakbulk" },
     { label: "Vanderlande @ Airport Show", href: "/projects/vanderlande-airport" },
     { label: "IK Group @ ADIPEC", href: "/projects/ikgroup-adipec" },
-    { label: "Defence Pavilion @ IDEX", href: "/projects/streit-group-idex" },
   ];
 
   let megaTimeout: ReturnType<typeof setTimeout>;
@@ -69,9 +68,10 @@ export default function Navbar() {
     <>
       <nav className={`navbar${scrolled ? " scrolled" : ""}`} id="navbar" aria-label="Main navigation">
         <div className="container nav-container">
-          <Link href="/" className="logo" aria-label="The Butter Duck Home">
-            <span className="logo-the">The</span>
-            <span className="logo-butter">Butter</span>
+          <Link href="/" className="logo" aria-label="PerDuck Home">
+            <span className="logo-paren">(</span>
+            <span className="logo-per">Per</span>
+            <span className="logo-paren">)</span>
             <span className="logo-duck">Duck</span>
           </Link>
 

@@ -146,7 +146,7 @@ const translations = {
     "contact.back": "Back",
     "contact.success.title": "Project Brief Received",
     "contact.success.ref": "Your reference number:",
-    "contact.consent": "I agree that The Butter Duck may store and process my data to respond to this inquiry.",
+    "contact.consent": "I agree that (Per)Duck Events may store and process my data to respond to this inquiry.",
 
     // Footer
     "footer.brand": "Turning vision into experience, every event, every time. Dubai-based exhibition design and event production for global brands.",
@@ -289,7 +289,7 @@ const translations = {
     "contact.back": "رجوع",
     "contact.success.title": "تم استلام ملخص المشروع",
     "contact.success.ref": "رقم المرجع:",
-    "contact.consent": "أوافق على أن The Butter Duck قد تخزن وتعالج بياناتي للرد على هذا الاستفسار.",
+    "contact.consent": "أوافق على أن (Per)Duck Events قد تخزن وتعالج بياناتي للرد على هذا الاستفسار.",
 
     "footer.brand": "نحوّل الرؤية إلى تجربة، في كل فعالية، في كل مرة. تصميم معارض وإنتاج فعاليات من دبي للعلامات التجارية العالمية.",
     "footer.services": "الخدمات",

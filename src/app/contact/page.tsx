@@ -128,7 +128,7 @@ export default function ContactPage() {
       setRefCode(ref);
       setSubmitted(true);
     } catch {
-      alert("Something went wrong. Please try again or email us directly at hello@thebutterduck.com");
+      alert("Something went wrong. Please try again or email us directly at hello@perduck.com");
     } finally {
       setSubmitting(false);
     }
@@ -136,6 +136,10 @@ export default function ContactPage() {
 
   return (
     <>
+      {/* Metadata is handled via export in layout or head for client pages */}
+      <title>Contact &amp; RFP — Request a Quote | (Per)Duck Events</title>
+      <meta name="description" content="Request a quote for exhibition design, event production, or project management from (Per)Duck Events in Dubai." />
+
       {/* Breadcrumbs */}
       <nav className="breadcrumbs" aria-label="Breadcrumb">
         <div className="container">
@@ -206,7 +210,7 @@ export default function ContactPage() {
                   <div className="ci-icon">{"\u2709\uFE0F"}</div>
                   <div className="ci-text">
                     <h4>Email</h4>
-                    <a href="mailto:hello@thebutterduck.com">hello@thebutterduck.com</a>
+                    <a href="mailto:hello@perduck.com">hello@perduck.com</a>
                   </div>
                 </div>
 
@@ -215,11 +219,11 @@ export default function ContactPage() {
                   <div className="ci-text">
                     <h4>Social</h4>
                     <a
-                      href="https://instagram.com/thebutterduck"
+                      href="https://instagram.com/perduckae"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      @thebutterduck on Instagram
+                      @perduckae on Instagram
                     </a>
                   </div>
                 </div>
@@ -302,7 +306,7 @@ export default function ContactPage() {
                           ))}
                         </div>
                         {errors.service && (
-                          <p className="form-error">
+                          <p style={{ color: "#ff6b6b", fontSize: "0.8rem", marginTop: 12 }}>
                             {errors.service}
                           </p>
                         )}
@@ -325,7 +329,7 @@ export default function ContactPage() {
                             onChange={(e) => setEventName(e.target.value)}
                           />
                           {errors.eventName && (
-                            <p className="form-error">
+                            <p style={{ color: "#ff6b6b", fontSize: "0.8rem", marginTop: 4 }}>
                               {errors.eventName}
                             </p>
                           )}
@@ -407,7 +411,7 @@ export default function ContactPage() {
                             onChange={(e) => setName(e.target.value)}
                           />
                           {errors.name && (
-                            <p className="form-error">
+                            <p style={{ color: "#ff6b6b", fontSize: "0.8rem", marginTop: 4 }}>
                               {errors.name}
                             </p>
                           )}
@@ -424,7 +428,7 @@ export default function ContactPage() {
                             onChange={(e) => setCompany(e.target.value)}
                           />
                           {errors.company && (
-                            <p className="form-error">
+                            <p style={{ color: "#ff6b6b", fontSize: "0.8rem", marginTop: 4 }}>
                               {errors.company}
                             </p>
                           )}
@@ -441,7 +445,7 @@ export default function ContactPage() {
                             onChange={(e) => setEmail(e.target.value)}
                           />
                           {errors.email && (
-                            <p className="form-error">
+                            <p style={{ color: "#ff6b6b", fontSize: "0.8rem", marginTop: 4 }}>
                               {errors.email}
                             </p>
                           )}
@@ -512,12 +516,12 @@ export default function ContactPage() {
                               }}
                               style={{ marginTop: 3, accentColor: "#fcd940" }}
                             />
-                            I agree that The Butter Duck may contact me
+                            I agree that (Per)Duck Events may contact me
                             regarding this enquiry. My data will not be shared
                             with third parties.
                           </label>
                           {errors.consent && (
-                            <p className="form-error">
+                            <p style={{ color: "#ff6b6b", fontSize: "0.8rem", marginTop: 4 }}>
                               {errors.consent}
                             </p>
                           )}
