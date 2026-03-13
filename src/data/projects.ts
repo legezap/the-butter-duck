@@ -318,15 +318,15 @@ export const projects: Project[] = [
   },
   {
     slug: "streit-group-idex",
-    client: "Streit Group",
-    event: "IDEX 2023",
-    title: "Streit Group IDEX 2023",
+    client: "Defence Client",
+    event: "IDEX",
+    title: "Defence Pavilion IDEX",
     image: "/assets/photos/streit-idex-aerial.jpg",
     size: "500+ sqm",
     tags: ["Defence & Security", "Fortress Pavilion", "Indoor + Outdoor", "LED Integration"],
     location: "Abu Dhabi, UAE",
     overview:
-      "A 500+ sqm fortress-themed pavilion for Streit Group — the world's largest armoured vehicle manufacturer — at IDEX 2023, the premier defence exhibition in the Middle East. The build spanned both outdoor and indoor zones at ADNEC Abu Dhabi, featuring a full-scale Arabic fort with watchtowers, arched vehicle bays housing armoured vehicles, and an indoor technology showcase with LED displays, drone exhibits, and a VIP lounge.",
+      "A 500+ sqm fortress-themed pavilion for our client — a leading armoured vehicle manufacturer — at IDEX, the premier defence exhibition in the Middle East. The build spanned both outdoor and indoor zones at ADNEC Abu Dhabi, featuring a full-scale Arabic fort with watchtowers, arched vehicle bays housing armoured vehicles, and an indoor technology showcase with LED displays, drone exhibits, and a VIP lounge.",
     challenge:
       "Creating a unified brand experience across two radically different environments — an open-air outdoor plaza and a climate-controlled indoor exhibition hall — while accommodating live armoured vehicles weighing up to 16 tonnes. The fortress architecture had to be structurally sound enough to support watchtowers and a second-level viewing platform, yet modular enough to install within the venue's tight access schedule. Integration of a 4-sided LED cube, sea drone display cases, and an unmanned ground vehicle demo area required careful coordination of AV, power, and safety systems.",
     solution:
@@ -340,7 +340,7 @@ export const projects: Project[] = [
       {
         title: "4-Sided LED Cube",
         description:
-          "3-metre suspended LED cube with 2.5mm pixel pitch, driven by a quad-output media server displaying synchronized Streit Group content on all four faces.",
+          "3-metre suspended LED cube with 2.5mm pixel pitch, driven by a quad-output media server displaying synchronized content on all four faces.",
       },
       {
         title: "Live Vehicle Integration",
@@ -355,7 +355,7 @@ export const projects: Project[] = [
     ],
     results: [
       "Hosted delegations from 20+ countries including Nigeria, Mexico, Paraguay, Tanzania, Indonesia, Bahrain, and Saudi Arabia",
-      "Stand recognised as one of the largest and most architecturally ambitious at IDEX 2023",
+      "Stand recognised as one of the largest and most architecturally ambitious at IDEX",
       "VIP lounge hosted continuous high-level meetings across all 5 show days",
       "Client confirmed multi-year exhibition partnership following the event",
     ],

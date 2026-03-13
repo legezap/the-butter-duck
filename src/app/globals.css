@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ============================================================
-   (Per)Duck Events — Design System 2026
+   The Butter Duck — Design System 2026
    Next.js + Tailwind v4 — Yellow #fcd940 accent
    ============================================================ */
 
@@ -90,8 +90,8 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); letter-spacing: -0.02em; }
 .nav-container { display: flex; align-items: center; justify-content: space-between; }
 .logo { display: flex; align-items: center; font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: var(--color-text-primary); letter-spacing: -0.02em; }
 .logo:hover { color: var(--color-text-primary); }
-.logo-paren { color: var(--color-text-dim); }
-.logo-per { color: var(--color-text-muted); }
+.logo-the { color: var(--color-text-dim); margin-right: 0.2em; }
+.logo-butter { color: var(--color-text-muted); margin-right: 0.2em; }
 .logo-duck { color: var(--color-accent); }
 
 .nav-links { display: flex; align-items: center; gap: 4px; }
@@ -273,8 +273,10 @@ video.hero-bg-img { position: absolute; inset: 0; min-width: 100%; min-height: 1
 .cta-section { background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%); text-align: center; padding: 120px 0; }
 .cta-section h2 { color: var(--color-bg-dark); }
 .cta-section p { color: rgba(0,0,0,0.6); font-size: 1.15rem; margin: 16px 0 40px; }
-.cta-section .btn { background: var(--color-bg-dark); color: var(--color-text-primary); border-radius: 100px; }
+.cta-section .btn { background: var(--color-bg-dark); color: var(--color-text-primary); border-radius: 100px; border-color: var(--color-bg-dark); }
 .cta-section .btn:hover { background: var(--color-bg-elevated); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+.cta-section .btn-outline, .cta-section .btn[style*="transparent"] { background: transparent !important; color: var(--color-bg-dark); border: 2px solid var(--color-bg-dark); }
+.cta-section .btn-outline:hover, .cta-section .btn[style*="transparent"]:hover { background: var(--color-bg-dark) !important; color: var(--color-text-primary); }
 
 /* ============================================================
    CONTACT / RFP FORM

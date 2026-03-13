@@ -21,7 +21,6 @@ const marqueeItems = [
 ];
 
 const trustLogos = [
-  { src: "/assets/logos/streit-group.svg", alt: "Streit Group" },
   { src: "/assets/logos/microsoft.svg", alt: "Microsoft" },
   { src: "/assets/logos/altronix.svg", alt: "Altronix" },
   { src: "/assets/logos/vanderlande.svg", alt: "Vanderlande" },
@@ -60,8 +59,8 @@ const services = [
 const featuredProjects = [
   {
     slug: "streit-group-idex",
-    title: "Streit Group at IDEX 2023",
-    client: "Streit Group",
+    title: "Defence Pavilion at IDEX",
+    client: "Defence Client",
     size: "500+ sqm",
     type: "Fortress Pavilion",
     image: "/assets/photos/streit-idex-aerial.jpg",
@@ -141,7 +140,7 @@ export default function HomePage() {
             <p className="hero-sub">
               Exhibition stands from <strong>18&nbsp;sqm</strong> to{" "}
               <strong>500+&nbsp;sqm</strong>. Trusted by{" "}
-              <strong>Streit Group</strong>, <strong>Microsoft</strong>,{" "}
+              <strong>Microsoft</strong>,{" "}
               <strong>Vanderlande</strong>, and brands across 6&nbsp;countries.
             </p>
           </RevealOnScroll>
@@ -245,12 +244,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ========== 5. CINEMATIC DIVIDER — STREIT GROUP ========== */}
+      {/* ========== 5. CINEMATIC DIVIDER — DEFENCE PAVILION ========== */}
       <section className="cine-divider">
         <Parallax className="cine-divider-bg">
           <Image
             src="/assets/photos/streit-idex-exterior.jpg"
-            alt="Streit Group fortress pavilion at IDEX 2023 — 500+ sqm"
+            alt="Defence Pavilion at IDEX — 500+ sqm fortress pavilion"
             fill
             style={{ objectFit: "cover" }}
           />
@@ -261,7 +260,7 @@ export default function HomePage() {
             <div>
               <h2>
                 500+&nbsp;sqm. Full-Scale Fortress.{" "}
-                <span className="accent">Streit Group at IDEX.</span>
+                <span className="accent">Defence Pavilion. IDEX.</span>
               </h2>
               <p>
                 A fortress pavilion housing live armoured vehicles, LED
@@ -465,7 +464,7 @@ export default function HomePage() {
                   className="text-muted"
                   style={{ lineHeight: 1.8, marginBottom: 16, fontSize: "1.05rem" }}
                 >
-                  PerDuck Events is a Dubai-based exhibition and event production
+                  The Butter Duck is a Dubai-based exhibition and event production
                   company with global reach. We design and build custom stands for
                   the world&apos;s biggest trade shows — from concept sketches to
                   on-site installation, across six countries and counting.
@@ -500,7 +499,7 @@ export default function HomePage() {
                 <div className="about-img">
                   <Image
                     src="/assets/photos/duck-brand.jpg"
-                    alt="PerDuck Events — the team behind your booth"
+                    alt="The Butter Duck — the team behind your booth"
                     width={640}
                     height={480}
                     style={{ width: "100%", height: "auto" }}
@@ -526,7 +525,7 @@ export default function HomePage() {
               <Link href="/contact" className="btn">
                 Start Your Project <span className="arrow">&rarr;</span>
               </Link>
-              <Link href="/portfolio" className="btn" style={{ background: "transparent", border: "1px solid rgba(0,0,0,0.2)" }}>
+              <Link href="/portfolio" className="btn btn-outline">
                 See Our Work
               </Link>
             </div>

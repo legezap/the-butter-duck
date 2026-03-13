@@ -5,7 +5,7 @@ import RevealOnScroll from "@/components/RevealOnScroll";
 import { projects } from "@/data/projects";
 
 export const metadata: Metadata = {
-  title: "Portfolio — Exhibition & Event Projects | (Per)Duck Events",
+  title: "Portfolio — Exhibition & Event Projects | The Butter Duck",
 };
 
 export default function PortfolioPage() {

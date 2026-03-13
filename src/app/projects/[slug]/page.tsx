@@ -24,7 +24,7 @@ export async function generateMetadata({
   const project = projects.find((p) => p.slug === slug);
   if (!project) return {};
   return {
-    title: `${project.client} @ ${project.event} — Case Study | (Per)Duck Events`,
+    title: `${project.client} @ ${project.event} — Case Study | The Butter Duck`,
     description: project.overview.slice(0, 160),
   };
 }
