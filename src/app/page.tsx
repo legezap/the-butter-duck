@@ -116,11 +116,11 @@ export default function HomePage() {
             muted
             loop
             playsInline
-            preload="auto"
+            preload="none"
             className="hero-bg-img"
             poster={asset("/assets/photos/streit-idex-aerial.jpg")}
           >
-            <source src={asset("/assets/idex-2023-hero.mp4")} type="video/mp4" />
+            <source src={asset("/assets/idex-2023-hero-web.mp4")} type="video/mp4" />
           </video>
         </Parallax>
         <div className="hero-overlay" />
@@ -211,6 +211,7 @@ export default function HomePage() {
                 width={120}
                 height={28}
                 className="trust-logo"
+                loading="lazy"
               />
             ))}
           </div>
@@ -218,7 +219,7 @@ export default function HomePage() {
       </section>
 
       {/* ========== 4. SERVICES OVERVIEW ========== */}
-      <section style={{ padding: "120px 0" }}>
+      <section className="section-pad">
         <div className="container">
           <RevealOnScroll>
             <span className="section-label">What We Do</span>
@@ -251,6 +252,7 @@ export default function HomePage() {
             src="/assets/photos/streit-idex-exterior.jpg"
             alt="Defence Pavilion at IDEX — 500+ sqm fortress pavilion"
             fill
+            loading="lazy"
             style={{ objectFit: "cover" }}
           />
         </Parallax>
@@ -273,7 +275,7 @@ export default function HomePage() {
       </section>
 
       {/* ========== 6. FEATURED PROJECTS ========== */}
-      <section style={{ padding: "120px 0" }}>
+      <section className="section-pad">
         <div className="container">
           <RevealOnScroll>
             <span className="section-label">Selected Work</span>
@@ -296,6 +298,7 @@ export default function HomePage() {
                         alt={project.title}
                         width={720}
                         height={450}
+                        loading="lazy"
                         style={{ width: "100%", height: "100%", objectFit: "cover" }}
                       />
                     </div>
@@ -322,6 +325,7 @@ export default function HomePage() {
             src="/assets/photos/altronix-intersec.jpg"
             alt="Altronix booth at Intersec Dubai"
             fill
+            loading="lazy"
             style={{ objectFit: "cover" }}
           />
         </Parallax>
@@ -371,7 +375,7 @@ export default function HomePage() {
       </section>
 
       {/* ========== 9. VOICEVAULT SECTION ========== */}
-      <section className="voicevault" style={{ padding: "120px 0" }}>
+      <section className="voicevault section-pad">
         <div className="container">
           <div className="vv-grid">
             {/* Text column */}
@@ -447,7 +451,7 @@ export default function HomePage() {
       </section>
 
       {/* ========== 10. ABOUT SNAPSHOT ========== */}
-      <section style={{ padding: "120px 0" }}>
+      <section className="section-pad">
         <div className="container">
           <div className="about-grid">
             {/* Text */}
@@ -502,6 +506,7 @@ export default function HomePage() {
                     alt="The Butter Duck — the team behind your booth"
                     width={640}
                     height={480}
+                    loading="lazy"
                     style={{ width: "100%", height: "auto" }}
                   />
                 </div>

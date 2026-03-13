@@ -21,6 +21,7 @@ export default function Footer() {
               <a href="https://instagram.com/thebutterduck" target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a>
               <a href="mailto:hello@thebutterduck.com" aria-label="Email">&#9993;</a>
               <a href="https://wa.me/971521477966" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">WA</a>
+              <a href="https://linkedin.com/company/thebutterduck" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
             </div>
           </div>
 
@@ -49,7 +50,7 @@ export default function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <p>&copy; 2025 The Butter Duck Company FZC LLC. All rights reserved. License: 4426620.01</p>
+          <p>&copy; 2026 The Butter Duck Company FZC LLC. All rights reserved. License: 4426620.01</p>
           <p>Dubai, United Arab Emirates</p>
         </div>
       </div>

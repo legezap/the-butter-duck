@@ -46,7 +46,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* Portfolio Grid */}
-      <section style={{ padding: "80px 0" }}>
+      <section className="section-pad">
         <div className="container">
           <div className="portfolio-grid">
             {projects.map((project, i) => (

@@ -118,7 +118,7 @@ export default function AboutPage() {
       </section>
 
       {/* About Story */}
-      <section style={{ padding: "100px 0" }}>
+      <section className="section-pad">
         <div className="container">
           <div className="about-grid">
             <RevealOnScroll className="sd-text">
@@ -158,7 +158,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values Grid */}
-      <section style={{ padding: "100px 0" }}>
+      <section className="section-pad">
         <div className="container">
           <RevealOnScroll>
             <span className="section-label" style={{ textAlign: "center", display: "block" }}>
@@ -200,8 +200,8 @@ export default function AboutPage() {
 
       {/* Capabilities Grid */}
       <section
+        className="section-pad"
         style={{
-          padding: "100px 0",
           background: "var(--color-bg-card)",
           borderTop: "1px solid var(--color-border-default)",
           borderBottom: "1px solid var(--color-border-default)",
@@ -244,7 +244,7 @@ export default function AboutPage() {
       </section>
 
       {/* Timeline */}
-      <section style={{ padding: "100px 0" }}>
+      <section className="section-pad">
         <div className="container">
           <RevealOnScroll>
             <span className="section-label" style={{ textAlign: "center", display: "block" }}>
