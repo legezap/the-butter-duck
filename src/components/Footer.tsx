@@ -1,0 +1,59 @@
+"use client";
+
+import Link from "next/link";
+import { useI18n } from "@/lib/I18nContext";
+
+export default function Footer() {
+  const { t } = useI18n();
+
+  return (
+    <footer className="footer">
+      <div className="container">
+        <div className="footer-grid">
+          <div className="footer-brand">
+            <Link href="/" className="logo" aria-label="PerDuck Home">
+              <span className="logo-paren">(</span>
+              <span className="logo-per">Per</span>
+              <span className="logo-paren">)</span>
+              <span className="logo-duck">Duck</span>
+            </Link>
+            <p>{t("footer.brand")}</p>
+            <div className="footer-social">
+              <a href="https://instagram.com/perduckae" target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a>
+              <a href="mailto:hello@perduck.com" aria-label="Email">&#9993;</a>
+              <a href="https://wa.me/971521477966" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">WA</a>
+            </div>
+          </div>
+
+          <div className="footer-col">
+            <h4>{t("footer.services")}</h4>
+            <Link href="/services#exhibition">{t("mega.exhibition")}</Link>
+            <Link href="/services#project-mgmt">{t("mega.project")}</Link>
+            <Link href="/services#concept">{t("mega.concept")}</Link>
+            <Link href="/services#media">{t("mega.media")}</Link>
+          </div>
+
+          <div className="footer-col">
+            <h4>{t("footer.company")}</h4>
+            <Link href="/about">{t("footer.aboutus")}</Link>
+            <Link href="/portfolio">{t("nav.portfolio")}</Link>
+            <Link href="/contact">{t("footer.contact")}</Link>
+          </div>
+
+          <div className="footer-col">
+            <h4>{t("footer.getintouch")}</h4>
+            <div className="footer-contact-row"><span>&#128205;</span><span>Marina Plaza, 29th Floor, Dubai, UAE</span></div>
+            <div className="footer-contact-row"><span>&#128222;</span><span><a href="tel:+971521477966">+971 52 147 7966</a></span></div>
+            <div className="footer-contact-row"><span>&#9993;</span><span><a href="mailto:hello@perduck.com">hello@perduck.com</a></span></div>
+            <div className="footer-contact-row"><span>&#9993;</span><span><a href="mailto:operations@perduck.com">operations@perduck.com</a></span></div>
+          </div>
+        </div>
+
+        <div className="footer-bottom">
+          <p>&copy; 2025 The Butter Duck Company FZC LLC. All rights reserved. License: 4426620.01</p>
+          <p>Dubai, United Arab Emirates</p>
+        </div>
+      </div>
+    </footer>
+  );
+}
