@@ -5,7 +5,7 @@ import RevealOnScroll from "@/components/RevealOnScroll";
 import StatsBlock from "./StatsBlock";
 
 export const metadata: Metadata = {
-  title: "About Us — Team, Philosophy & Capabilities | (Per)Duck Events",
+  title: "About Us — Team, Philosophy & Capabilities | The Butter Duck",
 };
 
 const values = [
@@ -118,7 +118,7 @@ export default function AboutPage() {
       </section>
 
       {/* About Story */}
-      <section style={{ padding: "100px 0" }}>
+      <section className="section-pad">
         <div className="container">
           <div className="about-grid">
             <RevealOnScroll className="sd-text">
@@ -128,7 +128,7 @@ export default function AboutPage() {
                 <span className="accent">Without&nbsp;Compromise</span>
               </h2>
               <p style={{ color: "var(--color-text-muted)", lineHeight: 1.8, marginBottom: 16 }}>
-                (Per)Duck was founded on a simple frustration: too many
+                The Butter Duck was founded on a simple frustration: too many
                 exhibition companies over-promise on the render and
                 under-deliver on the floor. We decided to build a studio where
                 the final product matches — or exceeds — the 3D visual. Every
@@ -145,7 +145,7 @@ export default function AboutPage() {
               <div className="about-img">
                 <Image
                   src="/assets/photos/duck-brand.jpg"
-                  alt="(Per)Duck Events Dubai HQ"
+                  alt="The Butter Duck Dubai HQ"
                   width={720}
                   height={540}
                   style={{ width: "100%", height: "auto", objectFit: "cover" }}
@@ -158,7 +158,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values Grid */}
-      <section style={{ padding: "100px 0" }}>
+      <section className="section-pad">
         <div className="container">
           <RevealOnScroll>
             <span className="section-label" style={{ textAlign: "center", display: "block" }}>
@@ -244,7 +244,7 @@ export default function AboutPage() {
       </section>
 
       {/* Timeline */}
-      <section style={{ padding: "100px 0" }}>
+      <section className="section-pad">
         <div className="container">
           <RevealOnScroll>
             <span className="section-label" style={{ textAlign: "center", display: "block" }}>

@@ -218,7 +218,7 @@ export default function HomePage() {
       </section>
 
       {/* ========== 4. SERVICES OVERVIEW ========== */}
-      <section style={{ padding: "120px 0" }}>
+      <section className="section-pad">
         <div className="container">
           <RevealOnScroll>
             <span className="section-label">What We Do</span>
@@ -272,7 +272,7 @@ export default function HomePage() {
       </section>
 
       {/* ========== 6. FEATURED PROJECTS ========== */}
-      <section style={{ padding: "120px 0" }}>
+      <section className="section-pad">
         <div className="container">
           <RevealOnScroll>
             <span className="section-label">Selected Work</span>
@@ -370,7 +370,7 @@ export default function HomePage() {
       </section>
 
       {/* ========== 9. VOICEVAULT SECTION ========== */}
-      <section className="voicevault" style={{ padding: "120px 0" }}>
+      <section className="voicevault section-pad">
         <div className="container">
           <div className="vv-grid">
             {/* Text column */}
@@ -446,7 +446,7 @@ export default function HomePage() {
       </section>
 
       {/* ========== 10. ABOUT SNAPSHOT ========== */}
-      <section style={{ padding: "120px 0" }}>
+      <section className="section-pad">
         <div className="container">
           <div className="about-grid">
             {/* Text */}
@@ -463,7 +463,7 @@ export default function HomePage() {
                   className="text-muted"
                   style={{ lineHeight: 1.8, marginBottom: 16, fontSize: "1.05rem" }}
                 >
-                  PerDuck Events is a Dubai-based exhibition and event production
+                  The Butter Duck is a Dubai-based exhibition and event production
                   company with global reach. We design and build custom stands for
                   the world&apos;s biggest trade shows — from concept sketches to
                   on-site installation, across six countries and counting.
@@ -498,7 +498,7 @@ export default function HomePage() {
                 <div className="about-img">
                   <Image
                     src="/assets/photos/duck-brand.jpg"
-                    alt="PerDuck Events — the team behind your booth"
+                    alt="The Butter Duck — the team behind your booth"
                     width={640}
                     height={480}
                     style={{ width: "100%", height: "auto" }}
@@ -524,7 +524,7 @@ export default function HomePage() {
               <Link href="/contact" className="btn">
                 Start Your Project <span className="arrow">&rarr;</span>
               </Link>
-              <Link href="/portfolio" className="btn" style={{ background: "transparent", border: "1px solid rgba(0,0,0,0.2)" }}>
+              <Link href="/portfolio" className="btn" style={{ background: "transparent", border: "1px solid rgba(0,0,0,0.3)", color: "var(--color-bg-dark)" }}>
                 See Our Work
               </Link>
             </div>

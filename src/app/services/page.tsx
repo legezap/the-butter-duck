@@ -4,7 +4,7 @@ import Link from "next/link";
 import RevealOnScroll from "@/components/RevealOnScroll";
 
 export const metadata: Metadata = {
-  title: "Services — Exhibition Design, Event Production & More | (Per)Duck Events",
+  title: "Services — Exhibition Design, Event Production & More | The Butter Duck",
 };
 
 const services = [

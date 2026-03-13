@@ -37,7 +37,7 @@ function generateRef(): string {
   const m = String(now.getMonth() + 1).padStart(2, "0");
   const d = String(now.getDate()).padStart(2, "0");
   const rand = String(Math.floor(1000 + Math.random() * 9000));
-  return `PD-${y}${m}${d}-${rand}`;
+  return `TBD-${y}${m}${d}-${rand}`;
 }
 
 export default function ContactPage() {
@@ -128,7 +128,7 @@ export default function ContactPage() {
       setRefCode(ref);
       setSubmitted(true);
     } catch {
-      alert("Something went wrong. Please try again or email us directly at hello@perduck.com");
+      alert("Something went wrong. Please try again or email us directly at hello@thebutterduck.com");
     } finally {
       setSubmitting(false);
     }
@@ -137,8 +137,8 @@ export default function ContactPage() {
   return (
     <>
       {/* Metadata is handled via export in layout or head for client pages */}
-      <title>Contact &amp; RFP — Request a Quote | (Per)Duck Events</title>
-      <meta name="description" content="Request a quote for exhibition design, event production, or project management from (Per)Duck Events in Dubai." />
+      <title>Contact &amp; RFP — Request a Quote | The Butter Duck</title>
+      <meta name="description" content="Request a quote for exhibition design, event production, or project management from The Butter Duck in Dubai." />
 
       {/* Breadcrumbs */}
       <nav className="breadcrumbs" aria-label="Breadcrumb">
@@ -175,7 +175,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Grid */}
-      <section style={{ padding: "80px 0 120px" }}>
+      <section className="section-pad">
         <div className="container">
           <div className="contact-grid">
             {/* Left — Direct Contact */}
@@ -210,7 +210,7 @@ export default function ContactPage() {
                   <div className="ci-icon">{"\u2709\uFE0F"}</div>
                   <div className="ci-text">
                     <h4>Email</h4>
-                    <a href="mailto:hello@perduck.com">hello@perduck.com</a>
+                    <a href="mailto:hello@thebutterduck.com">hello@thebutterduck.com</a>
                   </div>
                 </div>
 
@@ -219,11 +219,11 @@ export default function ContactPage() {
                   <div className="ci-text">
                     <h4>Social</h4>
                     <a
-                      href="https://instagram.com/perduckae"
+                      href="https://instagram.com/thebutterduck"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      @perduckae on Instagram
+                      @thebutterduck on Instagram
                     </a>
                   </div>
                 </div>
@@ -516,7 +516,7 @@ export default function ContactPage() {
                               }}
                               style={{ marginTop: 3, accentColor: "#fcd940" }}
                             />
-                            I agree that (Per)Duck Events may contact me
+                            I agree that The Butter Duck may contact me
                             regarding this enquiry. My data will not be shared
                             with third parties.
                           </label>

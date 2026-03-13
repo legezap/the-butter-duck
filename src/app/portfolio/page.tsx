@@ -5,7 +5,7 @@ import RevealOnScroll from "@/components/RevealOnScroll";
 import { projects } from "@/data/projects";
 
 export const metadata: Metadata = {
-  title: "Portfolio — Exhibition & Event Projects | (Per)Duck Events",
+  title: "Portfolio — Exhibition & Event Projects | The Butter Duck",
 };
 
 export default function PortfolioPage() {
@@ -46,7 +46,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* Portfolio Grid */}
-      <section style={{ padding: "80px 0" }}>
+      <section className="section-pad-sm">
         <div className="container">
           <div className="portfolio-grid">
             {projects.map((project, i) => (

@@ -24,7 +24,7 @@ export async function generateMetadata({
   const project = projects.find((p) => p.slug === slug);
   if (!project) return {};
   return {
-    title: `${project.client} @ ${project.event} — Case Study | (Per)Duck Events`,
+    title: `${project.client} @ ${project.event} — Case Study | The Butter Duck`,
     description: project.overview.slice(0, 160),
   };
 }
@@ -97,7 +97,7 @@ export default async function ProjectPage({
       </section>
 
       {/* Overview */}
-      <section style={{ padding: "100px 0" }}>
+      <section className="section-pad">
         <div className="container">
           <div className="about-grid">
             <RevealOnScroll className="sd-text">
@@ -220,7 +220,7 @@ export default async function ProjectPage({
       </section>
 
       {/* Solution */}
-      <section style={{ padding: "100px 0" }}>
+      <section className="section-pad">
         <div className="container" style={{ maxWidth: 800 }}>
           <RevealOnScroll>
             <span className="section-label">The Solution</span>
@@ -278,7 +278,7 @@ export default async function ProjectPage({
       </section>
 
       {/* Results */}
-      <section style={{ padding: "100px 0" }}>
+      <section className="section-pad">
         <div className="container" style={{ maxWidth: 800 }}>
           <RevealOnScroll>
             <span className="section-label">Results</span>

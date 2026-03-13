@@ -68,10 +68,9 @@ export default function Navbar() {
     <>
       <nav className={`navbar${scrolled ? " scrolled" : ""}`} id="navbar" aria-label="Main navigation">
         <div className="container nav-container">
-          <Link href="/" className="logo" aria-label="PerDuck Home">
-            <span className="logo-paren">(</span>
-            <span className="logo-per">Per</span>
-            <span className="logo-paren">)</span>
+          <Link href="/" className="logo" aria-label="The Butter Duck Home">
+            <span className="logo-the">The</span>
+            <span className="logo-butter">Butter</span>
             <span className="logo-duck">Duck</span>
           </Link>
 

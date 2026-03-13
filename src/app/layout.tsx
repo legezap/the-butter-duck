@@ -28,27 +28,27 @@ const notoArabic = Noto_Sans_Arabic({
 });
 
 export const metadata: Metadata = {
-  title: "(Per)Duck Events & Exhibitions — Global Exhibition Design & Event Production | Dubai",
+  title: "The Butter Duck — Global Exhibition Design & Event Production | Dubai",
   description:
     "Award-caliber exhibition design, event production, and immersive brand experiences from 18 sqm to 700 sqm. Trusted by Microsoft, Vanderlande, and global brands. Dubai-based, globally deployed.",
-  metadataBase: new URL("https://perduck.com"),
+  metadataBase: new URL("https://thebutterduck.com"),
   openGraph: {
-    title: "(Per)Duck Events & Exhibitions — Dubai",
+    title: "The Butter Duck — Exhibition Design & Events — Dubai",
     description:
       "Exhibition design, event production, and immersive brand experiences. From 18 sqm to 700 sqm. Dubai-based, globally deployed.",
-    url: "https://perduck.com",
+    url: "https://thebutterduck.com",
     type: "website",
     images: ["/assets/photos/hero-green-corridor.jpg"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "(Per)Duck Events & Exhibitions",
+    title: "The Butter Duck — Exhibition Design & Events",
     description:
       "Global exhibition design and event production. Dubai-based, globally deployed.",
   },
   icons: { icon: "/assets/favicon.svg" },
   alternates: {
-    canonical: "https://perduck.com",
+    canonical: "https://thebutterduck.com",
   },
 };
 
@@ -66,10 +66,10 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              name: "(Per)Duck Events & Exhibitions",
+              name: "The Butter Duck",
               legalName: "The Butter Duck Company FZC LLC",
-              url: "https://perduck.com",
-              logo: "https://perduck.com/assets/photos/duck-brand.jpg",
+              url: "https://thebutterduck.com",
+              logo: "https://thebutterduck.com/assets/photos/duck-brand.jpg",
               description:
                 "Global exhibition design, event production, and immersive brand experiences based in Dubai, UAE.",
               address: {
@@ -79,8 +79,8 @@ export default function RootLayout({
                 addressCountry: "AE",
               },
               telephone: "+971521477966",
-              email: "hello@perduck.com",
-              sameAs: ["https://instagram.com/perduckae"],
+              email: "hello@thebutterduck.com",
+              sameAs: ["https://instagram.com/thebutterduck"],
             }),
           }}
         />

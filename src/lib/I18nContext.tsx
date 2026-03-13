@@ -28,7 +28,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>("en");
 
   useEffect(() => {
-    const saved = localStorage.getItem("perduck-lang") as Locale | null;
+    const saved = localStorage.getItem("tbd-lang") as Locale | null;
     if (saved && locales.includes(saved)) {
       setLocaleState(saved);
     } else {
@@ -47,7 +47,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
 
   const setLocale = useCallback((l: Locale) => {
     setLocaleState(l);
-    localStorage.setItem("perduck-lang", l);
+    localStorage.setItem("tbd-lang", l);
   }, []);
 
   const t = useCallback(
