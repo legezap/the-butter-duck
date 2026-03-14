@@ -3,76 +3,79 @@
   <url>
     <loc>https://thebutterduck.com/</loc>
     <lastmod>2026-03-14</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://thebutterduck.com/about</loc>
     <lastmod>2026-03-14</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://thebutterduck.com/services</loc>
     <lastmod>2026-03-14</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://thebutterduck.com/portfolio</loc>
     <lastmod>2026-03-14</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://thebutterduck.com/contact</loc>
     <lastmod>2026-03-14</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://thebutterduck.com/projects/microsoft-leap</loc>
     <lastmod>2026-03-14</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://thebutterduck.com/projects/nespresso-creatista</loc>
     <lastmod>2026-03-14</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://thebutterduck.com/projects/vanderlande-airport</loc>
     <lastmod>2026-03-14</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://thebutterduck.com/projects/spark-breakbulk</loc>
     <lastmod>2026-03-14</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://thebutterduck.com/projects/hoosh-world-of-vape</loc>
     <lastmod>2026-03-14</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://thebutterduck.com/projects/sipchem-adipec</loc>
     <lastmod>2026-03-14</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://thebutterduck.com/projects/interfood-gulfood</loc>
     <lastmod>2026-03-14</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://thebutterduck.com/projects/altronix-intersec</loc>
     <lastmod>2026-03-14</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://thebutterduck.com/projects/absolut-skandic</loc>
-    <lastmod>2026-03-14</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://thebutterduck.com/projects/ikgroup-adipec</loc>
-    <lastmod>2026-03-14</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 </urlset>

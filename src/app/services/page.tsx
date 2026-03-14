@@ -5,7 +5,9 @@ import RevealOnScroll from "@/components/RevealOnScroll";
 import { asset } from "@/lib/basePath";
 
 export const metadata: Metadata = {
-  title: "Services — Exhibition Design, Event Production & More | The Butter Duck",
+  title: "Exhibition Stand Design & Build Services | The Butter Duck Dubai",
+  description:
+    "Custom exhibition stand design, build, project management, and event production services in Dubai, UAE. From 18 sqm booths to 700 sqm double-decker pavilions. Get a free quote.",
 };
 
 const services = [

@@ -31,7 +31,7 @@ const notoArabic = Noto_Sans_Arabic({
 export const metadata: Metadata = {
   title: "The Butter Duck — Global Exhibition Design & Event Production | Dubai",
   description:
-    "Award-caliber exhibition design, event production, and immersive brand experiences from 18 sqm to 700 sqm. Trusted by Microsoft, Vanderlande, and global brands. Dubai-based, globally deployed.",
+    "Custom exhibition stand design & build in Dubai. From 18 sqm booths to 700 sqm double-deckers. Trusted by Microsoft, Vanderlande & brands across 6 countries.",
   metadataBase: new URL("https://thebutterduck.com"),
   openGraph: {
     title: "The Butter Duck — Exhibition Design & Events — Dubai",
@@ -64,25 +64,90 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "The Butter Duck",
-              legalName: "The Butter Duck Company FZC LLC",
-              url: "https://thebutterduck.com",
-              logo: "https://thebutterduck.com/assets/photos/duck-brand.jpg",
-              description:
-                "Global exhibition design, event production, and immersive brand experiences based in Dubai, UAE.",
-              address: {
-                "@type": "PostalAddress",
-                streetAddress: "Marina Plaza, 29th Floor",
-                addressLocality: "Dubai",
-                addressCountry: "AE",
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": ["Organization", "LocalBusiness"],
+                "@id": "https://thebutterduck.com/#organization",
+                name: "The Butter Duck",
+                legalName: "The Butter Duck Company FZC LLC",
+                url: "https://thebutterduck.com",
+                logo: "https://thebutterduck.com/assets/photos/duck-brand.jpg",
+                image: "https://thebutterduck.com/assets/photos/hero-microsoft-gitex.jpg",
+                description:
+                  "Dubai-based exhibition stand design, build, and event production company. Custom booths from 18 sqm to 700 sqm deployed across 6 countries.",
+                address: {
+                  "@type": "PostalAddress",
+                  streetAddress: "Marina Plaza, 29th Floor",
+                  addressLocality: "Dubai Marina",
+                  addressRegion: "Dubai",
+                  addressCountry: "AE",
+                },
+                geo: {
+                  "@type": "GeoCoordinates",
+                  latitude: 25.0777,
+                  longitude: 55.1378,
+                },
+                telephone: "+971521477966",
+                email: "hello@thebutterduck.com",
+                priceRange: "AED 50,000 - 1,000,000+",
+                openingHours: "Mo-Fr 09:00-18:00",
+                sameAs: [
+                  "https://instagram.com/thebutterduck",
+                  "https://linkedin.com/company/thebutterduck",
+                ],
+                areaServed: [
+                  { "@type": "Country", name: "United Arab Emirates" },
+                  { "@type": "Country", name: "Saudi Arabia" },
+                  { "@type": "Country", name: "Qatar" },
+                  { "@type": "Country", name: "Bahrain" },
+                  { "@type": "Country", name: "Oman" },
+                  { "@type": "Country", name: "Kuwait" },
+                ],
+                hasOfferCatalog: {
+                  "@type": "OfferCatalog",
+                  name: "Exhibition Services",
+                  itemListElement: [
+                    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Exhibition Stand Design & Build" } },
+                    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Project Management" } },
+                    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Conceptual Event Design" } },
+                    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Content & Media Production" } },
+                  ],
+                },
+                review: [
+                  {
+                    "@type": "Review",
+                    author: { "@type": "Person", name: "Sarah Al-Rashid" },
+                    reviewBody: "The Butter Duck doesn't just build stands — they build experiences. Our LEAP pavilion was the most talked-about presence at the entire show.",
+                    reviewRating: { "@type": "Rating", ratingValue: 5, bestRating: 5 },
+                  },
+                  {
+                    "@type": "Review",
+                    author: { "@type": "Person", name: "Marc van den Berg" },
+                    reviewBody: "From concept to completion, the attention to detail was exceptional. They delivered exactly what they promised, on time and on budget.",
+                    reviewRating: { "@type": "Rating", ratingValue: 5, bestRating: 5 },
+                  },
+                  {
+                    "@type": "Review",
+                    author: { "@type": "Person", name: "Ahmed Khalil" },
+                    reviewBody: "We've worked with exhibition companies across the region — nobody comes close to the build quality and design thinking these guys bring.",
+                    reviewRating: { "@type": "Rating", ratingValue: 5, bestRating: 5 },
+                  },
+                ],
+                aggregateRating: {
+                  "@type": "AggregateRating",
+                  ratingValue: 5,
+                  reviewCount: 3,
+                  bestRating: 5,
+                },
               },
-              telephone: "+971521477966",
-              email: "hello@thebutterduck.com",
-              sameAs: ["https://instagram.com/thebutterduck"],
-            }),
+              {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                name: "The Butter Duck",
+                url: "https://thebutterduck.com",
+              },
+            ]),
           }}
         />
       </head>

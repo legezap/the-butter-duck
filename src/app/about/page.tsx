@@ -6,7 +6,9 @@ import StatsBlock from "./StatsBlock";
 import { asset } from "@/lib/basePath";
 
 export const metadata: Metadata = {
-  title: "About Us — Team, Philosophy & Capabilities | The Butter Duck",
+  title: "About The Butter Duck | Exhibition Stand Builder in Dubai, UAE",
+  description:
+    "Dubai-based exhibition design and event production company. 80+ projects across 6 countries. Custom booth builds from 18 sqm to 700 sqm. Founded 2019, trusted by Microsoft and Vanderlande.",
 };
 
 const values = [

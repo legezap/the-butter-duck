@@ -144,7 +144,7 @@ export default function HomePage() {
             muted
             loop
             playsInline
-            preload="auto"
+            preload="metadata"
             className="hero-bg-img"
             poster={asset("/assets/photos/hero-microsoft-gitex.jpg")}
           >
@@ -552,7 +552,7 @@ export default function HomePage() {
               <RevealOnScroll delay={0.35}>
                 <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
                   <Link href="/about" className="btn btn-outline">
-                    Learn More
+                    About Our Exhibition Company
                   </Link>
                   <Link href="/contact" className="btn btn-primary">
                     Talk to Us <span className="arrow">&rarr;</span>

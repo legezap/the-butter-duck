@@ -56,6 +56,33 @@ export default async function ProjectPage({
 
   return (
     <>
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://thebutterduck.com" },
+                { "@type": "ListItem", position: 2, name: "Portfolio", item: "https://thebutterduck.com/portfolio" },
+                { "@type": "ListItem", position: 3, name: `${project.client} ${project.event}`, item: `https://thebutterduck.com/projects/${project.slug}` },
+              ],
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "CreativeWork",
+              name: `${project.client} ${project.event} Exhibition Stand`,
+              description: project.overview,
+              creator: { "@type": "Organization", name: "The Butter Duck" },
+              image: project.image,
+              locationCreated: { "@type": "Place", name: project.location },
+            },
+          ]),
+        }}
+      />
+
       {/* Breadcrumbs */}
       <nav className="breadcrumbs" aria-label="Breadcrumb">
         <div className="container">
