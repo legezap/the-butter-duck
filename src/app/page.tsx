@@ -34,7 +34,7 @@ const services = [
     icon: "🏗️",
     title: "Exhibition Design & Build",
     desc: "Custom-built stands from concept to completion. We handle everything — design, engineering, fabrication, and on-site installation — so you can focus on your brand.",
-    link: "/services#design-build",
+    link: "/services#exhibition-design",
   },
   {
     icon: "📋",
@@ -339,6 +339,12 @@ export default function HomePage() {
               </RevealOnScroll>
             ))}
           </div>
+
+          <div style={{ textAlign: "center", marginTop: 48 }}>
+            <Link href="/portfolio" className="btn btn-outline">
+              View All Projects <span className="arrow">&rarr;</span>
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -401,39 +407,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ========== 8. STATS SECTION ========== */}
-      <section className="stats-section">
-        <div className="container">
-          <div className="stats-grid">
-            <div className="stat-item">
-              <div className="stat-num">
-                <CounterAnimation target={80} suffix="+" />
-              </div>
-              <div className="stat-text">Projects Delivered</div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-num">
-                <CounterAnimation target={6} />
-              </div>
-              <div className="stat-text">Countries</div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-num">
-                <CounterAnimation target={15} suffix="+" />
-              </div>
-              <div className="stat-text">Industries</div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-num">
-                <CounterAnimation target={100} suffix="%" />
-              </div>
-              <div className="stat-text">On-Time Delivery</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ========== 8b. TESTIMONIALS ========== */}
+      {/* ========== 8. TESTIMONIALS ========== */}
       <section className="section-pad">
         <div className="container">
           <RevealOnScroll>

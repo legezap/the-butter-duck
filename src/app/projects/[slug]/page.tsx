@@ -6,6 +6,7 @@ import RevealOnScroll from "@/components/RevealOnScroll";
 import CounterAnimation from "@/components/CounterAnimation";
 import Parallax from "@/components/Parallax";
 import ImageGallery from "@/components/ImageGallery";
+import RenderReality from "@/components/RenderReality";
 import { projects } from "@/data/projects";
 
 /* ---------- Static Params ---------- */
@@ -27,6 +28,9 @@ export async function generateMetadata({
   return {
     title: `${project.client} @ ${project.event} — Case Study | The Butter Duck`,
     description: project.overview.slice(0, 160),
+    openGraph: {
+      images: [{ url: project.image }],
+    },
   };
 }
 
@@ -45,6 +49,10 @@ export default async function ProjectPage({
   const prev = currentIndex > 0 ? projects[currentIndex - 1] : null;
   const next =
     currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
+
+  // Separate renders from photos
+  const renders = project.gallery.filter((img) => img.includes("-render-"));
+  const photos = project.gallery.filter((img) => !img.includes("-render-"));
 
   return (
     <>
@@ -234,6 +242,11 @@ export default async function ProjectPage({
           </RevealOnScroll>
         </div>
       </section>
+
+      {/* Render vs Reality */}
+      {renders.length > 0 && (
+        <RenderReality renders={renders} photos={photos} />
+      )}
 
       {/* Gallery */}
       {project.gallery.length > 0 && (

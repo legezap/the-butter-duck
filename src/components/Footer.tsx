@@ -19,6 +19,7 @@ export default function Footer() {
             <p>{t("footer.brand")}</p>
             <div className="footer-social">
               <a href="https://instagram.com/thebutterduck" target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a>
+              <a href="https://linkedin.com/company/thebutterduck" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
               <a href="mailto:hello@thebutterduck.com" aria-label="Email">&#9993;</a>
               <a href="https://wa.me/971521477966" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">WA</a>
             </div>
@@ -26,10 +27,10 @@ export default function Footer() {
 
           <div className="footer-col">
             <h4>{t("footer.services")}</h4>
-            <Link href="/services#exhibition">{t("mega.exhibition")}</Link>
-            <Link href="/services#project-mgmt">{t("mega.project")}</Link>
-            <Link href="/services#concept">{t("mega.concept")}</Link>
-            <Link href="/services#media">{t("mega.media")}</Link>
+            <Link href="/services#exhibition-design">{t("mega.exhibition")}</Link>
+            <Link href="/services#project-management">{t("mega.project")}</Link>
+            <Link href="/services#event-design">{t("mega.concept")}</Link>
+            <Link href="/services#content-media">{t("mega.media")}</Link>
           </div>
 
           <div className="footer-col">
@@ -49,7 +50,7 @@ export default function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <p>&copy; 2025 The Butter Duck Company FZC LLC. All rights reserved. License: 4426620.01</p>
+          <p>&copy; {new Date().getFullYear()} The Butter Duck Company FZC LLC. All rights reserved. License: 4426620.01</p>
           <p>Dubai, United Arab Emirates</p>
         </div>
       </div>

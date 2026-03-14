@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
+import MobileCTA from "@/components/MobileCTA";
 import Analytics from "@/components/Analytics";
 import { I18nProvider } from "@/lib/I18nContext";
 
@@ -94,6 +95,7 @@ export default function RootLayout({
           <main id="main">{children}</main>
           <Footer />
           <WhatsAppFloat />
+          <MobileCTA />
           <Analytics />
         </I18nProvider>
       </body>

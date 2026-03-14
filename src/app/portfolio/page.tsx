@@ -9,21 +9,24 @@ import { projects } from "@/data/projects";
 const filterTabs = [
   { label: "All", filter: () => true },
   {
-    label: "Exhibition",
+    label: "Custom Build",
     filter: (p: (typeof projects)[0]) =>
-      !p.tags.some((t) => t.includes("Double Decker")) &&
-      !p.tags.some((t) => t.includes("Event")),
-  },
-  {
-    label: "Event",
-    filter: (p: (typeof projects)[0]) =>
-      p.tags.some((t) => t.includes("Event")) ||
-      p.tags.some((t) => t.includes("Launch")),
+      p.tags.some((t) => t.includes("Custom Build")),
   },
   {
     label: "Double Decker",
     filter: (p: (typeof projects)[0]) =>
       p.tags.some((t) => t.includes("Double Decker")),
+  },
+  {
+    label: "LED & Tech",
+    filter: (p: (typeof projects)[0]) =>
+      p.tags.some((t) => t.includes("LED") || t.includes("Interactive")),
+  },
+  {
+    label: "Events",
+    filter: (p: (typeof projects)[0]) =>
+      p.tags.some((t) => t.includes("Event") || t.includes("Launch") || t.includes("Retail")),
   },
 ];
 

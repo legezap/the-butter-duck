@@ -473,6 +473,36 @@ select.form-input { appearance: none; }
 .filter-tab.active { background: var(--color-accent); color: var(--color-bg-dark); border-color: var(--color-accent); font-weight: 600; }
 
 /* ============================================================
+   RENDER VS REALITY
+   ============================================================ */
+.rvr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.rvr-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--color-border-default); }
+.rvr-side { position: relative; aspect-ratio: 16/10; overflow: hidden; }
+.rvr-side img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--ease-out); }
+.rvr-side:hover img { transform: scale(1.04); }
+.rvr-label { position: absolute; bottom: 12px; left: 12px; padding: 6px 14px; background: rgba(0,0,0,0.7); backdrop-filter: blur(8px); border-radius: 100px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
+.rvr-label.render { color: var(--color-accent); border: 1px solid rgba(252,217,64,0.3); }
+.rvr-label.reality { color: #4ade80; border: 1px solid rgba(74,222,128,0.3); }
+@media (max-width: 768px) {
+  .rvr-grid { grid-template-columns: 1fr; }
+  .rvr-pair { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .rvr-pair { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   MOBILE STICKY CTA
+   ============================================================ */
+.mobile-cta-bar { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 899; background: rgba(0,0,0,0.95); backdrop-filter: blur(16px); border-top: 1px solid var(--color-border-default); padding: 12px 20px; gap: 12px; }
+@media (max-width: 960px) { .mobile-cta-bar { display: flex; } }
+.mobile-cta-bar .btn { flex: 1; justify-content: center; padding: 14px 16px; font-size: 0.85rem; }
+.mobile-cta-bar .btn-wa { background: #25D366; color: #fff; border-color: #25D366; }
+.mobile-cta-bar .btn-wa:hover { background: #20bd5a; }
+/* Hide the floating WhatsApp on mobile when sticky bar is visible */
+@media (max-width: 960px) { .wa-float { bottom: 80px; } }
+
+/* ============================================================
    REDUCED MOTION
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {

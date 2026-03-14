@@ -44,10 +44,10 @@ export default function Navbar() {
   };
 
   const servicesItems = [
-    { icon: "◆", label: t("mega.exhibition"), desc: t("mega.exhibition.desc"), href: "/services#exhibition" },
-    { icon: "⚙", label: t("mega.project"), desc: t("mega.project.desc"), href: "/services#project-mgmt" },
-    { icon: "✨", label: t("mega.concept"), desc: t("mega.concept.desc"), href: "/services#concept" },
-    { icon: "▶", label: t("mega.media"), desc: t("mega.media.desc"), href: "/services#media" },
+    { icon: "◆", label: t("mega.exhibition"), desc: t("mega.exhibition.desc"), href: "/services#exhibition-design" },
+    { icon: "⚙", label: t("mega.project"), desc: t("mega.project.desc"), href: "/services#project-management" },
+    { icon: "✨", label: t("mega.concept"), desc: t("mega.concept.desc"), href: "/services#event-design" },
+    { icon: "▶", label: t("mega.media"), desc: t("mega.media.desc"), href: "/services#content-media" },
   ];
 
   const portfolioItems = [
@@ -137,6 +137,11 @@ export default function Navbar() {
                     </div>
                   </Link>
                 ))}
+                <Link href="/portfolio" className="mega-item" role="menuitem" style={{ gridColumn: "1 / -1", textAlign: "center", justifyContent: "center" }}>
+                  <div className="mega-text">
+                    <h4>View All 10 Projects &rarr;</h4>
+                  </div>
+                </Link>
               </div>
             </li>
 
@@ -206,6 +211,7 @@ export default function Navbar() {
               {portfolioItems.map((item) => (
                 <Link href={item.href} key={item.href}>{item.label}</Link>
               ))}
+              <Link href="/portfolio" style={{ fontWeight: 600 }}>View All 10 Projects &rarr;</Link>
             </div>
           </div>
 
