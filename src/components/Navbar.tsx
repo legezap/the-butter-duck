@@ -27,6 +27,7 @@ export default function Navbar() {
   useEffect(() => {
     setMobileOpen(false);
     setMobileAccordion(null);
+    window.scrollTo(0, 0);
   }, [pathname]);
 
   useEffect(() => {

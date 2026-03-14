@@ -3,6 +3,7 @@ import Image from "next/image";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import CounterAnimation from "@/components/CounterAnimation";
 import Parallax from "@/components/Parallax";
+import AutoPlayVideo from "@/components/AutoPlayVideo";
 import { asset } from "@/lib/basePath";
 import { projects } from "@/data/projects";
 
@@ -102,17 +103,11 @@ export default function HomePage() {
       {/* ========== 1. HERO ========== */}
       <section className="hero">
         <Parallax className="hero-bg">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            className="hero-bg-img"
+          <AutoPlayVideo
+            src={asset("/assets/hero-video-web.mp4")}
             poster={asset("/assets/photos/hero-microsoft-gitex.jpg")}
-          >
-            <source src={asset("/assets/hero-video-web.mp4")} type="video/mp4" />
-          </video>
+            className="hero-bg-img"
+          />
         </Parallax>
         <div className="hero-overlay" />
         <div className="container hero-content">
