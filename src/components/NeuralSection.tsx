@@ -109,6 +109,72 @@ function splitSentences(text: string): string[] {
 }
 
 /* ------------------------------------------------------------------ */
+/*  Highlight key terms (brands, numbers, specs)                      */
+/* ------------------------------------------------------------------ */
+
+const HIGHLIGHT_PATTERNS = [
+  // Numbers with units: 700 sqm, 63A, 2.6mm, 350 kg/sqm, 68 sqm, 200+, 8,000, 3000K, etc.
+  /\b\d[\d,]*\.?\d*\s*(?:sqm|sq\.?\s*m|mm|cm|m²|kg\/sqm|A|kW|dB|K|%|metres?|meters?|days?|hours?|minutes?)\b/gi,
+  /\b\d[\d,]*\+?\b(?=\s+(?:visitor|guest|lead|meeting|deal|SKU|product|share|piece|project|edition|stand|photo|media|countries|people))/gi,
+  // Standalone big numbers (4+ digits or with comma)
+  /\b\d{1,3}(?:,\d{3})+\b/g,
+  // Percentages
+  /\b\d+\.?\d*\s*%/g,
+  // Technical specs: IPE 240, 200x200mm, 60x60mm, RGBW, DMX, CNC, LED, AV, HVAC, RCD
+  /\b(?:IPE\s*\d+|\d+x\d+\s*mm|RGBW|DMX|CNC|RCD|UV-cured)\b/gi,
+  // Time expressions: 10-day, two-storey, 4-day
+  /\b\d+-(?:day|storey|metre|meter|phase)\b/gi,
+  // Exhibition/brand terms that appear in project text
+  /\b(?:LED|AV|HVAC|USB|3D|AR\/VR)\b/g,
+];
+
+// Brands/proper nouns to highlight
+const BRAND_PATTERNS = [
+  /\b(?:Microsoft|Nespresso|Vanderlande|Spark\s*Logistics|HOOSH|Sipchem|Interfood|Altronix|Barco|CreatistaPlus|LEAP|ADIPEC|Intersec|Gulfood|Breakbulk|Airport\s*Show|Civil\s*Defence|Saudi|Riyadh|Dubai|Abu\s*Dhabi|Al\s*Serkal)\b/gi,
+];
+
+function highlightText(text: string): (string | { type: "hl"; value: string })[] {
+  // Collect all match positions
+  const allPatterns = [...HIGHLIGHT_PATTERNS, ...BRAND_PATTERNS];
+  const matches: { start: number; end: number; value: string }[] = [];
+
+  for (const pattern of allPatterns) {
+    const regex = new RegExp(pattern.source, pattern.flags);
+    let match;
+    while ((match = regex.exec(text)) !== null) {
+      matches.push({ start: match.index, end: match.index + match[0].length, value: match[0] });
+    }
+  }
+
+  if (matches.length === 0) return [text];
+
+  // Sort by position, remove overlaps
+  matches.sort((a, b) => a.start - b.start);
+  const merged: typeof matches = [];
+  for (const m of matches) {
+    const last = merged[merged.length - 1];
+    if (last && m.start < last.end) {
+      // Overlap: keep the longer one
+      if (m.end > last.end) last.end = m.end;
+      last.value = text.slice(last.start, last.end);
+    } else {
+      merged.push({ ...m });
+    }
+  }
+
+  // Build segments
+  const segments: (string | { type: "hl"; value: string })[] = [];
+  let cursor = 0;
+  for (const m of merged) {
+    if (m.start > cursor) segments.push(text.slice(cursor, m.start));
+    segments.push({ type: "hl", value: m.value });
+    cursor = m.end;
+  }
+  if (cursor < text.length) segments.push(text.slice(cursor));
+  return segments;
+}
+
+/* ------------------------------------------------------------------ */
 /*  Styles (scoped via unique prefix)                                 */
 /* ------------------------------------------------------------------ */
 
@@ -261,6 +327,34 @@ const cssText = `
   color: var(--color-text-muted, #999);
 }
 
+/* Highlighted key terms */
+@keyframes ${SCOPE}-glow {
+  0%, 100% { text-shadow: 0 0 0 transparent; }
+  50%      { text-shadow: 0 0 8px rgba(252, 217, 64, 0.15); }
+}
+
+.${SCOPE}-hl {
+  color: var(--color-text-primary, #fff);
+  font-weight: 600;
+  position: relative;
+  display: inline;
+  background: linear-gradient(180deg, transparent 65%, rgba(252, 217, 64, 0.08) 65%);
+  animation: ${SCOPE}-glow 4s ease-in-out infinite;
+  transition: color 0.3s ease;
+}
+
+.${SCOPE}-hl:hover {
+  color: var(--color-accent, #fcd940);
+}
+
+/* Challenge variant: orange-tinted highlights */
+.${SCOPE}-wrap--challenge .${SCOPE}-hl {
+  background: linear-gradient(180deg, transparent 65%, rgba(255, 160, 60, 0.08) 65%);
+}
+.${SCOPE}-wrap--challenge .${SCOPE}-hl:hover {
+  color: #ffa03c;
+}
+
 /* Solution checkmark */
 .${SCOPE}-check {
   position: absolute;
@@ -304,6 +398,7 @@ const cssText = `
   .${SCOPE}-dot { opacity: 0.2; }
   .${SCOPE}-line { stroke-opacity: 0.05; }
   .${SCOPE}-svg-layer { transform: none !important; }
+  .${SCOPE}-hl { animation: none !important; }
 }
 `;
 
@@ -469,7 +564,15 @@ function NodeCard({
       }}
     >
       <span className={`${SCOPE}-step`}>{stepLabel}</span>
-      <p className={`${SCOPE}-text`}>{sentence}</p>
+      <p className={`${SCOPE}-text`}>
+        {highlightText(sentence).map((seg, j) =>
+          typeof seg === "string" ? (
+            seg
+          ) : (
+            <span key={j} className={`${SCOPE}-hl`}>{seg.value}</span>
+          )
+        )}
+      </p>
 
       {/* Solution variant: green checkmark */}
       {!isChallenge && (
