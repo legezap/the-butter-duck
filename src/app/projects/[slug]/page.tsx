@@ -7,6 +7,7 @@ import CounterAnimation from "@/components/CounterAnimation";
 import Parallax from "@/components/Parallax";
 import ImageGallery from "@/components/ImageGallery";
 import RenderReality from "@/components/RenderReality";
+import NeuralSection from "@/components/NeuralSection";
 import { projects } from "@/data/projects";
 
 /* ---------- Static Params ---------- */
@@ -234,41 +235,20 @@ export default async function ProjectPage({
       </section>
 
       {/* Challenge */}
-      <section
-        style={{
-          padding: "100px 0",
-          background: "var(--color-bg-card)",
-          borderTop: "1px solid var(--color-border-default)",
-          borderBottom: "1px solid var(--color-border-default)",
-        }}
-      >
-        <div className="container" style={{ maxWidth: 800 }}>
-          <RevealOnScroll>
-            <span className="section-label">The Challenge</span>
-            <h2 style={{ marginBottom: 24 }}>
-              What We Were <span className="accent">Up Against</span>
-            </h2>
-            <p className="text-muted" style={{ lineHeight: 1.8 }}>
-              {project.challenge}
-            </p>
-          </RevealOnScroll>
-        </div>
-      </section>
+      <NeuralSection
+        label="The Challenge"
+        title="What We Were Up Against"
+        text={project.challenge}
+        variant="challenge"
+      />
 
       {/* Solution */}
-      <section className="section-pad">
-        <div className="container" style={{ maxWidth: 800 }}>
-          <RevealOnScroll>
-            <span className="section-label">The Solution</span>
-            <h2 style={{ marginBottom: 24 }}>
-              How We <span className="accent">Made It Happen</span>
-            </h2>
-            <p className="text-muted" style={{ lineHeight: 1.8 }}>
-              {project.solution}
-            </p>
-          </RevealOnScroll>
-        </div>
-      </section>
+      <NeuralSection
+        label="The Solution"
+        title="How We Made It Happen"
+        text={project.solution}
+        variant="solution"
+      />
 
       {/* Render vs Reality */}
       {renders.length > 0 && (
