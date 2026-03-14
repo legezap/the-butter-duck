@@ -15,6 +15,7 @@ export interface Project {
   features: { title: string; description: string }[];
   results: string[];
   stats: { value: number; suffix?: string; label: string }[];
+  gallery: string[];
 }
 
 export const projects: Project[] = [
@@ -67,6 +68,75 @@ export const projects: Project[] = [
       { value: 68, suffix: " sqm", label: "LED Display Area" },
       { value: 5, suffix: " days", label: "Build Time" },
     ],
+    gallery: [
+      asset("/assets/photos/gallery/microsoft-IMG_3408.jpg"),
+      asset("/assets/photos/gallery/microsoft-IMG_3412.jpg"),
+      asset("/assets/photos/gallery/microsoft-IMG_3416.jpg"),
+      asset("/assets/photos/gallery/microsoft-IMG_3422.jpg"),
+      asset("/assets/photos/gallery/microsoft-IMG_3425.jpg"),
+      asset("/assets/photos/gallery/microsoft-IMG_3430.jpg"),
+      asset("/assets/photos/gallery/microsoft-IMG_3433.jpg"),
+      asset("/assets/photos/gallery/microsoft-AAA00001.jpg"),
+      asset("/assets/photos/gallery/microsoft-AAA00052.jpg"),
+    ],
+  },
+  {
+    slug: "nespresso-creatista",
+    client: "Nespresso",
+    event: "CreatistaPlus Launch",
+    title: "Nespresso CreatistaPlus Launch",
+    image: asset("/assets/photos/gallery/nespresso-NES-1239.jpg"),
+    size: "180 sqm",
+    tags: ["Event Production", "Premium Launch", "Brand Experience"],
+    location: "Dubai, UAE",
+    overview:
+      "A 180 sqm premium product launch event for Nespresso's CreatistaPlus machine, staged at a five-star hotel venue in Dubai. The experience combined a cocktail bar, live barista stations, curated photo zones, and an intimate keynote area — designed to make media, influencers, and VIP guests feel the brand's luxury positioning from the moment they walked in.",
+    challenge:
+      "Creating a multi-sensory brand world inside a hotel ballroom with low ceilings and limited rigging points. The client needed distinct zones — welcome, product reveal, tasting bar, photo opportunity, and networking lounge — to flow naturally without physical barriers, while maintaining a sense of exclusivity and visual polish worthy of the Nespresso brand.",
+    solution:
+      "We built a freestanding architectural framework using slim 60x60mm black steel profiles with integrated LED strip channels, creating glowing archways that guided guests through each zone without walls. The cocktail bar was fabricated from brushed copper-finish panels with backlit Nespresso branding, while the photo zone used a 4-metre floral wall as its backdrop. All lighting was pre-programmed on a DMX timeline synced to the event runsheet.",
+    features: [
+      {
+        title: "Freestanding Architectural Framework",
+        description:
+          "Slim 60x60mm black steel profiles with integrated RGBW LED channels, creating illuminated archways that defined event zones without obstructing sightlines.",
+      },
+      {
+        title: "Copper-Finish Cocktail Bar",
+        description:
+          "Brushed copper laminate over MDF with integrated LED branding panels, built-in refrigeration, and a custom-shaped countertop for barista demonstrations.",
+      },
+      {
+        title: "4-Metre Floral Photo Wall",
+        description:
+          "Premium artificial floral installation mounted on a steel subframe with concealed uplighting, creating an Instagram-ready backdrop for guests.",
+      },
+      {
+        title: "DMX-Synced Event Lighting",
+        description:
+          "Full DMX lighting rig pre-programmed to a show timeline, transitioning between welcome, reveal, tasting, and networking phases automatically.",
+      },
+    ],
+    results: [
+      "Event hosted 200+ VIP guests including top-tier media and influencers",
+      "Generated over 50 pieces of earned media coverage within 48 hours",
+      "Photo zone content shared over 2,000 times on social media",
+      "Client rated the event production a 10/10 in post-event debrief",
+    ],
+    stats: [
+      { value: 180, suffix: " sqm", label: "Event Footprint" },
+      { value: 200, suffix: "+", label: "VIP Guests" },
+      { value: 2000, suffix: "+", label: "Social Shares" },
+      { value: 50, suffix: "+", label: "Media Placements" },
+    ],
+    gallery: [
+      asset("/assets/photos/gallery/nespresso-NES-102.jpg"),
+      asset("/assets/photos/gallery/nespresso-NES-1070.jpg"),
+      asset("/assets/photos/gallery/nespresso-NES-1127.jpg"),
+      asset("/assets/photos/gallery/nespresso-NES-1196.jpg"),
+      asset("/assets/photos/gallery/nespresso-NES-1207.jpg"),
+      asset("/assets/photos/gallery/nespresso-NES-1239.jpg"),
+    ],
   },
   {
     slug: "vanderlande-airport",
@@ -116,6 +186,10 @@ export const projects: Project[] = [
       { value: 2, label: "Levels" },
       { value: 24, label: "Meetings Hosted" },
       { value: 3, suffix: " days", label: "Build Time" },
+    ],
+    gallery: [
+      asset("/assets/photos/gallery/vanderlande-1.jpg"),
+      asset("/assets/photos/gallery/vanderlande-2.jpg"),
     ],
   },
   {
@@ -167,6 +241,174 @@ export const projects: Project[] = [
       { value: 40, suffix: "%", label: "Above Footfall Target" },
       { value: 2, suffix: " days", label: "Build Time" },
     ],
+    gallery: [
+      asset("/assets/photos/gallery/spark-build-1.jpg"),
+      asset("/assets/photos/gallery/spark-build-2.jpg"),
+    ],
+  },
+  {
+    slug: "hoosh-world-of-vape",
+    client: "HOOSH",
+    event: "World of Vape",
+    title: "HOOSH @ World of Vape",
+    image: asset("/assets/photos/gallery/hoosh-1.jpg"),
+    size: "36 sqm",
+    tags: ["Retail Design", "LED Signage", "Product Wall"],
+    location: "Dubai, UAE",
+    overview:
+      "A 36 sqm retail-style exhibition stand for HOOSH at World of Vape, designed to showcase their full product range in a format that felt more like a premium vape boutique than a standard trade show booth. The stand featured a full-width product wall, LED-backlit signage, and a tasting bar where visitors could sample products hands-on.",
+    challenge:
+      "Standing out in a crowded hall where every competitor used similar black-and-neon aesthetics. HOOSH needed a stand that communicated quality and trust — critical differentiators in the vape industry — while displaying over 60 SKUs in a way that invited browsing rather than overwhelming visitors.",
+    solution:
+      "We designed a clean, warm retail environment using matte white surfaces with brushed brass accents, deliberately contrasting the dark industrial look used by most competitors. The product wall used individually backlit acrylic shelving with integrated price rails, while the overhead LED lightbox panel provided even illumination across the entire display. A curved tasting counter with built-in USB charging invited visitors to stay longer.",
+    features: [
+      {
+        title: "Retail-Style Product Wall",
+        description:
+          "Full-width modular shelving system with individual LED backlighting for each product bay, displaying 60+ SKUs in a browsable retail format.",
+      },
+      {
+        title: "LED Lightbox Signage",
+        description:
+          "Overhead frameless LED lightbox spanning the full width of the stand, with edge-lit branding visible from 25+ metres across the show floor.",
+      },
+      {
+        title: "Curved Tasting Counter",
+        description:
+          "Brushed brass-finish counter with integrated USB charging ports, product testers, and a built-in waste collection system for sampling.",
+      },
+      {
+        title: "Warm Retail Palette",
+        description:
+          "Matte white surfaces with brushed brass hardware and warm 3000K lighting, creating a premium boutique feel that stood apart from competitors.",
+      },
+    ],
+    results: [
+      "Highest footfall of any stand in the vape hall across both show days",
+      "Average visitor dwell time of 6 minutes — triple the hall average",
+      "Client signed 12 new distribution deals directly from on-stand meetings",
+      "Stand design was reused for three follow-up trade shows",
+    ],
+    stats: [
+      { value: 36, suffix: " sqm", label: "Stand Footprint" },
+      { value: 60, suffix: "+", label: "Products Displayed" },
+      { value: 12, label: "Deals Signed" },
+      { value: 6, suffix: " min", label: "Avg Dwell Time" },
+    ],
+    gallery: [
+      asset("/assets/photos/gallery/hoosh-1.jpg"),
+      asset("/assets/photos/gallery/hoosh-2.jpg"),
+      asset("/assets/photos/gallery/hoosh-3.jpg"),
+    ],
+  },
+  {
+    slug: "sipchem-adipec",
+    client: "Sipchem",
+    event: "ADIPEC",
+    title: "Sipchem @ ADIPEC",
+    image: asset("/assets/photos/gallery/sipchem-1.jpg"),
+    size: "90 sqm",
+    tags: ["Double Decker", "LED Video Wall", "Premium Finish"],
+    location: "Abu Dhabi, UAE",
+    overview:
+      "A 90 sqm double-decker stand for Sipchem at ADIPEC, designed to project the company's position as a leading Saudi petrochemical player on the global stage. The ground floor combined an open reception with product display zones, while the upper deck housed VIP meeting rooms and a hospitality lounge — all anchored by a striking LED video wall visible from two aisles.",
+    challenge:
+      "Communicating the scale and technical sophistication of a petrochemical company within a 90 sqm island plot surrounded by much larger competitors. The stand needed to project corporate authority while remaining approachable, and the double-decker structure had to comply with both ADNEC venue regulations and Abu Dhabi Civil Defence requirements for upper-deck occupancy.",
+    solution:
+      "We designed a bold architectural form using a cantilevered upper deck that extended beyond the ground-floor footprint, creating an imposing visual presence and additional covered meeting space below. The 12 sqm LED video wall ran custom content showing Sipchem's facilities and product range, serving as a visual anchor visible from the main thoroughfare. Premium finishes — stone-effect flooring, fabric-wrapped acoustic panels, and brushed stainless steel trims — reinforced the corporate positioning.",
+    features: [
+      {
+        title: "Cantilevered Upper Deck",
+        description:
+          "Upper level extending 1.5m beyond the ground-floor perimeter, creating a dramatic overhang and additional sheltered space at ground level.",
+      },
+      {
+        title: "12 sqm LED Video Wall",
+        description:
+          "2.9mm pixel-pitch LED panels running custom-produced content showcasing Sipchem's plants, products, and sustainability initiatives.",
+      },
+      {
+        title: "VIP Meeting Suite",
+        description:
+          "Upper-level meeting room with acoustic glazing, integrated AV, and lounge seating for 10 guests, offering privacy for executive-level discussions.",
+      },
+      {
+        title: "Premium Material Palette",
+        description:
+          "Stone-effect raised flooring, fabric-wrapped wall panels, brushed stainless steel columns, and custom-built reception desk in white Corian.",
+      },
+    ],
+    results: [
+      "Stand was one of the most photographed in the petrochemical hall",
+      "Upper-deck meeting room hosted 28 scheduled meetings over four days",
+      "LED video wall content was repurposed by the client for post-show marketing",
+      "Client renewed for the following year's ADIPEC within one month of the show",
+    ],
+    stats: [
+      { value: 90, suffix: " sqm", label: "Stand Footprint" },
+      { value: 12, suffix: " sqm", label: "LED Wall" },
+      { value: 28, label: "VIP Meetings" },
+      { value: 4, suffix: " days", label: "Show Duration" },
+    ],
+    gallery: [
+      asset("/assets/photos/gallery/sipchem-1.jpg"),
+      asset("/assets/photos/gallery/sipchem-2.jpg"),
+    ],
+  },
+  {
+    slug: "interfood-gulfood",
+    client: "Interfood",
+    event: "Gulfood Manufacturing",
+    title: "Interfood @ Gulfood Manufacturing",
+    image: asset("/assets/photos/gallery/interfood-1.jpg"),
+    size: "54 sqm",
+    tags: ["Custom Build", "Hanging Signage", "Interactive Display"],
+    location: "Dubai, UAE",
+    overview:
+      "A 54 sqm custom-build stand for Interfood at Gulfood Manufacturing, Dubai's largest food processing and packaging trade fair. The design centered on the client's signature green branding, with a dramatic suspended signage structure and interactive product displays that showcased their ingredient solutions for the food manufacturing industry.",
+    challenge:
+      "Creating strong brand visibility in a dense exhibition hall where competitors occupied plots two to three times the size. Interfood's product range — food ingredients and processing solutions — required both visual impact and the ability for technical staff to conduct detailed product conversations without interruption from show floor noise.",
+    solution:
+      "We designed a double-height hanging sign structure suspended from the venue rigging grid, giving the stand a presence visible from across the entire hall. At ground level, the stand combined an open product display zone with two semi-enclosed meeting pods, each acoustically treated with fabric-wrapped panels. Interactive touchscreen kiosks let visitors explore the product catalogue and request samples digitally, reducing brochure waste and capturing qualified leads automatically.",
+    features: [
+      {
+        title: "Suspended Hanging Signage",
+        description:
+          "4-metre-wide double-sided hanging sign with internal LED illumination, suspended from the venue rigging grid for maximum visibility across the hall.",
+      },
+      {
+        title: "Interactive Product Kiosks",
+        description:
+          "Two 32-inch touchscreen displays running a custom product catalogue app with sample request functionality and built-in lead capture.",
+      },
+      {
+        title: "Semi-Enclosed Meeting Pods",
+        description:
+          "Two meeting pods with fabric-wrapped acoustic panels, each seating 4 guests with integrated power and display screens for presentations.",
+      },
+      {
+        title: "Green Brand Integration",
+        description:
+          "Full stand wrapped in Interfood's signature green with white accents, using printed tension-fabric panels for lightweight, vibrant colour reproduction.",
+      },
+    ],
+    results: [
+      "Hanging signage made the stand visible from every entrance to the hall",
+      "Interactive kiosks captured 340 qualified leads across three show days",
+      "Meeting pods were fully booked with back-to-back appointments throughout",
+      "Client reported their most productive Gulfood Manufacturing participation to date",
+    ],
+    stats: [
+      { value: 54, suffix: " sqm", label: "Stand Footprint" },
+      { value: 340, label: "Leads Captured" },
+      { value: 4, suffix: "m", label: "Hanging Sign Width" },
+      { value: 3, suffix: " days", label: "Build Time" },
+    ],
+    gallery: [
+      asset("/assets/photos/gallery/interfood-1.jpg"),
+      asset("/assets/photos/gallery/interfood-2.jpg"),
+      asset("/assets/photos/gallery/interfood-3.jpg"),
+    ],
   },
   {
     slug: "altronix-intersec",
@@ -216,6 +458,9 @@ export const projects: Project[] = [
       { value: 60, suffix: "%", label: "Lead Increase" },
       { value: 3, suffix: "x", label: "Social Shares vs Prior Year" },
       { value: 2, suffix: " days", label: "Build Time" },
+    ],
+    gallery: [
+      asset("/assets/photos/gallery/altronix-1.jpg"),
     ],
   },
   {
@@ -267,6 +512,7 @@ export const projects: Project[] = [
       { value: 1200, suffix: "+", label: "Interactive Sessions" },
       { value: 6, label: "Deals Signed On-Stand" },
     ],
+    gallery: [],
   },
   {
     slug: "ikgroup-adipec",
@@ -317,5 +563,6 @@ export const projects: Project[] = [
       { value: 4, suffix: " days", label: "Show Duration" },
       { value: 12, label: "Products Showcased" },
     ],
+    gallery: [],
   },
 ];

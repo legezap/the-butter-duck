@@ -1,14 +1,36 @@
-import type { Metadata } from "next";
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import { projects } from "@/data/projects";
 
-export const metadata: Metadata = {
-  title: "Portfolio — Exhibition & Event Projects | The Butter Duck",
-};
+const filterTabs = [
+  { label: "All", filter: () => true },
+  {
+    label: "Exhibition",
+    filter: (p: (typeof projects)[0]) =>
+      !p.tags.some((t) => t.includes("Double Decker")) &&
+      !p.tags.some((t) => t.includes("Event")),
+  },
+  {
+    label: "Event",
+    filter: (p: (typeof projects)[0]) =>
+      p.tags.some((t) => t.includes("Event")) ||
+      p.tags.some((t) => t.includes("Launch")),
+  },
+  {
+    label: "Double Decker",
+    filter: (p: (typeof projects)[0]) =>
+      p.tags.some((t) => t.includes("Double Decker")),
+  },
+];
 
 export default function PortfolioPage() {
+  const [activeFilter, setActiveFilter] = useState(0);
+  const filtered = projects.filter(filterTabs[activeFilter].filter);
+
   return (
     <>
       {/* Breadcrumbs */}
@@ -45,11 +67,28 @@ export default function PortfolioPage() {
         </div>
       </section>
 
+      {/* Filter Tabs */}
+      <section style={{ paddingBottom: 16 }}>
+        <div className="container">
+          <div className="filter-tabs">
+            {filterTabs.map((tab, i) => (
+              <button
+                key={tab.label}
+                className={`filter-tab${i === activeFilter ? " active" : ""}`}
+                onClick={() => setActiveFilter(i)}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Portfolio Grid */}
       <section className="section-pad-sm">
         <div className="container">
           <div className="portfolio-grid">
-            {projects.map((project, i) => (
+            {filtered.map((project, i) => (
               <RevealOnScroll key={project.slug} delay={i * 0.1}>
                 <Link
                   href={`/projects/${project.slug}`}

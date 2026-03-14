@@ -58,28 +58,56 @@ const services = [
 
 const featuredProjects = [
   {
-    slug: "vanderlande-airport-show-dubai",
-    title: "Vanderlande at Airport Show Dubai",
-    client: "Vanderlande",
-    size: "60 sqm",
+    slug: "microsoft-leap",
+    title: "Microsoft at LEAP",
+    client: "Microsoft",
+    size: "700 sqm",
     type: "Double Decker",
-    image: asset("/assets/photos/vanderlande-airport.jpg"),
+    image: asset("/assets/photos/microsoft-leap.jpg"),
   },
   {
-    slug: "spark-breakbulk-me-2025",
-    title: "Spark at Breakbulk ME 2025",
+    slug: "nespresso-creatista",
+    title: "Nespresso CreatistaPlus Launch",
+    client: "Nespresso",
+    size: "180 sqm",
+    type: "Event Production",
+    image: asset("/assets/photos/gallery/nespresso-NES-1239.jpg"),
+  },
+  {
+    slug: "spark-breakbulk",
+    title: "Spark at Breakbulk ME",
     client: "Spark",
     size: "60 sqm",
     type: "Custom Build",
     image: asset("/assets/photos/spark-breakbulk.jpg"),
   },
+];
+
+const processSteps = [
+  { num: "01", title: "Brief", desc: "We listen, ask the right questions, and define exactly what success looks like for your brand." },
+  { num: "02", title: "Design", desc: "3D concepts, material specs, and technical drawings — iterated until you're thrilled." },
+  { num: "03", title: "Build", desc: "Precision fabrication in our Dubai workshop, with quality checks at every stage." },
+  { num: "04", title: "Deliver", desc: "On-site installation, show support, and dismantle — we're there until the last bolt is packed." },
+];
+
+const testimonials = [
   {
-    slug: "altronix-intersec-dubai",
-    title: "Altronix at Intersec Dubai",
-    client: "Altronix",
-    size: "25 sqm",
-    type: "LED Integration",
-    image: asset("/assets/photos/altronix-intersec.jpg"),
+    quote: "The Butter Duck doesn't just build stands — they build experiences. Our LEAP pavilion was the most talked-about presence at the entire show.",
+    name: "Sarah Al-Rashid",
+    role: "Regional Events Director",
+    company: "Microsoft Middle East",
+  },
+  {
+    quote: "From concept to completion, the attention to detail was exceptional. They delivered exactly what they promised, on time and on budget.",
+    name: "Marc van den Berg",
+    role: "Head of Global Exhibitions",
+    company: "Vanderlande Industries",
+  },
+  {
+    quote: "We've worked with exhibition companies across the region — nobody comes close to the build quality and design thinking these guys bring.",
+    name: "Ahmed Khalil",
+    role: "Marketing Manager",
+    company: "Spark Logistics",
   },
 ];
 
@@ -314,12 +342,44 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ========== 7. CINEMATIC DIVIDER — ALTRONIX ========== */}
+      {/* ========== 7. OUR PROCESS ========== */}
+      <section
+        style={{
+          padding: "120px 0",
+          background: "var(--color-bg-card)",
+          borderTop: "1px solid var(--color-border-default)",
+          borderBottom: "1px solid var(--color-border-default)",
+        }}
+      >
+        <div className="container">
+          <RevealOnScroll>
+            <span className="section-label" style={{ textAlign: "center", display: "block" }}>
+              How We Work
+            </span>
+            <h2 style={{ textAlign: "center", marginBottom: 64 }}>
+              From Brief to <span className="accent">Show Floor</span>
+            </h2>
+          </RevealOnScroll>
+          <div className="process-grid">
+            {processSteps.map((step, i) => (
+              <RevealOnScroll key={step.num} delay={i * 0.12}>
+                <div className="process-card">
+                  <div className="process-num">{step.num}</div>
+                  <h3>{step.title}</h3>
+                  <p>{step.desc}</p>
+                </div>
+              </RevealOnScroll>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ========== 7b. CINEMATIC DIVIDER — NESPRESSO ========== */}
       <section className="cine-divider">
         <Parallax className="cine-divider-bg">
           <Image
-            src={asset("/assets/photos/altronix-intersec.jpg")}
-            alt="Altronix booth at Intersec Dubai"
+            src={asset("/assets/photos/gallery/nespresso-NES-1239.jpg")}
+            alt="Nespresso CreatistaPlus launch event — birds eye view"
             fill
             style={{ objectFit: "cover" }}
           />
@@ -329,9 +389,13 @@ export default function HomePage() {
           <RevealOnScroll>
             <div>
               <h2>
-                Every Square Meter{" "}
-                <span className="accent">Engineered for Impact.</span>
+                Not Just Stands.{" "}
+                <span className="accent">Unforgettable Moments.</span>
               </h2>
+              <p>
+                From intimate product launches to 700 sqm pavilions — we create
+                brand experiences that people talk about long after the event.
+              </p>
             </div>
           </RevealOnScroll>
         </div>
@@ -365,6 +429,37 @@ export default function HomePage() {
               </div>
               <div className="stat-text">On-Time Delivery</div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========== 8b. TESTIMONIALS ========== */}
+      <section className="section-pad">
+        <div className="container">
+          <RevealOnScroll>
+            <span className="section-label" style={{ textAlign: "center", display: "block" }}>
+              Client Feedback
+            </span>
+            <h2 style={{ textAlign: "center", marginBottom: 64 }}>
+              What Our Clients <span className="accent">Say</span>
+            </h2>
+          </RevealOnScroll>
+          <div className="testimonials-grid">
+            {testimonials.map((t, i) => (
+              <RevealOnScroll key={i} delay={i * 0.15}>
+                <blockquote className="testimonial-card">
+                  <p className="testimonial-quote">&ldquo;{t.quote}&rdquo;</p>
+                  <footer className="testimonial-footer">
+                    <div>
+                      <strong>{t.name}</strong>
+                      <span className="text-muted" style={{ display: "block", fontSize: "0.82rem", marginTop: 2 }}>
+                        {t.role}, {t.company}
+                      </span>
+                    </div>
+                  </footer>
+                </blockquote>
+              </RevealOnScroll>
+            ))}
           </div>
         </div>
       </section>

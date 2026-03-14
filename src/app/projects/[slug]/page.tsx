@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import CounterAnimation from "@/components/CounterAnimation";
 import Parallax from "@/components/Parallax";
+import ImageGallery from "@/components/ImageGallery";
 import { projects } from "@/data/projects";
 
 /* ---------- Static Params ---------- */
@@ -233,6 +234,14 @@ export default async function ProjectPage({
           </RevealOnScroll>
         </div>
       </section>
+
+      {/* Gallery */}
+      {project.gallery.length > 0 && (
+        <ImageGallery
+          images={project.gallery}
+          alt={`${project.client} @ ${project.event}`}
+        />
+      )}
 
       {/* Key Features */}
       <section

@@ -21,6 +21,9 @@
 .env
 .env*.local
 
+# raw media inbox (source files, not for deployment)
+/media-inbox/
+
 # debug
 npm-debug.log*
 
