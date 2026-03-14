@@ -80,7 +80,7 @@ const testimonials = [
     company: "Microsoft Middle East",
   },
   {
-    quote: "From concept to completion, the attention to detail was exceptional. They delivered exactly what they promised, on time and on budget.",
+    quote: "The level of precision in the final build was remarkable — every detail matched the 3D renders. On time, on budget, zero surprises.",
     role: "Head of Global Exhibitions",
     company: "Vanderlande Industries",
   },
@@ -129,7 +129,7 @@ export default function HomePage() {
 
           <RevealOnScroll delay={0.35}>
             <p className="hero-sub">
-              Exhibition stands from <strong>18&nbsp;sqm</strong> to{" "}
+              Exhibition stands from <strong>25&nbsp;sqm</strong> to{" "}
               <strong>700&nbsp;sqm</strong>. Trusted by{" "}
               <strong>Microsoft</strong>, <strong>Vanderlande</strong>,{" "}
               <strong>Altronix</strong>, and brands across 10&nbsp;countries.

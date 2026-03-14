@@ -31,12 +31,12 @@ const notoArabic = Noto_Sans_Arabic({
 export const metadata: Metadata = {
   title: "The Butter Duck — Global Exhibition Design & Event Production | Dubai",
   description:
-    "Custom exhibition stand design & build in the UAE. From 18 sqm booths to 700 sqm double-deckers. Trusted by Microsoft, Vanderlande & brands across 10 countries.",
+    "Custom exhibition stand design & build in the UAE. From 25 sqm booths to 700 sqm double-deckers. Trusted by Microsoft, Vanderlande & brands across 10 countries.",
   metadataBase: new URL("https://thebutterduck.com"),
   openGraph: {
     title: "The Butter Duck — Exhibition Design & Events — Dubai",
     description:
-      "Exhibition design, event production, and immersive brand experiences. From 18 sqm to 700 sqm. UAE-based, globally deployed.",
+      "Exhibition design, event production, and immersive brand experiences. From 25 sqm to 700 sqm. UAE-based, globally deployed.",
     url: "https://thebutterduck.com",
     type: "website",
     images: ["/assets/photos/hero-green-corridor.jpg"],
@@ -72,7 +72,7 @@ export default function RootLayout({
                 logo: "https://thebutterduck.com/assets/photos/duck-brand.jpg",
                 image: "https://thebutterduck.com/assets/photos/hero-microsoft-gitex.jpg",
                 description:
-                  "UAE-based exhibition stand design, build, and event production company. Custom booths from 18 sqm to 700 sqm deployed across 10 countries.",
+                  "UAE-based exhibition stand design, build, and event production company. Custom booths from 25 sqm to 700 sqm deployed across 10 countries.",
                 address: {
                   "@type": "PostalAddress",
                   streetAddress: "Marina Plaza, 29th Floor",
@@ -125,7 +125,7 @@ export default function RootLayout({
                   {
                     "@type": "Review",
                     author: { "@type": "Person", name: "Marc van den Berg" },
-                    reviewBody: "From concept to completion, the attention to detail was exceptional. They delivered exactly what they promised, on time and on budget.",
+                    reviewBody: "The level of precision in the final build was remarkable — every detail matched the 3D renders. On time, on budget, zero surprises.",
                     reviewRating: { "@type": "Rating", ratingValue: 5, bestRating: 5 },
                   },
                   {

@@ -26,7 +26,7 @@ export const projects: Project[] = [
     title: "Microsoft LEAP",
     image: asset("/assets/photos/microsoft-leap.jpg"),
     size: "700 sqm",
-    tags: ["Double Decker", "LED Integration", "Custom Build"],
+    tags: ["Double Decker", "Custom Build"],
     location: "Riyadh, Saudi Arabia",
     overview:
       "A 700 sqm double-decker stand for Microsoft at LEAP, Saudi Arabia's flagship technology conference. The structure served as a fully immersive brand environment featuring live demos, executive meeting suites, and a keynote theatre spanning both levels.",
@@ -77,11 +77,6 @@ export const projects: Project[] = [
       asset("/assets/photos/gallery/microsoft-IMG_3427.jpg"),
       asset("/assets/photos/gallery/microsoft-IMG_3430.jpg"),
       asset("/assets/photos/gallery/microsoft-IMG_3433.jpg"),
-      asset("/assets/photos/gallery/microsoft-IMG_3103.jpg"),
-      asset("/assets/photos/gallery/microsoft-IMG_3106.jpg"),
-      asset("/assets/photos/gallery/microsoft-IMG_3107.jpg"),
-      asset("/assets/photos/gallery/microsoft-IMG_3111.jpg"),
-      asset("/assets/photos/gallery/microsoft-IMG_3161.jpg"),
       asset("/assets/photos/gallery/microsoft-AAA00001.jpg"),
       asset("/assets/photos/gallery/microsoft-AAA00052.jpg"),
       asset("/assets/photos/gallery/microsoft-floorplan-1.jpg"),
@@ -170,9 +165,9 @@ export const projects: Project[] = [
           "Single-floor design maximizing sightlines from all surrounding aisles, with strategic architectural elements creating visual interest without barriers.",
       },
       {
-        title: "Live Conveyor Demo Integration",
+        title: "Integrated Product Display",
         description:
-          "Working baggage handling conveyor system embedded into the stand floor with concealed power and data connections, running continuously throughout the show.",
+          "Dedicated product showcase zones with concealed power and data connections, allowing continuous demonstration throughout the show.",
       },
       {
         title: "Architectural Lighting Design",
@@ -213,7 +208,7 @@ export const projects: Project[] = [
     overview:
       "A 60 sqm custom-build stand for Spark Logistics at Breakbulk Middle East, inspired by shipping container architecture to reflect the client's logistics and freight forwarding identity. The design combined raw industrial materials with polished meeting spaces, creating a memorable visual contrast on the show floor.",
     challenge:
-      "Translating a shipping container aesthetic into a functional exhibition environment without the stand feeling dark, cramped, or gimmicky. The client needed three separate meeting zones, a reception counter, and a product showcase area — all within 60 sqm — while maintaining clear sightlines from the main aisle.",
+      "Translating a shipping container aesthetic into a functional exhibition environment without the stand feeling dark, cramped, or gimmicky. The client needed an open floorplan with a reception counter and clear visitor flow — all within 60 sqm — while maintaining clear sightlines from the main aisle.",
     solution:
       "We fabricated corrugated steel panels over lightweight MDF substrates, achieving an authentic industrial container look. Strategic cutaways and floor-to-ceiling glazed sections broke up the container forms and flooded the interior with light. Open floorplan layout allowed natural flow between meeting zones.",
     features: [
@@ -450,7 +445,7 @@ export const projects: Project[] = [
     title: "Altronix Intersec",
     image: asset("/assets/photos/altronix-intersec.jpg"),
     size: "25 sqm",
-    tags: ["LED Integration", "Compact Design", "Security"],
+    tags: ["Compact Design", "Security", "Long-Term Client"],
     location: "Dubai, UAE",
     overview:
       "A 25 sqm compact stand for Altronix at Intersec, Dubai's leading security, safety, and fire protection trade fair. The design centered on dramatic blue LED integration that turned a small footprint into one of the most visually striking presences on the show floor, reflecting Altronix's position in power and surveillance infrastructure. This was one of six stands we've built for Altronix across multiple editions of Intersec.",

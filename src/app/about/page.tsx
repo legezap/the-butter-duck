@@ -8,7 +8,7 @@ import { asset } from "@/lib/basePath";
 export const metadata: Metadata = {
   title: "About The Butter Duck | Exhibition Stand Builder in Dubai, UAE",
   description:
-    "UAE-based exhibition design and event production company. 80+ projects across 10 countries. Custom booth builds from 18 sqm to 700 sqm. Founded 2019, trusted by Microsoft and Vanderlande.",
+    "UAE-based exhibition design and event production company. 80+ projects across 10 countries. Custom booth builds from 25 sqm to 700 sqm. Founded 2019, trusted by Microsoft and Vanderlande.",
 };
 
 const values = [
@@ -87,7 +87,7 @@ const timeline = [
   {
     year: "2025",
     title: "10 Countries Reached",
-    desc: "Expanded operations to 10 countries with capabilities spanning project management, branding, financial evaluation, and full A-to-Z communication.",
+    desc: "Expanded into marketing strategy and branding with the creation of Butter Studio. Now operating across 10 countries.",
   },
 ];
 

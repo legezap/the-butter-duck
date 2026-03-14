@@ -21,7 +21,7 @@ const translations = {
 
     // Mega menu
     "mega.exhibition": "Exhibition Design",
-    "mega.exhibition.desc": "Custom stands from 18 to 700+ sqm",
+    "mega.exhibition.desc": "Custom stands from 25 to 700+ sqm",
     "mega.project": "Project Management",
     "mega.project.desc": "End-to-end logistics and delivery",
     "mega.concept": "Conceptual Event Design",
@@ -33,7 +33,7 @@ const translations = {
     "hero.badge": "UAE-Based, Globally Deployed",
     "hero.title": "We Build Experiences That",
     "hero.title.accent": "Command Attention",
-    "hero.sub": "Exhibition stands, event production, and immersive brand environments from <strong>18 sqm to 700 sqm</strong>. Trusted by Microsoft, Vanderlande, and brands across 10 countries.",
+    "hero.sub": "Exhibition stands, event production, and immersive brand environments from <strong>25 sqm to 700 sqm</strong>. Trusted by Microsoft, Vanderlande, and brands across 10 countries.",
     "hero.cta.start": "Start Your Project",
     "hero.cta.work": "View Our Work",
     "hero.stat.projects": "Projects Delivered",
@@ -66,7 +66,7 @@ const translations = {
     "portfolio.label": "Selected Work",
     "portfolio.title": "Projects That Speak",
     "portfolio.title.accent": "for Themselves",
-    "portfolio.desc": "From a 700 sqm double-decker for Microsoft to a refined 18 sqm compact stand — every project gets our full commitment.",
+    "portfolio.desc": "From a 700 sqm double-decker for Microsoft to a refined 25 sqm compact stand — every project gets our full commitment.",
     "portfolio.viewall": "View All Projects",
 
     // Stats
@@ -165,7 +165,7 @@ const translations = {
     "nav.quote": "طلب عرض سعر",
 
     "mega.exhibition": "تصميم المعارض",
-    "mega.exhibition.desc": "أجنحة مخصصة من 18 إلى 700+ م²",
+    "mega.exhibition.desc": "أجنحة مخصصة من 25 إلى 700+ م²",
     "mega.project": "إدارة المشاريع",
     "mega.project.desc": "خدمات لوجستية شاملة",
     "mega.concept": "تصميم الفعاليات",
@@ -176,7 +176,7 @@ const translations = {
     "hero.badge": "مقرنا الإمارات، عملنا عالمي",
     "hero.title": "نبني تجارب",
     "hero.title.accent": "تجذب كل الأنظار",
-    "hero.sub": "أجنحة معارض وإنتاج فعاليات وبيئات غامرة للعلامات التجارية من <strong>18 م² إلى 700 م²</strong>. موثوقون من مايكروسوفت وفاندرلاند وعلامات تجارية في 10 دول.",
+    "hero.sub": "أجنحة معارض وإنتاج فعاليات وبيئات غامرة للعلامات التجارية من <strong>25 م² إلى 700 م²</strong>. موثوقون من مايكروسوفت وفاندرلاند وعلامات تجارية في 10 دول.",
     "hero.cta.start": "ابدأ مشروعك",
     "hero.cta.work": "عرض أعمالنا",
     "hero.stat.projects": "مشروع منجز",
@@ -204,7 +204,7 @@ const translations = {
     "portfolio.label": "أعمال مختارة",
     "portfolio.title": "مشاريع تتحدث",
     "portfolio.title.accent": "عن نفسها",
-    "portfolio.desc": "من جناح 700 م² مزدوج لمايكروسوفت إلى جناح مدمج 18 م² — كل مشروع يحظى بالتزامنا الكامل.",
+    "portfolio.desc": "من جناح 700 م² مزدوج لمايكروسوفت إلى جناح مدمج 25 م² — كل مشروع يحظى بالتزامنا الكامل.",
     "portfolio.viewall": "عرض جميع المشاريع",
 
     "stats.projects": "مشروع منجز",
