@@ -29,33 +29,33 @@ export const projects: Project[] = [
     tags: ["Double Decker", "Custom Build"],
     location: "Riyadh, Saudi Arabia",
     overview:
-      "A 700 sqm double-decker stand for Microsoft at LEAP, Saudi Arabia's flagship technology conference. The structure served as a fully immersive brand environment featuring live demos, executive meeting suites, and a keynote theatre spanning both levels.",
+      "A 700 sqm double-decker stand that gave Microsoft a commanding two-level presence at LEAP — Saudi Arabia's largest tech event. The build housed live product demos, executive meeting suites, and a keynote theatre, turning a floor plot into a destination.",
     challenge:
-      "Designing and engineering a two-storey structure within a tight 10-day venue access window, while meeting Saudi Civil Defence load and fire safety requirements. The upper deck needed to support 350 kg/sqm live loading for meeting rooms and a hospitality lounge.",
+      "Delivering a fully compliant two-storey structure within a 10-day venue access window, while meeting Saudi Civil Defence load and fire safety requirements for upper-deck occupancy.",
     solution:
-      "We engineered the superstructure around 200x200mm steel I-beams with IPE 240 cross-members, pre-fabricated in our Dubai workshop and shipped flat-pack to Riyadh. The LED wall used 2.6mm pitch panels totalling 68 sqm of seamless display area, calibrated on-site over two overnight sessions. A 63A three-phase power distribution system fed all AV, lighting, and HVAC independently to prevent brownouts during peak demo hours.",
+      "The superstructure was pre-fabricated in our Dubai workshop and shipped flat-pack to Riyadh, cutting on-site assembly time in half. A 63A three-phase power distribution system isolated AV, lighting, and HVAC on dedicated circuits to prevent brownouts during peak demo hours. The result: a structure that performed like a permanent installation but was built, used, and dismantled in under three weeks.",
     features: [
       {
         title: "Double-Decker Superstructure",
         description:
-          "200x200mm steel I-beams with IPE 240 cross-members, engineered for 350 kg/sqm upper-deck loading with integrated cable management channels.",
+          "Steel-framed two-storey build engineered for 350 kg/sqm upper-deck loading — strong enough for meeting rooms, a hospitality lounge, and full foot traffic.",
       },
       {
         title: "320 sqm Printed Graphics",
         description:
-          "Tension-fabric lightboxes and direct-print wall panels using UV-cured inks on flame-retardant substrates, installed in modular cassettes for rapid swap-out.",
+          "Modular tension-fabric lightboxes and direct-print panels on flame-retardant substrates, designed for rapid swap-out between event phases.",
       },
       {
         title: "63A Power Distribution",
         description:
-          "63A three-phase power distribution with dedicated circuits for AV, lighting, and HVAC systems.",
+          "Three-phase electrical system with isolated circuits for AV, lighting, and climate control — zero brownouts across four days of continuous demos.",
       },
     ],
     results: [
-      "Completed full installation in 10 days with a 35-person crew, one day ahead of schedule",
+      "Installation completed one day ahead of schedule with a 35-person crew",
       "Zero safety incidents across build, show, and dismantle phases",
-      "Hosted over 8,000 visitor interactions across the 4-day event",
-      "Client approved the next edition's build before show close",
+      "Over 8,000 visitor interactions logged across the 4-day event",
+      "Client signed the next edition's contract before the show closed",
     ],
     stats: [
       { value: 700, suffix: " sqm", label: "Stand Footprint" },
@@ -92,43 +92,43 @@ export const projects: Project[] = [
     tags: ["Event Production", "Premium Launch", "Brand Experience"],
     location: "Dubai, UAE",
     overview:
-      "A 1200 sqm premium product launch event for Nespresso's CreatistaPlus machine, staged at Inked Al Serkal Avenue, Dubai. The experience combined a cocktail bar, live barista stations, curated photo zones, and an intimate keynote area — designed to make media, influencers, and VIP guests feel the brand's luxury positioning from the moment they walked in.",
+      "A 1200 sqm product launch experience for Nespresso's CreatistaPlus, staged at Al Serkal Avenue in Dubai. Five distinct zones — from cocktail bar to keynote theatre — guided 200+ VIP guests, media, and influencers through the brand story without a single wall between them.",
     challenge:
-      "Creating a multi-sensory brand world inside a large warehouse-style venue at Al Serkal Avenue. The client needed distinct zones — welcome, product reveal, tasting bar, photo opportunity, and networking lounge — to flow naturally across the open 1200 sqm floor without physical barriers, while maintaining a sense of exclusivity and visual polish worthy of the Nespresso brand.",
+      "Turning a raw warehouse venue into a luxury brand world with five seamless zones across 1200 sqm. The space needed to feel exclusive and polished while allowing natural guest flow — no bottlenecks, no dead zones.",
     solution:
-      "We built a freestanding architectural framework using slim 60x60mm black steel profiles with integrated LED strip channels, creating glowing archways that guided guests through each zone without walls. The cocktail bar was fabricated from brushed copper-finish panels with backlit Nespresso branding, while the photo zone used a 4-metre floral wall as its backdrop. All lighting was pre-programmed on a DMX timeline synced to the event runsheet.",
+      "Illuminated steel archways replaced traditional walls, defining each zone through light and form while keeping full sightlines across the venue. A brushed-copper cocktail bar and 4-metre floral photo wall served as anchor points that drew guests forward. All lighting ran on a pre-programmed DMX timeline synced to the event runsheet, so every phase — welcome, reveal, tasting, networking — hit its mark without manual intervention.",
     features: [
       {
         title: "Freestanding Architectural Framework",
         description:
-          "Slim 60x60mm black steel profiles with integrated RGBW LED channels, creating illuminated archways that defined event zones without obstructing sightlines.",
+          "Black steel archways with integrated LED channels that defined zones through light instead of walls — keeping the space open while giving each area its own identity.",
       },
       {
         title: "Copper-Finish Cocktail Bar",
         description:
-          "Brushed copper laminate over MDF with integrated LED branding panels, built-in refrigeration, and a custom-shaped countertop for barista demonstrations.",
+          "Custom-fabricated bar with brushed copper finish, built-in refrigeration, and backlit branding — the centrepiece for live barista demonstrations.",
       },
       {
         title: "4-Metre Floral Photo Wall",
         description:
-          "Premium artificial floral installation mounted on a steel subframe with concealed uplighting, creating an Instagram-ready backdrop for guests.",
+          "Premium floral installation with concealed uplighting, purpose-built to generate shareable social content from every guest.",
       },
       {
         title: "DMX-Synced Event Lighting",
         description:
-          "Full DMX lighting rig pre-programmed to a show timeline, transitioning between welcome, reveal, tasting, and networking phases automatically.",
+          "Pre-programmed lighting rig that transitioned automatically between event phases, eliminating manual cues and keeping the show on schedule.",
       },
       {
         title: "CNC Steel Framework",
         description:
-          "Precision-cut CNC steel structural elements providing the backbone for large-format installations and suspended elements across the 1200 sqm venue.",
+          "Precision-cut structural elements supporting large-format installations and suspended features across the full 1200 sqm venue footprint.",
       },
     ],
     results: [
-      "Event hosted 200+ VIP guests including top-tier media and influencers",
-      "Generated over 50 pieces of earned media coverage within 48 hours",
+      "200+ VIP guests hosted, including top-tier media and influencers",
+      "50+ earned media placements within 48 hours of the event",
       "Photo zone content shared over 2,000 times on social media",
-      "Client rated the event production a 10/10 in post-event debrief",
+      "Nespresso rebooked the production team for their next regional launch",
     ],
     stats: [
       { value: 1200, suffix: " sqm", label: "Event Footprint" },
@@ -153,38 +153,38 @@ export const projects: Project[] = [
     tags: ["Open Concept", "Product Demo", "Architectural"],
     location: "Dubai, UAE",
     overview:
-      "A 60 sqm open-concept stand for Vanderlande at the Dubai Airport Show, designed to showcase their baggage handling and logistics automation systems. The stand featured a working conveyor demo zone and open meeting areas within a clean, architectural layout that maximized visibility from all sides.",
+      "A 60 sqm open-concept stand for Vanderlande at the Dubai Airport Show, built around a working conveyor demonstration that let airport procurement teams see the product in action. Clean architectural lines and open sightlines from all four aisles did the rest.",
     challenge:
-      "Creating an open, inviting stand that could house a live baggage handling conveyor system within a compact 60 sqm footprint while maintaining premium architectural aesthetics and clear sightlines from every aisle.",
+      "Fitting a live baggage handling conveyor system into a 60 sqm footprint without sacrificing the premium look or blocking sightlines that drive walk-up traffic.",
     solution:
-      "We designed a single-floor open layout built on a raised platform with clean architectural lines and strategic lighting to draw attention from multiple aisles. The conveyor demo was integrated at floor level with concealed power connections, while lightweight partition walls created semi-private meeting areas without blocking visibility.",
+      "A raised platform with clean architectural lines anchored the stand and drew attention from multiple aisles. The conveyor demo was integrated at floor level with concealed power connections, running continuously throughout the show. Lightweight partition walls created semi-private meeting areas for procurement conversations without closing off the stand.",
     features: [
       {
         title: "Open-Plan Layout",
         description:
-          "Single-floor design maximizing sightlines from all surrounding aisles, with strategic architectural elements creating visual interest without barriers.",
+          "Four-sided open design with no visual barriers — visitors could see the product demo from any approach, maximizing walk-up engagement.",
       },
       {
         title: "Integrated Product Display",
         description:
-          "Dedicated product showcase zones with concealed power and data connections, allowing continuous demonstration throughout the show.",
+          "Live conveyor demonstration with concealed power and data connections, running uninterrupted across all three show days.",
       },
       {
         title: "Architectural Lighting Design",
         description:
-          "Layered lighting scheme combining recessed ceiling fixtures, accent spotlights, and perimeter LED strips to create depth and drama within the open layout.",
+          "Layered lighting combining recessed fixtures, accent spots, and perimeter LEDs to create depth and draw the eye toward demo and meeting zones.",
       },
       {
         title: "Modular Meeting Areas",
         description:
-          "Lightweight partition walls creating semi-private conversation zones without compromising the open, accessible feel of the stand.",
+          "Semi-private conversation zones built from lightweight partitions — private enough for procurement discussions, open enough to keep the stand inviting.",
       },
     ],
     results: [
-      "Stand attracted consistent visitor flow across all three show days",
-      "Live demo generated the highest engagement rate on the exhibition floor",
-      "Open meeting areas hosted 24 scheduled meetings with airline procurement teams",
-      "Client rated the project 10/10 in post-show feedback survey",
+      "Consistent visitor flow maintained across all three show days",
+      "Live demo drove the highest engagement rate on the exhibition floor",
+      "24 scheduled meetings hosted with airline procurement teams",
+      "Client renewed the contract for the following year's Airport Show",
     ],
     stats: [
       { value: 60, suffix: " sqm", label: "Stand Footprint" },
@@ -206,38 +206,38 @@ export const projects: Project[] = [
     tags: ["Custom Build", "Industrial Design", "Container Concept"],
     location: "Dubai, UAE",
     overview:
-      "A 60 sqm custom-build stand for Spark Logistics at Breakbulk Middle East, inspired by shipping container architecture to reflect the client's logistics and freight forwarding identity. The design combined raw industrial materials with polished meeting spaces, creating a memorable visual contrast on the show floor.",
+      "A 60 sqm stand for Spark Logistics at Breakbulk Middle East that turned shipping container architecture into a competitive advantage. The industrial design instantly communicated the client's freight forwarding identity while housing three dedicated meeting zones for deal-making.",
     challenge:
-      "Translating a shipping container aesthetic into a functional exhibition environment without the stand feeling dark, cramped, or gimmicky. The client needed an open floorplan with a reception counter and clear visitor flow — all within 60 sqm — while maintaining clear sightlines from the main aisle.",
+      "Making a container-inspired concept feel authentic without becoming dark, cramped, or gimmicky. The design had to balance raw industrial character with a professional meeting environment across a compact 60 sqm footprint.",
     solution:
-      "We fabricated corrugated steel panels over lightweight MDF substrates, achieving an authentic industrial container look. Strategic cutaways and floor-to-ceiling glazed sections broke up the container forms and flooded the interior with light. Open floorplan layout allowed natural flow between meeting zones.",
+      "Corrugated steel panels over lightweight substrates delivered the industrial look at manageable weight. Strategic cutaways and floor-to-ceiling glazed sections broke up the container forms and flooded the interior with natural light. Three meeting zones arranged around a central reception hub gave the sales team dedicated spaces for every conversation on their calendar.",
     features: [
       {
         title: "Corrugated Steel Cladding",
         description:
-          "Industrial corrugated steel panels mounted on lightweight MDF substrates, creating authentic container aesthetics at manageable weight.",
+          "Authentic industrial container look using real corrugated steel on lightweight substrates — striking on the show floor, practical to build and dismantle.",
       },
       {
         title: "Tri-Zone Meeting Layout",
         description:
-          "Three acoustically separated meeting areas arranged around a central hub, each with power, data, and integrated display screens.",
+          "Three acoustically separated meeting areas with power, data, and display screens — purpose-built for back-to-back client conversations.",
       },
       {
         title: "Industrial Material Palette",
         description:
-          "Mix of corrugated metal cladding, perforated steel mesh, exposed cable trays, and polished concrete-effect flooring for an authentic warehouse feel.",
+          "Corrugated metal, perforated steel mesh, exposed cable trays, and polished concrete-effect flooring — every surface reinforced the brand's logistics identity.",
       },
       {
         title: "Open-Plan Reception",
         description:
-          "Full-width reception counter in blackened steel with backlit Spark branding and integrated product display shelving.",
+          "Full-width blackened steel reception counter with backlit branding, serving as the first touchpoint for every visitor walking up from the main aisle.",
       },
     ],
     results: [
-      "Named one of the top 5 stand designs at Breakbulk ME by event organizers",
-      "Stand footfall exceeded client projections by 40%",
-      "All three meeting rooms were fully booked across both show days",
-      "Design concept reused for four subsequent editions",
+      "Named a top-5 stand design at Breakbulk ME by event organizers",
+      "Visitor footfall exceeded client projections by 40%",
+      "All three meeting rooms fully booked across both show days",
+      "Design concept reused for four subsequent editions — proving long-term ROI",
     ],
     stats: [
       { value: 60, suffix: " sqm", label: "Stand Footprint" },
@@ -265,38 +265,38 @@ export const projects: Project[] = [
     tags: ["Retail Design", "LED Signage", "Product Wall"],
     location: "Dubai, UAE",
     overview:
-      "A 36 sqm retail-style exhibition stand for HOOSH at World of Vape, designed to showcase their full product range in a format that felt more like a premium vape boutique than a standard trade show booth. The stand featured a full-width product wall, LED-backlit signage, and a tasting bar where visitors could sample products hands-on.",
+      "A 36 sqm stand for HOOSH at World of Vape that broke every convention in the hall. While competitors defaulted to black-and-neon, we built a clean retail boutique that showcased 60+ products and kept visitors browsing three times longer than the hall average.",
     challenge:
-      "Standing out in a crowded hall where every competitor used similar black-and-neon aesthetics. HOOSH needed a stand that communicated quality and trust — critical differentiators in the vape industry — while displaying over 60 SKUs in a way that invited browsing rather than overwhelming visitors.",
+      "Every competitor in the vape hall looked the same — dark, loud, generic. HOOSH needed a stand that signalled quality and trust while displaying 60+ SKUs in a way that invited browsing, not overwhelm.",
     solution:
-      "We designed a clean, warm retail environment using matte white surfaces with brushed brass accents, deliberately contrasting the dark industrial look used by most competitors. The product wall used individually backlit acrylic shelving with integrated price rails, while the overhead LED lightbox panel provided even illumination across the entire display. A curved tasting counter with built-in USB charging invited visitors to stay longer.",
+      "We deliberately went the opposite direction: matte white surfaces, brushed brass accents, and warm lighting that made the stand feel like a premium boutique dropped into a trade show. Individually backlit product bays turned the full-width wall into a browsable retail display. A curved tasting counter with built-in USB charging gave visitors a reason to stay — and the longer they stayed, the more deals closed.",
     features: [
       {
         title: "Retail-Style Product Wall",
         description:
-          "Full-width modular shelving system with individual LED backlighting for each product bay, displaying 60+ SKUs in a browsable retail format.",
+          "Full-width modular shelving with individual LED backlighting per bay — 60+ SKUs displayed in a format designed to drive browsing and conversation.",
       },
       {
         title: "LED Lightbox Signage",
         description:
-          "Overhead frameless LED lightbox spanning the full width of the stand, with edge-lit branding visible from 25+ metres across the show floor.",
+          "Frameless overhead lightbox visible from 25+ metres across the show floor, pulling traffic from competing aisles.",
       },
       {
         title: "Curved Tasting Counter",
         description:
-          "Brushed brass-finish counter with integrated USB charging ports, product testers, and a built-in waste collection system for sampling.",
+          "Brushed brass counter with USB charging and product testers — built to extend dwell time and convert browsers into buyers.",
       },
       {
         title: "Warm Retail Palette",
         description:
-          "Matte white surfaces with brushed brass hardware and warm 3000K lighting, creating a premium boutique feel that stood apart from competitors.",
+          "Matte white and brushed brass with warm 3000K lighting — a deliberate contrast that made HOOSH the most distinctive stand in the hall.",
       },
     ],
     results: [
       "Highest footfall of any stand in the vape hall across both show days",
-      "Average visitor dwell time of 6 minutes — triple the hall average",
-      "Client signed 12 new distribution deals directly from on-stand meetings",
-      "Stand design was reused for three follow-up trade shows",
+      "6-minute average dwell time — triple the hall average",
+      "12 new distribution deals signed directly from on-stand meetings",
+      "Stand design reused for three subsequent trade shows",
     ],
     stats: [
       { value: 36, suffix: " sqm", label: "Stand Footprint" },
@@ -333,38 +333,38 @@ export const projects: Project[] = [
     tags: ["Double Decker", "LED Video Wall", "Premium Finish"],
     location: "Dubai, UAE",
     overview:
-      "A 100 sqm double-decker stand for Sipchem at Middle East Coatings Show, designed to project the company's position as a leading Saudi specialty chemicals player on the regional stage. The ground floor combined an open reception with product display zones, while the upper deck housed VIP meeting rooms and a hospitality lounge — all anchored by a striking LED video wall visible from two aisles.",
+      "A 100 sqm double-decker stand that positioned Sipchem as the dominant presence at the Middle East Coatings Show. The cantilevered upper deck projected corporate scale, while VIP meeting rooms above and an open reception below gave the sales team the right environment for every conversation.",
     challenge:
-      "Communicating the scale and technical sophistication of a specialty chemicals company within a 100 sqm island plot surrounded by much larger competitors. The stand needed to project corporate authority while remaining approachable, and the double-decker structure had to comply with both DWTC venue regulations and Dubai Civil Defence requirements for upper-deck occupancy.",
+      "Projecting the authority of a major specialty chemicals company from a 100 sqm plot surrounded by competitors with significantly larger footprints. The double-decker structure also had to clear both DWTC venue regulations and Dubai Civil Defence requirements.",
     solution:
-      "We designed a bold architectural form using a cantilevered upper deck that extended beyond the ground-floor footprint, creating an imposing visual presence and additional covered meeting space below. The 12 sqm LED video wall ran custom content showing Sipchem's facilities and product range, serving as a visual anchor visible from the main thoroughfare. Premium finishes — stone-effect flooring, fabric-wrapped acoustic panels, and brushed stainless steel trims — reinforced the corporate positioning.",
+      "A cantilevered upper deck extending beyond the ground-floor footprint created an imposing silhouette visible from two aisles and added sheltered meeting space below. A 12 sqm LED video wall served as the visual anchor, running facility and product content that drew visitors in from the main thoroughfare. Premium finishes — stone-effect flooring, acoustic panels, brushed stainless steel — closed the gap between the stand and the corporate brand it represented.",
     features: [
       {
         title: "Cantilevered Upper Deck",
         description:
-          "Upper level extending 1.5m beyond the ground-floor perimeter, creating a dramatic overhang and additional sheltered space at ground level.",
+          "Upper level extending 1.5m beyond the ground-floor perimeter — creating a dramatic silhouette and additional covered space below for walk-up meetings.",
       },
       {
         title: "12 sqm LED Video Wall",
         description:
-          "2.9mm pixel-pitch LED panels running custom-produced content showcasing Sipchem's plants, products, and sustainability initiatives.",
+          "High-resolution display running custom content on Sipchem's facilities and product range — the visual anchor that pulled traffic from the main thoroughfare.",
       },
       {
         title: "VIP Meeting Suite",
         description:
-          "Upper-level meeting room with acoustic glazing, integrated AV, and lounge seating for 10 guests, offering privacy for executive-level discussions.",
+          "Upper-level room with acoustic glazing, integrated AV, and seating for 10 — purpose-built for executive-level discussions away from show floor noise.",
       },
       {
         title: "Premium Material Palette",
         description:
-          "Stone-effect raised flooring, fabric-wrapped wall panels, brushed stainless steel columns, and custom-built reception desk in white Corian.",
+          "Stone-effect flooring, fabric-wrapped acoustic panels, brushed stainless steel columns, and white Corian reception desk — every surface matched the corporate positioning.",
       },
     ],
     results: [
-      "Stand was one of the most photographed in the specialty chemicals hall",
-      "Upper-deck meeting room hosted 28 scheduled meetings over four days",
-      "LED video wall content was repurposed by the client for post-show marketing",
-      "Client renewed for the following year's Middle East Coatings Show within one month of the show",
+      "One of the most photographed stands in the specialty chemicals hall",
+      "28 scheduled VIP meetings hosted in the upper-deck suite over four days",
+      "Video wall content repurposed by the client for post-show marketing campaigns",
+      "Contract renewed for the following year within one month of show close",
     ],
     stats: [
       { value: 100, suffix: " sqm", label: "Stand Footprint" },
@@ -386,37 +386,37 @@ export const projects: Project[] = [
     tags: ["Custom Build", "Hanging Signage", "Interactive Display"],
     location: "Dubai, UAE",
     overview:
-      "A 54 sqm custom-build stand for Interfood at Gulfood Manufacturing, Dubai's largest food processing and packaging trade fair. The design centered on the client's signature green branding, with a dramatic suspended signage structure and interactive product displays that showcased their ingredient solutions for the food manufacturing industry.",
+      "A 54 sqm stand for Interfood at Gulfood Manufacturing that punched well above its weight class. A suspended hanging sign gave hall-wide visibility, while interactive kiosks and acoustic meeting pods turned visitor traffic into 340 qualified leads.",
     challenge:
-      "Creating strong brand visibility in a dense exhibition hall where competitors occupied plots two to three times the size. Interfood's product range — food ingredients and processing solutions — required both visual impact and the ability for technical staff to conduct detailed product conversations without interruption from show floor noise.",
+      "Competing for attention in a dense hall where neighbouring stands were two to three times larger. The client also needed quiet spaces for technical product conversations — difficult to achieve on a noisy show floor.",
     solution:
-      "We designed a double-height hanging sign structure suspended from the venue rigging grid, giving the stand a presence visible from across the entire hall. At ground level, the stand combined an open product display zone with two semi-enclosed meeting pods, each acoustically treated with fabric-wrapped panels. Interactive touchscreen kiosks let visitors explore the product catalogue and request samples digitally, reducing brochure waste and capturing qualified leads automatically.",
+      "A double-height hanging sign suspended from the venue rigging grid made the stand visible from every hall entrance, solving the size disadvantage at ceiling level. At ground level, two acoustically treated meeting pods gave the technical team quiet spaces for detailed conversations. Interactive touchscreen kiosks handled the rest — visitors browsed the product catalogue, requested samples, and left their contact details without a single printed brochure.",
     features: [
       {
         title: "Suspended Hanging Signage",
         description:
-          "4-metre-wide double-sided hanging sign with internal LED illumination, suspended from the venue rigging grid for maximum visibility across the hall.",
+          "4-metre-wide illuminated sign suspended from the rigging grid — visible from every entrance, giving a 54 sqm stand the presence of one three times its size.",
       },
       {
         title: "Interactive Product Kiosks",
         description:
-          "Two 55-inch touchscreen displays running a custom product catalogue app with sample request functionality and built-in lead capture.",
+          "Touchscreen displays with a custom catalogue app, sample request functionality, and built-in lead capture — replacing brochures with qualified data.",
       },
       {
         title: "Semi-Enclosed Meeting Pods",
         description:
-          "Two meeting pods with fabric-wrapped acoustic panels, each seating 4 guests with integrated power and display screens for presentations.",
+          "Two acoustic meeting pods seating 4 guests each, with integrated power and screens — quiet enough for technical product discussions on a loud show floor.",
       },
       {
         title: "Green Brand Integration",
         description:
-          "Full stand wrapped in Interfood's signature green with white accents, using printed tension-fabric panels for lightweight, vibrant colour reproduction.",
+          "Full stand wrapped in Interfood's signature green using tension-fabric panels — bold, lightweight, and instantly recognizable from any angle.",
       },
     ],
     results: [
-      "Hanging signage made the stand visible from every entrance to the hall",
-      "Interactive kiosks captured 340 qualified leads across three show days",
-      "Meeting pods were fully booked with back-to-back appointments throughout",
+      "Stand visible from every entrance to the hall via suspended signage",
+      "340 qualified leads captured through interactive kiosks across three days",
+      "Both meeting pods fully booked with back-to-back appointments throughout the show",
       "Client reported their most productive Gulfood Manufacturing participation to date",
     ],
     stats: [
@@ -448,39 +448,38 @@ export const projects: Project[] = [
     tags: ["Compact Design", "Security", "Long-Term Client"],
     location: "Dubai, UAE",
     overview:
-      "A 25 sqm compact stand for Altronix at Intersec, Dubai's leading security, safety, and fire protection trade fair. The design centered on dramatic blue LED integration that turned a small footprint into one of the most visually striking presences on the show floor, reflecting Altronix's position in power and surveillance infrastructure. This was one of six stands we've built for Altronix across multiple editions of Intersec.",
+      "A 25 sqm stand for Altronix at Intersec that proved you don't need a big footprint to dominate a show floor. Dramatic LED integration turned a compact island plot into a glowing beacon — and delivered a 60% increase in qualified leads over the previous year. This was our sixth consecutive build for Altronix.",
     challenge:
-      "Making a 25 sqm island stand compete visually against neighbours with triple the floor space and budget. The client's product range — power supplies and surge protection for CCTV systems — is technically dense but visually undramatic, requiring a design language that communicated innovation and reliability without relying on the products themselves as visual anchors.",
+      "Competing against neighbours with triple the space and budget. The product range — power supplies and surge protection for CCTV — is essential but not visually exciting, so the design had to do the heavy lifting.",
     solution:
-      "We wrapped the stand in a continuous LED light channel running at fascia height, programmable in colour and intensity to create a glowing beacon effect visible from 30+ metres. Product displays were backlit in matching blue tones using edge-lit acrylic panels. The entire structure was built on a raised platform with concealed perimeter lighting, giving the stand a floating appearance. All wiring ran through hollow aluminium extrusions, keeping the surfaces completely clean.",
+      "A continuous LED light channel wrapped the full perimeter at fascia height, creating a beacon effect visible from 30+ metres. Edge-lit acrylic panels turned individual products into illuminated display pieces. The entire structure sat on a raised platform with concealed uplighting, giving it a floating appearance that stopped foot traffic. All cabling ran through hollow aluminium extrusions — not a single wire visible anywhere.",
     features: [
       {
         title: "360-Degree LED Light Channel",
         description:
-          "Continuous RGBW LED strip in custom aluminium extrusion running the full perimeter at fascia height, programmable for colour cycling and intensity control.",
+          "Full-perimeter illuminated fascia visible from 30+ metres — turning 25 sqm into the most noticeable stand in the aisle.",
       },
       {
         title: "Edge-Lit Product Displays",
         description:
-          "12mm laser-cut acrylic panels with edge-lit LED illumination, each housing individual Altronix power supply units with spec callouts etched into the surface.",
+          "Laser-cut acrylic panels with individual LED backlighting, making each product unit a visual feature rather than a shelf item.",
       },
       {
         title: "Floating Platform Base",
         description:
-          "Raised platform with concealed perimeter LED uplighting, creating a hovering effect that drew attention from the main aisle without any overhead signage.",
+          "Raised platform with concealed perimeter uplighting — a hovering effect that drew walk-up traffic without requiring overhead signage.",
       },
       {
         title: "Clean Cable Management",
         description:
-          "All power and data cabling routed through hollow 40x40mm aluminium extrusions integrated into the wall structure, achieving a completely wire-free visible surface.",
+          "All power and data routed through hollow aluminium extrusions — completely wire-free surfaces that reinforced the brand's precision positioning.",
       },
     ],
     results: [
-      "Stand generated 3x more photo shares on social media than the previous year's build",
-      "Visitor dwell time averaged 4.5 minutes — double the show floor average",
-      "Client reported a 60% increase in qualified lead scans compared to prior Intersec",
-      "Design featured in Intersec's official post-show highlights reel",
-      "Sixth consecutive stand build for Altronix, reinforcing a long-term partnership",
+      "60% increase in qualified lead scans compared to the previous Intersec edition",
+      "3x more social media photo shares than the prior year's build",
+      "Average visitor dwell time of 4.5 minutes — double the show floor average",
+      "Featured in Intersec's official post-show highlights reel",
     ],
     stats: [
       { value: 25, suffix: " sqm", label: "Stand Footprint" },
