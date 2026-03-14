@@ -485,7 +485,7 @@ select.form-input { appearance: none; }
 .mobile-cta-bar .btn-wa { background: #25D366; color: #fff; border-color: #25D366; }
 .mobile-cta-bar .btn-wa:hover { background: #20bd5a; }
 /* Hide the floating WhatsApp on mobile when sticky bar is visible */
-@media (max-width: 960px) { .wa-float { bottom: 80px; } }
+@media (max-width: 960px) { .wa-float { display: none; } }
 
 /* ============================================================
    REDUCED MOTION
