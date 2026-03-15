@@ -512,10 +512,164 @@ select.form-input { appearance: none; }
 /* ============================================================
    RTL
    ============================================================ */
+
+/* --- Base & Typography --- */
 [dir="rtl"] { font-family: var(--font-arabic); }
 [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4 { font-family: "Noto Sans Arabic", "Plus Jakarta Sans", sans-serif; letter-spacing: 0; }
-[dir="rtl"] .hero-content { text-align: right; }
+[dir="rtl"] p, [dir="rtl"] .text-muted, [dir="rtl"] .sd-text p, [dir="rtl"] .sd-text { text-align: right; }
+[dir="rtl"] .section-label { text-align: right; }
+/* Centered sections stay centered */
+[dir="rtl"] .page-hero .section-label,
+[dir="rtl"] .page-hero p,
+[dir="rtl"] .cta-section p,
+[dir="rtl"] .cta-section h2,
+[dir="rtl"] .cine-divider-content p,
+[dir="rtl"] .cine-divider-content h2,
+[dir="rtl"] .stats-grid,
+[dir="rtl"] .process-card,
+[dir="rtl"] .value-card,
+[dir="rtl"] .value-card p,
+[dir="rtl"] .trust-label { text-align: center; }
+
+/* --- Buttons: flip arrows --- */
 [dir="rtl"] .btn .arrow { transform: scaleX(-1); }
 [dir="rtl"] .btn:hover .arrow { transform: scaleX(-1) translateX(-5px); }
+
+/* --- Logo: flip spacing --- */
+[dir="rtl"] .logo-the { margin-right: 0; margin-inline-end: 6px; }
+[dir="rtl"] .logo-butter { margin-right: 0; margin-inline-end: 6px; }
+
+/* --- Language switcher: flip margin --- */
+[dir="rtl"] .lang-switcher { margin-left: 0; margin-inline-start: 12px; }
+@media (max-width: 960px) {
+  [dir="rtl"] .lang-switcher { margin-left: 0; margin-right: 0; margin-inline-end: 12px; }
+}
+
+/* --- Navigation: mobile menu slides from left in RTL --- */
+[dir="rtl"] .mobile-menu { right: auto; left: -100%; }
+[dir="rtl"] .mobile-menu.open { left: 0; right: auto; }
+/* Accordion panel: flip inner padding */
+[dir="rtl"] .mob-accordion-panel a { padding: 10px 32px 10px 16px; }
+
+/* --- Mega menu: keep centered --- */
+[dir="rtl"] .mega-menu { direction: rtl; }
+[dir="rtl"] .mega-item { direction: rtl; }
+
+/* --- Breadcrumbs --- */
+[dir="rtl"] .bc-inner { direction: rtl; }
+
+/* --- Hero --- */
+[dir="rtl"] .hero-content { text-align: right; }
+[dir="rtl"] .hero-sub { text-align: right; }
+[dir="rtl"] .hero-cta { justify-content: flex-end; }
+@media (max-width: 640px) {
+  [dir="rtl"] .hero-cta { justify-content: stretch; }
+}
+
+/* --- Service detail sections --- */
+/* In RTL, the normal service-detail should show text on right, image on left */
+[dir="rtl"] .service-detail { direction: rtl; }
+[dir="rtl"] .service-detail > * { direction: rtl; }
+/* Reversed sections should show in normal LTR-like order in RTL */
+[dir="rtl"] .service-detail.reverse { direction: ltr; }
+[dir="rtl"] .service-detail.reverse > * { direction: rtl; }
+/* Flip section-label alignment */
+[dir="rtl"] .sd-text .section-label { text-align: right; }
+/* Bullet checkmarks: flip position */
+[dir="rtl"] .sd-text li { padding: 6px 28px 6px 0; }
+[dir="rtl"] .sd-text li::before { left: auto; right: 0; }
+@media (max-width: 768px) {
+  [dir="rtl"] .service-detail, [dir="rtl"] .service-detail.reverse { direction: rtl; }
+}
+
+/* --- Timeline --- */
+[dir="rtl"] .timeline { padding-left: 0; padding-right: 44px; }
+[dir="rtl"] .timeline::before { left: auto; right: 8px; }
+[dir="rtl"] .tl-item::before { left: auto; right: -40px; }
+
+/* --- About section --- */
+[dir="rtl"] .about-grid { direction: rtl; }
+/* About badge: flip from right to left */
+[dir="rtl"] .about-badge { right: auto; left: -12px; }
+@media (max-width: 768px) {
+  [dir="rtl"] .about-badge { right: auto; left: 16px; }
+}
+
+/* --- Contact / RFP form --- */
+[dir="rtl"] .contact-grid { direction: rtl; }
+[dir="rtl"] .contact-item { direction: rtl; }
+[dir="rtl"] .rfp-wrap { direction: rtl; }
+[dir="rtl"] .form-group label { text-align: right; }
+[dir="rtl"] .form-input { text-align: right; }
+[dir="rtl"] .form-nav { direction: rtl; }
+
+/* --- WhatsApp float: flip to left side --- */
+[dir="rtl"] .wa-float { right: auto; left: 28px; }
+
+/* --- Mobile sticky CTA: direction flip --- */
+[dir="rtl"] .mobile-cta-bar { direction: rtl; }
+
+/* --- Lightbox nav: swap prev/next positions --- */
+[dir="rtl"] .lightbox-prev { left: auto; right: 24px; }
+[dir="rtl"] .lightbox-next { right: auto; left: 24px; }
+[dir="rtl"] .lightbox-close { right: auto; left: 32px; }
+@media (max-width: 768px) {
+  [dir="rtl"] .lightbox-prev { left: auto; right: 8px; }
+  [dir="rtl"] .lightbox-next { right: auto; left: 8px; }
+}
+
+/* --- NeuralSection: flip step number and checkmark --- */
+[dir="rtl"] .nrl-node { padding: 28px 72px 28px 28px; }
+[dir="rtl"] .nrl-step { left: auto; right: 24px; }
+[dir="rtl"] .nrl-check { right: auto; left: 20px; }
+[dir="rtl"] .nrl-text { text-align: right; }
+[dir="rtl"] .nrl-header { text-align: center; }
+
+/* --- Process grid & stats: keep centered --- */
+[dir="rtl"] .process-grid { direction: rtl; }
+[dir="rtl"] .process-card p { text-align: center; }
+[dir="rtl"] .stats-grid { direction: rtl; }
+
+/* --- Services grid: keep card text aligned --- */
+[dir="rtl"] .service-card { text-align: right; }
+[dir="rtl"] .service-card p { text-align: right; }
+[dir="rtl"] .service-link { direction: rtl; }
+
+/* --- Portfolio cards --- */
+[dir="rtl"] .project-body { text-align: right; }
+[dir="rtl"] .project-tags { justify-content: flex-start; }
+[dir="rtl"] .project-specs { direction: rtl; }
+
+/* --- Testimonials --- */
+[dir="rtl"] .testimonial-quote { text-align: right; }
+[dir="rtl"] .testimonial-footer { text-align: right; }
+
+/* --- Footer --- */
 [dir="rtl"] .footer-grid { direction: rtl; }
+[dir="rtl"] .footer-brand > p { text-align: right; }
+[dir="rtl"] .footer-col { text-align: right; }
+[dir="rtl"] .footer-col a { text-align: right; }
+[dir="rtl"] .footer-contact-row { direction: rtl; }
+[dir="rtl"] .footer-bottom { direction: rtl; }
+[dir="rtl"] .footer-social { direction: rtl; }
+
+/* --- Anchor nav --- */
+[dir="rtl"] .anchor-nav-inner { direction: rtl; }
+
+/* --- Accessibility: skip link --- */
+[dir="rtl"] .skip-link { left: auto; right: 16px; }
+
+/* --- Marquee --- */
 [dir="rtl"] .scroll-text-inner { animation-direction: reverse; }
+
+/* --- Render vs Reality labels --- */
+[dir="rtl"] .rvr-label { left: auto; right: 12px; }
+
+/* --- Project page: results list checkmarks --- */
+[dir="rtl"] [style*="padding: \"20px 24px 20px 52px\""] { padding: 20px 52px 20px 24px !important; }
+
+/* --- Misc: contact icon items --- */
+[dir="rtl"] .ci-icon { order: 0; }
+[dir="rtl"] .ci-text { text-align: right; }
+[dir="rtl"] .ci-text h4 { text-align: right; }
+[dir="rtl"] .ci-text p, [dir="rtl"] .ci-text a { text-align: right; }
