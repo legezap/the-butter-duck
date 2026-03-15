@@ -141,8 +141,8 @@ export default function TrustBar() {
         }
 
         .tb2-img {
-          width: 200px;
-          height: 56px;
+          width: 260px;
+          height: 72px;
           opacity: 0.65;
           transition: opacity 0.5s ease, filter 0.5s ease;
         }
@@ -170,18 +170,18 @@ export default function TrustBar() {
 
         @media (max-width: 1024px) {
           .tb2-grid { gap: 56px; }
-          .tb2-img { width: 170px; height: 48px; }
+          .tb2-img { width: 220px; height: 60px; }
         }
 
         @media (max-width: 768px) {
           .tb2-section { padding: 64px 0; }
           .tb2-grid { gap: 40px; }
-          .tb2-img { width: 150px; height: 44px; }
+          .tb2-img { width: 180px; height: 52px; }
         }
 
         @media (max-width: 480px) {
           .tb2-grid { gap: 28px; }
-          .tb2-img { width: 120px; height: 36px; }
+          .tb2-img { width: 150px; height: 44px; }
         }
 
         @media (prefers-reduced-motion: reduce) {
