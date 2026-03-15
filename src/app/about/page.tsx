@@ -1,106 +1,60 @@
-import type { Metadata } from "next";
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import StatsBlock from "./StatsBlock";
 import { asset } from "@/lib/basePath";
+import { useI18n } from "@/lib/I18nContext";
+import type { TranslationKey } from "@/lib/i18n";
 
-export const metadata: Metadata = {
-  title: "About The Butter Duck | Exhibition Stand Builder in Dubai, UAE",
-  description:
-    "UAE-based exhibition design and event production company. 80+ projects across 10 countries. Custom booth builds from 25 sqm to 1000+ sqm. Founded 2019, trusted by Microsoft and Vanderlande.",
-};
-
-const values = [
-  {
-    icon: "\u23F0",
-    title: "Deadlines Are Sacred",
-    desc: "We don\u2019t do \u201Calmost on time.\u201D Every project ships on schedule, no excuses.",
-  },
-  {
-    icon: "\uD83D\uDC41",
-    title: "Senior Eyes Only",
-    desc: "No hand-offs to juniors. Your project is managed by the people who were involved from A to Z.",
-  },
-  {
-    icon: "\uD83D\uDCCB",
-    title: "Transparent Pricing",
-    desc: "Line-item quotes. No hidden fees. You know exactly where every dirham goes.",
-  },
-  {
-    icon: "\uD83C\uDFAF",
-    title: "Design with Purpose",
-    desc: "Every element earns its place. We design for engagement, not decoration.",
-  },
-  {
-    icon: "\uD83D\uDD27",
-    title: "Build Quality",
-    desc: "Premium materials, precision engineering, and finishes that hold up under show floor pressure.",
-  },
-  {
-    icon: "\uD83C\uDF0D",
-    title: "Global Reach Local Knowledge",
-    desc: "UAE HQ, deployed across 10 countries. We know the venues, the vendors, and the rules.",
-  },
+const valueIcons = ["\u23F0", "\uD83D\uDC41", "\uD83D\uDCCB", "\uD83C\uDFAF", "\uD83D\uDD27", "\uD83C\uDF0D"];
+const valueKeys: Array<{ title: TranslationKey; desc: TranslationKey }> = [
+  { title: "aboutpage.values.v1.title", desc: "aboutpage.values.v1.desc" },
+  { title: "aboutpage.values.v2.title", desc: "aboutpage.values.v2.desc" },
+  { title: "aboutpage.values.v3.title", desc: "aboutpage.values.v3.desc" },
+  { title: "aboutpage.values.v4.title", desc: "aboutpage.values.v4.desc" },
+  { title: "aboutpage.values.v5.title", desc: "aboutpage.values.v5.desc" },
+  { title: "aboutpage.values.v6.title", desc: "aboutpage.values.v6.desc" },
 ];
 
-const capabilities = [
-  { icon: "\uD83D\uDDA5", name: "3D Design" },
-  { icon: "\uD83C\uDFD7", name: "Structural Engineering" },
-  { icon: "\u2699\uFE0F", name: "Fabrication Management" },
-  { icon: "\uD83C\uDF99", name: "AV Integration" },
-  { icon: "\uD83D\uDE9A", name: "Logistics & Freight" },
-  { icon: "\uD83D\uDD28", name: "On-Site Installation" },
-  { icon: "\uD83C\uDFA8", name: "Graphic Production" },
-  { icon: "\uD83C\uDFAC", name: "Content Production" },
-  { icon: "\uD83D\uDCBC", name: "Branding" },
-  { icon: "\uD83D\uDCCA", name: "Financial Evaluation" },
-  { icon: "\uD83D\uDCAC", name: "Communication" },
+const capabilityIcons = ["\uD83D\uDDA5", "\uD83C\uDFD7", "\u2699\uFE0F", "\uD83C\uDF99", "\uD83D\uDE9A", "\uD83D\uDD28", "\uD83C\uDFA8", "\uD83C\uDFAC", "\uD83D\uDCBC", "\uD83D\uDCCA", "\uD83D\uDCAC"];
+const capabilityKeys: TranslationKey[] = [
+  "aboutpage.cap.3d",
+  "aboutpage.cap.structural",
+  "aboutpage.cap.fabrication",
+  "aboutpage.cap.av",
+  "aboutpage.cap.logistics",
+  "aboutpage.cap.installation",
+  "aboutpage.cap.graphic",
+  "aboutpage.cap.content",
+  "aboutpage.cap.branding",
+  "aboutpage.cap.finance",
+  "aboutpage.cap.comms",
 ];
 
-const timeline = [
-  {
-    year: "2019",
-    title: "Company Founded",
-    desc: "Started in the UAE with a clear vision: exhibition builds that actually deliver on the render.",
-  },
-  {
-    year: "2020",
-    title: "First Major Build",
-    desc: "Completed our first large-scale exhibition stand despite global lockdown challenges.",
-  },
-  {
-    year: "2021",
-    title: "International Expansion",
-    desc: "Expanded operations beyond the UAE into Saudi Arabia, Europe, and Southeast Asia.",
-  },
-  {
-    year: "2022",
-    title: "Microsoft Partnership",
-    desc: "Selected as exhibition partner for Microsoft\u2019s regional event activations.",
-  },
-  {
-    year: "2024",
-    title: "80+ Projects Milestone",
-    desc: "Crossed 80 completed projects with a 100% on-time delivery record.",
-  },
-  {
-    year: "2025",
-    title: "10 Countries Reached",
-    desc: "Expanded into marketing strategy and branding with the creation of Butter Studio. Now operating across 10 countries.",
-  },
+const timelineYears = ["2019", "2020", "2021", "2022", "2024", "2025"] as const;
+const timelineKeys: Array<{ title: TranslationKey; desc: TranslationKey }> = [
+  { title: "aboutpage.tl.2019.title", desc: "aboutpage.tl.2019.desc" },
+  { title: "aboutpage.tl.2020.title", desc: "aboutpage.tl.2020.desc" },
+  { title: "aboutpage.tl.2021.title", desc: "aboutpage.tl.2021.desc" },
+  { title: "aboutpage.tl.2022.title", desc: "aboutpage.tl.2022.desc" },
+  { title: "aboutpage.tl.2024.title", desc: "aboutpage.tl.2024.desc" },
+  { title: "aboutpage.tl.2025.title", desc: "aboutpage.tl.2025.desc" },
 ];
 
 export default function AboutPage() {
+  const { t } = useI18n();
+
   return (
     <>
       {/* Breadcrumbs */}
       <nav className="breadcrumbs" aria-label="Breadcrumb">
         <div className="container">
           <div className="bc-inner">
-            <Link href="/">Home</Link>
+            <Link href="/">{t("bc.home")}</Link>
             <span className="sep">/</span>
-            <span className="current">About</span>
+            <span className="current">{t("bc.about")}</span>
           </div>
         </div>
       </nav>
@@ -109,21 +63,17 @@ export default function AboutPage() {
       <section className="page-hero">
         <div className="container">
           <RevealOnScroll>
-            <span className="section-label">About Us</span>
+            <span className="section-label">{t("aboutpage.hero.label")}</span>
           </RevealOnScroll>
           <RevealOnScroll delay={0.1}>
             <h1>
-              Built Different.
+              {t("aboutpage.title")}
               <br />
-              <span className="accent">Built to Deliver.</span>
+              <span className="accent">{t("aboutpage.title.accent")}</span>
             </h1>
           </RevealOnScroll>
           <RevealOnScroll delay={0.2}>
-            <p>
-              We&apos;re a UAE-based exhibition design and event production
-              studio obsessed with quality, deadlines, and making brands
-              impossible to ignore on the show floor.
-            </p>
+            <p>{t("aboutpage.hero.desc")}</p>
           </RevealOnScroll>
         </div>
       </section>
@@ -133,23 +83,16 @@ export default function AboutPage() {
         <div className="container">
           <div className="about-grid">
             <RevealOnScroll className="sd-text">
-              <span className="section-label">Our Story</span>
+              <span className="section-label">{t("aboutpage.story.label")}</span>
               <h2>
-                From Renders to Reality,{" "}
-                <span className="accent">Without&nbsp;Compromise</span>
+                {t("aboutpage.story.title.alt")}{" "}
+                <span className="accent">{t("aboutpage.story.title.accent.alt")}</span>
               </h2>
               <p style={{ color: "var(--color-text-muted)", lineHeight: 1.8, marginBottom: 16 }}>
-                The Butter Duck was founded on a simple frustration: too many
-                exhibition companies over-promise on the render and
-                under-deliver on the floor. We decided to build a studio where
-                the final product matches — or exceeds — the 3D visual. Every
-                time.
+                {t("aboutpage.story.p1")}
               </p>
               <p style={{ color: "var(--color-text-muted)", lineHeight: 1.8 }}>
-                Today, we operate from the UAE and deploy globally. Our team
-                combines architectural design, structural engineering, AV
-                expertise, and project management into a single integrated
-                pipeline. No middlemen. No surprises.
+                {t("aboutpage.story.p2")}
               </p>
             </RevealOnScroll>
             <RevealOnScroll direction="right" className="about-visual">
@@ -162,7 +105,7 @@ export default function AboutPage() {
                   style={{ width: "100%", height: "auto", objectFit: "cover" }}
                 />
               </div>
-              <span className="about-badge">UAE HQ</span>
+              <span className="about-badge">{t("aboutpage.story.badge")}</span>
             </RevealOnScroll>
           </div>
         </div>
@@ -173,14 +116,14 @@ export default function AboutPage() {
         <div className="container">
           <RevealOnScroll>
             <span className="section-label" style={{ textAlign: "center", display: "block" }}>
-              Our Values
+              {t("aboutpage.values.label")}
             </span>
             <h2 style={{ textAlign: "center", marginBottom: 16 }}>
-              What We <span className="accent">Stand For</span>
+              {t("aboutpage.values.title.alt")} <span className="accent">{t("aboutpage.values.title.accent.alt")}</span>
             </h2>
           </RevealOnScroll>
           <div className="values-grid">
-            {values.map((v, i) => (
+            {valueKeys.map((v, i) => (
               <RevealOnScroll key={v.title} delay={i * 0.08}>
                 <div className="value-card">
                   <div
@@ -189,9 +132,9 @@ export default function AboutPage() {
                       marginBottom: 16,
                     }}
                   >
-                    {v.icon}
+                    {valueIcons[i]}
                   </div>
-                  <h3>{v.title}</h3>
+                  <h3>{t(v.title)}</h3>
                   <p
                     style={{
                       color: "var(--color-text-muted)",
@@ -200,7 +143,7 @@ export default function AboutPage() {
                       marginTop: 8,
                     }}
                   >
-                    {v.desc}
+                    {t(v.desc)}
                   </p>
                 </div>
               </RevealOnScroll>
@@ -221,10 +164,10 @@ export default function AboutPage() {
         <div className="container">
           <RevealOnScroll>
             <span className="section-label" style={{ textAlign: "center", display: "block" }}>
-              Capabilities
+              {t("aboutpage.cap.label")}
             </span>
             <h2 style={{ textAlign: "center", marginBottom: 56 }}>
-              Everything <span className="accent">In-House</span>
+              {t("aboutpage.cap.title.alt")} <span className="accent">{t("aboutpage.cap.title.accent.alt")}</span>
             </h2>
           </RevealOnScroll>
           <div
@@ -234,8 +177,8 @@ export default function AboutPage() {
               gap: 24,
             }}
           >
-            {capabilities.map((c, i) => (
-              <RevealOnScroll key={c.name} delay={i * 0.06} direction="scale" style={{ height: "100%" }}>
+            {capabilityKeys.map((key, i) => (
+              <RevealOnScroll key={key} delay={i * 0.06} direction="scale" style={{ height: "100%" }}>
                 <div
                   style={{
                     textAlign: "center",
@@ -250,8 +193,8 @@ export default function AboutPage() {
                     justifyContent: "center",
                   }}
                 >
-                  <div style={{ fontSize: "1.8rem", marginBottom: 12 }}>{c.icon}</div>
-                  <h3 style={{ fontSize: "0.9rem", letterSpacing: "-0.01em" }}>{c.name}</h3>
+                  <div style={{ fontSize: "1.8rem", marginBottom: 12 }}>{capabilityIcons[i]}</div>
+                  <h3 style={{ fontSize: "0.9rem", letterSpacing: "-0.01em" }}>{t(key)}</h3>
                 </div>
               </RevealOnScroll>
             ))}
@@ -264,18 +207,18 @@ export default function AboutPage() {
         <div className="container">
           <RevealOnScroll>
             <span className="section-label" style={{ textAlign: "center", display: "block" }}>
-              Our Journey
+              {t("aboutpage.track.label.alt")}
             </span>
             <h2 style={{ textAlign: "center", marginBottom: 16 }}>
-              Key <span className="accent">Milestones</span>
+              {t("aboutpage.track.title.alt")} <span className="accent">{t("aboutpage.track.title.accent.alt")}</span>
             </h2>
           </RevealOnScroll>
           <div className="timeline">
-            {timeline.map((t, i) => (
-              <RevealOnScroll key={t.year} delay={i * 0.1}>
+            {timelineKeys.map((tl, i) => (
+              <RevealOnScroll key={timelineYears[i]} delay={i * 0.1}>
                 <div className="tl-item">
-                  <h3>{t.year} — {t.title}</h3>
-                  <p>{t.desc}</p>
+                  <h3>{timelineYears[i]} — {t(tl.title)}</h3>
+                  <p>{t(tl.desc)}</p>
                 </div>
               </RevealOnScroll>
             ))}
@@ -290,17 +233,14 @@ export default function AboutPage() {
       <section className="cta-section">
         <div className="container">
           <RevealOnScroll>
-            <h2>Ready to Work With Us?</h2>
+            <h2>{t("aboutpage.cta")}</h2>
           </RevealOnScroll>
           <RevealOnScroll delay={0.1}>
-            <p>
-              Tell us about your next exhibition or event — we&apos;ll show you
-              what&apos;s possible.
-            </p>
+            <p>{t("aboutpage.cta.desc")}</p>
           </RevealOnScroll>
           <RevealOnScroll delay={0.2}>
             <Link href="/contact" className="btn btn-lg">
-              Get in Touch <span className="arrow">&rarr;</span>
+              {t("aboutpage.cta.btn")} <span className="arrow">&rarr;</span>
             </Link>
           </RevealOnScroll>
         </div>

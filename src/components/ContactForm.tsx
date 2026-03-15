@@ -3,31 +3,33 @@
 import { useState, FormEvent } from "react";
 import Link from "next/link";
 import RevealOnScroll from "@/components/RevealOnScroll";
+import { useI18n } from "@/lib/I18nContext";
+import type { TranslationKey } from "@/lib/i18n";
 
-const SERVICE_OPTIONS = [
-  { id: "exhibition-design", label: "Exhibition Design & Build", icon: "\uD83C\uDFD7" },
-  { id: "project-management", label: "Project Management", icon: "\uD83D\uDCCB" },
-  { id: "event-design", label: "Conceptual Event Design", icon: "\uD83C\uDFAD" },
-  { id: "content-media", label: "Content & Media Production", icon: "\uD83C\uDFAC" },
+const SERVICE_KEYS: { id: string; labelKey: TranslationKey; icon: string }[] = [
+  { id: "exhibition-design", labelKey: "contact.svc.exhibition", icon: "\uD83C\uDFD7" },
+  { id: "project-management", labelKey: "contact.svc.pm", icon: "\uD83D\uDCCB" },
+  { id: "event-design", labelKey: "contact.svc.event", icon: "\uD83C\uDFAD" },
+  { id: "content-media", labelKey: "contact.svc.media", icon: "\uD83C\uDFAC" },
 ];
 
-const BOOTH_SIZES = [
-  "Under 20 sqm",
-  "20 – 50 sqm",
-  "50 – 100 sqm",
-  "100 – 200 sqm",
-  "200 – 500 sqm",
-  "500+ sqm",
-  "Not sure yet",
+const BOOTH_SIZE_KEYS: TranslationKey[] = [
+  "contact.size.under20",
+  "contact.size.20_50",
+  "contact.size.50_100",
+  "contact.size.100_200",
+  "contact.size.200_500",
+  "contact.size.500plus",
+  "contact.size.notsure",
 ];
 
-const BUDGETS = [
-  "Under AED 50,000",
-  "AED 50,000 – 150,000",
-  "AED 150,000 – 400,000",
-  "AED 400,000 – 1,000,000",
-  "AED 1,000,000+",
-  "Let\u2019s discuss",
+const BUDGET_KEYS: TranslationKey[] = [
+  "contact.budget.under50",
+  "contact.budget.50_150",
+  "contact.budget.150_400",
+  "contact.budget.400_1m",
+  "contact.budget.1mplus",
+  "contact.budget.discuss",
 ];
 
 function generateRef(): string {
@@ -40,6 +42,8 @@ function generateRef(): string {
 }
 
 export default function ContactForm() {
+  const { t } = useI18n();
+
   const [step, setStep] = useState(1);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -66,20 +70,20 @@ export default function ContactForm() {
     const errs: Record<string, string> = {};
 
     if (step === 1 && !service) {
-      errs.service = "Please select a service";
+      errs.service = t("contact.error.service");
     }
     if (step === 2) {
-      if (!eventName.trim()) errs.eventName = "Event name is required";
+      if (!eventName.trim()) errs.eventName = t("contact.error.eventName");
     }
     if (step === 3) {
-      if (!name.trim()) errs.name = "Your name is required";
-      if (!email.trim()) errs.email = "Email is required";
+      if (!name.trim()) errs.name = t("contact.error.name");
+      if (!email.trim()) errs.email = t("contact.error.email");
       else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
-        errs.email = "Please enter a valid email";
-      if (!company.trim()) errs.company = "Company name is required";
+        errs.email = t("contact.error.emailInvalid");
+      if (!company.trim()) errs.company = t("contact.error.company");
     }
     if (step === 4) {
-      if (!consent) errs.consent = "Please agree to proceed";
+      if (!consent) errs.consent = t("contact.error.consent");
     }
 
     setErrors(errs);
@@ -128,7 +132,7 @@ export default function ContactForm() {
       setRefCode(ref);
       setSubmitted(true);
     } catch {
-      alert("Something went wrong. Please try again or email us directly at hello@thebutterduck.com");
+      alert(t("contact.error.alert"));
     } finally {
       setSubmitting(false);
     }
@@ -140,9 +144,9 @@ export default function ContactForm() {
       <nav className="breadcrumbs" aria-label="Breadcrumb">
         <div className="container">
           <div className="bc-inner">
-            <Link href="/">Home</Link>
+            <Link href="/">{t("bc.home")}</Link>
             <span className="sep">/</span>
-            <span className="current">Contact</span>
+            <span className="current">{t("bc.contact")}</span>
           </div>
         </div>
       </nav>
@@ -151,21 +155,17 @@ export default function ContactForm() {
       <section className="page-hero">
         <div className="container">
           <RevealOnScroll>
-            <span className="section-label">Get in Touch</span>
+            <span className="section-label">{t("contact.hero.label")}</span>
           </RevealOnScroll>
           <RevealOnScroll delay={0.1}>
             <h1>
-              Let&apos;s Build Something
+              {t("contact.title")}
               <br />
-              <span className="accent">Exceptional</span>
+              <span className="accent">{t("contact.title.accent")}</span>
             </h1>
           </RevealOnScroll>
           <RevealOnScroll delay={0.2}>
-            <p>
-              Whether you need a full exhibition build or just want to explore
-              ideas, we&apos;re here to help. Fill out the RFP form or reach out
-              directly.
-            </p>
+            <p>{t("contact.hero.desc")}</p>
           </RevealOnScroll>
         </div>
       </section>
@@ -177,15 +177,15 @@ export default function ContactForm() {
             {/* Left — Direct Contact */}
             <RevealOnScroll>
               <div>
-                <span className="section-label">Direct Contact</span>
+                <span className="section-label">{t("contact.direct")}</span>
                 <h2 style={{ marginBottom: 40 }}>
-                  Reach Us <span className="accent">Directly</span>
+                  {t("contact.direct.title")} <span className="accent">{t("contact.direct.title.accent")}</span>
                 </h2>
 
                 <div className="contact-item">
                   <div className="ci-icon">{"\uD83D\uDCCD"}</div>
                   <div className="ci-text">
-                    <h4>Office</h4>
+                    <h4>{t("contact.office")}</h4>
                     <p>
                       Marina Plaza, 29th Floor
                       <br />
@@ -197,7 +197,7 @@ export default function ContactForm() {
                 <div className="contact-item">
                   <div className="ci-icon">{"\uD83D\uDCDE"}</div>
                   <div className="ci-text">
-                    <h4>Phone / WhatsApp</h4>
+                    <h4>{t("contact.phone.label")}</h4>
                     <a href="https://wa.me/971521477966?text=Hi%2C%20I%27m%20interested%20in%20an%20exhibition%20stand.%20Can%20we%20discuss%3F">+971 52 147 7966</a>
                   </div>
                 </div>
@@ -205,7 +205,7 @@ export default function ContactForm() {
                 <div className="contact-item">
                   <div className="ci-icon">{"\u2709\uFE0F"}</div>
                   <div className="ci-text">
-                    <h4>Email</h4>
+                    <h4>{t("contact.email")}</h4>
                     <a href="mailto:hello@thebutterduck.com">hello@thebutterduck.com</a>
                   </div>
                 </div>
@@ -213,7 +213,7 @@ export default function ContactForm() {
                 <div className="contact-item">
                   <div className="ci-icon">{"\uD83D\uDCF1"}</div>
                   <div className="ci-text">
-                    <h4>Social</h4>
+                    <h4>{t("contact.social")}</h4>
                     <a
                       href="https://instagram.com/thebutterduck"
                       target="_blank"
@@ -232,15 +232,15 @@ export default function ContactForm() {
                 {submitted ? (
                   <div style={{ textAlign: "center", padding: "40px 0" }}>
                     <div style={{ fontSize: "3rem", marginBottom: 16 }}>{"\u2705"}</div>
-                    <h3 style={{ marginBottom: 8 }}>Request Received!</h3>
+                    <h3 style={{ marginBottom: 8 }}>{t("contact.success.heading")}</h3>
                     <p style={{ color: "var(--color-text-muted)", marginBottom: 24, lineHeight: 1.7 }}>
-                      Your reference code is{" "}
+                      {t("contact.success.reftext")}{" "}
                       <strong style={{ color: "var(--color-accent)" }}>{refCode}</strong>.
                       <br />
-                      We&apos;ll be in touch within 24 hours.
+                      {t("contact.success.followup")}
                     </p>
                     <Link href="/" className="btn btn-primary">
-                      Back to Home <span className="arrow">&rarr;</span>
+                      {t("contact.success.home")} <span className="arrow">&rarr;</span>
                     </Link>
                   </div>
                 ) : (
@@ -265,17 +265,17 @@ export default function ContactForm() {
                         letterSpacing: "0.1em",
                       }}
                     >
-                      Step {step} of 4
+                      {t("contact.stepof").replace("{step}", String(step))}
                     </p>
 
                     {/* Step 1 — Service Selection */}
                     {step === 1 && (
                       <div>
                         <h3 style={{ marginBottom: 20 }}>
-                          What do you need?
+                          {t("contact.step1.title")}
                         </h3>
                         <div className="svc-grid">
-                          {SERVICE_OPTIONS.map((opt) => (
+                          {SERVICE_KEYS.map((opt) => (
                             <div
                               key={opt.id}
                               className={`svc-opt${service === opt.id ? " selected" : ""}`}
@@ -296,7 +296,7 @@ export default function ContactForm() {
                                 {opt.icon}
                               </div>
                               <div style={{ fontSize: "0.85rem", fontWeight: 600 }}>
-                                {opt.label}
+                                {t(opt.labelKey)}
                               </div>
                             </div>
                           ))}
@@ -312,15 +312,15 @@ export default function ContactForm() {
                     {/* Step 2 — Project Details */}
                     {step === 2 && (
                       <div>
-                        <h3 style={{ marginBottom: 20 }}>Project Details</h3>
+                        <h3 style={{ marginBottom: 20 }}>{t("contact.step2.title")}</h3>
 
                         <div className="form-group">
-                          <label htmlFor="eventName">Event / Exhibition Name *</label>
+                          <label htmlFor="eventName">{t("contact.field.eventName")}</label>
                           <input
                             id="eventName"
                             type="text"
                             className="form-input"
-                            placeholder="e.g. GITEX Global 2026"
+                            placeholder={t("contact.field.eventName.placeholder")}
                             value={eventName}
                             onChange={(e) => setEventName(e.target.value)}
                           />
@@ -332,60 +332,66 @@ export default function ContactForm() {
                         </div>
 
                         <div className="form-group">
-                          <label htmlFor="eventDates">Event Dates</label>
+                          <label htmlFor="eventDates">{t("contact.field.eventDates")}</label>
                           <input
                             id="eventDates"
                             type="text"
                             className="form-input"
-                            placeholder="e.g. 14–18 Oct 2026"
+                            placeholder={t("contact.field.eventDates.placeholder")}
                             value={eventDates}
                             onChange={(e) => setEventDates(e.target.value)}
                           />
                         </div>
 
                         <div className="form-group">
-                          <label htmlFor="eventLocation">Location / Venue</label>
+                          <label htmlFor="eventLocation">{t("contact.field.eventLocation")}</label>
                           <input
                             id="eventLocation"
                             type="text"
                             className="form-input"
-                            placeholder="e.g. DWTC, Dubai"
+                            placeholder={t("contact.field.eventLocation.placeholder")}
                             value={eventLocation}
                             onChange={(e) => setEventLocation(e.target.value)}
                           />
                         </div>
 
                         <div className="form-group">
-                          <label htmlFor="boothSize">Booth Size</label>
+                          <label htmlFor="boothSize">{t("contact.field.boothSize")}</label>
                           <select
                             id="boothSize"
                             className="form-input"
                             value={boothSize}
                             onChange={(e) => setBoothSize(e.target.value)}
                           >
-                            <option value="">Select size...</option>
-                            {BOOTH_SIZES.map((s) => (
-                              <option key={s} value={s}>
-                                {s}
-                              </option>
-                            ))}
+                            <option value="">{t("contact.field.boothSize.placeholder")}</option>
+                            {BOOTH_SIZE_KEYS.map((key) => {
+                              const label = t(key);
+                              return (
+                                <option key={key} value={label}>
+                                  {label}
+                                </option>
+                              );
+                            })}
                           </select>
                         </div>
 
                         <div className="form-group">
-                          <label htmlFor="budget">Budget Range</label>
+                          <label htmlFor="budget">{t("contact.field.budget")}</label>
                           <select
                             id="budget"
                             className="form-input"
                             value={budget}
                             onChange={(e) => setBudget(e.target.value)}
                           >
-                            <option value="">Select range...</option>
-                            {BUDGETS.map((b) => (
-                              <option key={b} value={b}>
-                                {b}
-                              </option>
-                            ))}
+                            <option value="">{t("contact.field.budget.placeholder")}</option>
+                            {BUDGET_KEYS.map((key) => {
+                              const label = t(key);
+                              return (
+                                <option key={key} value={label}>
+                                  {label}
+                                </option>
+                              );
+                            })}
                           </select>
                         </div>
                       </div>
@@ -394,15 +400,15 @@ export default function ContactForm() {
                     {/* Step 3 — Contact Info */}
                     {step === 3 && (
                       <div>
-                        <h3 style={{ marginBottom: 20 }}>Your Details</h3>
+                        <h3 style={{ marginBottom: 20 }}>{t("contact.step3.heading")}</h3>
 
                         <div className="form-group">
-                          <label htmlFor="contactName">Full Name *</label>
+                          <label htmlFor="contactName">{t("contact.field.name")}</label>
                           <input
                             id="contactName"
                             type="text"
                             className="form-input"
-                            placeholder="John Smith"
+                            placeholder={t("contact.field.name.placeholder")}
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                           />
@@ -414,12 +420,12 @@ export default function ContactForm() {
                         </div>
 
                         <div className="form-group">
-                          <label htmlFor="contactCompany">Company *</label>
+                          <label htmlFor="contactCompany">{t("contact.field.company")}</label>
                           <input
                             id="contactCompany"
                             type="text"
                             className="form-input"
-                            placeholder="Acme Corp"
+                            placeholder={t("contact.field.company.placeholder")}
                             value={company}
                             onChange={(e) => setCompany(e.target.value)}
                           />
@@ -431,12 +437,12 @@ export default function ContactForm() {
                         </div>
 
                         <div className="form-group">
-                          <label htmlFor="contactEmail">Email *</label>
+                          <label htmlFor="contactEmail">{t("contact.field.email")}</label>
                           <input
                             id="contactEmail"
                             type="email"
                             className="form-input"
-                            placeholder="john@acme.com"
+                            placeholder={t("contact.field.email.placeholder")}
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                           />
@@ -448,24 +454,24 @@ export default function ContactForm() {
                         </div>
 
                         <div className="form-group">
-                          <label htmlFor="contactPhone">Phone</label>
+                          <label htmlFor="contactPhone">{t("contact.field.phone")}</label>
                           <input
                             id="contactPhone"
                             type="tel"
                             className="form-input"
-                            placeholder="+971 50 000 0000"
+                            placeholder={t("contact.field.phone.placeholder")}
                             value={phone}
                             onChange={(e) => setPhone(e.target.value)}
                           />
                         </div>
 
                         <div className="form-group">
-                          <label htmlFor="contactCountry">Country</label>
+                          <label htmlFor="contactCountry">{t("contact.field.country")}</label>
                           <input
                             id="contactCountry"
                             type="text"
                             className="form-input"
-                            placeholder="UAE"
+                            placeholder={t("contact.field.country.placeholder")}
                             value={country}
                             onChange={(e) => setCountry(e.target.value)}
                           />
@@ -477,15 +483,15 @@ export default function ContactForm() {
                     {step === 4 && (
                       <div>
                         <h3 style={{ marginBottom: 20 }}>
-                          Anything Else?
+                          {t("contact.step4.title")}
                         </h3>
 
                         <div className="form-group">
-                          <label htmlFor="notes">Additional Notes</label>
+                          <label htmlFor="notes">{t("contact.field.notes")}</label>
                           <textarea
                             id="notes"
                             className="form-input"
-                            placeholder="Tell us about your vision, special requirements, or anything we should know..."
+                            placeholder={t("contact.field.notes.placeholder")}
                             value={notes}
                             onChange={(e) => setNotes(e.target.value)}
                           />
@@ -512,9 +518,7 @@ export default function ContactForm() {
                               }}
                               style={{ marginTop: 3, accentColor: "#fcd940" }}
                             />
-                            I agree that The Butter Duck may contact me
-                            regarding this enquiry. My data will not be shared
-                            with third parties.
+                            {t("contact.consent.form")}
                           </label>
                           {errors.consent && (
                             <p style={{ color: "#ff6b6b", fontSize: "0.8rem", marginTop: 4 }}>
@@ -533,7 +537,7 @@ export default function ContactForm() {
                           className="btn btn-ghost"
                           onClick={prev}
                         >
-                          &larr; Back
+                          &larr; {t("contact.back")}
                         </button>
                       ) : (
                         <span />
@@ -545,7 +549,7 @@ export default function ContactForm() {
                           className="btn btn-primary"
                           onClick={next}
                         >
-                          Continue <span className="arrow">&rarr;</span>
+                          {t("contact.next.btn")} <span className="arrow">&rarr;</span>
                         </button>
                       ) : (
                         <button
@@ -553,7 +557,7 @@ export default function ContactForm() {
                           className="btn btn-primary"
                           disabled={submitting}
                         >
-                          {submitting ? "Sending..." : "Submit Request"}{" "}
+                          {submitting ? t("contact.submit.sending") : t("contact.submit.btn")}{" "}
                           {!submitting && <span className="arrow">&rarr;</span>}
                         </button>
                       )}
@@ -570,13 +574,10 @@ export default function ContactForm() {
       <section className="cta-section">
         <div className="container">
           <RevealOnScroll>
-            <h2>Prefer a Quick Chat?</h2>
+            <h2>{t("contact.cta.title")}</h2>
           </RevealOnScroll>
           <RevealOnScroll delay={0.1}>
-            <p>
-              Drop us a WhatsApp message and we&apos;ll get back to you within
-              the hour.
-            </p>
+            <p>{t("contact.cta.desc")}</p>
           </RevealOnScroll>
           <RevealOnScroll delay={0.2}>
             <a
@@ -585,7 +586,7 @@ export default function ContactForm() {
               rel="noopener noreferrer"
               className="btn btn-lg"
             >
-              WhatsApp Us <span className="arrow">&rarr;</span>
+              {t("contact.cta.btn")} <span className="arrow">&rarr;</span>
             </a>
           </RevealOnScroll>
         </div>

@@ -9,6 +9,7 @@ import {
   useTransform,
 } from "framer-motion";
 import { asset } from "@/lib/basePath";
+import { useI18n } from "@/lib/I18nContext";
 
 /* ------------------------------------------------------------------ */
 /*  LOGO DATA                                                          */
@@ -84,6 +85,7 @@ function LogoItem({ index, isInView }: { index: number; isInView: boolean }) {
 /* ------------------------------------------------------------------ */
 
 export default function TrustBar() {
+  const { t } = useI18n();
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: false, amount: 0.2 });
 
@@ -193,7 +195,7 @@ export default function TrustBar() {
         ref={sectionRef}
         className={`tb2-section${isInView ? " tb2-visible" : ""}`}
       >
-        <p className="tb2-label">Trusted by Industry Leaders</p>
+        <p className="tb2-label">{t("trust.label")}</p>
         <motion.div className="tb2-grid" style={{ y }}>
           {LOGOS.map((_, i) => (
             <LogoItem key={i} index={i} isInView={isInView} />

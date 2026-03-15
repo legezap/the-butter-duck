@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import RevealOnScroll from "@/components/RevealOnScroll";
@@ -7,90 +9,87 @@ import AutoPlayVideo from "@/components/AutoPlayVideo";
 import TrustBar from "@/components/TrustBar";
 import { asset } from "@/lib/basePath";
 import { projects } from "@/data/projects";
-
-/* ------------------------------------------------------------------ */
-/*  DATA                                                               */
-/* ------------------------------------------------------------------ */
-
-const marqueeItems = [
-  "Exhibition Design",
-  "Event Production",
-  "Brand Experiences",
-  "Double Deckers",
-  "Immersive Spaces",
-  "Global Delivery",
-];
-
-
-const services = [
-  {
-    icon: "🏗️",
-    title: "Exhibition Design & Build",
-    desc: "Custom-built stands from concept to completion. We handle everything — design, engineering, fabrication, and on-site installation — so you can focus on your brand.",
-    link: "/services#exhibition-design",
-  },
-  {
-    icon: "📋",
-    title: "Project Management",
-    desc: "Dedicated project managers coordinate every moving piece across countries, vendors, and timelines. No surprises, no delays — just seamless execution.",
-    link: "/services#project-management",
-  },
-  {
-    icon: "🎨",
-    title: "Conceptual Event Design",
-    desc: "Immersive spatial concepts that tell your brand story. From mood boards to 3D renders, we translate your vision into environments that captivate.",
-    link: "/services#event-design",
-  },
-  {
-    icon: "🎬",
-    title: "Content & Media Production",
-    desc: "Professional photography, videography, and post-production for your exhibition presence — from booth shoots to full event coverage and social media content.",
-    link: "/services#content-media",
-  },
-];
-
-const featuredProjects = projects
-  .filter((p) => ["microsoft-leap", "nespresso-creatista", "spark-breakbulk"].includes(p.slug))
-  .map((p) => ({
-    slug: p.slug,
-    title: `${p.client} at ${p.event}`,
-    client: p.client,
-    size: p.size,
-    type: p.tags[0],
-    image: p.image,
-  }));
-
-const processSteps = [
-  { num: "01", title: "Brief", desc: "We listen, ask the right questions, and define exactly what success looks like for your brand." },
-  { num: "02", title: "Design", desc: "3D concepts, material specs, and technical drawings — iterated until you're thrilled." },
-  { num: "03", title: "Build", desc: "Precision fabrication in our local workshop, with quality checks at every stage." },
-  { num: "04", title: "Deliver", desc: "On-site installation, show support, and dismantle — we're there until the last bolt is packed." },
-];
-
-const testimonials = [
-  {
-    quote: "The Butter Duck doesn't just build stands — they build experiences. Our LEAP stand was the most talked-about presence at the entire show.",
-    role: "Regional Events Director",
-    company: "Microsoft Middle East",
-  },
-  {
-    quote: "The level of precision in the final build was remarkable — every detail matched the 3D renders. On time, on budget, zero surprises.",
-    role: "Head of Global Exhibitions",
-    company: "Vanderlande Industries",
-  },
-  {
-    quote: "We've worked with exhibition companies across the region — nobody comes close to the build quality and design thinking these guys bring.",
-    role: "Marketing Manager",
-    company: "Spark Logistics",
-  },
-];
-
+import { useI18n } from "@/lib/I18nContext";
 
 /* ------------------------------------------------------------------ */
 /*  PAGE                                                               */
 /* ------------------------------------------------------------------ */
 
 export default function HomePage() {
+  const { t } = useI18n();
+
+  const marqueeItems = [
+    t("marquee.exhibition"),
+    t("marquee.event"),
+    t("marquee.brand"),
+    t("marquee.doubledecker"),
+    t("marquee.immersive"),
+    t("marquee.global"),
+  ];
+
+  const services = [
+    {
+      icon: "\u{1F3D7}\uFE0F",
+      title: t("svc.exhibition.title"),
+      desc: t("svc.exhibition.desc"),
+      link: "/services#exhibition-design",
+    },
+    {
+      icon: "\u{1F4CB}",
+      title: t("svc.pm.title"),
+      desc: t("svc.pm.desc"),
+      link: "/services#project-management",
+    },
+    {
+      icon: "\u{1F3A8}",
+      title: t("svc.event.title"),
+      desc: t("svc.event.desc"),
+      link: "/services#event-design",
+    },
+    {
+      icon: "\u{1F3AC}",
+      title: t("svc.media.title"),
+      desc: t("svc.media.desc"),
+      link: "/services#content-media",
+    },
+  ];
+
+  const featuredProjects = projects
+    .filter((p) => ["microsoft-leap", "nespresso-creatista", "spark-breakbulk"].includes(p.slug))
+    .map((p) => ({
+      slug: p.slug,
+      title: `${p.client} at ${p.event}`,
+      client: p.client,
+      size: p.size,
+      type: p.tags[0],
+      image: p.image,
+    }));
+
+  const processSteps = [
+    { num: "01", title: t("process.step1.title"), desc: t("process.step1.desc") },
+    { num: "02", title: t("process.step2.title"), desc: t("process.step2.desc") },
+    { num: "03", title: t("process.step3.title"), desc: t("process.step3.desc") },
+    { num: "04", title: t("process.step4.title"), desc: t("process.step4.desc") },
+  ];
+
+  const testimonials = [
+    {
+      quote: t("testimonials.1.quote"),
+      role: t("testimonials.1.role"),
+      company: t("testimonials.1.company"),
+    },
+    {
+      quote: t("testimonials.2.quote"),
+      role: t("testimonials.2.role"),
+      company: t("testimonials.2.company"),
+    },
+    {
+      quote: t("testimonials.3.quote"),
+      role: t("testimonials.3.role"),
+      company: t("testimonials.3.company"),
+    },
+  ];
+
   return (
     <>
       {/* ========== 1. HERO ========== */}
@@ -105,32 +104,30 @@ export default function HomePage() {
         <div className="hero-overlay" />
         <div className="container hero-content">
           <RevealOnScroll delay={0.1}>
-            <span className="hero-badge">UAE-Based, Globally Deployed</span>
+            <span className="hero-badge">{t("hero.badge")}</span>
           </RevealOnScroll>
 
           <RevealOnScroll delay={0.2}>
             <h1>
-              We Build Experiences That{" "}
-              <span className="accent">Command Attention</span>
+              {t("hero.title")}{" "}
+              <span className="accent">{t("hero.title.accent")}</span>
             </h1>
           </RevealOnScroll>
 
           <RevealOnScroll delay={0.35}>
-            <p className="hero-sub">
-              Exhibition stands from <strong>25&nbsp;sqm</strong> to{" "}
-              <strong>1000+&nbsp;sqm</strong>. Trusted by{" "}
-              <strong>Microsoft</strong>, <strong>Vanderlande</strong>,{" "}
-              <strong>Altronix</strong>, and brands across 10&nbsp;countries.
-            </p>
+            <p
+              className="hero-sub"
+              dangerouslySetInnerHTML={{ __html: t("hero.sub") }}
+            />
           </RevealOnScroll>
 
           <RevealOnScroll delay={0.45}>
             <div className="hero-cta">
               <Link href="/contact" className="btn btn-primary btn-lg">
-                Start Your Project <span className="arrow">&rarr;</span>
+                {t("hero.cta.start")} <span className="arrow">&rarr;</span>
               </Link>
               <Link href="/portfolio" className="btn btn-outline btn-lg">
-                View Our Work
+                {t("hero.cta.work")}
               </Link>
             </div>
           </RevealOnScroll>
@@ -141,19 +138,19 @@ export default function HomePage() {
                 <div className="num">
                   <CounterAnimation target={80} suffix="+" />
                 </div>
-                <div className="label">Projects</div>
+                <div className="label">{t("hero.stat.projects.short")}</div>
               </div>
               <div className="hero-stat">
                 <div className="num">
                   <CounterAnimation target={10} />
                 </div>
-                <div className="label">Countries</div>
+                <div className="label">{t("hero.stat.countries.short")}</div>
               </div>
               <div className="hero-stat">
                 <div className="num">
                   <CounterAnimation target={100} suffix="%" />
                 </div>
-                <div className="label">On-Time</div>
+                <div className="label">{t("hero.stat.ontime.short")}</div>
               </div>
             </div>
           </RevealOnScroll>
@@ -178,9 +175,9 @@ export default function HomePage() {
       <section className="section-pad">
         <div className="container">
           <RevealOnScroll>
-            <span className="section-label">What We Do</span>
+            <span className="section-label">{t("services.label")}</span>
             <h2 style={{ marginBottom: 56 }}>
-              End-to-End Exhibition <span className="accent">Solutions</span>
+              {t("home.services.title")} <span className="accent">{t("home.services.title.accent")}</span>
             </h2>
           </RevealOnScroll>
 
@@ -192,7 +189,7 @@ export default function HomePage() {
                   <h3>{svc.title}</h3>
                   <p>{svc.desc}</p>
                   <Link href={svc.link} className="service-link">
-                    Learn more <span>&rarr;</span>
+                    {t("services.learn")} <span>&rarr;</span>
                   </Link>
                 </div>
               </RevealOnScroll>
@@ -215,14 +212,8 @@ export default function HomePage() {
         <div className="cine-divider-content container">
           <RevealOnScroll>
             <div>
-              <h2>
-                700&nbsp;sqm. Double Decker.{" "}
-                <span className="accent">Microsoft at LEAP.</span>
-              </h2>
-              <p>
-                Our largest build to date — a fully immersive, two-storey brand
-                experience designed to command the show floor.
-              </p>
+              <h2 dangerouslySetInnerHTML={{ __html: t("cine.microsoft") }} />
+              <p>{t("cine.microsoft.sub.full")}</p>
             </div>
           </RevealOnScroll>
         </div>
@@ -232,9 +223,9 @@ export default function HomePage() {
       <section className="section-pad">
         <div className="container">
           <RevealOnScroll>
-            <span className="section-label">Selected Work</span>
+            <span className="section-label">{t("home.featured.label")}</span>
             <h2 style={{ marginBottom: 56 }}>
-              Featured <span className="accent">Projects</span>
+              {t("home.featured.title")} <span className="accent">{t("home.featured.title.accent")}</span>
             </h2>
           </RevealOnScroll>
 
@@ -271,7 +262,7 @@ export default function HomePage() {
 
           <div style={{ textAlign: "center", marginTop: 48 }}>
             <Link href="/portfolio" className="btn btn-outline">
-              View All Projects <span className="arrow">&rarr;</span>
+              {t("portfolio.viewall")} <span className="arrow">&rarr;</span>
             </Link>
           </div>
         </div>
@@ -289,10 +280,10 @@ export default function HomePage() {
         <div className="container">
           <RevealOnScroll>
             <span className="section-label" style={{ textAlign: "center", display: "block" }}>
-              How We Work
+              {t("process.label")}
             </span>
             <h2 style={{ textAlign: "center", marginBottom: 64 }}>
-              From Brief to <span className="accent">Show Floor</span>
+              {t("process.title")} <span className="accent">{t("process.title.accent")}</span>
             </h2>
           </RevealOnScroll>
           <div className="process-grid">
@@ -324,12 +315,10 @@ export default function HomePage() {
           <RevealOnScroll>
             <div>
               <h2>
-                Not Just Stands.{" "}
-                <span className="accent">Unforgettable Moments.</span>
+                {t("cine.nespresso.title")}{" "}
+                <span className="accent">{t("cine.nespresso.title.accent")}</span>
               </h2>
-              <p>
-                From intimate product launches to 1000+ sqm builds — we create brand experiences that people talk about long after the event.
-              </p>
+              <p>{t("cine.nespresso.desc")}</p>
             </div>
           </RevealOnScroll>
         </div>
@@ -340,20 +329,20 @@ export default function HomePage() {
         <div className="container">
           <RevealOnScroll>
             <span className="section-label" style={{ textAlign: "center", display: "block" }}>
-              Client Feedback
+              {t("testimonials.label")}
             </span>
             <h2 style={{ textAlign: "center", marginBottom: 64 }}>
-              What Our Clients <span className="accent">Say</span>
+              {t("testimonials.title")} <span className="accent">{t("testimonials.title.accent")}</span>
             </h2>
           </RevealOnScroll>
           <div className="testimonials-grid">
-            {testimonials.map((t, i) => (
+            {testimonials.map((tm, i) => (
               <RevealOnScroll key={i} delay={i * 0.15}>
                 <blockquote className="testimonial-card">
-                  <p className="testimonial-quote">&ldquo;{t.quote}&rdquo;</p>
+                  <p className="testimonial-quote">&ldquo;{tm.quote}&rdquo;</p>
                   <footer className="testimonial-footer">
                     <div>
-                      <strong>{t.role}, {t.company}</strong>
+                      <strong>{tm.role}, {tm.company}</strong>
                     </div>
                   </footer>
                 </blockquote>
@@ -370,10 +359,10 @@ export default function HomePage() {
             {/* Text */}
             <div>
               <RevealOnScroll>
-                <span className="section-label">Who We Are</span>
+                <span className="section-label">{t("about.label")}</span>
                 <h2 style={{ marginBottom: 24 }}>
-                  Built Different.{" "}
-                  <span className="accent">Built to Deliver.</span>
+                  {t("about.title")}{" "}
+                  <span className="accent">{t("about.title.accent")}</span>
                 </h2>
               </RevealOnScroll>
               <RevealOnScroll delay={0.15}>
@@ -381,10 +370,7 @@ export default function HomePage() {
                   className="text-muted"
                   style={{ lineHeight: 1.8, marginBottom: 16, fontSize: "1.05rem" }}
                 >
-                  The Butter Duck is a UAE-based exhibition and event production
-                  company with global reach. We design and build custom stands for
-                  the world&apos;s biggest trade shows — from concept sketches to
-                  on-site installation, across ten countries and counting.
+                  {t("home.about.p1")}
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.25}>
@@ -392,19 +378,16 @@ export default function HomePage() {
                   className="text-muted"
                   style={{ lineHeight: 1.8, marginBottom: 36, fontSize: "1.05rem" }}
                 >
-                  Our team of architects, engineers, and project managers obsesses
-                  over every detail so your brand gets the spotlight it deserves.
-                  No templates, no shortcuts — just unforgettable experiences delivered
-                  on time, every time.
+                  {t("home.about.p2")}
                 </p>
               </RevealOnScroll>
               <RevealOnScroll delay={0.35}>
                 <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
                   <Link href="/about" className="btn btn-outline">
-                    About Our Exhibition Company
+                    {t("home.about.btn")}
                   </Link>
                   <Link href="/contact" className="btn btn-primary">
-                    Talk to Us <span className="arrow">&rarr;</span>
+                    {t("about.talk")} <span className="arrow">&rarr;</span>
                   </Link>
                 </div>
               </RevealOnScroll>
@@ -422,7 +405,7 @@ export default function HomePage() {
                     style={{ width: "100%", height: "auto" }}
                   />
                 </div>
-                <div className="about-badge">Since 2019</div>
+                <div className="about-badge">{t("home.about.badge")}</div>
               </div>
             </RevealOnScroll>
           </div>
@@ -433,17 +416,14 @@ export default function HomePage() {
       <section className="cta-section">
         <div className="container">
           <RevealOnScroll>
-            <h2>Ready to Build Something Remarkable?</h2>
-            <p>
-              Let&apos;s turn your next exhibition into an unforgettable brand
-              experience.
-            </p>
+            <h2>{t("home.cta.title")}</h2>
+            <p>{t("home.cta.desc")}</p>
             <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
               <Link href="/contact" className="btn">
-                Start Your Project <span className="arrow">&rarr;</span>
+                {t("cta.start")} <span className="arrow">&rarr;</span>
               </Link>
               <Link href="/portfolio" className="btn" style={{ background: "transparent", border: "1px solid rgba(0,0,0,0.3)", color: "var(--color-bg-dark)" }}>
-                See Our Work
+                {t("cta.see")}
               </Link>
             </div>
           </RevealOnScroll>

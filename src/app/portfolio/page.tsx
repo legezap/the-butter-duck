@@ -1,9 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import { projects } from "@/data/projects";
+import { useI18n } from "@/lib/I18nContext";
 
 export default function PortfolioPage() {
+  const { t } = useI18n();
 
   return (
     <>
@@ -11,9 +15,9 @@ export default function PortfolioPage() {
       <nav className="breadcrumbs" aria-label="Breadcrumb">
         <div className="container">
           <div className="bc-inner">
-            <Link href="/">Home</Link>
+            <Link href="/">{t("bc.home")}</Link>
             <span className="sep">/</span>
-            <span className="current">Portfolio</span>
+            <span className="current">{t("bc.portfolio")}</span>
           </div>
         </div>
       </nav>
@@ -22,19 +26,17 @@ export default function PortfolioPage() {
       <section className="page-hero">
         <div className="container">
           <RevealOnScroll>
-            <span className="section-label">Our Work</span>
+            <span className="section-label">{t("portfoliopage.label")}</span>
           </RevealOnScroll>
           <RevealOnScroll delay={0.1}>
             <h1>
-              Projects That Speak
+              {t("portfolio.title")}
               <br />
-              <span className="accent">for Themselves</span>
+              <span className="accent">{t("portfolio.title.accent")}</span>
             </h1>
           </RevealOnScroll>
           <RevealOnScroll delay={0.2}>
-            <p>
-              From 25 sqm compact stands to 1000+ sqm builds — every project is engineered to make your brand unmissable.
-            </p>
+            <p>{t("portfoliopage.desc")}</p>
           </RevealOnScroll>
         </div>
       </section>
@@ -77,11 +79,11 @@ export default function PortfolioPage() {
                       <div className="project-specs">
                         <div className="spec">
                           <strong>{project.size}</strong>
-                          Footprint
+                          {t("portfoliopage.spec.footprint")}
                         </div>
                         <div className="spec">
                           <strong>{project.location}</strong>
-                          Location
+                          {t("portfoliopage.spec.location")}
                         </div>
                       </div>
                     </div>
@@ -97,17 +99,14 @@ export default function PortfolioPage() {
       <section className="cta-section">
         <div className="container">
           <RevealOnScroll>
-            <h2>Let&apos;s Build Your Next Stand</h2>
+            <h2>{t("portfoliopage.cta.title")}</h2>
           </RevealOnScroll>
           <RevealOnScroll delay={0.1}>
-            <p>
-              Got an exhibition coming up? Tell us the event, the space, and the
-              vision — we&apos;ll handle the rest.
-            </p>
+            <p>{t("portfoliopage.cta.desc")}</p>
           </RevealOnScroll>
           <RevealOnScroll delay={0.2}>
             <Link href="/contact" className="btn btn-lg">
-              Start a Conversation <span className="arrow">&rarr;</span>
+              {t("portfoliopage.cta.btn")} <span className="arrow">&rarr;</span>
             </Link>
           </RevealOnScroll>
         </div>
