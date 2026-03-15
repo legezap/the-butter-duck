@@ -1,158 +1,88 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import {
   motion,
   useInView,
   useScroll,
   useTransform,
-  useMotionValue,
-  useSpring,
 } from "framer-motion";
 
 /* ------------------------------------------------------------------ */
-/*  INLINE SVG LOGO COMPONENTS                                        */
+/*  MONOCHROME SVG LOGOS — clean, premium, white-on-dark               */
 /* ------------------------------------------------------------------ */
 
-function IKGroupLogo({ colorProgress }: { colorProgress: number }) {
-  const red = lerpColor("#888888", "#E30613", colorProgress);
-  const dark = lerpColor("#888888", "#333333", colorProgress);
-  const white = lerpColor("#888888", "#FFFFFF", colorProgress);
-
+function IKGroupLogo() {
   return (
-    <svg viewBox="0 0 220 56" fill="none" xmlns="http://www.w3.org/2000/svg" className="tb2-svg">
-      <circle cx="28" cy="28" r="24" fill={red} />
-      <text x="18" y="36" fontFamily="Arial, Helvetica, sans-serif" fontWeight="900" fontSize="22" fill={white}>
-        IK
-      </text>
-      <text x="60" y="37" fontFamily="Arial, Helvetica, sans-serif" fontWeight="700" fontSize="20" letterSpacing="3" fill={dark}>
-        GROUP
-      </text>
+    <svg viewBox="0 0 200 52" fill="none" xmlns="http://www.w3.org/2000/svg" className="tb2-svg">
+      <circle cx="24" cy="26" r="21" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.5)" strokeWidth="1.5" />
+      <text x="14" y="33" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="800" fontSize="19" fill="rgba(255,255,255,0.95)">IK</text>
+      <text x="54" y="33" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="600" fontSize="17" letterSpacing="4" fill="rgba(255,255,255,0.6)">GROUP</text>
     </svg>
   );
 }
 
-function MicrosoftLogo({ colorProgress }: { colorProgress: number }) {
-  const red = lerpColor("#888888", "#F25022", colorProgress);
-  const green = lerpColor("#888888", "#7FBA00", colorProgress);
-  const blue = lerpColor("#888888", "#00A4EF", colorProgress);
-  const yellow = lerpColor("#888888", "#FFB900", colorProgress);
-  const text = lerpColor("#888888", "#FFFFFF", colorProgress);
-
-  const gap = 2;
-  const size = 11;
-  const ox = 8;
-  const oy = 14;
-
+function MicrosoftLogo() {
+  const s = 10;
+  const g = 1.5;
+  const ox = 6;
+  const oy = 15;
+  const c = "rgba(255,255,255,0.7)";
   return (
-    <svg viewBox="0 0 220 56" fill="none" xmlns="http://www.w3.org/2000/svg" className="tb2-svg">
-      <rect x={ox} y={oy} width={size} height={size} fill={red} rx="1" />
-      <rect x={ox + size + gap} y={oy} width={size} height={size} fill={yellow} rx="1" />
-      <rect x={ox} y={oy + size + gap} width={size} height={size} fill={green} rx="1" />
-      <rect x={ox + size + gap} y={oy + size + gap} width={size} height={size} fill={blue} rx="1" />
-      <text x="42" y="35" fontFamily="'Segoe UI', Arial, sans-serif" fontWeight="400" fontSize="17" fill={text}>
-        Microsoft
-      </text>
+    <svg viewBox="0 0 200 52" fill="none" xmlns="http://www.w3.org/2000/svg" className="tb2-svg">
+      <rect x={ox} y={oy} width={s} height={s} fill={c} rx="1" />
+      <rect x={ox+s+g} y={oy} width={s} height={s} fill={c} rx="1" opacity="0.85" />
+      <rect x={ox} y={oy+s+g} width={s} height={s} fill={c} rx="1" opacity="0.85" />
+      <rect x={ox+s+g} y={oy+s+g} width={s} height={s} fill={c} rx="1" opacity="0.6" />
+      <text x="38" y="32" fontFamily="'Segoe UI', 'DM Sans', Arial, sans-serif" fontWeight="300" fontSize="16.5" fill="rgba(255,255,255,0.85)" letterSpacing="0.3">Microsoft</text>
     </svg>
   );
 }
 
-function SparkLogisticsLogo({ colorProgress }: { colorProgress: number }) {
-  const green = lerpColor("#888888", "#00B140", colorProgress);
-  const white = lerpColor("#888888", "#FFFFFF", colorProgress);
-
+function SparkLogisticsLogo() {
   return (
-    <svg viewBox="0 0 220 56" fill="none" xmlns="http://www.w3.org/2000/svg" className="tb2-svg">
-      {/* Spark bolt icon */}
-      <polygon points="18,8 10,30 20,30 14,48 34,22 22,22 28,8" fill={green} />
-      <text x="42" y="30" fontFamily="Arial, Helvetica, sans-serif" fontWeight="800" fontSize="17" fill={white}>
-        spark
-      </text>
-      <text x="42" y="45" fontFamily="Arial, Helvetica, sans-serif" fontWeight="400" fontSize="10" letterSpacing="2" fill={green}>
-        LOGISTICS
-      </text>
+    <svg viewBox="0 0 200 52" fill="none" xmlns="http://www.w3.org/2000/svg" className="tb2-svg">
+      <polygon points="16,6 9,27 18,27 12,46 30,20 20,20 26,6" fill="rgba(255,255,255,0.7)" />
+      <text x="38" y="28" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="800" fontSize="16" fill="rgba(255,255,255,0.9)">spark</text>
+      <text x="38" y="42" fontFamily="'DM Sans', Arial, sans-serif" fontWeight="400" fontSize="9" letterSpacing="2.5" fill="rgba(255,255,255,0.4)">LOGISTICS</text>
     </svg>
   );
 }
 
-function AltronixLogo({ colorProgress }: { colorProgress: number }) {
-  const red = lerpColor("#888888", "#CC0000", colorProgress);
-  const blue = lerpColor("#888888", "#0057B8", colorProgress);
-
+function AltronixLogo() {
   return (
-    <svg viewBox="0 0 220 56" fill="none" xmlns="http://www.w3.org/2000/svg" className="tb2-svg">
-      {/* Triangle A */}
-      <polygon points="24,8 8,46 40,46" fill="none" stroke={red} strokeWidth="3" strokeLinejoin="round" />
-      <line x1="16" y1="34" x2="32" y2="34" stroke={red} strokeWidth="2.5" />
-      <text x="50" y="37" fontFamily="Arial, Helvetica, sans-serif" fontWeight="700" fontSize="19" fill={blue}>
-        Altronix
-      </text>
+    <svg viewBox="0 0 200 52" fill="none" xmlns="http://www.w3.org/2000/svg" className="tb2-svg">
+      <polygon points="22,6 6,44 38,44" fill="none" stroke="rgba(255,255,255,0.6)" strokeWidth="2" strokeLinejoin="round" />
+      <line x1="14" y1="32" x2="30" y2="32" stroke="rgba(255,255,255,0.5)" strokeWidth="1.8" />
+      <text x="46" y="34" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="600" fontSize="18" fill="rgba(255,255,255,0.85)">Altronix</text>
     </svg>
   );
 }
 
-function VanderlandeLogo({ colorProgress }: { colorProgress: number }) {
-  const orange = lerpColor("#888888", "#FF6600", colorProgress);
-  const white = lerpColor("#888888", "#FFFFFF", colorProgress);
-
+function VanderlandeLogo() {
   return (
-    <svg viewBox="0 0 220 56" fill="none" xmlns="http://www.w3.org/2000/svg" className="tb2-svg">
-      {/* Orange accent bar */}
-      <rect x="0" y="42" width="220" height="3" rx="1.5" fill={orange} />
-      <text x="110" y="33" fontFamily="Arial, Helvetica, sans-serif" fontWeight="800" fontSize="16" letterSpacing="3" fill={white} textAnchor="middle">
-        VANDERLANDE
-      </text>
+    <svg viewBox="0 0 220 52" fill="none" xmlns="http://www.w3.org/2000/svg" className="tb2-svg">
+      <text x="110" y="30" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="800" fontSize="15" letterSpacing="4" fill="rgba(255,255,255,0.85)" textAnchor="middle">VANDERLANDE</text>
+      <rect x="20" y="40" width="180" height="1.5" rx="0.75" fill="rgba(255,255,255,0.15)" />
     </svg>
   );
 }
 
-function AbsolutSkandicLogo({ colorProgress }: { colorProgress: number }) {
-  const dark = lerpColor("#888888", "#E8E8E8", colorProgress);
-  const gold = lerpColor("#888888", "#D4AF37", colorProgress);
-
+function AbsolutSkandicLogo() {
   return (
-    <svg viewBox="0 0 220 56" fill="none" xmlns="http://www.w3.org/2000/svg" className="tb2-svg">
-      {/* House/building icon */}
-      <polygon points="16,20 24,10 32,20" fill="none" stroke={gold} strokeWidth="2" strokeLinejoin="round" />
-      <rect x="18" y="20" width="12" height="14" fill="none" stroke={gold} strokeWidth="2" />
-      <rect x="22" y="24" width="4" height="6" fill={gold} opacity="0.6" />
-      <text x="42" y="24" fontFamily="Arial, Helvetica, sans-serif" fontWeight="700" fontSize="11" letterSpacing="1.5" fill={dark}>
-        ABSOLUT
-      </text>
-      <text x="42" y="40" fontFamily="Arial, Helvetica, sans-serif" fontWeight="400" fontSize="11" letterSpacing="2" fill={gold}>
-        SKANDIC
-      </text>
+    <svg viewBox="0 0 200 52" fill="none" xmlns="http://www.w3.org/2000/svg" className="tb2-svg">
+      <polygon points="14,20 22,9 30,20" fill="none" stroke="rgba(255,255,255,0.55)" strokeWidth="1.8" strokeLinejoin="round" />
+      <rect x="16" y="20" width="12" height="12" fill="none" stroke="rgba(255,255,255,0.55)" strokeWidth="1.8" />
+      <rect x="20" y="23" width="4" height="5.5" fill="rgba(255,255,255,0.3)" />
+      <text x="40" y="22" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="700" fontSize="10.5" letterSpacing="2" fill="rgba(255,255,255,0.75)">ABSOLUT</text>
+      <text x="40" y="37" fontFamily="'DM Sans', Arial, sans-serif" fontWeight="400" fontSize="10.5" letterSpacing="2.5" fill="rgba(255,255,255,0.45)">SKANDIC</text>
     </svg>
   );
 }
 
 /* ------------------------------------------------------------------ */
-/*  HELPERS                                                            */
+/*  DATA                                                               */
 /* ------------------------------------------------------------------ */
-
-/** Hex color lerp */
-function lerpColor(a: string, b: string, t: number): string {
-  const clamp = Math.max(0, Math.min(1, t));
-  const ar = parseInt(a.slice(1, 3), 16);
-  const ag = parseInt(a.slice(3, 5), 16);
-  const ab = parseInt(a.slice(5, 7), 16);
-  const br = parseInt(b.slice(1, 3), 16);
-  const bg = parseInt(b.slice(3, 5), 16);
-  const bb = parseInt(b.slice(5, 7), 16);
-  const r = Math.round(ar + (br - ar) * clamp);
-  const g = Math.round(ag + (bg - ag) * clamp);
-  const bv = Math.round(ab + (bb - ab) * clamp);
-  return `#${r.toString(16).padStart(2, "0")}${g.toString(16).padStart(2, "0")}${bv.toString(16).padStart(2, "0")}`;
-}
-
-const BRAND_COLORS = [
-  "#E30613", // IK Group
-  "#00A4EF", // Microsoft
-  "#00B140", // Spark Logistics
-  "#0057B8", // Altronix
-  "#FF6600", // Vanderlande
-  "#D4AF37", // Absolut Skandic
-];
 
 const BRAND_NAMES = [
   "IK Group",
@@ -172,51 +102,38 @@ const LOGO_COMPONENTS = [
   AbsolutSkandicLogo,
 ];
 
-// Float animation phases (different per logo for organic feel)
 const FLOAT_PHASES = [0, 1.2, 2.4, 3.6, 0.8, 2.0];
 
 /* ------------------------------------------------------------------ */
 /*  SINGLE LOGO ITEM                                                   */
 /* ------------------------------------------------------------------ */
 
-function LogoItem({
-  index,
-  isInView,
-  colorProgress,
-}: {
-  index: number;
-  isInView: boolean;
-  colorProgress: number;
-}) {
+function LogoItem({ index, isInView }: { index: number; isInView: boolean }) {
   const LogoSvg = LOGO_COMPONENTS[index];
-  const brandColor = BRAND_COLORS[index];
   const brandName = BRAND_NAMES[index];
   const floatPhase = FLOAT_PHASES[index];
 
   return (
     <motion.div
       className="tb2-logo-wrap"
-      initial={{ opacity: 0, y: 60, scale: 0.8 }}
+      initial={{ opacity: 0, y: 50, scale: 0.85 }}
       animate={
         isInView
           ? { opacity: 1, y: 0, scale: 1 }
-          : { opacity: 0, y: 60, scale: 0.8 }
+          : { opacity: 0, y: 50, scale: 0.85 }
       }
       transition={{
-        duration: 0.9,
+        duration: 1,
         ease: [0.25, 0.46, 0.45, 0.94],
         delay: index * 0.15,
       }}
       aria-label={brandName}
     >
-      {/* Float animation wrapper */}
       <motion.div
         className="tb2-logo-inner"
         animate={
           isInView
-            ? {
-                y: [0, -4, 0, 4, 0],
-              }
+            ? { y: [0, -4, 0, 4, 0] }
             : {}
         }
         transition={{
@@ -226,27 +143,12 @@ function LogoItem({
           delay: floatPhase,
         }}
         whileHover={{
-          y: -8,
+          y: -10,
+          scale: 1.05,
           transition: { duration: 0.3, ease: "easeOut" },
         }}
       >
-        {/* Hover glow */}
-        <div
-          className="tb2-glow"
-          style={{
-            background: `radial-gradient(ellipse at center, ${brandColor}30 0%, transparent 70%)`,
-          }}
-        />
-
-        {/* Brand-color shadow on hover (CSS) */}
-        <div
-          className="tb2-shadow"
-          style={{
-            background: `radial-gradient(ellipse at center, ${brandColor}40 0%, transparent 70%)`,
-          }}
-        />
-
-        <LogoSvg colorProgress={colorProgress} />
+        <LogoSvg />
       </motion.div>
     </motion.div>
   );
@@ -265,12 +167,7 @@ export default function TrustBar() {
     offset: ["start end", "end start"],
   });
 
-  // Parallax: 40px shift
   const y = useTransform(scrollYProgress, [0, 1], [40, -40]);
-
-  // Color fill progress: maps scroll 0.3→0.7 to 0→1
-  const rawColorProgress = useTransform(scrollYProgress, [0.3, 0.7], [0, 1]);
-  const colorProgress = useSpring(rawColorProgress, { stiffness: 80, damping: 20 });
 
   return (
     <>
@@ -286,16 +183,17 @@ export default function TrustBar() {
           text-align: center;
           font-size: 0.7rem;
           text-transform: uppercase;
-          letter-spacing: 0.2em;
+          letter-spacing: 0.25em;
           color: var(--color-text-dim);
-          margin-bottom: 48px;
+          margin-bottom: 56px;
+          font-family: var(--font-body);
         }
 
         .tb2-grid {
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: 80px;
+          gap: 72px;
           flex-wrap: wrap;
           max-width: 1400px;
           margin: 0 auto;
@@ -325,42 +223,12 @@ export default function TrustBar() {
           width: 100%;
           height: 100%;
           display: block;
-          position: relative;
-          z-index: 1;
+          transition: filter 0.5s ease;
         }
 
-        /* Glow on hover */
-        .tb2-glow {
-          position: absolute;
-          inset: -24px;
-          border-radius: 20px;
-          opacity: 0;
-          transition: opacity 0.5s ease;
-          pointer-events: none;
-          z-index: 0;
-        }
-        .tb2-logo-inner:hover .tb2-glow {
-          opacity: 1;
-        }
-
-        /* Brand-colored shadow below on hover */
-        .tb2-shadow {
-          position: absolute;
-          bottom: -16px;
-          left: 10%;
-          right: 10%;
-          height: 16px;
-          border-radius: 50%;
-          opacity: 0;
-          transition: opacity 0.4s ease, transform 0.4s ease;
-          pointer-events: none;
-          z-index: 0;
-          transform: scaleX(0.6);
-          filter: blur(6px);
-        }
-        .tb2-logo-inner:hover .tb2-shadow {
-          opacity: 1;
-          transform: scaleX(1);
+        /* Hover: subtle glow */
+        .tb2-logo-inner:hover .tb2-svg {
+          filter: drop-shadow(0 0 12px rgba(255,255,255,0.08));
         }
 
         /* Ambient line */
@@ -371,7 +239,7 @@ export default function TrustBar() {
           left: 5%;
           right: 5%;
           height: 1px;
-          background: linear-gradient(90deg, transparent, rgba(252, 217, 64, 0.2), transparent);
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
           transition: opacity 1s ease;
           opacity: 0;
         }
@@ -380,26 +248,23 @@ export default function TrustBar() {
         }
 
         @media (max-width: 1024px) {
-          .tb2-grid { gap: 48px; }
-          .tb2-logo-wrap { width: 160px; height: 44px; }
+          .tb2-grid { gap: 56px; }
+          .tb2-logo-wrap { width: 180px; height: 48px; }
         }
 
         @media (max-width: 768px) {
           .tb2-section { padding: 64px 0; }
-          .tb2-grid { gap: 48px; }
+          .tb2-grid { gap: 40px; }
           .tb2-logo-wrap { width: 160px; height: 44px; }
         }
 
         @media (max-width: 480px) {
-          .tb2-grid { gap: 32px; }
+          .tb2-grid { gap: 28px; }
           .tb2-logo-wrap { width: 130px; height: 36px; }
         }
 
         @media (prefers-reduced-motion: reduce) {
-          .tb2-glow,
-          .tb2-shadow {
-            transition: none !important;
-          }
+          .tb2-svg { transition: none !important; }
         }
       `}} />
 
@@ -410,47 +275,10 @@ export default function TrustBar() {
         <p className="tb2-label">Trusted by Industry Leaders</p>
         <motion.div className="tb2-grid" style={{ y }}>
           {LOGO_COMPONENTS.map((_, i) => (
-            <LogoItemWithProgress
-              key={i}
-              index={i}
-              isInView={isInView}
-              colorMotionValue={colorProgress}
-            />
+            <LogoItem key={i} index={i} isInView={isInView} />
           ))}
         </motion.div>
       </section>
     </>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/*  BRIDGE: motion value → React state for color lerp                  */
-/* ------------------------------------------------------------------ */
-
-import { useMotionValueEvent } from "framer-motion";
-import { useState } from "react";
-
-function LogoItemWithProgress({
-  index,
-  isInView,
-  colorMotionValue,
-}: {
-  index: number;
-  isInView: boolean;
-  colorMotionValue: ReturnType<typeof useSpring>;
-}) {
-  const [colorProgress, setColorProgress] = useState(0);
-
-  useMotionValueEvent(colorMotionValue, "change", (v: number) => {
-    // Throttle updates: only update if difference > 0.02
-    setColorProgress((prev) => (Math.abs(prev - v) > 0.02 ? v : prev));
-  });
-
-  return (
-    <LogoItem
-      index={index}
-      isInView={isInView}
-      colorProgress={colorProgress}
-    />
   );
 }
