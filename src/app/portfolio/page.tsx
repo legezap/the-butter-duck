@@ -7,7 +7,8 @@ import { projects } from "@/data/projects";
 import { useI18n } from "@/lib/I18nContext";
 
 export default function PortfolioPage() {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
+  const isAr = locale === "ar";
 
   return (
     <>
@@ -75,7 +76,7 @@ export default function PortfolioPage() {
                       </div>
                       <h3>{project.client}</h3>
                       <p className="project-client">{project.event}</p>
-                      <p>{project.overview.slice(0, 120)}&hellip;</p>
+                      <p>{((isAr && project.overview_ar) || project.overview).slice(0, 120)}&hellip;</p>
                       <div className="project-specs">
                         <div className="spec">
                           <strong>{project.size}</strong>
