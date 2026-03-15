@@ -8,6 +8,7 @@ export interface Project {
   image: string;
   size: string;
   tags: string[];
+  tags_ar?: string[];
   location: string;
   overview: string;
   challenge: string;
@@ -32,6 +33,7 @@ export const projects: Project[] = [
     image: asset("/assets/photos/microsoft-leap.jpg"),
     size: "700 sqm",
     tags: ["Double Decker", "Custom Build"],
+    tags_ar: ["جناح مزدوج الطوابق", "بناء مخصص"],
     location: "Riyadh, Saudi Arabia",
     overview:
       "A 700 sqm double-decker stand that gave Microsoft a commanding two-level presence at LEAP — Saudi Arabia's largest tech event. The build housed live product demos, executive meeting suites, and a keynote theatre, turning a floor plot into a destination.",
@@ -124,6 +126,7 @@ export const projects: Project[] = [
     image: asset("/assets/photos/gallery/nespresso-NES-1239.jpg"),
     size: "1200 sqm",
     tags: ["Event Production", "Premium Launch", "Brand Experience"],
+    tags_ar: ["إنتاج فعاليات", "إطلاق فاخر", "تجربة علامة تجارية"],
     location: "Dubai, UAE",
     overview:
       "A 1200 sqm product launch experience for Nespresso's CreatistaPlus, staged at Al Serkal Avenue in Dubai. Five distinct zones — from cocktail bar to keynote theatre — guided 200+ VIP guests, media, and influencers through the brand story without a single wall between them.",
@@ -224,6 +227,7 @@ export const projects: Project[] = [
     image: asset("/assets/photos/vanderlande-airport.jpg"),
     size: "60 sqm",
     tags: ["Open Concept", "Product Demo", "Architectural"],
+    tags_ar: ["مفهوم مفتوح", "عرض منتجات", "تصميم معماري"],
     location: "Dubai, UAE",
     overview:
       "A 60 sqm open-concept stand for Vanderlande at the Dubai Airport Show, built around a working conveyor demonstration that let airport procurement teams see the product in action. Clean architectural lines and open sightlines from all four aisles did the rest.",
@@ -311,6 +315,7 @@ export const projects: Project[] = [
     image: asset("/assets/photos/spark-breakbulk.jpg"),
     size: "60 sqm",
     tags: ["Custom Build", "Industrial Design", "Container Concept"],
+    tags_ar: ["بناء مخصص", "تصميم صناعي", "مفهوم الحاويات"],
     location: "Dubai, UAE",
     overview:
       "A 60 sqm stand for Spark Logistics at Breakbulk Middle East that turned shipping container architecture into a competitive advantage. The industrial design instantly communicated the client's freight forwarding identity while housing three dedicated meeting zones for deal-making.",
@@ -400,6 +405,7 @@ export const projects: Project[] = [
     image: asset("/assets/photos/gallery/hoosh-7.jpg"),
     size: "36 sqm",
     tags: ["Retail Design", "LED Signage", "Product Wall"],
+    tags_ar: ["تصميم تجزئة", "لافتات LED", "جدار منتجات"],
     location: "Dubai, UAE",
     overview:
       "A 36 sqm stand for HOOSH at World of Vape that broke every convention in the hall. While competitors defaulted to black-and-neon, we built a clean retail boutique that showcased 60+ products and kept visitors browsing three times longer than the hall average.",
@@ -497,6 +503,7 @@ export const projects: Project[] = [
     image: asset("/assets/photos/gallery/sipchem-1.jpg"),
     size: "100 sqm",
     tags: ["Double Decker", "LED Video Wall", "Premium Finish"],
+    tags_ar: ["جناح مزدوج الطوابق", "شاشة LED", "تشطيب فاخر"],
     location: "Dubai, UAE",
     overview:
       "A 100 sqm double-decker stand that positioned Sipchem as the dominant presence at the Middle East Coatings Show. The cantilevered upper deck projected corporate scale, while VIP meeting rooms above and an open reception below gave the sales team the right environment for every conversation.",
@@ -584,6 +591,7 @@ export const projects: Project[] = [
     image: asset("/assets/photos/gallery/interfood-1.jpg"),
     size: "54 sqm",
     tags: ["Custom Build", "Hanging Signage", "Interactive Display"],
+    tags_ar: ["بناء مخصص", "لافتة معلقة", "عرض تفاعلي"],
     location: "Dubai, UAE",
     overview:
       "A 54 sqm stand for Interfood at Gulfood Manufacturing that punched well above its weight class. A suspended hanging sign gave hall-wide visibility, while interactive kiosks and acoustic meeting pods turned visitor traffic into 340 qualified leads.",
@@ -673,6 +681,7 @@ export const projects: Project[] = [
     image: asset("/assets/photos/altronix-intersec.jpg"),
     size: "25 sqm",
     tags: ["Compact Design", "Security", "Long-Term Client"],
+    tags_ar: ["تصميم مدمج", "أمن وسلامة", "عميل طويل الأمد"],
     location: "Dubai, UAE",
     overview:
       "A 25 sqm stand for Altronix at Intersec that proved you don't need a big footprint to dominate a show floor. Dramatic LED integration turned a compact island plot into a glowing beacon — and delivered a 60% increase in qualified leads over the previous year. This was our sixth consecutive build for Altronix.",

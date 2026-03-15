@@ -92,7 +92,7 @@ export default function ProjectContent({ project, prev, next }: ProjectContentPr
         <div className="container">
           <div className="hero-content">
             <RevealOnScroll>
-              <span className="hero-badge">{project.tags.join(" / ")}</span>
+              <span className="hero-badge">{((isAr && project.tags_ar) || project.tags).join(" / ")}</span>
             </RevealOnScroll>
             <RevealOnScroll delay={0.1}>
               <h1>
@@ -197,7 +197,7 @@ export default function ProjectContent({ project, prev, next }: ProjectContentPr
                         marginTop: 8,
                       }}
                     >
-                      {project.tags.map((tag) => (
+                      {((isAr && project.tags_ar) || project.tags).map((tag) => (
                         <span key={tag} className="tag">
                           {tag}
                         </span>

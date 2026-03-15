@@ -68,7 +68,7 @@ export default function PortfolioPage() {
                     </div>
                     <div className="project-body">
                       <div className="project-tags">
-                        {project.tags.map((tag) => (
+                        {((isAr && project.tags_ar) || project.tags).map((tag) => (
                           <span key={tag} className="tag">
                             {tag}
                           </span>
