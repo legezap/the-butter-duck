@@ -21,7 +21,7 @@ export default function Footer() {
               <a href="https://instagram.com/thebutterduck" target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a>
               <a href="https://linkedin.com/company/thebutterduck" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
               <a href="mailto:hello@thebutterduck.com" aria-label="Email">&#9993;</a>
-              <a href="https://wa.me/971521477966" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">WA</a>
+              <a href="https://wa.me/971521477966?text=Hi%2C%20I%27m%20interested%20in%20an%20exhibition%20stand.%20Can%20we%20discuss%3F" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">WA</a>
             </div>
           </div>
 
