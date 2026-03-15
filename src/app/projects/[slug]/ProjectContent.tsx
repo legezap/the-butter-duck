@@ -18,7 +18,15 @@ interface ProjectContentProps {
 }
 
 export default function ProjectContent({ project, prev, next }: ProjectContentProps) {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
+  const isAr = locale === "ar";
+
+  // Locale-aware project content
+  const overview = (isAr && project.overview_ar) || project.overview;
+  const challenge = (isAr && project.challenge_ar) || project.challenge;
+  const solution = (isAr && project.solution_ar) || project.solution;
+  const features = (isAr && project.features_ar) || project.features;
+  const results = (isAr && project.results_ar) || project.results;
 
   // Separate renders from photos
   const renders = project.gallery.filter((img) => img.includes("-render-"));
@@ -44,7 +52,7 @@ export default function ProjectContent({ project, prev, next }: ProjectContentPr
               "@context": "https://schema.org",
               "@type": "CreativeWork",
               name: `${project.client} ${project.event} Exhibition Stand`,
-              description: project.overview,
+              description: overview,
               creator: { "@type": "Organization", name: "The Butter Duck" },
               image: project.image,
               locationCreated: { "@type": "Place", name: project.location },
@@ -109,7 +117,7 @@ export default function ProjectContent({ project, prev, next }: ProjectContentPr
             <RevealOnScroll className="sd-text">
               <span className="section-label">{t("case.overview")}</span>
               <h2>{t("case.overview.title")}</h2>
-              <p>{project.overview}</p>
+              <p>{overview}</p>
             </RevealOnScroll>
             <RevealOnScroll direction="right" delay={0.15}>
               <div
@@ -207,7 +215,7 @@ export default function ProjectContent({ project, prev, next }: ProjectContentPr
       <NeuralSection
         label={t("case.challenge")}
         title={t("case.challenge.title")}
-        text={project.challenge}
+        text={challenge}
         variant="challenge"
       />
 
@@ -215,7 +223,7 @@ export default function ProjectContent({ project, prev, next }: ProjectContentPr
       <NeuralSection
         label={t("case.solution")}
         title={t("case.solution.title")}
-        text={project.solution}
+        text={solution}
         variant="solution"
       />
 
@@ -251,7 +259,7 @@ export default function ProjectContent({ project, prev, next }: ProjectContentPr
             </h2>
           </RevealOnScroll>
           <div className="services-grid">
-            {project.features.map((feature, i) => (
+            {features.map((feature, i) => (
               <RevealOnScroll key={feature.title} delay={i * 0.1}>
                 <div className="service-card">
                   <div
@@ -285,7 +293,7 @@ export default function ProjectContent({ project, prev, next }: ProjectContentPr
             </h2>
           </RevealOnScroll>
           <ul style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-            {project.results.map((result, i) => (
+            {results.map((result, i) => (
               <RevealOnScroll key={i} delay={i * 0.08}>
                 <li
                   style={{
