@@ -21,12 +21,12 @@ const marqueeItems = [
 ];
 
 const trustLogos = [
-  { src: asset("/assets/logos/microsoft.svg"), alt: "Microsoft" },
-  { src: asset("/assets/logos/altronix.svg"), alt: "Altronix" },
-  { src: asset("/assets/logos/vanderlande.svg"), alt: "Vanderlande" },
-  { src: asset("/assets/logos/spark.svg"), alt: "Spark" },
-  { src: asset("/assets/logos/absolut-skandic.svg"), alt: "Absolut Skandic" },
-  { src: asset("/assets/logos/ik-group.svg"), alt: "IK Group" },
+  { src: asset("/assets/logos/client-1.png"), alt: "Client" },
+  { src: asset("/assets/logos/client-2.png"), alt: "Client" },
+  { src: asset("/assets/logos/client-3.png"), alt: "Client" },
+  { src: asset("/assets/logos/client-4.png"), alt: "Client" },
+  { src: asset("/assets/logos/client-5.png"), alt: "Client" },
+  { src: asset("/assets/logos/client-6.png"), alt: "Client" },
 ];
 
 const services = [
