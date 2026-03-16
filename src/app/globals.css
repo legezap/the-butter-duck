@@ -12,8 +12,8 @@
   --color-bg-elevated: #1a1a1a;
 
   --color-text-primary: #ffffff;
-  --color-text-muted: #999999;
-  --color-text-dim: #777777;
+  --color-text-muted: #ABABAB;
+  --color-text-dim: #8A8A8A;
 
   --color-accent: #fcd940;
   --color-accent-dark: #e5c338;
@@ -73,7 +73,7 @@ h2 { font-size: clamp(2rem, 4vw, 3.2rem); }
 h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); letter-spacing: -0.02em; }
 .accent { color: var(--color-accent); }
 .text-muted { color: var(--color-text-muted); }
-.section-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--color-accent); font-weight: 600; margin-bottom: 16px; display: block; }
+.section-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--color-accent); font-weight: 600; margin-bottom: 16px; display: block; }
 
 /* --- Buttons --- */
 .btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 36px; border-radius: 100px; font-weight: 600; font-size: 0.9rem; transition: all 0.4s var(--ease-out); border: 1px solid transparent; white-space: nowrap; letter-spacing: 0.01em; }
@@ -255,7 +255,7 @@ video.hero-bg-img { position: absolute; inset: 0; min-width: 100%; min-height: 1
 .project-client { font-size: 0.85rem; color: var(--color-accent); font-weight: 600; margin-bottom: 10px; }
 .project-body > p { color: var(--color-text-muted); font-size: 0.88rem; line-height: 1.7; }
 .project-specs { display: flex; gap: 28px; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--color-border-default); }
-.spec { font-size: 0.75rem; color: var(--color-text-dim); }
+.spec { font-size: 0.8rem; color: var(--color-text-dim); }
 .spec strong { color: var(--color-text-muted); display: block; font-size: 0.82rem; }
 @media (max-width: 480px) { .portfolio-grid { grid-template-columns: 1fr; } }
 
@@ -377,12 +377,12 @@ select.form-input { appearance: none; }
 .footer-social { display: flex; gap: 12px; margin-top: 24px; }
 .footer-social a { width: 40px; height: 40px; border-radius: 10px; background: var(--color-bg-dark); border: 1px solid var(--color-border-default); display: flex; align-items: center; justify-content: center; color: var(--color-text-dim); font-size: 0.82rem; transition: all 0.4s var(--ease-out); text-decoration: none; }
 .footer-social a:hover { border-color: var(--color-accent); color: var(--color-accent); }
-.footer-col h4 { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-dim); margin-bottom: 24px; font-family: var(--font-body); }
+.footer-col h4 { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-dim); margin-bottom: 24px; font-family: var(--font-body); }
 .footer-col a { display: block; padding: 6px 0; color: var(--color-text-dim); font-size: 0.88rem; transition: color 0.4s var(--ease-out); }
 .footer-col a:hover { color: var(--color-text-primary); }
 .footer-contact-row { display: flex; gap: 10px; margin-bottom: 14px; font-size: 0.88rem; color: var(--color-text-dim); }
 .footer-bottom { padding-top: 36px; border-top: 1px solid var(--color-border-default); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-.footer-bottom p { font-size: 0.75rem; color: var(--color-text-dim); }
+.footer-bottom p { font-size: 0.8rem; color: var(--color-text-dim); }
 @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; } }
 
@@ -504,7 +504,7 @@ select.form-input { appearance: none; }
    LANGUAGE SWITCHER
    ============================================================ */
 .lang-switcher { display: flex; gap: 2px; margin-left: 12px; background: var(--color-bg-elevated); border-radius: 100px; padding: 2px; border: 1px solid var(--color-border-default); }
-.lang-btn { padding: 5px 12px; font-size: 0.72rem; font-weight: 600; color: var(--color-text-dim); border: none; background: none; border-radius: 100px; cursor: pointer; transition: all 0.4s var(--ease-out); font-family: var(--font-body); letter-spacing: 0.03em; }
+.lang-btn { padding: 6px 14px; font-size: 0.78rem; font-weight: 600; color: var(--color-text-dim); border: none; background: none; border-radius: 100px; cursor: pointer; transition: all 0.4s var(--ease-out); font-family: var(--font-body); letter-spacing: 0.03em; }
 .lang-btn:hover { color: var(--color-text-muted); }
 .lang-btn.active { background: var(--color-accent); color: var(--color-bg-dark); }
 @media (max-width: 960px) { .lang-switcher { margin-left: 0; margin-right: 12px; } }
