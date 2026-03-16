@@ -74,9 +74,14 @@ export default function Navbar() {
       <nav className={`navbar${scrolled ? " scrolled" : ""}`} id="navbar" aria-label="Main navigation">
         <div className="container nav-container">
           <Link href="/" className="logo" aria-label="The Butter Duck Home">
-            <span className="logo-the">The</span>
-            <span className="logo-butter">Butter</span>
-            <span className="logo-duck">Duck</span>
+            <Image
+              src={asset("/assets/logos/tbd-logo-horizontal.png")}
+              alt="The Butter Duck Co."
+              height={40}
+              width={200}
+              style={{ height: 40, width: "auto", objectFit: "contain" }}
+              priority
+            />
           </Link>
 
           <ul className="nav-links">
