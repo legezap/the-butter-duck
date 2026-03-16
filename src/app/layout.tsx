@@ -39,7 +39,7 @@ export const metadata: Metadata = {
       "Exhibition design, event production, and immersive brand experiences. From 25 sqm to 700 sqm. UAE-based, globally deployed.",
     url: "https://thebutterduck.com",
     type: "website",
-    images: ["/assets/photos/hero-green-corridor.jpg"],
+    images: ["/assets/logos/tbd-logo-stacked.png"],
   },
   twitter: {
     card: "summary_large_image",
@@ -47,7 +47,10 @@ export const metadata: Metadata = {
     description:
       "Global exhibition design and event production. UAE-based, globally deployed.",
   },
-  icons: { icon: "/assets/favicon.svg" },
+  icons: {
+    icon: "/assets/logos/tbd-favicon.png",
+    apple: "/assets/logos/tbd-favicon.png",
+  },
 };
 
 export default function RootLayout({
