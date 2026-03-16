@@ -77,9 +77,9 @@ export default function Navbar() {
             <Image
               src={asset("/assets/logos/tbd-logo-navbar.png")}
               alt="The Butter Duck Co."
-              height={36}
-              width={124}
-              style={{ height: 36, width: "auto" }}
+              height={44}
+              width={160}
+              style={{ height: 44, width: "auto" }}
               priority
             />
           </Link>
