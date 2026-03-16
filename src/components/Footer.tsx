@@ -14,13 +14,9 @@ export default function Footer() {
         <div className="footer-grid">
           <div className="footer-brand">
             <Link href="/" className="logo" aria-label="The Butter Duck Home">
-              <Image
-                src={asset("/assets/logos/tbd-logo-horizontal.png")}
-                alt="The Butter Duck Co."
-                height={34}
-                width={170}
-                style={{ height: 34, width: "auto", objectFit: "contain" }}
-              />
+              <span className="logo-the">The</span>
+              <span className="logo-butter">Butter</span>
+              <span className="logo-duck">Duck</span>
             </Link>
             <p>{t("footer.brand")}</p>
             <div className="footer-social">
