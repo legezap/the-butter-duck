@@ -196,24 +196,23 @@ export default function ContactForm() {
     setSubmitting(true);
     const ref = generateRef();
 
-    // Field names match Airtable "Inbound Leads" columns exactly
-    // so n8n can pass through without remapping
+    // camelCase field names — n8n Airtable node maps these to Title Case columns
+    // Telegram node reads from Airtable output ($json.fields.xxx), not webhook body
     const payload = {
       _subject: `New RFP: ${ref}`,
-      "Reference": ref,
-      "Service": service,
-      "Event Name": eventName,
-      "Event Dates": eventDates,
-      "Event Location": eventLocation,
-      "Booth Size": boothSize,
-      "Budget Range": budget,
-      "Contact Name": name,
-      "Company": company,
-      "Email": email,
-      "Phone": phone,
-      "Country": country,
-      "Notes": notes,
-      "Status": "New",
+      reference: ref,
+      service,
+      eventName,
+      eventDates,
+      eventLocation,
+      boothSize,
+      budget,
+      name,
+      company,
+      email,
+      phone,
+      country,
+      notes,
     };
 
     try {
