@@ -196,21 +196,24 @@ export default function ContactForm() {
     setSubmitting(true);
     const ref = generateRef();
 
+    // Field names match Airtable "Inbound Leads" columns exactly
+    // so n8n can pass through without remapping
     const payload = {
       _subject: `New RFP: ${ref}`,
-      reference: ref,
-      service,
-      eventName,
-      eventDates,
-      eventLocation,
-      boothSize,
-      budget,
-      name,
-      company,
-      email,
-      phone,
-      country,
-      notes,
+      "Reference": ref,
+      "Service": service,
+      "Event Name": eventName,
+      "Event Dates": eventDates,
+      "Event Location": eventLocation,
+      "Booth Size": boothSize,
+      "Budget Range": budget,
+      "Contact Name": name,
+      "Company": company,
+      "Email": email,
+      "Phone": phone,
+      "Country": country,
+      "Notes": notes,
+      "Status": "New",
     };
 
     try {
