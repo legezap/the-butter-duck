@@ -482,7 +482,8 @@ select.form-input { appearance: none; }
 /* ============================================================
    MOBILE STICKY CTA
    ============================================================ */
-.mobile-cta-bar { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 899; background: rgba(0,0,0,0.95); backdrop-filter: blur(16px); border-top: 1px solid var(--color-border-default); padding: 12px 20px; gap: 12px; }
+.mobile-cta-bar { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 899; background: rgba(0,0,0,0.95); backdrop-filter: blur(16px); border-top: 1px solid var(--color-border-default); padding: 12px 20px; gap: 12px; transform: translateY(0); transition: transform 0.35s ease, opacity 0.35s ease; opacity: 1; }
+.mobile-cta-bar.hidden { transform: translateY(100%); opacity: 0; pointer-events: none; }
 @media (max-width: 960px) { .mobile-cta-bar { display: flex; } }
 .mobile-cta-bar .btn { flex: 1; justify-content: center; padding: 14px 16px; font-size: 0.85rem; }
 .mobile-cta-bar .btn-wa { background: #25D366; color: #fff; border-color: #25D366; }

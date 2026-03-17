@@ -1,12 +1,35 @@
 "use client";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useI18n } from "@/lib/I18nContext";
 
 export default function MobileCTA() {
   const { t } = useI18n();
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    // Find the hero CTA button block on the page
+    const heroCta = document.querySelector(".hero-cta");
+    if (!heroCta) {
+      // Not on homepage — always show the bar
+      setVisible(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Show mobile bar only when hero CTA is NOT visible
+        setVisible(!entry.isIntersecting);
+      },
+      { threshold: 0 }
+    );
+
+    observer.observe(heroCta);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <div className="mobile-cta-bar">
+    <div className={`mobile-cta-bar${visible ? "" : " hidden"}`}>
       <Link href="/contact#rfp-form" className="btn btn-primary">
         {t("mobile.quote")}
       </Link>
