@@ -119,6 +119,99 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "absolut-skandic-light-show",
+    client: "Absolut Skandic",
+    event: "Light Show 2025",
+    title: "Absolut Skandic Light Show",
+    image: asset("/assets/photos/gallery/absolut-skandic-1.jpg"),
+    size: "36 sqm",
+    tags: ["Custom Build", "Premium Finish", "Product Showcase"],
+    tags_ar: ["بناء مخصص", "تشطيب فاخر", "عرض منتجات"],
+    location: "Dubai, UAE",
+    overview:
+      "A 36 sqm custom-built stand for Absolut Skandic at Light Show 2025, designed to function as a fully immersive lighting showroom on the exhibition floor. The stand combined warm natural materials with precision-engineered product displays, giving buyers a real-world sense of how each fixture performs in architectural settings.",
+    challenge:
+      "Creating a showroom-quality lighting experience within a compact 36 sqm trade show footprint — where ambient hall lighting and neighbouring stands constantly compete for attention. Every fixture needed to be seen under controlled conditions, not washed out by overhead fluorescents.",
+    solution:
+      "The design placed the product at the centre of every decision. A full-height wooden slat feature wall with concealed blue LED uplighting served as the visual anchor, drawing visitors from the aisle while demonstrating colour-wash capability in real time. Pendant light displays were suspended at varied heights across the stand, turning the ceiling plane into a working product catalogue. A lounge meeting zone and reception desk with branded signage completed the layout, giving the sales team dedicated spaces for every stage of the conversation — from casual browse to formal specification.",
+    features: [
+      {
+        title: "Wooden Slat Feature Wall with LED Uplighting",
+        description:
+          "Floor-to-ceiling timber slat wall with concealed blue LED channels — a signature backdrop that demonstrated colour-wash lighting in a real architectural context.",
+      },
+      {
+        title: "Pendant Light Product Display",
+        description:
+          "Multiple pendant fixtures suspended at staggered heights across the stand, creating a working showroom ceiling that let buyers evaluate each product in situ.",
+      },
+      {
+        title: "Lounge Meeting Zone",
+        description:
+          "Furnished seating area with a meeting table, positioned away from foot traffic — purpose-built for specification discussions and project briefings.",
+      },
+      {
+        title: "Reception Desk with Branded Signage",
+        description:
+          "Concrete-effect reception counter with illuminated brand graphics, serving as the first touchpoint and visitor registration hub.",
+      },
+    ],
+    results: [
+      "Stand footfall exceeded client projections by 35% across both show days",
+      "18 specification meetings hosted with architects and lighting consultants",
+      "Product display format adopted by the client for their permanent showroom refresh",
+      "Contract renewed for Light Show 2026 within two weeks of event close",
+    ],
+    stats: [
+      { value: 36, suffix: " sqm", label: "Stand Footprint" },
+      { value: 12, label: "Products Displayed" },
+      { value: 18, label: "Meetings Hosted" },
+      { value: 4, suffix: " days", label: "Build Time" },
+    ],
+    overview_ar:
+      "جناح مخصص بمساحة 36 م² لـ Absolut Skandic في Light Show 2025، صُمم ليعمل كصالة عرض إضاءة غامرة بالكامل في أرض المعرض. الجناح جمع بين مواد طبيعية دافئة وعروض منتجات مصممة بدقة، مانحاً المشترين تصوراً واقعياً لأداء كل وحدة إضاءة في بيئات معمارية حقيقية.",
+    challenge_ar:
+      "ابتكار تجربة صالة عرض إضاءة بجودة احترافية ضمن مساحة معرض مدمجة تبلغ 36 م² — حيث إضاءة القاعة المحيطة والأجنحة المجاورة تتنافس باستمرار على الانتباه. كل وحدة إضاءة كانت بحاجة لأن تُرى في ظروف متحكم بها، لا أن تضيع وسط الإنارة الفلورية العلوية.",
+    solution_ar:
+      "وضع التصميم المنتج في صميم كل قرار. جدار شرائح خشبية بالارتفاع الكامل مع إضاءة LED زرقاء سفلية مخفية شكّل المحور البصري، يجذب الزوار من الممر ويعرض قدرة الإضاءة اللونية في الوقت الفعلي. وحدات إضاءة معلقة بارتفاعات متفاوتة عبر الجناح حوّلت مستوى السقف إلى كتالوج منتجات عملي. منطقة جلوس للاجتماعات ومكتب استقبال بلافتات مميزة أكملا التخطيط، مانحَين فريق المبيعات مساحات مخصصة لكل مرحلة من الحوار — من التصفح العابر إلى المواصفات الرسمية.",
+    features_ar: [
+      {
+        title: "جدار شرائح خشبية بإضاءة LED سفلية",
+        description:
+          "جدار شرائح خشبية من الأرض للسقف بقنوات LED زرقاء مخفية — خلفية مميزة عرضت إضاءة الغسل اللوني في سياق معماري حقيقي.",
+      },
+      {
+        title: "عرض منتجات الإضاءة المعلقة",
+        description:
+          "وحدات إضاءة معلقة متعددة بارتفاعات متدرجة عبر الجناح، أنشأت سقف صالة عرض عملي يتيح للمشترين تقييم كل منتج في موقعه.",
+      },
+      {
+        title: "منطقة جلوس للاجتماعات",
+        description:
+          "منطقة جلوس مؤثثة بطاولة اجتماعات، بعيدة عن حركة المرور — مصممة لمناقشات المواصفات وإحاطات المشاريع.",
+      },
+      {
+        title: "مكتب استقبال بلافتات مميزة",
+        description:
+          "كاونتر استقبال بمظهر الخرسانة ورسومات علامة تجارية مضيئة، يشكّل نقطة التواصل الأولى ومركز تسجيل الزوار.",
+      },
+    ],
+    results_ar: [
+      "حركة الزوار تجاوزت توقعات العميل بنسبة 35% خلال يومي المعرض",
+      "18 اجتماع مواصفات مع مهندسين معماريين واستشاريي إضاءة",
+      "تنسيق عرض المنتجات اعتمده العميل لتجديد صالة عرضه الدائمة",
+      "تجديد العقد لـ Light Show 2026 خلال أسبوعين من انتهاء الفعالية",
+    ],
+    gallery: [
+      asset("/assets/photos/gallery/absolut-skandic-1.jpg"),
+      asset("/assets/photos/gallery/absolut-skandic-2.jpg"),
+      asset("/assets/photos/gallery/absolut-skandic-3.jpg"),
+      asset("/assets/photos/gallery/absolut-skandic-4.jpg"),
+      asset("/assets/photos/gallery/absolut-skandic-5.jpg"),
+      asset("/assets/photos/gallery/absolut-skandic-6.jpg"),
+    ],
+  },
+  {
     slug: "nespresso-creatista",
     client: "Nespresso",
     event: "CreatistaPlus Launch",
@@ -500,7 +593,7 @@ export const projects: Project[] = [
     client: "Sipchem",
     event: "Middle East Coatings Show",
     title: "Sipchem Middle East Coatings Show",
-    image: asset("/assets/photos/gallery/sipchem-1.jpg"),
+    image: asset("/assets/photos/gallery/sipchem-3.jpg"),
     size: "100 sqm",
     tags: ["Double Decker", "LED Video Wall", "Premium Finish"],
     tags_ar: ["جناح مزدوج الطوابق", "شاشة LED", "تشطيب فاخر"],
@@ -580,7 +673,10 @@ export const projects: Project[] = [
       "تجديد العقد للعام التالي خلال شهر من انتهاء المعرض",
     ],
     gallery: [
+      asset("/assets/photos/gallery/sipchem-3.jpg"),
       asset("/assets/photos/gallery/sipchem-2.jpg"),
+      asset("/assets/photos/gallery/sipchem-4.jpg"),
+      asset("/assets/photos/gallery/sipchem-5.jpg"),
     ],
   },
   {
