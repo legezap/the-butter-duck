@@ -7,7 +7,7 @@ export default function MobileCTA() {
 
   return (
     <div className="mobile-cta-bar">
-      <Link href="/contact" className="btn btn-primary">
+      <Link href="/contact#rfp-form" className="btn btn-primary">
         {t("mobile.quote")}
       </Link>
       <a

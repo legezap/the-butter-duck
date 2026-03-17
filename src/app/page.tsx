@@ -123,7 +123,7 @@ export default function HomePage() {
 
           <RevealOnScroll delay={0.45}>
             <div className="hero-cta">
-              <Link href="/contact" className="btn btn-primary btn-lg">
+              <Link href="/contact#rfp-form" className="btn btn-primary btn-lg">
                 {t("hero.cta.start")} <span className="arrow">&rarr;</span>
               </Link>
               <Link href="/portfolio" className="btn btn-outline btn-lg">
@@ -386,7 +386,7 @@ export default function HomePage() {
                   <Link href="/about" className="btn btn-outline">
                     {t("home.about.btn")}
                   </Link>
-                  <Link href="/contact" className="btn btn-primary">
+                  <Link href="/contact#rfp-form" className="btn btn-primary">
                     {t("about.talk")} <span className="arrow">&rarr;</span>
                   </Link>
                 </div>
@@ -419,7 +419,7 @@ export default function HomePage() {
             <h2>{t("home.cta.title")}</h2>
             <p>{t("home.cta.desc")}</p>
             <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
-              <Link href="/contact" className="btn">
+              <Link href="/contact#rfp-form" className="btn">
                 {t("cta.start")} <span className="arrow">&rarr;</span>
               </Link>
               <Link href="/portfolio" className="btn" style={{ background: "transparent", border: "1px solid rgba(0,0,0,0.3)", color: "var(--color-bg-dark)" }}>

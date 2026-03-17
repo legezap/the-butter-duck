@@ -141,7 +141,7 @@ export default function ServicesPage() {
                   ))}
                 </ul>
                 <div style={{ marginTop: 32 }}>
-                  <Link href="/contact" className="btn btn-primary">
+                  <Link href="/contact#rfp-form" className="btn btn-primary">
                     {t("servicespage.quote")} <span className="arrow">&rarr;</span>
                   </Link>
                 </div>
@@ -174,7 +174,7 @@ export default function ServicesPage() {
             <p>{t("servicespage.cta.desc")}</p>
           </RevealOnScroll>
           <RevealOnScroll delay={0.2}>
-            <Link href="/contact" className="btn btn-lg">
+            <Link href="/contact#rfp-form" className="btn btn-lg">
               {t("servicespage.cta.btn")} <span className="arrow">&rarr;</span>
             </Link>
           </RevealOnScroll>

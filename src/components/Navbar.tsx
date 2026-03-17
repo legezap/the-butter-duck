@@ -157,7 +157,7 @@ export default function Navbar() {
             </li>
 
             <li>
-              <Link href="/contact" className="btn btn-nav btn-primary">
+              <Link href="/contact#rfp-form" className="btn btn-nav btn-primary">
                 {t("nav.quote")}
               </Link>
             </li>
@@ -220,7 +220,7 @@ export default function Navbar() {
           </div>
 
           <Link href="/about">{t("nav.about")}</Link>
-          <Link href="/contact" className="btn btn-primary" style={{ marginTop: 16, justifyContent: "center" }}>
+          <Link href="/contact#rfp-form" className="btn btn-primary" style={{ marginTop: 16, justifyContent: "center" }}>
             {t("nav.quote")}
           </Link>
         </nav>

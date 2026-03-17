@@ -106,7 +106,7 @@ export default function PortfolioPage() {
             <p>{t("portfoliopage.cta.desc")}</p>
           </RevealOnScroll>
           <RevealOnScroll delay={0.2}>
-            <Link href="/contact" className="btn btn-lg">
+            <Link href="/contact#rfp-form" className="btn btn-lg">
               {t("portfoliopage.cta.btn")} <span className="arrow">&rarr;</span>
             </Link>
           </RevealOnScroll>

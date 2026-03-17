@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, useEffect, useCallback, FormEvent } from "react";
 import Link from "next/link";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import { useI18n } from "@/lib/I18nContext";
@@ -41,6 +41,48 @@ function generateRef(): string {
   return `TBD-${y}${m}${d}-${rand}`;
 }
 
+const STORAGE_KEY = "tbd-rfp-draft";
+const DRAFT_TTL_MS = 24 * 60 * 60 * 1000; // 24 hours
+
+// Fields that contain PII — stored separately so we can warn or skip
+const PII_FIELDS = ["name", "email", "phone"];
+
+interface DraftEnvelope {
+  ts: number;           // timestamp when saved
+  data: Record<string, string>;
+}
+
+function loadDraft(): Record<string, string> {
+  if (typeof window === "undefined") return {};
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return {};
+    const envelope: DraftEnvelope = JSON.parse(raw);
+    // Expire after 24h — don't leave PII sitting forever
+    if (Date.now() - envelope.ts > DRAFT_TTL_MS) {
+      localStorage.removeItem(STORAGE_KEY);
+      return {};
+    }
+    return envelope.data || {};
+  } catch {
+    localStorage.removeItem(STORAGE_KEY);
+    return {};
+  }
+}
+
+function saveDraft(data: Record<string, string>) {
+  if (typeof window === "undefined") return;
+  try {
+    const envelope: DraftEnvelope = { ts: Date.now(), data };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(envelope));
+  } catch { /* quota exceeded — ignore */ }
+}
+
+function clearDraft() {
+  if (typeof window === "undefined") return;
+  localStorage.removeItem(STORAGE_KEY);
+}
+
 export default function ContactForm() {
   const { t } = useI18n();
 
@@ -65,6 +107,55 @@ export default function ContactForm() {
   const [consent, setConsent] = useState(false);
 
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [draftRestored, setDraftRestored] = useState(false);
+
+  // Restore saved draft on mount + scroll to form if hash present
+  useEffect(() => {
+    const d = loadDraft();
+    if (Object.keys(d).length > 0) {
+      if (d.service) setService(d.service);
+      if (d.eventName) setEventName(d.eventName);
+      if (d.eventDates) setEventDates(d.eventDates);
+      if (d.eventLocation) setEventLocation(d.eventLocation);
+      if (d.boothSize) setBoothSize(d.boothSize);
+      if (d.budget) setBudget(d.budget);
+      if (d.name) setName(d.name);
+      if (d.company) setCompany(d.company);
+      if (d.email) setEmail(d.email);
+      if (d.phone) setPhone(d.phone);
+      if (d.country) setCountry(d.country);
+      if (d.notes) setNotes(d.notes);
+      if (d.step) setStep(Number(d.step) || 1);
+      setDraftRestored(true);
+    }
+
+    // Scroll to form when navigated with #rfp-form hash
+    if (window.location.hash === "#rfp-form") {
+      setTimeout(() => {
+        const el = document.getElementById("rfp-form");
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 300);
+    }
+  }, []);
+
+  function handleClearDraft() {
+    clearDraft();
+    setService(""); setEventName(""); setEventDates(""); setEventLocation("");
+    setBoothSize(""); setBudget(""); setName(""); setCompany("");
+    setEmail(""); setPhone(""); setCountry(""); setNotes("");
+    setConsent(false); setStep(1); setDraftRestored(false); setErrors({});
+  }
+
+  // Auto-save draft on every change
+  const persistDraft = useCallback(() => {
+    saveDraft({
+      service, eventName, eventDates, eventLocation, boothSize, budget,
+      name, company, email, phone, country, notes, step: String(step),
+    });
+  }, [service, eventName, eventDates, eventLocation, boothSize, budget,
+      name, company, email, phone, country, notes, step]);
+
+  useEffect(() => { persistDraft(); }, [persistDraft]);
 
   function validate(): boolean {
     const errs: Record<string, string> = {};
@@ -131,6 +222,7 @@ export default function ContactForm() {
       if (!res.ok) throw new Error("Submission failed");
       setRefCode(ref);
       setSubmitted(true);
+      clearDraft();
     } catch {
       alert(t("contact.error.alert"));
     } finally {
@@ -228,7 +320,7 @@ export default function ContactForm() {
 
             {/* Right — RFP Form */}
             <RevealOnScroll direction="right" delay={0.15}>
-              <div className="rfp-wrap">
+              <div id="rfp-form" className="rfp-wrap">
                 {submitted ? (
                   <div style={{ textAlign: "center", padding: "40px 0" }}>
                     <div style={{ fontSize: "3rem", marginBottom: 16 }}>{"\u2705"}</div>
@@ -245,6 +337,29 @@ export default function ContactForm() {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} noValidate>
+                    {/* Draft restored notice */}
+                    {draftRestored && (
+                      <div style={{
+                        display: "flex", alignItems: "center", justifyContent: "space-between",
+                        background: "rgba(252,217,64,0.1)", border: "1px solid rgba(252,217,64,0.3)",
+                        borderRadius: 8, padding: "10px 16px", marginBottom: 16, fontSize: "0.8rem",
+                      }}>
+                        <span style={{ color: "var(--color-text-muted)" }}>
+                          {"\uD83D\uDCBE"} Draft restored from your last visit
+                        </span>
+                        <button
+                          type="button"
+                          onClick={handleClearDraft}
+                          style={{
+                            background: "none", border: "none", color: "var(--color-accent)",
+                            cursor: "pointer", fontSize: "0.8rem", fontWeight: 600, padding: "2px 8px",
+                          }}
+                        >
+                          Clear
+                        </button>
+                      </div>
+                    )}
+
                     {/* Progress Bar */}
                     <div className="rfp-progress">
                       {[1, 2, 3, 4].map((s) => (
