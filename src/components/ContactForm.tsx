@@ -113,18 +113,21 @@ export default function ContactForm() {
   useEffect(() => {
     const d = loadDraft();
     if (Object.keys(d).length > 0) {
-      if (d.service) setService(d.service);
-      if (d.eventName) setEventName(d.eventName);
-      if (d.eventDates) setEventDates(d.eventDates);
-      if (d.eventLocation) setEventLocation(d.eventLocation);
-      if (d.boothSize) setBoothSize(d.boothSize);
-      if (d.budget) setBudget(d.budget);
-      if (d.name) setName(d.name);
-      if (d.company) setCompany(d.company);
-      if (d.email) setEmail(d.email);
-      if (d.phone) setPhone(d.phone);
-      if (d.country) setCountry(d.country);
-      if (d.notes) setNotes(d.notes);
+      // Support both camelCase and Title Case keys (legacy drafts)
+      const g = (camel: string, title?: string) => d[camel] || (title ? d[title] : "") || "";
+      const svc = g("service", "Service");
+      if (svc) setService(svc);
+      if (g("eventName", "Event Name")) setEventName(g("eventName", "Event Name"));
+      if (g("eventDates", "Event Dates")) setEventDates(g("eventDates", "Event Dates"));
+      if (g("eventLocation", "Event Location")) setEventLocation(g("eventLocation", "Event Location"));
+      if (g("boothSize", "Booth Size")) setBoothSize(g("boothSize", "Booth Size"));
+      if (g("budget", "Budget Range")) setBudget(g("budget", "Budget Range"));
+      if (g("name", "Contact Name")) setName(g("name", "Contact Name"));
+      if (g("company", "Company")) setCompany(g("company", "Company"));
+      if (g("email", "Email")) setEmail(g("email", "Email"));
+      if (g("phone", "Phone")) setPhone(g("phone", "Phone"));
+      if (g("country", "Country")) setCountry(g("country", "Country"));
+      if (g("notes", "Notes")) setNotes(g("notes", "Notes"));
       if (d.step) setStep(Number(d.step) || 1);
       setDraftRestored(true);
     }
