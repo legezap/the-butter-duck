@@ -148,7 +148,7 @@ export default function HomePage() {
               </div>
               <div className="hero-stat">
                 <div className="num">
-                  <CounterAnimation target={100} suffix="%" />
+                  <CounterAnimation target={98} suffix="%+" />
                 </div>
                 <div className="label">{t("hero.stat.ontime.short")}</div>
               </div>

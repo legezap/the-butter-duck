@@ -285,7 +285,7 @@ const translations = {
     "aboutpage.tl.2022.title": "Microsoft Partnership",
     "aboutpage.tl.2022.desc": "Selected as exhibition partner for Microsoft's regional event activations.",
     "aboutpage.tl.2024.title": "80+ Projects Milestone",
-    "aboutpage.tl.2024.desc": "Crossed 80 completed projects with a 100% on-time delivery record.",
+    "aboutpage.tl.2024.desc": "Crossed 80 completed projects with a consistent on-time delivery track record.",
     "aboutpage.tl.2025.title": "10 Countries Reached",
     "aboutpage.tl.2025.desc": "Expanded into marketing strategy and branding with the creation of Butter Studio. Now operating across 10 countries.",
 
@@ -743,7 +743,7 @@ const translations = {
     "aboutpage.tl.2022.title": "شراكة مايكروسوفت",
     "aboutpage.tl.2022.desc": "تم اختيارنا كشريك معارض لتفعيلات مايكروسوفت الإقليمية.",
     "aboutpage.tl.2024.title": "إنجاز 80+ مشروع",
-    "aboutpage.tl.2024.desc": "تجاوزنا 80 مشروعاً مكتملاً بسجل تسليم 100% في الموعد.",
+    "aboutpage.tl.2024.desc": "تجاوزنا 80 مشروعاً مكتملاً بسجل تسليم ثابت في الموعد.",
     "aboutpage.tl.2025.title": "الوصول إلى 10 دول",
     "aboutpage.tl.2025.desc": "توسعنا في استراتيجية التسويق وبناء العلامات التجارية مع إنشاء بتر ستوديو. الآن نعمل في 10 دول.",
 

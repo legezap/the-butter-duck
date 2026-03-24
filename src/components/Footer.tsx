@@ -57,6 +57,14 @@ export default function Footer() {
 
         <div className="footer-bottom">
           <p>&copy; {new Date().getFullYear()} The Butter Duck Company FZC LLC. All rights reserved. License: 4426620.01</p>
+          <p style={{ marginTop: 8 }}>
+            <Link href="/privacy" style={{ color: "inherit", textDecoration: "underline" }}>Privacy Policy</Link>
+            {" | "}
+            <Link href="/terms" style={{ color: "inherit", textDecoration: "underline" }}>Terms of Service</Link>
+          </p>
+          <p className="text-dim" style={{ fontSize: "0.75rem", marginTop: 12, lineHeight: 1.6 }}>
+            All third-party trademarks, logos, and brand names displayed on this website are the property of their respective owners and are used solely to identify projects completed by The Butter Duck Company FZC LLC. Their use does not imply endorsement, sponsorship, or affiliation.
+          </p>
           <p>United Arab Emirates</p>
         </div>
       </div>
