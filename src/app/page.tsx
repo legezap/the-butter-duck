@@ -132,28 +132,32 @@ export default function HomePage() {
             </div>
           </RevealOnScroll>
 
-          <RevealOnScroll delay={0.55}>
-            <div className="hero-stats">
+          <div className="hero-stats">
+            <RevealOnScroll delay={0.5}>
               <div className="hero-stat">
                 <div className="num">
                   <CounterAnimation target={80} suffix="+" />
                 </div>
                 <div className="label">{t("hero.stat.projects.short")}</div>
               </div>
+            </RevealOnScroll>
+            <RevealOnScroll delay={0.65}>
               <div className="hero-stat">
                 <div className="num">
                   <CounterAnimation target={10} />
                 </div>
                 <div className="label">{t("hero.stat.countries.short")}</div>
               </div>
+            </RevealOnScroll>
+            <RevealOnScroll delay={0.8}>
               <div className="hero-stat">
                 <div className="num">
                   <CounterAnimation target={98} suffix="%+" />
                 </div>
                 <div className="label">{t("hero.stat.ontime.short")}</div>
               </div>
-            </div>
-          </RevealOnScroll>
+            </RevealOnScroll>
+          </div>
         </div>
       </section>
 
