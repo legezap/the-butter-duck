@@ -43,7 +43,6 @@ export default function Footer() {
             <h4>{t("footer.company")}</h4>
             <Link href="/about">{t("footer.aboutus")}</Link>
             <Link href="/portfolio">{t("nav.portfolio")}</Link>
-            <Link href="/defence">{t("nav.defence")}</Link>
             <Link href="/contact">{t("footer.contact")}</Link>
           </div>
 

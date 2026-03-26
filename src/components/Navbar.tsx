@@ -157,12 +157,6 @@ export default function Navbar() {
             </li>
 
             <li>
-              <Link href="/defence" className={isActive("/defence") ? "active" : ""}>
-                {t("nav.defence")}
-              </Link>
-            </li>
-
-            <li>
               <Link href="/contact#rfp-form" className="btn btn-nav btn-primary">
                 {t("nav.quote")}
               </Link>
@@ -226,7 +220,6 @@ export default function Navbar() {
           </div>
 
           <Link href="/about">{t("nav.about")}</Link>
-          <Link href="/defence">{t("nav.defence")}</Link>
           <Link href="/contact#rfp-form" className="btn btn-primary" style={{ marginTop: 16, justifyContent: "center" }}>
             {t("nav.quote")}
           </Link>
