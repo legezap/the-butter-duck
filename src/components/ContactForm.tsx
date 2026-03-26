@@ -219,7 +219,7 @@ export default function ContactForm() {
     };
 
     try {
-      const res = await fetch("https://pavellegeza.app.n8n.cloud/webhook/inbound-lead", {
+      const res = await fetch(process.env.NEXT_PUBLIC_WEBHOOK_URL!, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
