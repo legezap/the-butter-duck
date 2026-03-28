@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useCallback, FormEvent } from "react";
+import React, { useState, useEffect, FormEvent } from "react";
 import Link from "next/link";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import { useI18n } from "@/lib/I18nContext";
@@ -48,47 +48,6 @@ function generateRef(): string {
   return `TBD-${y}${m}${d}-${rand}`;
 }
 
-const STORAGE_KEY = "tbd-rfp-draft";
-const DRAFT_TTL_MS = 24 * 60 * 60 * 1000; // 24 hours
-
-// Fields that contain PII — stored separately so we can warn or skip
-const PII_FIELDS = ["name", "email", "phone"];
-
-interface DraftEnvelope {
-  ts: number;           // timestamp when saved
-  data: Record<string, string>;
-}
-
-function loadDraft(): Record<string, string> {
-  if (typeof window === "undefined") return {};
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return {};
-    const envelope: DraftEnvelope = JSON.parse(raw);
-    // Expire after 24h — don't leave PII sitting forever
-    if (Date.now() - envelope.ts > DRAFT_TTL_MS) {
-      localStorage.removeItem(STORAGE_KEY);
-      return {};
-    }
-    return envelope.data || {};
-  } catch {
-    localStorage.removeItem(STORAGE_KEY);
-    return {};
-  }
-}
-
-function saveDraft(data: Record<string, string>) {
-  if (typeof window === "undefined") return;
-  try {
-    const envelope: DraftEnvelope = { ts: Date.now(), data };
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(envelope));
-  } catch { /* quota exceeded — ignore */ }
-}
-
-function clearDraft() {
-  if (typeof window === "undefined") return;
-  localStorage.removeItem(STORAGE_KEY);
-}
 
 export default function ContactForm() {
   const { t } = useI18n();
@@ -114,32 +73,9 @@ export default function ContactForm() {
   const [consent, setConsent] = useState(false);
 
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [draftRestored, setDraftRestored] = useState(false);
 
-  // Restore saved draft on mount + scroll to form if hash present
+  // Scroll to form when navigated with #rfp-form hash
   useEffect(() => {
-    const d = loadDraft();
-    if (Object.keys(d).length > 0) {
-      // Support both camelCase and Title Case keys (legacy drafts)
-      const g = (camel: string, title?: string) => d[camel] || (title ? d[title] : "") || "";
-      const svc = g("service", "Service");
-      if (svc) setService(svc);
-      if (g("eventName", "Event Name")) setEventName(g("eventName", "Event Name"));
-      if (g("eventDates", "Event Dates")) setEventDates(g("eventDates", "Event Dates"));
-      if (g("eventLocation", "Event Location")) setEventLocation(g("eventLocation", "Event Location"));
-      if (g("boothSize", "Booth Size")) setBoothSize(g("boothSize", "Booth Size"));
-      if (g("budget", "Budget Range")) setBudget(g("budget", "Budget Range"));
-      if (g("name", "Contact Name")) setName(g("name", "Contact Name"));
-      if (g("company", "Company")) setCompany(g("company", "Company"));
-      if (g("email", "Email")) setEmail(g("email", "Email"));
-      if (g("phone", "Phone")) setPhone(g("phone", "Phone"));
-      if (g("country", "Country")) setCountry(g("country", "Country"));
-      if (g("notes", "Notes")) setNotes(g("notes", "Notes"));
-      if (d.step) setStep(Number(d.step) || 1);
-      setDraftRestored(true);
-    }
-
-    // Scroll to form when navigated with #rfp-form hash
     if (window.location.hash === "#rfp-form") {
       setTimeout(() => {
         const el = document.getElementById("rfp-form");
@@ -147,25 +83,6 @@ export default function ContactForm() {
       }, 300);
     }
   }, []);
-
-  function handleClearDraft() {
-    clearDraft();
-    setService(""); setEventName(""); setEventDates(""); setEventLocation("");
-    setBoothSize(""); setBudget(""); setName(""); setCompany("");
-    setEmail(""); setPhone(""); setCountry(""); setNotes("");
-    setConsent(false); setStep(1); setDraftRestored(false); setErrors({});
-  }
-
-  // Auto-save draft on every change
-  const persistDraft = useCallback(() => {
-    saveDraft({
-      service, eventName, eventDates, eventLocation, boothSize, budget,
-      name, company, email, phone, country, notes, step: String(step),
-    });
-  }, [service, eventName, eventDates, eventLocation, boothSize, budget,
-      name, company, email, phone, country, notes, step]);
-
-  useEffect(() => { persistDraft(); }, [persistDraft]);
 
   function validate(): boolean {
     const errs: Record<string, string> = {};
@@ -234,7 +151,6 @@ export default function ContactForm() {
       if (!res.ok) throw new Error("Submission failed");
       setRefCode(ref);
       setSubmitted(true);
-      clearDraft();
     } catch {
       alert(t("contact.error.alert"));
     } finally {
@@ -349,28 +265,6 @@ export default function ContactForm() {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} noValidate>
-                    {/* Draft restored notice */}
-                    {draftRestored && (
-                      <div style={{
-                        display: "flex", alignItems: "center", justifyContent: "space-between",
-                        background: "rgba(252,217,64,0.1)", border: "1px solid rgba(252,217,64,0.3)",
-                        borderRadius: 8, padding: "10px 16px", marginBottom: 16, fontSize: "0.8rem",
-                      }}>
-                        <span style={{ color: "var(--color-text-muted)" }}>
-                          {"\uD83D\uDCBE"} Draft restored from your last visit
-                        </span>
-                        <button
-                          type="button"
-                          onClick={handleClearDraft}
-                          style={{
-                            background: "none", border: "none", color: "var(--color-accent)",
-                            cursor: "pointer", fontSize: "0.8rem", fontWeight: 600, padding: "2px 8px",
-                          }}
-                        >
-                          Clear
-                        </button>
-                      </div>
-                    )}
 
                     {/* Progress Bar */}
                     <div className="rfp-progress">
