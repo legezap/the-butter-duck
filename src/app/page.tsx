@@ -27,27 +27,38 @@ export default function HomePage() {
     t("marquee.global"),
   ];
 
+  const serviceIcons = [
+    // Exhibition Design & Build — building/grid
+    <svg key="build" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>,
+    // Project Management — clipboard check
+    <svg key="clip" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M9 14l2 2 4-4"/></svg>,
+    // Conceptual Event Design — sparkles
+    <svg key="sparkle" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8z"/></svg>,
+    // Content & Media — play circle
+    <svg key="play" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>,
+  ];
+
   const services = [
     {
-      icon: "\u{1F3D7}\uFE0F",
+      icon: serviceIcons[0],
       title: t("svc.exhibition.title"),
       desc: t("svc.exhibition.desc"),
       link: "/services#exhibition-design",
     },
     {
-      icon: "\u{1F4CB}",
+      icon: serviceIcons[1],
       title: t("svc.pm.title"),
       desc: t("svc.pm.desc"),
       link: "/services#project-management",
     },
     {
-      icon: "\u{1F3A8}",
+      icon: serviceIcons[2],
       title: t("svc.event.title"),
       desc: t("svc.event.desc"),
       link: "/services#event-design",
     },
     {
-      icon: "\u{1F3AC}",
+      icon: serviceIcons[3],
       title: t("svc.media.title"),
       desc: t("svc.media.desc"),
       link: "/services#content-media",
