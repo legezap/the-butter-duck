@@ -15,6 +15,21 @@ interface NeuralSectionProps {
 }
 
 /* ------------------------------------------------------------------ */
+/*  Deterministic dot generator                                       */
+/* ------------------------------------------------------------------ */
+
+function generateDots(count: number, width: number, height: number, seed: number) {
+  let s = seed;
+  const rng = () => { s = (s * 16807) % 2147483647; return (s - 1) / 2147483646; };
+  return Array.from({ length: count }, (_, i) => ({
+    cx: rng() * width,
+    cy: rng() * height,
+    r: 1 + rng() * 1.5,
+    delay: rng() * 8,
+  }));
+}
+
+/* ------------------------------------------------------------------ */
 /*  Split text into sentences                                         */
 /* ------------------------------------------------------------------ */
 
@@ -110,9 +125,33 @@ const cssText = `
   .${SCOPE}-wrap { padding: 64px 0; }
 }
 
+/* Floating dots background */
+.${SCOPE}-dots {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes ${SCOPE}-float {
+  0%, 100% { opacity: 0.1; transform: translateY(0); }
+  50% { opacity: 0.25; transform: translateY(-8px); }
+}
+
+.${SCOPE}-dot {
+  fill: var(--color-accent, #fcd940);
+  opacity: 0.1;
+  animation: ${SCOPE}-float 7s ease-in-out infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
 /* Content layer */
 .${SCOPE}-content {
   position: relative;
+  z-index: 1;
   max-width: 1320px;
   margin: 0 auto;
   padding: 0 32px;
@@ -271,6 +310,7 @@ const cssText = `
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .${SCOPE}-hl { transition: none; }
+  .${SCOPE}-dot { animation: none !important; opacity: 0.08; }
 }
 `;
 
@@ -285,6 +325,10 @@ export default function NeuralSection({
   variant = "solution",
 }: NeuralSectionProps) {
   const sentences = useMemo(() => splitSentences(text), [text]);
+  const dots = useMemo(() => {
+    const seed = variant === "challenge" ? 42 : 137;
+    return generateDots(20, 1400, 800, seed);
+  }, [variant]);
 
   const isChallenge = variant === "challenge";
 
@@ -296,6 +340,25 @@ export default function NeuralSection({
       <section
         className={`${SCOPE}-wrap ${SCOPE}-wrap--${variant}`}
       >
+        {/* Floating dots background */}
+        <svg
+          className={`${SCOPE}-dots`}
+          viewBox="0 0 1400 800"
+          preserveAspectRatio="xMidYMid slice"
+          aria-hidden="true"
+        >
+          {dots.map((d, i) => (
+            <circle
+              key={i}
+              cx={d.cx}
+              cy={d.cy}
+              r={d.r}
+              className={`${SCOPE}-dot`}
+              style={{ animationDelay: `${d.delay}s` }}
+            />
+          ))}
+        </svg>
+
         {/* Content */}
         <div className={`${SCOPE}-content`}>
           {/* Header */}

@@ -1,16 +1,23 @@
 "use client";
 
-import { useState, useEffect, useCallback, FormEvent } from "react";
+import React, { useState, useEffect, useCallback, FormEvent } from "react";
 import Link from "next/link";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import { useI18n } from "@/lib/I18nContext";
 import type { TranslationKey } from "@/lib/i18n";
 
-const SERVICE_KEYS: { id: string; labelKey: TranslationKey; icon: string }[] = [
-  { id: "exhibition-design", labelKey: "contact.svc.exhibition", icon: "\uD83C\uDFD7" },
-  { id: "project-management", labelKey: "contact.svc.pm", icon: "\uD83D\uDCCB" },
-  { id: "event-design", labelKey: "contact.svc.event", icon: "\uD83C\uDFAD" },
-  { id: "content-media", labelKey: "contact.svc.media", icon: "\uD83C\uDFAC" },
+const SERVICE_ICONS: React.ReactNode[] = [
+  <svg key="s1" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>,
+  <svg key="s2" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M9 14l2 2 4-4"/></svg>,
+  <svg key="s3" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8z"/></svg>,
+  <svg key="s4" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>,
+];
+
+const SERVICE_KEYS: { id: string; labelKey: TranslationKey }[] = [
+  { id: "exhibition-design", labelKey: "contact.svc.exhibition" },
+  { id: "project-management", labelKey: "contact.svc.pm" },
+  { id: "event-design", labelKey: "contact.svc.event" },
+  { id: "content-media", labelKey: "contact.svc.media" },
 ];
 
 const BOOTH_SIZE_KEYS: TranslationKey[] = [
@@ -280,7 +287,7 @@ export default function ContactForm() {
                 </h2>
 
                 <div className="contact-item">
-                  <div className="ci-icon">{"\uD83D\uDCCD"}</div>
+                  <div className="ci-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
                   <div className="ci-text">
                     <h4>{t("contact.office")}</h4>
                     <p>
@@ -292,7 +299,7 @@ export default function ContactForm() {
                 </div>
 
                 <div className="contact-item">
-                  <div className="ci-icon">{"\uD83D\uDCDE"}</div>
+                  <div className="ci-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
                   <div className="ci-text">
                     <h4>{t("contact.phone.label")}</h4>
                     <a href="https://wa.me/971521477966?text=Hi%2C%20I%27m%20interested%20in%20an%20exhibition%20stand.%20Can%20we%20discuss%3F">+971 52 147 7966</a>
@@ -300,7 +307,7 @@ export default function ContactForm() {
                 </div>
 
                 <div className="contact-item">
-                  <div className="ci-icon">{"\u2709\uFE0F"}</div>
+                  <div className="ci-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
                   <div className="ci-text">
                     <h4>{t("contact.email")}</h4>
                     <a href="mailto:hello@thebutterduck.com">hello@thebutterduck.com</a>
@@ -308,7 +315,7 @@ export default function ContactForm() {
                 </div>
 
                 <div className="contact-item">
-                  <div className="ci-icon">{"\uD83D\uDCF1"}</div>
+                  <div className="ci-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></div>
                   <div className="ci-text">
                     <h4>{t("contact.social")}</h4>
                     <a
@@ -395,7 +402,7 @@ export default function ContactForm() {
                           {t("contact.step1.title")}
                         </h3>
                         <div className="svc-grid">
-                          {SERVICE_KEYS.map((opt) => (
+                          {SERVICE_KEYS.map((opt, i) => (
                             <div
                               key={opt.id}
                               className={`svc-opt${service === opt.id ? " selected" : ""}`}
@@ -413,7 +420,7 @@ export default function ContactForm() {
                               }}
                             >
                               <div style={{ fontSize: "1.4rem", marginBottom: 8 }}>
-                                {opt.icon}
+                                {SERVICE_ICONS[i]}
                               </div>
                               <div style={{ fontSize: "0.85rem", fontWeight: 600 }}>
                                 {t(opt.labelKey)}
