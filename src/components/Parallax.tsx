@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 interface Props {
   children: React.ReactNode;
@@ -8,54 +8,55 @@ interface Props {
   speed?: number;
 }
 
-export default function Parallax({ children, className, speed = 40 }: Props) {
+export default function Parallax({ children, className, speed = 25 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
-  const [offset, setOffset] = useState(0);
-  const ticking = useRef(false);
+  const current = useRef(0);
+  const target = useRef(0);
+  const raf = useRef<number>(0);
   const prefersReducedMotion = useRef(false);
 
   useEffect(() => {
     prefersReducedMotion.current = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
-  }, []);
 
-  const update = useCallback(() => {
-    if (!ref.current || prefersReducedMotion.current) return;
+    const updateTarget = () => {
+      if (!ref.current || prefersReducedMotion.current) return;
+      const rect = ref.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const centerOffset =
+        (rect.top + rect.height / 2 - windowHeight / 2) / windowHeight;
+      target.current = -centerOffset * speed;
+    };
 
-    const rect = ref.current.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
-    // 0 when element center is at viewport center, -1 to 1 range roughly
-    const centerOffset =
-      (rect.top + rect.height / 2 - windowHeight / 2) / windowHeight;
-    setOffset(-centerOffset * speed);
-    ticking.current = false;
+    const loop = () => {
+      if (!ref.current || prefersReducedMotion.current) {
+        raf.current = requestAnimationFrame(loop);
+        return;
+      }
+
+      updateTarget();
+
+      // Lerp towards target — 0.08 gives silk-like easing
+      current.current += (target.current - current.current) * 0.08;
+
+      ref.current.style.transform = `translate3d(0, ${current.current}px, 0) scale(1.03)`;
+
+      raf.current = requestAnimationFrame(loop);
+    };
+
+    raf.current = requestAnimationFrame(loop);
+
+    return () => {
+      cancelAnimationFrame(raf.current);
+    };
   }, [speed]);
-
-  const onScroll = useCallback(() => {
-    if (!ticking.current) {
-      ticking.current = true;
-      requestAnimationFrame(update);
-    }
-  }, [update]);
-
-  useEffect(() => {
-    window.addEventListener("scroll", onScroll, { passive: true });
-    // Run once on mount so initial position is correct
-    update();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [onScroll, update]);
 
   return (
     <div
       ref={ref}
       className={className}
-      style={{
-        transform: prefersReducedMotion.current
-          ? undefined
-          : `translate3d(0, ${offset}px, 0)`,
-        willChange: "transform",
-      }}
+      style={{ willChange: "transform" }}
     >
       {children}
     </div>

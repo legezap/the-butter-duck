@@ -1,14 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-  type CSSProperties,
-} from "react";
+import { useMemo, useRef } from "react";
 
 /* ------------------------------------------------------------------ */
 /*  Types                                                              */
@@ -19,82 +12,6 @@ interface NeuralSectionProps {
   title: string;
   text: string;
   variant?: "challenge" | "solution";
-}
-
-/* ------------------------------------------------------------------ */
-/*  Deterministic pseudo-random (seeded)                              */
-/* ------------------------------------------------------------------ */
-
-function seededRandom(seed: number) {
-  let s = seed;
-  return () => {
-    s = (s * 16807 + 0) % 2147483647;
-    return (s - 1) / 2147483646;
-  };
-}
-
-/* ------------------------------------------------------------------ */
-/*  Generate network geometry                                         */
-/* ------------------------------------------------------------------ */
-
-interface Dot {
-  id: number;
-  cx: number;
-  cy: number;
-  r: number;
-  delay: number;
-}
-
-interface Line {
-  id: string;
-  x1: number;
-  y1: number;
-  x2: number;
-  y2: number;
-  delay: number;
-}
-
-function generateNetwork(
-  count: number,
-  width: number,
-  height: number,
-  seed: number
-): { dots: Dot[]; lines: Line[] } {
-  const rng = seededRandom(seed);
-  const dots: Dot[] = [];
-
-  for (let i = 0; i < count; i++) {
-    dots.push({
-      id: i,
-      cx: rng() * width,
-      cy: rng() * height,
-      r: 1.5 + rng() * 2.5,
-      delay: rng() * 6,
-    });
-  }
-
-  const lines: Line[] = [];
-  const maxDist = Math.min(width, height) * 0.25;
-
-  for (let i = 0; i < dots.length; i++) {
-    for (let j = i + 1; j < dots.length; j++) {
-      const dx = dots[i].cx - dots[j].cx;
-      const dy = dots[i].cy - dots[j].cy;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < maxDist) {
-        lines.push({
-          id: `${i}-${j}`,
-          x1: dots[i].cx,
-          y1: dots[i].cy,
-          x2: dots[j].cx,
-          y2: dots[j].cy,
-          delay: (dots[i].delay + dots[j].delay) / 2,
-        });
-      }
-    }
-  }
-
-  return { dots, lines };
 }
 
 /* ------------------------------------------------------------------ */
@@ -193,47 +110,9 @@ const cssText = `
   .${SCOPE}-wrap { padding: 64px 0; }
 }
 
-/* SVG background layer */
-.${SCOPE}-svg-layer {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  will-change: transform;
-  z-index: 0;
-}
-
-/* Dot pulse */
-@keyframes ${SCOPE}-pulse {
-  0%, 100% { opacity: 0.18; transform: scale(1); }
-  50%      { opacity: 0.45; transform: scale(1.6); }
-}
-
-.${SCOPE}-dot {
-  fill: var(--color-accent, #fcd940);
-  opacity: 0.18;
-  animation: ${SCOPE}-pulse 5s ease-in-out infinite;
-  transform-origin: center;
-  transform-box: fill-box;
-}
-
-/* Line shimmer */
-@keyframes ${SCOPE}-shimmer {
-  0%, 100% { stroke-opacity: 0.04; }
-  50%      { stroke-opacity: 0.09; }
-}
-
-.${SCOPE}-line {
-  stroke: rgba(255,255,255,0.04);
-  stroke-width: 0.8;
-  animation: ${SCOPE}-shimmer 6s ease-in-out infinite;
-}
-
 /* Content layer */
 .${SCOPE}-content {
   position: relative;
-  z-index: 1;
   max-width: 1320px;
   margin: 0 auto;
   padding: 0 32px;
@@ -333,19 +212,13 @@ const cssText = `
   color: var(--color-text-muted, #999);
 }
 
-/* Highlighted key terms */
-@keyframes ${SCOPE}-glow {
-  0%, 100% { text-shadow: 0 0 0 transparent; }
-  50%      { text-shadow: 0 0 8px rgba(252, 217, 64, 0.15); }
-}
-
+/* Highlighted key terms — static styling, no animation */
 .${SCOPE}-hl {
   color: var(--color-text-primary, #fff);
   font-weight: 600;
   position: relative;
   display: inline;
   background: linear-gradient(180deg, transparent 65%, rgba(252, 217, 64, 0.08) 65%);
-  animation: ${SCOPE}-glow 4s ease-in-out infinite;
   transition: color 0.3s ease;
 }
 
@@ -397,14 +270,7 @@ const cssText = `
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .${SCOPE}-dot,
-  .${SCOPE}-line {
-    animation: none !important;
-  }
-  .${SCOPE}-dot { opacity: 0.2; }
-  .${SCOPE}-line { stroke-opacity: 0.05; }
-  .${SCOPE}-svg-layer { transform: none !important; }
-  .${SCOPE}-hl { animation: none !important; }
+  .${SCOPE}-hl { transition: none; }
 }
 `;
 
@@ -420,47 +286,6 @@ export default function NeuralSection({
 }: NeuralSectionProps) {
   const sentences = useMemo(() => splitSentences(text), [text]);
 
-  /* -- Parallax state ------------------------------------------------ */
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [parallaxY, setParallaxY] = useState(0);
-  const ticking = useRef(false);
-  const reducedMotion = useRef(false);
-
-  useEffect(() => {
-    reducedMotion.current = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-  }, []);
-
-  const updateParallax = useCallback(() => {
-    if (!sectionRef.current || reducedMotion.current) return;
-    const rect = sectionRef.current.getBoundingClientRect();
-    const vh = window.innerHeight;
-    const center = (rect.top + rect.height / 2 - vh / 2) / vh;
-    setParallaxY(-center * 30);
-    ticking.current = false;
-  }, []);
-
-  const onScroll = useCallback(() => {
-    if (!ticking.current) {
-      ticking.current = true;
-      requestAnimationFrame(updateParallax);
-    }
-  }, [updateParallax]);
-
-  useEffect(() => {
-    window.addEventListener("scroll", onScroll, { passive: true });
-    updateParallax();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [onScroll, updateParallax]);
-
-  /* -- Network geometry (stable across renders) ---------------------- */
-  const network = useMemo(() => {
-    const seed = variant === "challenge" ? 42 : 137;
-    return generateNetwork(28, 1400, 800, seed);
-  }, [variant]);
-
-  /* -- Render -------------------------------------------------------- */
   const isChallenge = variant === "challenge";
 
   return (
@@ -469,44 +294,8 @@ export default function NeuralSection({
       <style dangerouslySetInnerHTML={{ __html: cssText }} />
 
       <section
-        ref={sectionRef}
         className={`${SCOPE}-wrap ${SCOPE}-wrap--${variant}`}
       >
-        {/* SVG neural network background */}
-        <svg
-          className={`${SCOPE}-svg-layer`}
-          viewBox="0 0 1400 800"
-          preserveAspectRatio="xMidYMid slice"
-          aria-hidden="true"
-          style={{
-            transform: `translate3d(0, ${parallaxY}px, 0)`,
-          }}
-        >
-          {/* Lines first (behind dots) */}
-          {network.lines.map((l) => (
-            <line
-              key={l.id}
-              className={`${SCOPE}-line`}
-              x1={l.x1}
-              y1={l.y1}
-              x2={l.x2}
-              y2={l.y2}
-              style={{ animationDelay: `${l.delay}s` }}
-            />
-          ))}
-          {/* Dots */}
-          {network.dots.map((d) => (
-            <circle
-              key={d.id}
-              className={`${SCOPE}-dot`}
-              cx={d.cx}
-              cy={d.cy}
-              r={d.r}
-              style={{ animationDelay: `${d.delay}s` }}
-            />
-          ))}
-        </svg>
-
         {/* Content */}
         <div className={`${SCOPE}-content`}>
           {/* Header */}
@@ -557,15 +346,15 @@ function NodeCard({
     <motion.div
       ref={ref}
       className={`${SCOPE}-node`}
-      initial={{ opacity: 0, y: 28, scale: 0.97 }}
+      initial={{ opacity: 0, y: 28 }}
       animate={
         isInView
-          ? { opacity: 1, y: 0, scale: 1 }
-          : { opacity: 0, y: 28, scale: 0.97 }
+          ? { opacity: 1, y: 0 }
+          : { opacity: 0, y: 28 }
       }
       transition={{
-        duration: 0.7,
-        ease: [0.4, 0, 0.2, 1],
+        duration: 0.6,
+        ease: [0.16, 1, 0.3, 1],
         delay: index * 0.12,
       }}
     >

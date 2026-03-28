@@ -197,17 +197,15 @@ export default function HomePage() {
           </RevealOnScroll>
 
           <div className="services-grid">
-            {services.map((svc, i) => (
-              <RevealOnScroll key={svc.title} delay={i * 0.12}>
-                <div className="service-card">
-                  <div className="service-icon">{svc.icon}</div>
-                  <h3>{svc.title}</h3>
-                  <p>{svc.desc}</p>
-                  <Link href={svc.link} className="service-link">
-                    {t("services.learn")} <span>&rarr;</span>
-                  </Link>
-                </div>
-              </RevealOnScroll>
+            {services.map((svc) => (
+              <div key={svc.title} className="service-card">
+                <div className="service-icon">{svc.icon}</div>
+                <h3>{svc.title}</h3>
+                <p>{svc.desc}</p>
+                <Link href={svc.link} className="service-link">
+                  {t("services.learn")} <span>&rarr;</span>
+                </Link>
+              </div>
             ))}
           </div>
         </div>
@@ -225,12 +223,10 @@ export default function HomePage() {
         </Parallax>
         <div className="cine-divider-overlay" style={{ background: "linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0.5) 70%, rgba(0,0,0,0.7) 100%)" }} />
         <div className="cine-divider-content container">
-          <RevealOnScroll>
-            <div>
-              <h2 dangerouslySetInnerHTML={{ __html: t("cine.microsoft") }} />
-              <p>{t("cine.microsoft.sub.full")}</p>
-            </div>
-          </RevealOnScroll>
+          <div>
+            <h2 dangerouslySetInnerHTML={{ __html: t("cine.microsoft") }} />
+            <p>{t("cine.microsoft.sub.full")}</p>
+          </div>
         </div>
       </section>
 
@@ -245,33 +241,32 @@ export default function HomePage() {
           </RevealOnScroll>
 
           <div className="portfolio-grid">
-            {featuredProjects.map((project, i) => (
-              <RevealOnScroll key={project.slug} delay={i * 0.15}>
-                <Link
-                  href={`/projects/${project.slug}`}
-                  style={{ color: "inherit" }}
-                >
-                  <div className="project-card">
-                    <div className="project-img">
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        width={720}
-                        height={450}
-                        style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                      />
-                    </div>
-                    <div className="project-body">
-                      <div className="project-tags">
-                        <span className="tag">{project.type}</span>
-                        <span className="tag">{project.size}</span>
-                      </div>
-                      <h3>{project.title}</h3>
-                      <p className="project-client">{project.client}</p>
-                    </div>
+            {featuredProjects.map((project) => (
+              <Link
+                key={project.slug}
+                href={`/projects/${project.slug}`}
+                style={{ color: "inherit" }}
+              >
+                <div className="project-card">
+                  <div className="project-img">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      width={720}
+                      height={450}
+                      style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                    />
                   </div>
-                </Link>
-              </RevealOnScroll>
+                  <div className="project-body">
+                    <div className="project-tags">
+                      <span className="tag">{project.type}</span>
+                      <span className="tag">{project.size}</span>
+                    </div>
+                    <h3>{project.title}</h3>
+                    <p className="project-client">{project.client}</p>
+                  </div>
+                </div>
+              </Link>
             ))}
           </div>
 
@@ -302,14 +297,12 @@ export default function HomePage() {
             </h2>
           </RevealOnScroll>
           <div className="process-grid">
-            {processSteps.map((step, i) => (
-              <RevealOnScroll key={step.num} delay={i * 0.12}>
-                <div className="process-card">
-                  <div className="process-num">{step.num}</div>
-                  <h3>{step.title}</h3>
-                  <p>{step.desc}</p>
-                </div>
-              </RevealOnScroll>
+            {processSteps.map((step) => (
+              <div key={step.num} className="process-card">
+                <div className="process-num">{step.num}</div>
+                <h3>{step.title}</h3>
+                <p>{step.desc}</p>
+              </div>
             ))}
           </div>
         </div>
@@ -327,15 +320,13 @@ export default function HomePage() {
         </Parallax>
         <div className="cine-divider-overlay" style={{ background: "linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0.5) 70%, rgba(0,0,0,0.7) 100%)" }} />
         <div className="cine-divider-content container">
-          <RevealOnScroll>
-            <div>
-              <h2>
-                {t("cine.nespresso.title")}{" "}
-                <span className="accent">{t("cine.nespresso.title.accent")}</span>
-              </h2>
-              <p>{t("cine.nespresso.desc")}</p>
-            </div>
-          </RevealOnScroll>
+          <div>
+            <h2>
+              {t("cine.nespresso.title")}{" "}
+              <span className="accent">{t("cine.nespresso.title.accent")}</span>
+            </h2>
+            <p>{t("cine.nespresso.desc")}</p>
+          </div>
         </div>
       </section>
 
@@ -352,16 +343,14 @@ export default function HomePage() {
           </RevealOnScroll>
           <div className="testimonials-grid">
             {testimonials.map((tm, i) => (
-              <RevealOnScroll key={i} delay={i * 0.15}>
-                <blockquote className="testimonial-card">
-                  <p className="testimonial-quote">&ldquo;{tm.quote}&rdquo;</p>
-                  <footer className="testimonial-footer">
-                    <div>
-                      <strong>{tm.role}, {tm.company}</strong>
-                    </div>
-                  </footer>
-                </blockquote>
-              </RevealOnScroll>
+              <blockquote key={i} className="testimonial-card">
+                <p className="testimonial-quote">&ldquo;{tm.quote}&rdquo;</p>
+                <footer className="testimonial-footer">
+                  <div>
+                    <strong>{tm.role}, {tm.company}</strong>
+                  </div>
+                </footer>
+              </blockquote>
             ))}
           </div>
         </div>
@@ -380,49 +369,41 @@ export default function HomePage() {
                   <span className="accent">{t("about.title.accent")}</span>
                 </h2>
               </RevealOnScroll>
-              <RevealOnScroll delay={0.15}>
-                <p
-                  className="text-muted"
-                  style={{ lineHeight: 1.8, marginBottom: 16, fontSize: "1.05rem" }}
-                >
-                  {t("home.about.p1")}
-                </p>
-              </RevealOnScroll>
-              <RevealOnScroll delay={0.25}>
-                <p
-                  className="text-muted"
-                  style={{ lineHeight: 1.8, marginBottom: 36, fontSize: "1.05rem" }}
-                >
-                  {t("home.about.p2")}
-                </p>
-              </RevealOnScroll>
-              <RevealOnScroll delay={0.35}>
-                <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
-                  <Link href="/about" className="btn btn-outline">
-                    {t("home.about.btn")}
-                  </Link>
-                  <Link href="/contact#rfp-form" className="btn btn-primary">
-                    {t("about.talk")} <span className="arrow">&rarr;</span>
-                  </Link>
-                </div>
-              </RevealOnScroll>
+              <p
+                className="text-muted"
+                style={{ lineHeight: 1.8, marginBottom: 16, fontSize: "1.05rem" }}
+              >
+                {t("home.about.p1")}
+              </p>
+              <p
+                className="text-muted"
+                style={{ lineHeight: 1.8, marginBottom: 36, fontSize: "1.05rem" }}
+              >
+                {t("home.about.p2")}
+              </p>
+              <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+                <Link href="/about" className="btn btn-outline">
+                  {t("home.about.btn")}
+                </Link>
+                <Link href="/contact#rfp-form" className="btn btn-primary">
+                  {t("about.talk")} <span className="arrow">&rarr;</span>
+                </Link>
+              </div>
             </div>
 
             {/* Image */}
-            <RevealOnScroll direction="right" delay={0.2}>
-              <div className="about-visual">
-                <div className="about-img">
-                  <Image
-                    src={asset("/assets/photos/duck-brand.jpg")}
-                    alt="The Butter Duck — the team behind your booth"
-                    width={640}
-                    height={480}
-                    style={{ width: "100%", height: "auto" }}
-                  />
-                </div>
-                <div className="about-badge">{t("home.about.badge")}</div>
+            <div className="about-visual">
+              <div className="about-img">
+                <Image
+                  src={asset("/assets/photos/duck-brand.jpg")}
+                  alt="The Butter Duck — the team behind your booth"
+                  width={640}
+                  height={480}
+                  style={{ width: "100%", height: "auto" }}
+                />
               </div>
-            </RevealOnScroll>
+              <div className="about-badge">{t("home.about.badge")}</div>
+            </div>
           </div>
         </div>
       </section>

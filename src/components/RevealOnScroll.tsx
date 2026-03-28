@@ -16,19 +16,19 @@ const variants: Record<
   { hidden: TargetAndTransition; visible: TargetAndTransition }
 > = {
   up: {
-    hidden: { opacity: 0, y: 32 },
+    hidden: { opacity: 0, y: 24 },
     visible: { opacity: 1, y: 0 },
   },
   down: {
-    hidden: { opacity: 0, y: -32 },
+    hidden: { opacity: 0, y: -24 },
     visible: { opacity: 1, y: 0 },
   },
   left: {
-    hidden: { opacity: 0, x: -32 },
+    hidden: { opacity: 0, x: -24 },
     visible: { opacity: 1, x: 0 },
   },
   right: {
-    hidden: { opacity: 0, x: 32 },
+    hidden: { opacity: 0, x: 24 },
     visible: { opacity: 1, x: 0 },
   },
   scale: {
@@ -61,8 +61,8 @@ export default function RevealOnScroll({
       initial={hidden}
       animate={isInView ? visible : hidden}
       transition={{
-        duration: 0.8,
-        ease: "easeOut",
+        duration: 0.6,
+        ease: [0.16, 1, 0.3, 1],
         delay,
       }}
     >

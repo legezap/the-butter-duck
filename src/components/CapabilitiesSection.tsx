@@ -1,14 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import {
-  motion,
-  useInView,
-  useScroll,
-  useTransform,
-  useMotionValue,
-  useSpring,
-} from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useI18n } from "@/lib/I18nContext";
 import type { TranslationKey } from "@/lib/i18n";
 import RevealOnScroll from "./RevealOnScroll";
@@ -73,34 +66,15 @@ function CapCard({ index, label }: { index: number; label: string }) {
     }
   }, [isInView, index]);
 
-  /* 3D tilt */
-  const mx = useMotionValue(0.5);
-  const my = useMotionValue(0.5);
-  const rx = useSpring(useTransform(my, [0, 1], [6, -6]), { stiffness: 250, damping: 30 });
-  const ry = useSpring(useTransform(mx, [0, 1], [-6, 6]), { stiffness: 250, damping: 30 });
-
-  const handleMouse = (e: React.MouseEvent) => {
-    if (!ref.current) return;
-    const r = ref.current.getBoundingClientRect();
-    mx.set((e.clientX - r.left) / r.width);
-    my.set((e.clientY - r.top) / r.height);
-  };
-
   return (
     <motion.div
       ref={ref}
       className="cap-card"
-      style={{ rotateX: rx, rotateY: ry, transformPerspective: 600 }}
-      onMouseMove={handleMouse}
-      onMouseLeave={() => { mx.set(0.5); my.set(0.5); }}
-      initial={{ opacity: 0, scale: 0.85, y: 30 }}
-      animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.06, ease: [0.25, 0.46, 0.45, 0.94] }}
+      initial={{ opacity: 0, scale: 0.92 }}
+      animate={isInView ? { opacity: 1, scale: 1 } : {}}
+      transition={{ duration: 0.5, delay: index * 0.06, ease: [0.16, 1, 0.3, 1] }}
     >
-      {/* Hover glow */}
-      <div className="cap-glow" />
-
-      <div className="cap-icon-wrap" style={{ transform: "translateZ(30px)" }}>
+      <div className="cap-icon-wrap">
         <svg
           width="30"
           height="30"
@@ -118,7 +92,7 @@ function CapCard({ index, label }: { index: number; label: string }) {
           />
         </svg>
       </div>
-      <h3 className="cap-label" style={{ transform: "translateZ(15px)" }}>{label}</h3>
+      <h3 className="cap-label">{label}</h3>
     </motion.div>
   );
 }
@@ -129,14 +103,6 @@ function CapCard({ index, label }: { index: number; label: string }) {
 
 export default function CapabilitiesSection() {
   const { t } = useI18n();
-  const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-
-  /* Background gradient moves with scroll */
-  const bgY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
 
   return (
     <>
@@ -149,56 +115,25 @@ export default function CapabilitiesSection() {
           border-bottom: 1px solid var(--color-border-default);
         }
 
-        .cap-bg {
-          position: absolute;
-          inset: -20% 0;
-          background: radial-gradient(ellipse at 50% 50%, rgba(252,217,64,0.03) 0%, transparent 60%);
-          pointer-events: none;
-        }
-
         .cap-grid {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
           gap: 20px;
-          position: relative;
-          z-index: 1;
         }
 
         .cap-card {
-          position: relative;
           text-align: center;
           padding: 40px 16px 32px;
           border: 1px solid var(--color-border-default);
           border-radius: var(--radius-default);
           background: rgba(255,255,255,0.02);
           cursor: default;
-          will-change: transform;
-          transform-style: preserve-3d;
-          transition: border-color 0.4s ease, box-shadow 0.4s ease;
-          overflow: hidden;
+          transition: border-color 0.4s ease;
         }
 
         .cap-card:hover {
           border-color: rgba(252,217,64,0.2);
-          box-shadow: 0 12px 40px rgba(0,0,0,0.2), 0 0 40px rgba(252,217,64,0.03);
         }
-
-        /* Hover glow */
-        .cap-glow {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          width: 80px;
-          height: 80px;
-          transform: translate(-50%, -60%);
-          border-radius: 50%;
-          background: radial-gradient(circle, rgba(252,217,64,0.15) 0%, transparent 70%);
-          filter: blur(20px);
-          opacity: 0;
-          transition: opacity 0.5s ease;
-          pointer-events: none;
-        }
-        .cap-card:hover .cap-glow { opacity: 1; }
 
         .cap-icon-wrap {
           width: 56px;
@@ -210,11 +145,10 @@ export default function CapabilitiesSection() {
           display: flex;
           align-items: center;
           justify-content: center;
-          transition: border-color 0.4s ease, transform 0.4s ease;
+          transition: border-color 0.4s ease;
         }
         .cap-card:hover .cap-icon-wrap {
           border-color: rgba(252,217,64,0.25);
-          transform: translateZ(30px) scale(1.1);
         }
 
         .cap-svg { color: var(--color-text-muted); transition: color 0.4s ease; }
@@ -231,20 +165,15 @@ export default function CapabilitiesSection() {
         .cap-label {
           font-size: 0.9rem;
           letter-spacing: -0.01em;
-          position: relative;
-          z-index: 1;
         }
 
         @media (prefers-reduced-motion: reduce) {
           .cap-path { stroke-dasharray: none !important; stroke-dashoffset: 0 !important; transition: none !important; }
-          .cap-glow { display: none; }
         }
       `}} />
 
-      <section ref={sectionRef} className="cap-section" style={{ background: "var(--color-bg-card)" }}>
-        <motion.div className="cap-bg" style={{ y: bgY }} />
-
-        <div className="container" style={{ position: "relative", zIndex: 1 }}>
+      <section className="cap-section" style={{ background: "var(--color-bg-card)" }}>
+        <div className="container">
           <RevealOnScroll>
             <span className="section-label" style={{ textAlign: "center", display: "block" }}>
               {t("aboutpage.cap.label")}

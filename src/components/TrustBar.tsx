@@ -2,12 +2,7 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import {
-  motion,
-  useInView,
-  useScroll,
-  useTransform,
-} from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { asset } from "@/lib/basePath";
 import { useI18n } from "@/lib/I18nContext";
 
@@ -27,58 +22,33 @@ const LOGOS = [
   { src: asset("/assets/logos/show-09.png"), alt: "Light Show" },
 ];
 
-const FLOAT_PHASES = [0, 1.2, 2.4, 3.6, 0.8, 2.0, 1.6, 3.2, 0.4];
-
 /* ------------------------------------------------------------------ */
 /*  SINGLE LOGO                                                        */
 /* ------------------------------------------------------------------ */
 
 function LogoItem({ index, isInView }: { index: number; isInView: boolean }) {
   const logo = LOGOS[index];
-  const floatPhase = FLOAT_PHASES[index];
 
   return (
     <motion.div
       className="tb2-logo-wrap"
-      initial={{ opacity: 0, y: 50, scale: 0.85 }}
-      animate={
-        isInView
-          ? { opacity: 1, y: 0, scale: 1 }
-          : { opacity: 0, y: 50, scale: 0.85 }
-      }
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
       transition={{
-        duration: 1,
-        ease: [0.25, 0.46, 0.45, 0.94],
-        delay: index * 0.15,
+        duration: 0.6,
+        ease: [0.16, 1, 0.3, 1],
+        delay: index * 0.08,
       }}
       aria-label={logo.alt}
     >
-      <motion.div
-        className="tb2-logo-inner"
-        animate={
-          isInView ? { y: [0, -4, 0, 4, 0] } : {}
-        }
-        transition={{
-          duration: 4 + index * 0.3,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: floatPhase,
-        }}
-        whileHover={{
-          y: -10,
-          scale: 1.08,
-          transition: { duration: 0.3, ease: "easeOut" },
-        }}
-      >
-        <Image
-          src={logo.src}
-          alt={logo.alt}
-          width={240}
-          height={64}
-          className="tb2-img"
-          style={{ objectFit: "contain" }}
-        />
-      </motion.div>
+      <Image
+        src={logo.src}
+        alt={logo.alt}
+        width={240}
+        height={64}
+        className="tb2-img"
+        style={{ objectFit: "contain" }}
+      />
     </motion.div>
   );
 }
@@ -90,14 +60,7 @@ function LogoItem({ index, isInView }: { index: number; isInView: boolean }) {
 export default function TrustBar() {
   const { t } = useI18n();
   const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: false, amount: 0.2 });
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [40, -40]);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
 
   return (
     <>
@@ -137,24 +100,15 @@ export default function TrustBar() {
           justify-content: center;
         }
 
-        .tb2-logo-inner {
-          position: relative;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: default;
-        }
-
         .tb2-img {
           width: 260px;
           height: 72px;
-          opacity: 0.65;
-          transition: opacity 0.5s ease, filter 0.5s ease;
+          opacity: 0.5;
+          transition: opacity 0.4s ease;
         }
 
-        .tb2-logo-inner:hover .tb2-img {
-          opacity: 0.95;
-          filter: drop-shadow(0 0 16px rgba(255,255,255,0.1));
+        .tb2-logo-wrap:hover .tb2-img {
+          opacity: 0.85;
         }
 
         /* Ambient line */
@@ -199,11 +153,11 @@ export default function TrustBar() {
         className={`tb2-section${isInView ? " tb2-visible" : ""}`}
       >
         <p className="tb2-label">{t("trust.label")}</p>
-        <motion.div className="tb2-grid" style={{ y }}>
+        <div className="tb2-grid">
           {LOGOS.map((_, i) => (
             <LogoItem key={i} index={i} isInView={isInView} />
           ))}
-        </motion.div>
+        </div>
       </section>
     </>
   );

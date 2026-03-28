@@ -114,13 +114,12 @@ export default function ProjectContent({ project, prev, next }: ProjectContentPr
       <section className="section-pad">
         <div className="container">
           <div className="about-grid">
-            <RevealOnScroll className="sd-text">
+            <div className="sd-text">
               <span className="section-label">{t("case.overview")}</span>
               <h2>{t("case.overview.title")}</h2>
               <p>{overview}</p>
-            </RevealOnScroll>
-            <RevealOnScroll direction="right" delay={0.15}>
-              <div
+            </div>
+            <div
                 style={{
                   background: "var(--color-bg-card)",
                   border: "1px solid var(--color-border-default)",
@@ -206,7 +205,6 @@ export default function ProjectContent({ project, prev, next }: ProjectContentPr
                   </div>
                 </div>
               </div>
-            </RevealOnScroll>
           </div>
         </div>
       </section>
@@ -260,24 +258,22 @@ export default function ProjectContent({ project, prev, next }: ProjectContentPr
           </RevealOnScroll>
           <div className="services-grid">
             {features.map((feature, i) => (
-              <RevealOnScroll key={feature.title} delay={i * 0.1}>
-                <div className="service-card">
-                  <div
-                    className="service-icon"
-                    style={{ fontSize: "1.2rem" }}
-                  >
-                    {i === 0
-                      ? "\u2692"
-                      : i === 1
-                        ? "\u26A1"
-                        : i === 2
-                          ? "\u2B50"
-                          : "\u2699"}
-                  </div>
-                  <h3>{feature.title}</h3>
-                  <p>{feature.description}</p>
+              <div key={feature.title} className="service-card">
+                <div
+                  className="service-icon"
+                  style={{ fontSize: "1.2rem" }}
+                >
+                  {i === 0
+                    ? "\u2692"
+                    : i === 1
+                      ? "\u26A1"
+                      : i === 2
+                        ? "\u2B50"
+                        : "\u2699"}
                 </div>
-              </RevealOnScroll>
+                <h3>{feature.title}</h3>
+                <p>{feature.description}</p>
+              </div>
             ))}
           </div>
         </div>
@@ -294,33 +290,32 @@ export default function ProjectContent({ project, prev, next }: ProjectContentPr
           </RevealOnScroll>
           <ul style={{ display: "flex", flexDirection: "column", gap: 16 }}>
             {results.map((result, i) => (
-              <RevealOnScroll key={i} delay={i * 0.08}>
-                <li
+              <li
+                key={i}
+                style={{
+                  padding: "20px 24px 20px 52px",
+                  background: "var(--color-bg-card)",
+                  border: "1px solid var(--color-border-default)",
+                  borderRadius: "var(--radius-default)",
+                  position: "relative",
+                  color: "var(--color-text-muted)",
+                  fontSize: "0.95rem",
+                  lineHeight: 1.7,
+                }}
+              >
+                <span
                   style={{
-                    padding: "20px 24px 20px 52px",
-                    background: "var(--color-bg-card)",
-                    border: "1px solid var(--color-border-default)",
-                    borderRadius: "var(--radius-default)",
-                    position: "relative",
-                    color: "var(--color-text-muted)",
-                    fontSize: "0.95rem",
-                    lineHeight: 1.7,
+                    position: "absolute",
+                    left: 20,
+                    top: 20,
+                    color: "var(--color-accent)",
+                    fontWeight: 700,
                   }}
                 >
-                  <span
-                    style={{
-                      position: "absolute",
-                      left: 20,
-                      top: 20,
-                      color: "var(--color-accent)",
-                      fontWeight: 700,
-                    }}
-                  >
-                    &#10003;
-                  </span>
-                  {result}
-                </li>
-              </RevealOnScroll>
+                  &#10003;
+                </span>
+                {result}
+              </li>
             ))}
           </ul>
         </div>
@@ -330,18 +325,16 @@ export default function ProjectContent({ project, prev, next }: ProjectContentPr
       <section className="stats-section">
         <div className="container">
           <div className="stats-grid">
-            {project.stats.map((stat, i) => (
-              <RevealOnScroll key={stat.label} delay={i * 0.1}>
-                <div>
-                  <div className="stat-num">
-                    <CounterAnimation
-                      target={stat.value}
-                      suffix={stat.suffix}
-                    />
-                  </div>
-                  <p className="stat-text">{stat.label}</p>
+            {project.stats.map((stat) => (
+              <div key={stat.label}>
+                <div className="stat-num">
+                  <CounterAnimation
+                    target={stat.value}
+                    suffix={stat.suffix}
+                  />
                 </div>
-              </RevealOnScroll>
+                <p className="stat-text">{stat.label}</p>
+              </div>
             ))}
           </div>
         </div>
@@ -352,11 +345,7 @@ export default function ProjectContent({ project, prev, next }: ProjectContentPr
         <div className="container">
           <RevealOnScroll>
             <h2>{t("case.cta")}</h2>
-          </RevealOnScroll>
-          <RevealOnScroll delay={0.1}>
             <p>{t("case.cta.desc")}</p>
-          </RevealOnScroll>
-          <RevealOnScroll delay={0.2}>
             <Link href="/contact#rfp-form" className="btn btn-lg">
               {t("cta.start")} <span className="arrow">&rarr;</span>
             </Link>

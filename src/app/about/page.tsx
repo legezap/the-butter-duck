@@ -59,7 +59,7 @@ export default function AboutPage() {
       <section className="section-pad">
         <div className="container">
           <div className="about-grid">
-            <RevealOnScroll className="sd-text">
+            <div className="sd-text">
               <span className="section-label">{t("aboutpage.story.label")}</span>
               <h2>
                 {t("aboutpage.story.title.alt")}{" "}
@@ -71,8 +71,8 @@ export default function AboutPage() {
               <p style={{ color: "var(--color-text-muted)", lineHeight: 1.8 }}>
                 {t("aboutpage.story.p2")}
               </p>
-            </RevealOnScroll>
-            <RevealOnScroll direction="right" className="about-visual">
+            </div>
+            <div className="about-visual">
               <div className="about-img">
                 <Image
                   src={asset("/assets/photos/duck-brand.jpg")}
@@ -83,7 +83,7 @@ export default function AboutPage() {
                 />
               </div>
               <span className="about-badge">{t("aboutpage.story.badge")}</span>
-            </RevealOnScroll>
+            </div>
           </div>
         </div>
       </section>
@@ -107,12 +107,10 @@ export default function AboutPage() {
           </RevealOnScroll>
           <div className="timeline">
             {timelineKeys.map((tl, i) => (
-              <RevealOnScroll key={timelineYears[i]} delay={i * 0.1}>
-                <div className="tl-item">
-                  <h3>{timelineYears[i]} — {t(tl.title)}</h3>
-                  <p>{t(tl.desc)}</p>
-                </div>
-              </RevealOnScroll>
+              <div key={timelineYears[i]} className="tl-item">
+                <h3>{timelineYears[i]} — {t(tl.title)}</h3>
+                <p>{t(tl.desc)}</p>
+              </div>
             ))}
           </div>
         </div>
@@ -126,11 +124,7 @@ export default function AboutPage() {
         <div className="container">
           <RevealOnScroll>
             <h2>{t("aboutpage.cta")}</h2>
-          </RevealOnScroll>
-          <RevealOnScroll delay={0.1}>
             <p>{t("aboutpage.cta.desc")}</p>
-          </RevealOnScroll>
-          <RevealOnScroll delay={0.2}>
             <Link href="/contact#rfp-form" className="btn btn-lg">
               {t("aboutpage.cta.btn")} <span className="arrow">&rarr;</span>
             </Link>

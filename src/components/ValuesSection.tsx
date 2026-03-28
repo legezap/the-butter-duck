@@ -1,14 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import {
-  motion,
-  useInView,
-  useScroll,
-  useTransform,
-  useMotionValue,
-  useSpring,
-} from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useI18n } from "@/lib/I18nContext";
 import type { TranslationKey } from "@/lib/i18n";
 import RevealOnScroll from "./RevealOnScroll";
@@ -45,9 +38,6 @@ const ICON_PATHS = [
   "M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z",
 ];
 
-/* Parallax offsets per card (px range for scroll) */
-const PARALLAX_OFFSETS = [30, -20, 40, -30, 25, -35];
-
 /* ------------------------------------------------------------------ */
 /*  SINGLE VALUE CARD                                                  */
 /* ------------------------------------------------------------------ */
@@ -65,7 +55,7 @@ function ValueCard({
   const isInView = useInView(cardRef, { once: true, amount: 0.4 });
   const [drawn, setDrawn] = useState(false);
 
-  /* trigger draw after in view */
+  /* trigger SVG draw after card enters viewport */
   useEffect(() => {
     if (isInView) {
       const t = setTimeout(() => setDrawn(true), index * 120);
@@ -73,125 +63,41 @@ function ValueCard({
     }
   }, [isInView, index]);
 
-  /* 3D tilt on hover */
-  const mouseX = useMotionValue(0.5);
-  const mouseY = useMotionValue(0.5);
-
-  const rotateX = useSpring(useTransform(mouseY, [0, 1], [8, -8]), {
-    stiffness: 200,
-    damping: 30,
-  });
-  const rotateY = useSpring(useTransform(mouseX, [0, 1], [-8, 8]), {
-    stiffness: 200,
-    damping: 30,
-  });
-
-  /* glow orb parallax */
-  const glowX = useSpring(useTransform(mouseX, [0, 1], [-20, 20]), {
-    stiffness: 150,
-    damping: 25,
-  });
-  const glowY = useSpring(useTransform(mouseY, [0, 1], [-20, 20]), {
-    stiffness: 150,
-    damping: 25,
-  });
-
-  /* light reflection position */
-  const lightX = useSpring(useTransform(mouseX, [0, 1], [0, 100]), {
-    stiffness: 100,
-    damping: 20,
-  });
-  const lightY = useSpring(useTransform(mouseY, [0, 1], [0, 100]), {
-    stiffness: 100,
-    damping: 20,
-  });
-
-  const handleMouse = (e: React.MouseEvent) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    mouseX.set((e.clientX - rect.left) / rect.width);
-    mouseY.set((e.clientY - rect.top) / rect.height);
-  };
-
-  const handleLeave = () => {
-    mouseX.set(0.5);
-    mouseY.set(0.5);
-  };
-
-  /* Scroll parallax per card */
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: scrollRef,
-    offset: ["start end", "end start"],
-  });
-  const yOffset = useTransform(
-    scrollYProgress,
-    [0, 1],
-    [PARALLAX_OFFSETS[index], -PARALLAX_OFFSETS[index]]
-  );
-
   return (
-    <motion.div ref={scrollRef} style={{ y: yOffset }}>
-      <motion.div
-        ref={cardRef}
-        className="vs-card"
-        style={{
-          rotateX,
-          rotateY,
-          transformStyle: "preserve-3d",
-          transformPerspective: 800,
-        }}
-        onMouseMove={handleMouse}
-        onMouseLeave={handleLeave}
-        initial={{ opacity: 0, y: 60 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{
-          duration: 0.8,
-          delay: index * 0.1,
-          ease: [0.25, 0.46, 0.45, 0.94],
-        }}
-      >
-        {/* Light reflection overlay */}
-        <motion.div
-          className="vs-light"
-          style={{
-            background: `radial-gradient(circle at ${lightX}% ${lightY}%, rgba(252,217,64,0.06) 0%, transparent 60%)`,
-          }}
-        />
-
-        {/* Icon area */}
-        <div className="vs-icon-wrap" style={{ transform: "translateZ(40px)" }}>
-          {/* Glow orb */}
-          <motion.div
-            className="vs-glow"
-            style={{ x: glowX, y: glowY }}
+    <motion.div
+      ref={cardRef}
+      className="vs-card"
+      initial={{ opacity: 0, y: 32 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{
+        duration: 0.6,
+        delay: index * 0.1,
+        ease: [0.16, 1, 0.3, 1],
+      }}
+    >
+      {/* Icon area */}
+      <div className="vs-icon-wrap">
+        <svg
+          className="vs-svg"
+          width="40"
+          height="40"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path
+            d={ICON_PATHS[index]}
+            className={`vs-path ${drawn ? "vs-drawn" : ""}`}
           />
+        </svg>
+      </div>
 
-          {/* SVG with draw animation */}
-          <svg
-            className="vs-svg"
-            width="40"
-            height="40"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path
-              d={ICON_PATHS[index]}
-              className={`vs-path ${drawn ? "vs-drawn" : ""}`}
-            />
-          </svg>
-        </div>
-
-        {/* Text */}
-        <div style={{ transform: "translateZ(20px)" }}>
-          <h3 className="vs-title">{title}</h3>
-          <p className="vs-desc">{desc}</p>
-        </div>
-      </motion.div>
+      {/* Text */}
+      <h3 className="vs-title">{title}</h3>
+      <p className="vs-desc">{desc}</p>
     </motion.div>
   );
 }
@@ -222,30 +128,12 @@ export default function ValuesSection() {
           border: 1px solid var(--color-border-default);
           border-radius: var(--radius-large, 20px);
           background: var(--color-bg-card);
-          overflow: hidden;
           cursor: default;
-          will-change: transform;
-          transition: border-color 0.5s ease, box-shadow 0.5s ease;
+          transition: border-color 0.4s ease;
         }
 
         .vs-card:hover {
-          border-color: rgba(252, 217, 64, 0.25);
-          box-shadow:
-            0 20px 60px rgba(0, 0, 0, 0.25),
-            0 0 80px rgba(252, 217, 64, 0.04);
-        }
-
-        /* Light reflection overlay */
-        .vs-light {
-          position: absolute;
-          inset: 0;
-          pointer-events: none;
-          border-radius: inherit;
-          opacity: 0;
-          transition: opacity 0.4s ease;
-        }
-        .vs-card:hover .vs-light {
-          opacity: 1;
+          border-color: rgba(252, 217, 64, 0.35);
         }
 
         /* Icon wrapper */
@@ -259,23 +147,6 @@ export default function ValuesSection() {
           margin-bottom: 28px;
         }
 
-        /* Glow orb behind icon */
-        .vs-glow {
-          position: absolute;
-          width: 60px;
-          height: 60px;
-          border-radius: 50%;
-          background: radial-gradient(circle, rgba(252, 217, 64, 0.2) 0%, transparent 70%);
-          filter: blur(16px);
-          opacity: 0;
-          transition: opacity 0.5s ease;
-          pointer-events: none;
-        }
-        .vs-card:hover .vs-glow {
-          opacity: 1;
-        }
-
-        /* Ring behind icon */
         .vs-icon-wrap::before {
           content: '';
           position: absolute;
@@ -283,11 +154,6 @@ export default function ValuesSection() {
           border-radius: 50%;
           border: 1px solid rgba(252, 217, 64, 0.12);
           background: linear-gradient(135deg, rgba(252, 217, 64, 0.06) 0%, transparent 60%);
-          transition: border-color 0.5s ease, transform 0.5s ease;
-        }
-        .vs-card:hover .vs-icon-wrap::before {
-          border-color: rgba(252, 217, 64, 0.3);
-          transform: scale(1.08);
         }
 
         /* SVG icon */
@@ -331,7 +197,6 @@ export default function ValuesSection() {
 
         @media (prefers-reduced-motion: reduce) {
           .vs-path { stroke-dasharray: none !important; stroke-dashoffset: 0 !important; transition: none !important; }
-          .vs-glow { display: none; }
         }
       `,
         }}

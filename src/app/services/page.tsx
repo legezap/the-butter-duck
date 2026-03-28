@@ -132,7 +132,7 @@ export default function ServicesPage() {
               id={s.id}
               className={`service-detail${s.reverse ? " reverse" : ""}`}
             >
-              <RevealOnScroll className="sd-text" delay={0.1}>
+              <div className="sd-text">
                 <span className="section-label">{t(s.labelKey)}</span>
                 <h2>{t(s.titleKey)}</h2>
                 <ul>
@@ -145,12 +145,8 @@ export default function ServicesPage() {
                     {t("servicespage.quote")} <span className="arrow">&rarr;</span>
                   </Link>
                 </div>
-              </RevealOnScroll>
-              <RevealOnScroll
-                className="sd-visual"
-                direction={s.reverse ? "left" : "right"}
-                delay={0.2}
-              >
+              </div>
+              <div className="sd-visual">
                 <Image
                   src={s.image}
                   alt={t(s.titleKey)}
@@ -158,7 +154,7 @@ export default function ServicesPage() {
                   height={540}
                   style={{ width: "100%", height: "100%", objectFit: "cover" }}
                 />
-              </RevealOnScroll>
+              </div>
             </div>
           ))}
         </div>
@@ -169,11 +165,7 @@ export default function ServicesPage() {
         <div className="container">
           <RevealOnScroll>
             <h2>{t("servicespage.cta.title")}</h2>
-          </RevealOnScroll>
-          <RevealOnScroll delay={0.1}>
             <p>{t("servicespage.cta.desc")}</p>
-          </RevealOnScroll>
-          <RevealOnScroll delay={0.2}>
             <Link href="/contact#rfp-form" className="btn btn-lg">
               {t("servicespage.cta.btn")} <span className="arrow">&rarr;</span>
             </Link>
