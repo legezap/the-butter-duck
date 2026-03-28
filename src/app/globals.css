@@ -393,12 +393,7 @@ select.form-input { appearance: none; }
 @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; } }
 
-/* ============================================================
-   WHATSAPP FLOAT
-   ============================================================ */
-.wa-float { position: fixed; bottom: 28px; right: 28px; z-index: 900; width: 56px; height: 56px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 24px rgba(37, 211, 102, 0.4); transition: transform 0.4s var(--ease-out); }
-.wa-float:hover { transform: scale(1.1); }
-.wa-float svg { width: 28px; height: 28px; fill: #fff; }
+/* WhatsApp float: styles in WhatsAppFloat.tsx component */
 
 /* ============================================================
    MARQUEE
@@ -495,8 +490,7 @@ select.form-input { appearance: none; }
 .mobile-cta-bar .btn { flex: 1; justify-content: center; padding: 14px 16px; font-size: 0.85rem; }
 .mobile-cta-bar .btn-wa { background: #25D366; color: #fff; border-color: #25D366; }
 .mobile-cta-bar .btn-wa:hover { background: #20bd5a; }
-/* Hide the floating WhatsApp on mobile when sticky bar is visible */
-@media (max-width: 960px) { .wa-float { display: none; } }
+/* WhatsApp float hidden on mobile via component styles */
 
 /* ============================================================
    REDUCED MOTION
@@ -611,8 +605,7 @@ select.form-input { appearance: none; }
 [dir="rtl"] .form-input { text-align: right; }
 [dir="rtl"] .form-nav { direction: rtl; }
 
-/* --- WhatsApp float: flip to left side --- */
-[dir="rtl"] .wa-float { right: auto; left: 28px; }
+/* WhatsApp float RTL: handled in component */
 
 /* --- Mobile sticky CTA: direction flip --- */
 [dir="rtl"] .mobile-cta-bar { direction: rtl; }
