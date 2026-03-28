@@ -31,7 +31,7 @@ const notoArabic = Noto_Sans_Arabic({
 export const metadata: Metadata = {
   title: "The Butter Duck — Global Exhibition Design & Event Production | Dubai",
   description:
-    "Custom exhibition stand design & build in the UAE. From 25 sqm booths to 1000+ sqm builds. Trusted by Microsoft, Vanderlande & brands across 10 countries.",
+    "Custom exhibition stand design & build in the UAE. From 25 sqm booths to 1000+ sqm builds. Trusted by industry leaders & global brands across 10 countries.",
   metadataBase: new URL("https://thebutterduck.com"),
   openGraph: {
     title: "The Butter Duck — Exhibition Design & Events — Dubai",
@@ -122,7 +122,7 @@ export default function RootLayout({
                   {
                     "@type": "Review",
                     author: { "@type": "Person", name: "Sarah Al-Rashid" },
-                    reviewBody: "The Butter Duck doesn't just build stands — they build experiences. Our LEAP stand was the most talked-about presence at the entire show.",
+                    reviewBody: "They don't just build stands — they build experiences. Our LEAP stand was the most talked-about presence at the entire show.",
                     reviewRating: { "@type": "Rating", ratingValue: 5, bestRating: 5 },
                   },
                   {

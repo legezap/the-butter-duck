@@ -27,16 +27,16 @@ export interface Project {
 export const projects: Project[] = [
   {
     slug: "microsoft-leap",
-    client: "Microsoft",
+    client: "Global Tech Leader",
     event: "LEAP",
-    title: "Microsoft LEAP",
+    title: "Global Tech Leader at LEAP",
     image: asset("/assets/photos/microsoft-leap.jpg"),
     size: "700 sqm",
     tags: ["Double Decker", "Custom Build"],
     tags_ar: ["جناح مزدوج الطوابق", "بناء مخصص"],
     location: "Riyadh, Saudi Arabia",
     overview:
-      "A 700 sqm double-decker stand that gave Microsoft a commanding two-level presence at LEAP — Saudi Arabia's largest tech event. The build housed live product demos, executive meeting suites, and a keynote theatre, turning a floor plot into a destination.",
+      "A 700 sqm double-decker stand that gave our client a commanding two-level presence at LEAP — Saudi Arabia's largest tech event. The build housed live product demos, executive meeting suites, and a keynote theatre, turning a floor plot into a destination.",
     challenge:
       "Delivering a fully compliant two-storey structure within a 10-day venue access window, while meeting Saudi Civil Defence load and fire safety requirements for upper-deck occupancy. The upper deck needed to support meeting rooms, a hospitality lounge, and continuous foot traffic without any structural compromise. Coordinating AV, lighting, and HVAC across two levels required a power distribution plan that could handle peak demo loads without interruption.",
     solution:
@@ -70,7 +70,7 @@ export const projects: Project[] = [
       { value: 10, suffix: " days", label: "Build Time" },
     ],
     overview_ar:
-      "جناح مزدوج الطوابق بمساحة 700 م² منح Microsoft حضوراً مهيمناً على مستويين في LEAP — أكبر حدث تقني في السعودية. استوعب الجناح عروضاً حية للمنتجات وأجنحة اجتماعات تنفيذية ومسرحاً للكلمات الرئيسية، محوّلاً مساحة عرض إلى وجهة بحد ذاتها.",
+      "جناح مزدوج الطوابق بمساحة 700 م² منح العميل حضوراً مهيمناً على مستويين في LEAP — أكبر حدث تقني في السعودية. استوعب الجناح عروضاً حية للمنتجات وأجنحة اجتماعات تنفيذية ومسرحاً للكلمات الرئيسية، محوّلاً مساحة عرض إلى وجهة بحد ذاتها.",
     challenge_ar:
       "تسليم هيكل من طابقين متوافق بالكامل مع اشتراطات الدفاع المدني السعودي خلال فترة دخول للموقع لا تتجاوز 10 أيام، مع ضمان تحمّل السطح العلوي لغرف الاجتماعات وصالة الضيافة وحركة الزوار المستمرة. تطلّب تنسيق التجهيزات السمعية البصرية والإضاءة والتكييف على مستويين خطة توزيع كهربائي قادرة على تحمّل ذروة التشغيل بلا انقطاع.",
     solution_ar:
@@ -120,16 +120,16 @@ export const projects: Project[] = [
   },
   {
     slug: "absolut-skandic-light-show",
-    client: "Absolut Skandic",
+    client: "Premium Lighting Brand",
     event: "Light Show 2025",
-    title: "Absolut Skandic Light Show",
+    title: "Premium Lighting Brand at Light Show",
     image: asset("/assets/photos/gallery/absolut-skandic-1.jpg"),
     size: "36 sqm",
     tags: ["Custom Build", "Premium Finish", "Product Showcase"],
     tags_ar: ["بناء مخصص", "تشطيب فاخر", "عرض منتجات"],
     location: "Dubai, UAE",
     overview:
-      "A 36 sqm custom-built stand for Absolut Skandic at Light Show 2025, designed to function as a fully immersive lighting showroom on the exhibition floor. The stand combined warm natural materials with precision-engineered product displays, giving buyers a real-world sense of how each fixture performs in architectural settings.",
+      "A 36 sqm custom-built stand for the client at Light Show 2025, designed to function as a fully immersive lighting showroom on the exhibition floor. The stand combined warm natural materials with precision-engineered product displays, giving buyers a real-world sense of how each fixture performs in architectural settings.",
     challenge:
       "Creating a showroom-quality lighting experience within a compact 36 sqm trade show footprint — where ambient hall lighting and neighbouring stands constantly compete for attention. Every fixture needed to be seen under controlled conditions, not washed out by overhead fluorescents.",
     solution:
@@ -169,7 +169,7 @@ export const projects: Project[] = [
       { value: 4, suffix: " days", label: "Build Time" },
     ],
     overview_ar:
-      "جناح مخصص بمساحة 36 م² لـ Absolut Skandic في Light Show 2025، صُمم ليعمل كصالة عرض إضاءة غامرة بالكامل في أرض المعرض. الجناح جمع بين مواد طبيعية دافئة وعروض منتجات مصممة بدقة، مانحاً المشترين تصوراً واقعياً لأداء كل وحدة إضاءة في بيئات معمارية حقيقية.",
+      "جناح مخصص بمساحة 36 م² لـ العميل في Light Show 2025، صُمم ليعمل كصالة عرض إضاءة غامرة بالكامل في أرض المعرض. الجناح جمع بين مواد طبيعية دافئة وعروض منتجات مصممة بدقة، مانحاً المشترين تصوراً واقعياً لأداء كل وحدة إضاءة في بيئات معمارية حقيقية.",
     challenge_ar:
       "ابتكار تجربة صالة عرض إضاءة بجودة احترافية ضمن مساحة معرض مدمجة تبلغ 36 م² — حيث إضاءة القاعة المحيطة والأجنحة المجاورة تتنافس باستمرار على الانتباه. كل وحدة إضاءة كانت بحاجة لأن تُرى في ظروف متحكم بها، لا أن تضيع وسط الإنارة الفلورية العلوية.",
     solution_ar:
@@ -213,16 +213,16 @@ export const projects: Project[] = [
   },
   {
     slug: "nespresso-creatista",
-    client: "Nespresso",
+    client: "Luxury Beverage Brand",
     event: "CreatistaPlus Launch",
-    title: "Nespresso CreatistaPlus Launch",
+    title: "Luxury Beverage Brand Product Launch",
     image: asset("/assets/photos/gallery/nespresso-NES-1239.jpg"),
     size: "1200 sqm",
     tags: ["Event Production", "Premium Launch", "Brand Experience"],
     tags_ar: ["إنتاج فعاليات", "إطلاق فاخر", "تجربة علامة تجارية"],
     location: "Dubai, UAE",
     overview:
-      "A 1200 sqm product launch experience for Nespresso's CreatistaPlus, staged at Al Serkal Avenue in Dubai. Five distinct zones — from cocktail bar to keynote theatre — guided 200+ VIP guests, media, and influencers through the brand story without a single wall between them.",
+      "A 1200 sqm product launch experience for the client's CreatistaPlus, staged at Al Serkal Avenue in Dubai. Five distinct zones — from cocktail bar to keynote theatre — guided 200+ VIP guests, media, and influencers through the brand story without a single wall between them.",
     challenge:
       "Turning a raw warehouse venue into a luxury brand world with five seamless zones across 1200 sqm. The space needed to feel exclusive and polished while allowing natural guest flow — no bottlenecks, no dead zones.",
     solution:
@@ -258,7 +258,7 @@ export const projects: Project[] = [
       "200+ VIP guests hosted, including top-tier media and influencers",
       "50+ earned media placements within 48 hours of the event",
       "Photo zone content shared over 2,000 times on social media",
-      "Nespresso rebooked the production team for their next regional launch",
+      "The client rebooked the production team for their next regional launch",
     ],
     stats: [
       { value: 1200, suffix: " sqm", label: "Event Footprint" },
@@ -267,7 +267,7 @@ export const projects: Project[] = [
       { value: 50, suffix: "+", label: "Media Placements" },
     ],
     overview_ar:
-      "تجربة إطلاق منتج بمساحة 1200 م² لـ Nespresso CreatistaPlus أُقيمت في السركال أفينيو بدبي. خمس مناطق متميزة — من بار الكوكتيل إلى مسرح الكلمات الرئيسية — قادت أكثر من 200 ضيف VIP وإعلاميين ومؤثرين عبر قصة العلامة التجارية دون جدار واحد بينها.",
+      "تجربة إطلاق منتج بمساحة 1200 م² لـ العميل CreatistaPlus أُقيمت في السركال أفينيو بدبي. خمس مناطق متميزة — من بار الكوكتيل إلى مسرح الكلمات الرئيسية — قادت أكثر من 200 ضيف VIP وإعلاميين ومؤثرين عبر قصة العلامة التجارية دون جدار واحد بينها.",
     challenge_ar:
       "تحويل مستودع خام إلى عالم فاخر للعلامة التجارية بخمس مناطق متصلة عبر 1200 م². المساحة كانت بحاجة لأن تبدو حصرية وراقية مع السماح بتدفق طبيعي للضيوف — بلا اختناقات ولا مناطق ميتة.",
     solution_ar:
@@ -303,7 +303,7 @@ export const projects: Project[] = [
       "استضافة أكثر من 200 ضيف VIP بما فيهم كبار الإعلاميين والمؤثرين",
       "أكثر من 50 تغطية إعلامية خلال 48 ساعة من الفعالية",
       "محتوى منطقة التصوير شُورك أكثر من 2,000 مرة على وسائل التواصل",
-      "Nespresso أعادت حجز فريق الإنتاج لإطلاقهم الإقليمي التالي",
+      "العميل أعاد حجز فريق الإنتاج لإطلاقهم الإقليمي التالي",
     ],
     gallery: [
       asset("/assets/photos/gallery/nespresso-NES-963.jpg"),
@@ -314,16 +314,16 @@ export const projects: Project[] = [
   },
   {
     slug: "vanderlande-airport",
-    client: "Vanderlande",
+    client: "Industrial Automation Leader",
     event: "Airport Show",
-    title: "Vanderlande Airport Show",
+    title: "Industrial Automation Leader at Airport Show",
     image: asset("/assets/photos/vanderlande-airport.jpg"),
     size: "60 sqm",
     tags: ["Open Concept", "Product Demo", "Architectural"],
     tags_ar: ["مفهوم مفتوح", "عرض منتجات", "تصميم معماري"],
     location: "Dubai, UAE",
     overview:
-      "A 60 sqm open-concept stand for Vanderlande at the Dubai Airport Show, built around a working conveyor demonstration that let airport procurement teams see the product in action. Clean architectural lines and open sightlines from all four aisles did the rest.",
+      "A 60 sqm open-concept stand for the client at the Dubai Airport Show, built around a working conveyor demonstration that let airport procurement teams see the product in action. Clean architectural lines and open sightlines from all four aisles did the rest.",
     challenge:
       "Fitting a live demonstration system into a compact 60 sqm open-plan stand without sacrificing premium aesthetics. The stand needed to feel inviting from every aisle while accommodating private meeting areas for airline procurement discussions. All structural and electrical work had to comply with Dubai venue regulations within a tight 3-day build window.",
     solution:
@@ -362,7 +362,7 @@ export const projects: Project[] = [
       { value: 3, suffix: " days", label: "Build Time" },
     ],
     overview_ar:
-      "جناح مفتوح بمساحة 60 م² لـ Vanderlande في Airport Show دبي، صُمم حول عرض حي لنظام سيور النقل أتاح لفرق المشتريات في المطارات رؤية المنتج أثناء العمل. خطوط معمارية نظيفة ورؤية مفتوحة من الممرات الأربعة أكملت المهمة.",
+      "جناح مفتوح بمساحة 60 م² لـ العميل في Airport Show دبي، صُمم حول عرض حي لنظام سيور النقل أتاح لفرق المشتريات في المطارات رؤية المنتج أثناء العمل. خطوط معمارية نظيفة ورؤية مفتوحة من الممرات الأربعة أكملت المهمة.",
     challenge_ar:
       "دمج نظام عرض حي في جناح مفتوح مدمج بمساحة 60 م² دون التضحية بالجمالية الراقية. الجناح كان بحاجة لأن يبدو جاذباً من كل ممر مع توفير مناطق اجتماعات خاصة لمناقشات مشتريات شركات الطيران. جميع الأعمال الإنشائية والكهربائية كان لا بد أن تتوافق مع لوائح دبي خلال فترة بناء لا تتجاوز 3 أيام.",
     solution_ar:
@@ -402,16 +402,16 @@ export const projects: Project[] = [
   },
   {
     slug: "spark-breakbulk",
-    client: "Spark Logistics",
+    client: "Regional Freight Forwarder",
     event: "Breakbulk Middle East",
-    title: "Spark Logistics Breakbulk ME",
+    title: "Regional Freight Forwarder at Breakbulk ME",
     image: asset("/assets/photos/spark-breakbulk.jpg"),
     size: "60 sqm",
     tags: ["Custom Build", "Industrial Design", "Container Concept"],
     tags_ar: ["بناء مخصص", "تصميم صناعي", "مفهوم الحاويات"],
     location: "Dubai, UAE",
     overview:
-      "A 60 sqm stand for Spark Logistics at Breakbulk Middle East that turned shipping container architecture into a competitive advantage. The industrial design instantly communicated the client's freight forwarding identity while housing three dedicated meeting zones for deal-making.",
+      "A 60 sqm stand for the client at Breakbulk Middle East that turned shipping container architecture into a competitive advantage. The industrial design instantly communicated the client's freight forwarding identity while housing three dedicated meeting zones for deal-making.",
     challenge:
       "Making a container-inspired concept feel authentic without becoming dark, cramped, or gimmicky. The design had to balance raw industrial character with a professional meeting environment across a compact 60 sqm footprint.",
     solution:
@@ -451,7 +451,7 @@ export const projects: Project[] = [
       { value: 4, label: "Editions Built" },
     ],
     overview_ar:
-      "جناح بمساحة 60 م² لـ Spark Logistics في Breakbulk Middle East حوّل تصميم حاويات الشحن إلى ميزة تنافسية. التصميم الصناعي أوصل هوية الشركة في الشحن فوراً، مع توفير ثلاث مناطق اجتماعات مخصصة لإتمام الصفقات.",
+      "جناح بمساحة 60 م² لـ العميل في Breakbulk Middle East حوّل تصميم حاويات الشحن إلى ميزة تنافسية. التصميم الصناعي أوصل هوية الشركة في الشحن فوراً، مع توفير ثلاث مناطق اجتماعات مخصصة لإتمام الصفقات.",
     challenge_ar:
       "جعل مفهوم مستوحى من الحاويات يبدو أصيلاً دون أن يكون مظلماً أو ضيقاً أو مبتذلاً. التصميم كان بحاجة لتحقيق التوازن بين الطابع الصناعي الخام وبيئة اجتماعات احترافية ضمن مساحة مدمجة 60 م².",
     solution_ar:
@@ -492,18 +492,18 @@ export const projects: Project[] = [
   },
   {
     slug: "hoosh-world-of-vape",
-    client: "HOOSH",
+    client: "Consumer Electronics Brand",
     event: "World of Vape",
-    title: "HOOSH World of Vape",
+    title: "Consumer Electronics Brand at World of Vape",
     image: asset("/assets/photos/gallery/hoosh-7.jpg"),
     size: "36 sqm",
     tags: ["Retail Design", "LED Signage", "Product Wall"],
     tags_ar: ["تصميم تجزئة", "لافتات LED", "جدار منتجات"],
     location: "Dubai, UAE",
     overview:
-      "A 36 sqm stand for HOOSH at World of Vape that broke every convention in the hall. While competitors defaulted to black-and-neon, we built a clean retail boutique that showcased 60+ products and kept visitors browsing three times longer than the hall average.",
+      "A 36 sqm stand for the client at World of Vape that broke every convention in the hall. While competitors defaulted to black-and-neon, we built a clean retail boutique that showcased 60+ products and kept visitors browsing three times longer than the hall average.",
     challenge:
-      "Every competitor in the vape hall looked the same — dark, loud, generic. HOOSH needed a stand that signalled quality and trust while displaying 60+ SKUs in a way that invited browsing, not overwhelm.",
+      "Every competitor in the vape hall looked the same — dark, loud, generic. The client needed a stand that signalled quality and trust while displaying 60+ SKUs in a way that invited browsing, not overwhelm.",
     solution:
       "We deliberately went the opposite direction: matte white surfaces, brushed brass accents, and warm lighting that made the stand feel like a premium boutique dropped into a trade show. Individually backlit product bays turned the full-width wall into a browsable retail display. A curved tasting counter with built-in USB charging gave visitors a reason to stay — and the longer they stayed, the more deals closed.",
     features: [
@@ -525,7 +525,7 @@ export const projects: Project[] = [
       {
         title: "Warm Retail Palette",
         description:
-          "Matte white and brushed brass with warm 3000K lighting — a deliberate contrast that made HOOSH the most distinctive stand in the hall.",
+          "Matte white and brushed brass with warm 3000K lighting — a deliberate contrast that made the client the most distinctive stand in the hall.",
       },
     ],
     results: [
@@ -541,9 +541,9 @@ export const projects: Project[] = [
       { value: 6, suffix: " min", label: "Avg Dwell Time" },
     ],
     overview_ar:
-      "جناح بمساحة 36 م² لـ HOOSH في World of Vape كسر كل الأنماط السائدة في القاعة. بينما لجأ المنافسون للأسود والنيون، بنينا بوتيك تجزئة أنيق عرض أكثر من 60 منتجاً وأبقى الزوار يتصفحون ثلاثة أضعاف متوسط القاعة.",
+      "جناح بمساحة 36 م² لـ العميل في World of Vape كسر كل الأنماط السائدة في القاعة. بينما لجأ المنافسون للأسود والنيون، بنينا بوتيك تجزئة أنيق عرض أكثر من 60 منتجاً وأبقى الزوار يتصفحون ثلاثة أضعاف متوسط القاعة.",
     challenge_ar:
-      "كل المنافسين في قاعة الفيب بدوا متشابهين — داكنون وصاخبون وعاديون. HOOSH كانت بحاجة لجناح يوحي بالجودة والثقة مع عرض أكثر من 60 منتجاً بطريقة تدعو للتصفح لا للارتباك.",
+      "كل المنافسين في قاعة الفيب بدوا متشابهين — داكنون وصاخبون وعاديون. العميل كان بحاجة لجناح يوحي بالجودة والثقة مع عرض أكثر من 60 منتجاً بطريقة تدعو للتصفح لا للارتباك.",
     solution_ar:
       "اخترنا عمداً الاتجاه المعاكس: أسطح بيضاء مطفأة ولمسات نحاسية مصقولة وإضاءة دافئة جعلت الجناح يبدو كبوتيك فاخر أُسقط في معرض تجاري. خانات عرض بإضاءة خلفية فردية حوّلت الجدار الكامل إلى واجهة تجزئة قابلة للتصفح. كاونتر تذوق منحنٍ بشحن USB مدمج منح الزوار سبباً للبقاء — وكلما طالت إقامتهم، زادت الصفقات المُبرمة.",
     features_ar: [
@@ -565,7 +565,7 @@ export const projects: Project[] = [
       {
         title: "لوحة ألوان تجزئة دافئة",
         description:
-          "أبيض مطفأ ونحاس مصقول مع إضاءة دافئة 3000K — تباين مقصود جعل HOOSH الجناح الأكثر تميزاً في القاعة.",
+          "أبيض مطفأ ونحاس مصقول مع إضاءة دافئة 3000K — تباين مقصود جعل العميل الجناح الأكثر تميزاً في القاعة.",
       },
     ],
     results_ar: [
@@ -590,16 +590,16 @@ export const projects: Project[] = [
   },
   {
     slug: "sipchem-adipec",
-    client: "Sipchem",
+    client: "Specialty Chemicals Corporation",
     event: "Middle East Coatings Show",
-    title: "Sipchem Middle East Coatings Show",
+    title: "Specialty Chemicals Corporation at ME Coatings Show",
     image: asset("/assets/photos/gallery/sipchem-3.jpg"),
     size: "100 sqm",
     tags: ["Double Decker", "LED Video Wall", "Premium Finish"],
     tags_ar: ["جناح مزدوج الطوابق", "شاشة LED", "تشطيب فاخر"],
     location: "Dubai, UAE",
     overview:
-      "A 100 sqm double-decker stand that positioned Sipchem as the dominant presence at the Middle East Coatings Show. The cantilevered upper deck projected corporate scale, while VIP meeting rooms above and an open reception below gave the sales team the right environment for every conversation.",
+      "A 100 sqm double-decker stand that positioned the client as the dominant presence at the Middle East Coatings Show. The cantilevered upper deck projected corporate scale, while VIP meeting rooms above and an open reception below gave the sales team the right environment for every conversation.",
     challenge:
       "Projecting the authority of a major specialty chemicals company from a 100 sqm plot surrounded by competitors with significantly larger footprints. The double-decker structure also had to clear both DWTC venue regulations and Dubai Civil Defence requirements.",
     solution:
@@ -613,7 +613,7 @@ export const projects: Project[] = [
       {
         title: "12 sqm LED Video Wall",
         description:
-          "High-resolution display running custom content on Sipchem's facilities and product range — the visual anchor that pulled traffic from the main thoroughfare.",
+          "High-resolution display running custom content on the client's facilities and product range — the visual anchor that pulled traffic from the main thoroughfare.",
       },
       {
         title: "VIP Meeting Suite",
@@ -639,7 +639,7 @@ export const projects: Project[] = [
       { value: 4, suffix: " days", label: "Show Duration" },
     ],
     overview_ar:
-      "جناح مزدوج الطوابق بمساحة 100 م² وضع Sipchem كالحضور المهيمن في Middle East Coatings Show. الطابق العلوي البارز أوحى بحجم الشركة، فيما وفّرت غرف اجتماعات VIP في الأعلى واستقبال مفتوح في الأسفل البيئة المناسبة لكل محادثة.",
+      "جناح مزدوج الطوابق بمساحة 100 م² وضع العميل كالحضور المهيمن في Middle East Coatings Show. الطابق العلوي البارز أوحى بحجم الشركة، فيما وفّرت غرف اجتماعات VIP في الأعلى واستقبال مفتوح في الأسفل البيئة المناسبة لكل محادثة.",
     challenge_ar:
       "إبراز هيبة شركة كيماويات متخصصة كبرى من مساحة 100 م² محاطة بمنافسين بمساحات أكبر بكثير. الهيكل المزدوج كان يحتاج أيضاً لاجتياز لوائح مركز دبي التجاري العالمي ومتطلبات الدفاع المدني.",
     solution_ar:
@@ -653,7 +653,7 @@ export const projects: Project[] = [
       {
         title: "شاشة LED بمساحة 12 م²",
         description:
-          "شاشة عالية الدقة تعرض محتوى مخصصاً عن منشآت Sipchem ومجموعة منتجاتها — المحور البصري الذي جذب الزوار من الممر الرئيسي.",
+          "شاشة عالية الدقة تعرض محتوى مخصصاً عن منشآت العميل ومجموعة منتجاتها — المحور البصري الذي جذب الزوار من الممر الرئيسي.",
       },
       {
         title: "جناح اجتماعات VIP",
@@ -681,16 +681,16 @@ export const projects: Project[] = [
   },
   {
     slug: "interfood-gulfood",
-    client: "Interfood",
+    client: "F&B Distribution Group",
     event: "Gulfood Manufacturing",
-    title: "Interfood Gulfood Manufacturing",
+    title: "F&B Distribution Group at Gulfood Manufacturing",
     image: asset("/assets/photos/gallery/interfood-1.jpg"),
     size: "54 sqm",
     tags: ["Custom Build", "Hanging Signage", "Interactive Display"],
     tags_ar: ["بناء مخصص", "لافتة معلقة", "عرض تفاعلي"],
     location: "Dubai, UAE",
     overview:
-      "A 54 sqm stand for Interfood at Gulfood Manufacturing that punched well above its weight class. A suspended hanging sign gave hall-wide visibility, while interactive kiosks and acoustic meeting pods turned visitor traffic into 340 qualified leads.",
+      "A 54 sqm stand for the client at Gulfood Manufacturing that punched well above its weight class. A suspended hanging sign gave hall-wide visibility, while interactive kiosks and acoustic meeting pods turned visitor traffic into 340 qualified leads.",
     challenge:
       "Competing for attention in a dense hall where neighbouring stands were two to three times larger. The client also needed quiet spaces for technical product conversations — difficult to achieve on a noisy show floor.",
     solution:
@@ -714,7 +714,7 @@ export const projects: Project[] = [
       {
         title: "Green Brand Integration",
         description:
-          "Full stand wrapped in Interfood's signature green using tension-fabric panels — bold, lightweight, and instantly recognizable from any angle.",
+          "Full stand wrapped in the client's signature green using tension-fabric panels — bold, lightweight, and instantly recognizable from any angle.",
       },
     ],
     results: [
@@ -730,7 +730,7 @@ export const projects: Project[] = [
       { value: 3, suffix: " days", label: "Build Time" },
     ],
     overview_ar:
-      "جناح بمساحة 54 م² لـ Interfood في Gulfood Manufacturing تفوّق على حجمه بمراحل. لافتة معلقة وفّرت رؤية على مستوى القاعة بالكامل، فيما حوّلت الأكشاك التفاعلية وكبائن الاجتماعات الصوتية حركة الزوار إلى 340 عميلاً محتملاً مؤهلاً.",
+      "جناح بمساحة 54 م² لـ العميل في Gulfood Manufacturing تفوّق على حجمه بمراحل. لافتة معلقة وفّرت رؤية على مستوى القاعة بالكامل، فيما حوّلت الأكشاك التفاعلية وكبائن الاجتماعات الصوتية حركة الزوار إلى 340 عميلاً محتملاً مؤهلاً.",
     challenge_ar:
       "المنافسة على الاهتمام في قاعة مكتظة حيث الأجنحة المجاورة أكبر بمرتين إلى ثلاث مرات. العميل كان يحتاج أيضاً مساحات هادئة لمحادثات تقنية عن المنتجات — أمر صعب التحقيق في أرض معرض صاخبة.",
     solution_ar:
@@ -754,7 +754,7 @@ export const projects: Project[] = [
       {
         title: "تكامل العلامة التجارية الخضراء",
         description:
-          "الجناح بالكامل مغلف بلون Interfood الأخضر المميز باستخدام ألواح أقمشة مشدودة — جريء وخفيف ومميز فوراً من أي زاوية.",
+          "الجناح بالكامل مغلف بلون العميل الأخضر المميز باستخدام ألواح أقمشة مشدودة — جريء وخفيف ومميز فوراً من أي زاوية.",
       },
     ],
     results_ar: [
@@ -771,16 +771,16 @@ export const projects: Project[] = [
   },
   {
     slug: "altronix-intersec",
-    client: "Altronix",
+    client: "Security Solutions Provider",
     event: "Intersec",
-    title: "Altronix Intersec",
+    title: "Security Solutions Provider at Intersec",
     image: asset("/assets/photos/altronix-intersec.jpg"),
     size: "25 sqm",
     tags: ["Compact Design", "Security", "Long-Term Client"],
     tags_ar: ["تصميم مدمج", "أمن وسلامة", "عميل طويل الأمد"],
     location: "Dubai, UAE",
     overview:
-      "A 25 sqm stand for Altronix at Intersec that proved you don't need a big footprint to dominate a show floor. Dramatic LED integration turned a compact island plot into a glowing beacon — and delivered a 60% increase in qualified leads over the previous year. This was our sixth consecutive build for Altronix.",
+      "A 25 sqm stand for the client at Intersec that proved you don't need a big footprint to dominate a show floor. Dramatic LED integration turned a compact island plot into a glowing beacon — and delivered a 60% increase in qualified leads over the previous year. This was our sixth consecutive build for the client.",
     challenge:
       "Competing against neighbours with triple the space and budget. The product range — power supplies and surge protection for CCTV — is essential but not visually exciting, so the design had to do the heavy lifting.",
     solution:
@@ -820,7 +820,7 @@ export const projects: Project[] = [
       { value: 2, suffix: " days", label: "Build Time" },
     ],
     overview_ar:
-      "جناح بمساحة 25 م² لـ Altronix في Intersec أثبت أنك لا تحتاج مساحة كبيرة للسيطرة على أرض المعرض. تكامل LED مثير حوّل مساحة جزيرة مدمجة إلى منارة مضيئة — وحقق زيادة 60% في العملاء المحتملين المؤهلين مقارنة بالعام السابق. هذا كان مشروعنا السادس على التوالي مع Altronix.",
+      "جناح بمساحة 25 م² لـ العميل في Intersec أثبت أنك لا تحتاج مساحة كبيرة للسيطرة على أرض المعرض. تكامل LED مثير حوّل مساحة جزيرة مدمجة إلى منارة مضيئة — وحقق زيادة 60% في العملاء المحتملين المؤهلين مقارنة بالعام السابق. هذا كان مشروعنا السادس على التوالي مع العميل.",
     challenge_ar:
       "المنافسة ضد جيران بثلاثة أضعاف المساحة والميزانية. مجموعة المنتجات — وحدات تغذية كهربائية وحماية من التيار الزائد لكاميرات المراقبة — ضرورية لكنها ليست بصرياً مثيرة، لذا التصميم كان عليه أن يتحمل العبء الأكبر.",
     solution_ar:

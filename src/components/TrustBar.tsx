@@ -16,15 +16,18 @@ import { useI18n } from "@/lib/I18nContext";
 /* ------------------------------------------------------------------ */
 
 const LOGOS = [
-  { src: asset("/assets/logos/client-1.png"), alt: "IK Group" },
-  { src: asset("/assets/logos/client-2.png"), alt: "Microsoft" },
-  { src: asset("/assets/logos/client-3.png"), alt: "Spark Logistics" },
-  { src: asset("/assets/logos/client-4.png"), alt: "Altronix" },
-  { src: asset("/assets/logos/client-5.png"), alt: "Vanderlande" },
-  { src: asset("/assets/logos/client-6.png"), alt: "Absolut Skandic" },
+  { src: asset("/assets/logos/show-01.png"), alt: "GITEX Global" },
+  { src: asset("/assets/logos/show-02.png"), alt: "LEAP" },
+  { src: asset("/assets/logos/show-03.png"), alt: "Airport Show" },
+  { src: asset("/assets/logos/show-04.png"), alt: "Breakbulk Middle East" },
+  { src: asset("/assets/logos/show-05.png"), alt: "Gulfood Manufacturing" },
+  { src: asset("/assets/logos/show-06.png"), alt: "Intersec" },
+  { src: asset("/assets/logos/show-07.png"), alt: "Middle East Coatings Show" },
+  { src: asset("/assets/logos/show-08.png"), alt: "World of Vape" },
+  { src: asset("/assets/logos/show-09.png"), alt: "Light Show" },
 ];
 
-const FLOAT_PHASES = [0, 1.2, 2.4, 3.6, 0.8, 2.0];
+const FLOAT_PHASES = [0, 1.2, 2.4, 3.6, 0.8, 2.0, 1.6, 3.2, 0.4];
 
 /* ------------------------------------------------------------------ */
 /*  SINGLE LOGO                                                        */

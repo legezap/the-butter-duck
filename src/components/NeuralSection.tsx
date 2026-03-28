@@ -130,7 +130,7 @@ const HIGHLIGHT_PATTERNS = [
 
 // Brands/proper nouns to highlight
 const BRAND_PATTERNS = [
-  /\b(?:Microsoft|Nespresso|Vanderlande|Spark\s*Logistics|HOOSH|Sipchem|Interfood|Altronix|Barco|CreatistaPlus|LEAP|ADIPEC|Intersec|Gulfood|Breakbulk|Airport\s*Show|Civil\s*Defence|Saudi|Riyadh|Dubai|Abu\s*Dhabi|Al\s*Serkal)\b/gi,
+  /\b(?:CreatistaPlus|LEAP|ADIPEC|Intersec|Gulfood|Breakbulk|Airport\s*Show|Civil\s*Defence|Saudi|Riyadh|Dubai|Abu\s*Dhabi|Al\s*Serkal|Global\s*Tech\s*Leader|Premium\s*Lighting\s*Brand|Luxury\s*Beverage\s*Brand|Industrial\s*Automation\s*Leader|Regional\s*Freight\s*Forwarder|Consumer\s*Electronics\s*Brand|Specialty\s*Chemicals\s*Corporation|F&B\s*Distribution\s*Group|Security\s*Solutions\s*Provider)\b/gi,
 ];
 
 function highlightText(text: string): (string | { type: "hl"; value: string })[] {

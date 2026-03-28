@@ -54,14 +54,14 @@ export default function Navbar() {
   ];
 
   const portfolioItems = [
-    { label: "Microsoft LEAP", href: "/projects/microsoft-leap" },
-    { label: "Nespresso CreatistaPlus", href: "/projects/nespresso-creatista" },
-    { label: "Vanderlande Airport Show", href: "/projects/vanderlande-airport" },
-    { label: "Spark Logistics Breakbulk ME", href: "/projects/spark-breakbulk" },
-    { label: "HOOSH World of Vape", href: "/projects/hoosh-world-of-vape" },
-    { label: "Sipchem Middle East Coatings Show", href: "/projects/sipchem-adipec" },
-    { label: "Interfood Gulfood", href: "/projects/interfood-gulfood" },
-    { label: "Altronix Intersec", href: "/projects/altronix-intersec" },
+    { label: "LEAP — 700 sqm Double Decker", href: "/projects/microsoft-leap" },
+    { label: "Product Launch — 1200 sqm", href: "/projects/nespresso-creatista" },
+    { label: "Airport Show — Open Concept", href: "/projects/vanderlande-airport" },
+    { label: "Breakbulk ME — Container Design", href: "/projects/spark-breakbulk" },
+    { label: "World of Vape — Retail Stand", href: "/projects/hoosh-world-of-vape" },
+    { label: "ME Coatings Show — Double Decker", href: "/projects/sipchem-adipec" },
+    { label: "Gulfood Manufacturing", href: "/projects/interfood-gulfood" },
+    { label: "Intersec — Compact Design", href: "/projects/altronix-intersec" },
   ];
 
   const megaTimeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);

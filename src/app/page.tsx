@@ -207,7 +207,7 @@ export default function HomePage() {
         <Parallax className="cine-divider-bg">
           <Image
             src={asset("/assets/photos/microsoft-leap.jpg")}
-            alt="Microsoft booth at LEAP — 700 sqm double decker"
+            alt="700 sqm double decker booth at LEAP"
             fill
             style={{ objectFit: "cover" }}
           />
@@ -309,7 +309,7 @@ export default function HomePage() {
         <Parallax className="cine-divider-bg">
           <Image
             src={asset("/assets/photos/gallery/nespresso-NES-1239.jpg")}
-            alt="Nespresso CreatistaPlus launch event — birds eye view"
+            alt="1200 sqm product launch event — birds eye view"
             fill
             style={{ objectFit: "cover" }}
           />
