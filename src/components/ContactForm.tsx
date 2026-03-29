@@ -108,12 +108,21 @@ export default function ContactForm() {
     return Object.keys(errs).length === 0;
   }
 
+  function scrollToForm() {
+    const el = document.getElementById("rfp-form");
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
   function next() {
-    if (validate()) setStep((s) => Math.min(s + 1, 4));
+    if (validate()) {
+      setStep((s) => Math.min(s + 1, 4));
+      scrollToForm();
+    }
   }
 
   function prev() {
     setStep((s) => Math.max(s - 1, 1));
+    scrollToForm();
   }
 
   async function handleSubmit(e: FormEvent) {
