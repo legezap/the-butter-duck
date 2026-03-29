@@ -248,7 +248,7 @@ export default function ProjectContent({ project, prev, next }: ProjectContentPr
       {/* Key Features */}
       <section
         style={{
-          padding: "100px 0",
+          padding: "72px 0",
           background: "var(--color-bg-card)",
           borderTop: "1px solid var(--color-border-default)",
           borderBottom: "1px solid var(--color-border-default)",

@@ -59,11 +59,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 /* --- Layout --- */
 .container { width: 100%; max-width: 1320px; margin: 0 auto; padding: 0 32px; }
-.section-pad { padding: 120px 0; }
-.section-pad-sm { padding: 80px 0; }
+.section-pad { padding: 80px 0; }
+.section-pad-sm { padding: 56px 0; }
 @media (max-width: 768px) {
-  .section-pad { padding: 64px 0; }
-  .section-pad-sm { padding: 48px 0; }
+  .section-pad { padding: 48px 0; }
+  .section-pad-sm { padding: 36px 0; }
 }
 
 /* --- Typography --- */
@@ -228,7 +228,7 @@ video.hero-bg-img { position: absolute; inset: 0; min-width: 100%; min-height: 1
 .service-link:hover { opacity: 1; }
 
 /* Service detail page */
-.service-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; padding: 100px 0; border-bottom: 1px solid var(--color-border-default); }
+.service-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; padding: 72px 0; border-bottom: 1px solid var(--color-border-default); }
 .service-detail:last-child { border-bottom: none; }
 .service-detail.reverse { direction: rtl; }
 .service-detail.reverse > * { direction: ltr; }
@@ -309,8 +309,8 @@ video.hero-bg-img { position: absolute; inset: 0; min-width: 100%; min-height: 1
 /* ============================================================
    CTA
    ============================================================ */
-.cta-section { background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%); text-align: center; padding: 120px 0; }
-@media (max-width: 768px) { .cta-section { padding: 64px 0; } }
+.cta-section { background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%); text-align: center; padding: 80px 0; }
+@media (max-width: 768px) { .cta-section { padding: 48px 0; } }
 .cta-section h2 { color: var(--color-bg-dark); }
 .cta-section p { color: rgba(0,0,0,0.6); font-size: 1.15rem; margin: 16px 0 40px; }
 .cta-section .btn { background: var(--color-bg-dark); color: var(--color-text-primary); border-radius: 100px; }
@@ -378,7 +378,7 @@ select.form-input { appearance: none; }
 /* ============================================================
    FOOTER
    ============================================================ */
-.footer { background: var(--color-bg-card); border-top: 1px solid var(--color-border-default); padding: 100px 0 40px; }
+.footer { background: var(--color-bg-card); border-top: 1px solid var(--color-border-default); padding: 64px 0 32px; }
 @media (max-width: 768px) { .footer { padding: 56px 0 32px; } }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 56px; margin-bottom: 56px; }
 .footer-brand .logo { margin-bottom: 20px; font-size: 1.3rem; }

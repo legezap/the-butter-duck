@@ -7,7 +7,7 @@ import CounterAnimation from "@/components/CounterAnimation";
 import Parallax from "@/components/Parallax";
 import AutoPlayVideo from "@/components/AutoPlayVideo";
 import TrustBar from "@/components/TrustBar";
-import BlueprintSignal from "@/components/BlueprintSignal";
+import DuckBlocks from "@/components/DuckBlocks";
 import { asset } from "@/lib/basePath";
 import { projects } from "@/data/projects";
 import { useI18n } from "@/lib/I18nContext";
@@ -282,7 +282,7 @@ export default function HomePage() {
       {/* ========== 7. OUR PROCESS ========== */}
       <section
         style={{
-          padding: "120px 0",
+          padding: "80px 0",
           background: "var(--color-bg-card)",
           borderTop: "1px solid var(--color-border-default)",
           borderBottom: "1px solid var(--color-border-default)",
