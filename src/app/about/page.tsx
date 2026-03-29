@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import RevealOnScroll from "@/components/RevealOnScroll";
+import AmbientDots from "@/components/AmbientDots";
 import ValuesSection from "@/components/ValuesSection";
 import CapabilitiesSection from "@/components/CapabilitiesSection";
 import StatsBlock from "./StatsBlock";
@@ -38,6 +39,7 @@ export default function AboutPage() {
 
       {/* Page Hero */}
       <section className="page-hero">
+        <AmbientDots seed={55} />
         <div className="container">
           <RevealOnScroll>
             <span className="section-label">{t("aboutpage.hero.label")}</span>

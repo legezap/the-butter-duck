@@ -7,6 +7,7 @@ import CounterAnimation from "@/components/CounterAnimation";
 import Parallax from "@/components/Parallax";
 import AutoPlayVideo from "@/components/AutoPlayVideo";
 import TrustBar from "@/components/TrustBar";
+import BlueprintSignal from "@/components/BlueprintSignal";
 import { asset } from "@/lib/basePath";
 import { projects } from "@/data/projects";
 import { useI18n } from "@/lib/I18nContext";

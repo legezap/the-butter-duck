@@ -3,6 +3,7 @@
 import React, { useState, useEffect, FormEvent } from "react";
 import Link from "next/link";
 import RevealOnScroll from "@/components/RevealOnScroll";
+import AmbientDots from "@/components/AmbientDots";
 import { useI18n } from "@/lib/I18nContext";
 import type { TranslationKey } from "@/lib/i18n";
 
@@ -182,6 +183,7 @@ export default function ContactForm() {
 
       {/* Page Hero */}
       <section className="page-hero">
+        <AmbientDots seed={91} />
         <div className="container">
           <RevealOnScroll>
             <span className="section-label">{t("contact.hero.label")}</span>

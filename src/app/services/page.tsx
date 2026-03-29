@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import RevealOnScroll from "@/components/RevealOnScroll";
+import AmbientDots from "@/components/AmbientDots";
 import { asset } from "@/lib/basePath";
 import { useI18n } from "@/lib/I18nContext";
 import type { TranslationKey } from "@/lib/i18n";
@@ -95,6 +96,7 @@ export default function ServicesPage() {
 
       {/* Page Hero */}
       <section className="page-hero">
+        <AmbientDots seed={113} />
         <div className="container">
           <RevealOnScroll>
             <span className="section-label">{t("servicespage.label")}</span>

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import RevealOnScroll from "@/components/RevealOnScroll";
+import AmbientDots from "@/components/AmbientDots";
 import { projects } from "@/data/projects";
 import { useI18n } from "@/lib/I18nContext";
 
@@ -25,6 +26,7 @@ export default function PortfolioPage() {
 
       {/* Page Hero */}
       <section className="page-hero">
+        <AmbientDots seed={77} />
         <div className="container">
           <RevealOnScroll>
             <span className="section-label">{t("portfoliopage.label")}</span>
