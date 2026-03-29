@@ -54,14 +54,14 @@ export default function Navbar() {
   ];
 
   const portfolioItems = [
-    { label: "LEAP — 700 sqm Double Decker", href: "/projects/microsoft-leap" },
-    { label: "Product Launch — 1200 sqm", href: "/projects/nespresso-creatista" },
-    { label: "Airport Show — Open Concept", href: "/projects/vanderlande-airport" },
-    { label: "Breakbulk ME — Container Design", href: "/projects/spark-breakbulk" },
-    { label: "World of Vape — Retail Stand", href: "/projects/hoosh-world-of-vape" },
-    { label: "ME Coatings Show — Double Decker", href: "/projects/sipchem-adipec" },
-    { label: "Gulfood Manufacturing", href: "/projects/interfood-gulfood" },
-    { label: "Intersec — Compact Design", href: "/projects/altronix-intersec" },
+    { label: "LEAP", sub: "700 sqm Double Decker", href: "/projects/microsoft-leap" },
+    { label: "Product Launch", sub: "1200 sqm Event", href: "/projects/nespresso-creatista" },
+    { label: "Airport Show", sub: "Open Concept", href: "/projects/vanderlande-airport" },
+    { label: "Breakbulk ME", sub: "Container Design", href: "/projects/spark-breakbulk" },
+    { label: "World of Vape", sub: "Retail Stand", href: "/projects/hoosh-world-of-vape" },
+    { label: "ME Coatings Show", sub: "Double Decker", href: "/projects/sipchem-adipec" },
+    { label: "Gulfood Manufacturing", sub: "Hanging Signage", href: "/projects/interfood-gulfood" },
+    { label: "Intersec", sub: "Compact Design", href: "/projects/altronix-intersec" },
   ];
 
   const megaTimeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
@@ -141,9 +141,10 @@ export default function Navbar() {
                 style={{ gridTemplateColumns: "1fr 1fr 1fr 1fr", minWidth: 560 }}
               >
                 {portfolioItems.map((item) => (
-                  <Link href={item.href} className="mega-item" role="menuitem" key={item.href} style={{ padding: 10 }}>
+                  <Link href={item.href} className="mega-item" role="menuitem" key={item.href} style={{ padding: "8px 12px" }}>
                     <div className="mega-text">
-                      <h4 style={{ fontSize: "0.82rem" }}>{item.label}</h4>
+                      <h4 style={{ fontSize: "0.8rem" }}>{item.label}</h4>
+                      <p style={{ fontSize: "0.68rem", color: "var(--color-text-dim)", margin: "2px 0 0", lineHeight: 1.2 }}>{item.sub}</p>
                     </div>
                   </Link>
                 ))}
@@ -216,6 +217,7 @@ export default function Navbar() {
               {portfolioItems.map((item) => (
                 <Link href={item.href} key={item.href}>{item.label}</Link>
               ))}
+              <Link href="/portfolio" style={{ marginTop: 8, color: "var(--color-accent)", fontWeight: 600 }}>View All Projects</Link>
             </div>
           </div>
 
