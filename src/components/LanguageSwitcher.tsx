@@ -13,7 +13,8 @@ export default function LanguageSwitcher() {
           key={l}
           className={`lang-btn${l === locale ? " active" : ""}`}
           onClick={() => setLocale(l)}
-          aria-label={`Switch to ${l}`}
+          aria-label={`Switch to ${localeNames[l]}`}
+          aria-pressed={l === locale}
         >
           {localeNames[l]}
         </button>

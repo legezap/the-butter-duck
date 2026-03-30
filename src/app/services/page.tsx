@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import AmbientDots from "@/components/AmbientDots";
 import { asset } from "@/lib/basePath";
@@ -80,6 +81,47 @@ const services: Array<{
 
 export default function ServicesPage() {
   const { t } = useI18n();
+  const [activeSection, setActiveSection] = useState(services[0]?.id ?? "");
+
+  useEffect(() => {
+    const sectionElements = services
+      .map(({ id }) => document.getElementById(id))
+      .filter((section): section is HTMLElement => section instanceof HTMLElement);
+
+    if (!sectionElements.length) return;
+
+    const syncFromHash = () => {
+      const hash = window.location.hash.replace("#", "");
+      if (hash && services.some((service) => service.id === hash)) {
+        setActiveSection(hash);
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleSections = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+        if (visibleSections[0]) {
+          setActiveSection(visibleSections[0].target.id);
+        }
+      },
+      {
+        rootMargin: "-20% 0px -55% 0px",
+        threshold: [0.2, 0.4, 0.6],
+      }
+    );
+
+    sectionElements.forEach((section) => observer.observe(section));
+    syncFromHash();
+    window.addEventListener("hashchange", syncFromHash);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("hashchange", syncFromHash);
+    };
+  }, []);
 
   return (
     <>
@@ -118,7 +160,13 @@ export default function ServicesPage() {
       <nav className="anchor-nav" aria-label="Service navigation">
         <div className="anchor-nav-inner">
           {services.map((s) => (
-            <a key={s.id} href={`#${s.id}`} className="anchor-link">
+            <a
+              key={s.id}
+              href={`#${s.id}`}
+              className={`anchor-link${activeSection === s.id ? " active" : ""}`}
+              aria-current={activeSection === s.id ? "location" : undefined}
+              onClick={() => setActiveSection(s.id)}
+            >
               {t(s.labelKey)}
             </a>
           ))}
@@ -133,6 +181,7 @@ export default function ServicesPage() {
               key={s.id}
               id={s.id}
               className={`service-detail${s.reverse ? " reverse" : ""}`}
+              style={{ scrollMarginTop: "140px" }}
             >
               <div className="sd-text">
                 <span className="section-label">{t(s.labelKey)}</span>
@@ -154,6 +203,7 @@ export default function ServicesPage() {
                   alt={t(s.titleKey)}
                   width={720}
                   height={540}
+                  loading="lazy"
                   style={{ width: "100%", height: "100%", objectFit: "cover" }}
                 />
               </div>

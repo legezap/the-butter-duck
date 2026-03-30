@@ -1,6 +1,6 @@
 "use client";
 
-import { useInView } from "framer-motion";
+import { useInView, useReducedMotion } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 interface Props {
@@ -20,6 +20,7 @@ export default function CounterAnimation({
 }: Props) {
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.1 });
+  const shouldReduceMotion = useReducedMotion();
   const [value, setValue] = useState(0);
   const hasAnimated = useRef(false);
 
@@ -47,10 +48,17 @@ export default function CounterAnimation({
   }, [target, duration]);
 
   useEffect(() => {
+    if (shouldReduceMotion) {
+      hasAnimated.current = true;
+      // Use requestAnimationFrame to avoid synchronous setState in effect
+      requestAnimationFrame(() => setValue(target));
+      return;
+    }
+
     if (isInView) {
       animate();
     }
-  }, [isInView, animate]);
+  }, [animate, isInView, shouldReduceMotion, target]);
 
   return (
     <span ref={ref} className={className}>

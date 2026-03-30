@@ -214,7 +214,7 @@ const cssText = `
 }
 
 .${SCOPE}-node:hover {
-  border-color: rgba(252, 217, 64, 0.2);
+  border-color: var(--color-accent-20);
   background: rgba(255, 255, 255, 0.04);
 }
 
@@ -257,7 +257,7 @@ const cssText = `
   font-weight: 600;
   position: relative;
   display: inline;
-  background: linear-gradient(180deg, transparent 65%, rgba(252, 217, 64, 0.08) 65%);
+  background: linear-gradient(180deg, transparent 65%, var(--color-accent-08) 65%);
   transition: color 0.3s ease;
 }
 

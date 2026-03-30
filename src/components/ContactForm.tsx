@@ -6,6 +6,8 @@ import RevealOnScroll from "@/components/RevealOnScroll";
 import AmbientDots from "@/components/AmbientDots";
 import { useI18n } from "@/lib/I18nContext";
 import type { TranslationKey } from "@/lib/i18n";
+import { useDraftPersistence } from "@/hooks/useDraftPersistence";
+import { submitRFP } from "@/lib/api";
 
 const SERVICE_ICONS: React.ReactNode[] = [
   <svg key="s1" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>,
@@ -49,7 +51,6 @@ function generateRef(): string {
   return `TBD-${y}${m}${d}-${rand}`;
 }
 
-
 export default function ContactForm() {
   const { t } = useI18n();
 
@@ -74,16 +75,65 @@ export default function ContactForm() {
   const [consent, setConsent] = useState(false);
 
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [submitError, setSubmitError] = useState("");
+
+  // Draft persistence
+  const { draftRestored, initialDraft, clearDraft } = useDraftPersistence({
+    service, eventName, eventDates, eventLocation, boothSize, budget,
+    name, company, email, phone, country, notes, step: String(step),
+  });
 
   // Scroll to form when navigated with #rfp-form hash
   useEffect(() => {
+    if (Object.keys(initialDraft).length > 0) {
+      const g = (camel: string, title?: string) => initialDraft[camel] || (title ? initialDraft[title] : "") || "";
+      const svc = g("service", "Service");
+      if (svc) setService(svc);
+      if (g("eventName", "Event Name")) setEventName(g("eventName", "Event Name"));
+      if (g("eventDates", "Event Dates")) setEventDates(g("eventDates", "Event Dates"));
+      if (g("eventLocation", "Event Location")) setEventLocation(g("eventLocation", "Event Location"));
+      if (g("boothSize", "Booth Size")) setBoothSize(g("boothSize", "Booth Size"));
+      if (g("budget", "Budget Range")) setBudget(g("budget", "Budget Range"));
+      if (g("name", "Contact Name")) setName(g("name", "Contact Name"));
+      if (g("company", "Company")) setCompany(g("company", "Company"));
+      if (g("email", "Email")) setEmail(g("email", "Email"));
+      if (g("phone", "Phone")) setPhone(g("phone", "Phone"));
+      if (g("country", "Country")) setCountry(g("country", "Country"));
+      if (g("notes", "Notes")) setNotes(g("notes", "Notes"));
+      if (initialDraft.step) setStep(Number(initialDraft.step) || 1);
+    }
+
     if (window.location.hash === "#rfp-form") {
       setTimeout(() => {
         const el = document.getElementById("rfp-form");
-        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+        if (el) {
+          const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+          el.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "start" });
+        }
       }, 300);
     }
-  }, []);
+  }, [initialDraft]);
+
+  function getErrorId(field: string) {
+    return `${field}-error`;
+  }
+
+  function getFieldA11yProps(field: string) {
+    return errors[field]
+      ? {
+          "aria-invalid": true,
+          "aria-describedby": getErrorId(field),
+        }
+      : {};
+  }
+
+  function handleClearDraft() {
+    clearDraft();
+    setService(""); setEventName(""); setEventDates(""); setEventLocation("");
+    setBoothSize(""); setBudget(""); setName(""); setCompany("");
+    setEmail(""); setPhone(""); setCountry(""); setNotes("");
+    setConsent(false); setStep(1); setErrors({}); setSubmitError("");
+  }
 
   function validate(): boolean {
     const errs: Record<string, string> = {};
@@ -106,6 +156,7 @@ export default function ContactForm() {
     }
 
     setErrors(errs);
+    setSubmitError("");
     return Object.keys(errs).length === 0;
   }
 
@@ -131,38 +182,30 @@ export default function ContactForm() {
     if (!validate()) return;
 
     setSubmitting(true);
+    setSubmitError("");
     const ref = generateRef();
 
-    // camelCase field names — n8n Airtable node maps these to Title Case columns
-    // Telegram node reads from Airtable output ($json.fields.xxx), not webhook body
-    const payload = {
-      _subject: `New RFP: ${ref}`,
-      reference: ref,
-      service,
-      eventName,
-      eventDates,
-      eventLocation,
-      boothSize,
-      budget,
-      name,
-      company,
-      email,
-      phone,
-      country,
-      notes,
-    };
-
     try {
-      const res = await fetch("https://pavellegeza.app.n8n.cloud/webhook/inbound-lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+      await submitRFP({
+        _subject: `New RFP: ${ref}`,
+        reference: ref,
+        service,
+        eventName,
+        eventDates,
+        eventLocation,
+        boothSize,
+        budget,
+        name,
+        company,
+        email,
+        phone,
+        country,
+        notes,
       });
-      if (!res.ok) throw new Error("Submission failed");
       setRefCode(ref);
       setSubmitted(true);
     } catch {
-      alert(t("contact.error.alert"));
+      setSubmitError(t("contact.error.alert"));
     } finally {
       setSubmitting(false);
     }
@@ -276,6 +319,34 @@ export default function ContactForm() {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} noValidate>
+                    {/* Draft restored notice */}
+                    {draftRestored && (
+                      <div style={{
+                        display: "flex", alignItems: "center", justifyContent: "space-between",
+                        background: "var(--color-accent-12)", border: "1px solid var(--color-accent-30)",
+                        borderRadius: 8, padding: "10px 16px", marginBottom: 16, fontSize: "0.8rem",
+                      }}>
+                        <span style={{ color: "var(--color-text-muted)" }}>
+                          {"\uD83D\uDCBE"} Draft restored from your last visit
+                        </span>
+                        <button
+                          type="button"
+                          onClick={handleClearDraft}
+                          style={{
+                            background: "none", border: "none", color: "var(--color-accent)",
+                            cursor: "pointer", fontSize: "0.8rem", fontWeight: 600, padding: "2px 8px",
+                          }}
+                        >
+                          Clear
+                        </button>
+                      </div>
+                    )}
+
+                    {submitError && (
+                      <div className="form-status error" role="alert">
+                        {submitError}
+                      </div>
+                    )}
 
                     {/* Progress Bar */}
                     <div className="rfp-progress">
@@ -308,20 +379,15 @@ export default function ContactForm() {
                         </h3>
                         <div className="svc-grid">
                           {SERVICE_KEYS.map((opt, i) => (
-                            <div
+                            <button
                               key={opt.id}
+                              type="button"
                               className={`svc-opt${service === opt.id ? " selected" : ""}`}
+                              aria-pressed={service === opt.id}
+                              aria-describedby={errors.service ? getErrorId("service") : undefined}
                               onClick={() => {
                                 setService(opt.id);
                                 setErrors({});
-                              }}
-                              role="button"
-                              tabIndex={0}
-                              onKeyDown={(e) => {
-                                if (e.key === "Enter" || e.key === " ") {
-                                  setService(opt.id);
-                                  setErrors({});
-                                }
                               }}
                             >
                               <div style={{ fontSize: "1.4rem", marginBottom: 8 }}>
@@ -330,11 +396,11 @@ export default function ContactForm() {
                               <div style={{ fontSize: "0.85rem", fontWeight: 600 }}>
                                 {t(opt.labelKey)}
                               </div>
-                            </div>
+                            </button>
                           ))}
                         </div>
                         {errors.service && (
-                          <p style={{ color: "#ff6b6b", fontSize: "0.8rem", marginTop: 12 }}>
+                          <p id={getErrorId("service")} className="form-error" role="alert">
                             {errors.service}
                           </p>
                         )}
@@ -355,9 +421,10 @@ export default function ContactForm() {
                             placeholder={t("contact.field.eventName.placeholder")}
                             value={eventName}
                             onChange={(e) => setEventName(e.target.value)}
+                            {...getFieldA11yProps("eventName")}
                           />
                           {errors.eventName && (
-                            <p style={{ color: "#ff6b6b", fontSize: "0.8rem", marginTop: 4 }}>
+                            <p id={getErrorId("eventName")} className="form-error" role="alert">
                               {errors.eventName}
                             </p>
                           )}
@@ -443,9 +510,10 @@ export default function ContactForm() {
                             placeholder={t("contact.field.name.placeholder")}
                             value={name}
                             onChange={(e) => setName(e.target.value)}
+                            {...getFieldA11yProps("name")}
                           />
                           {errors.name && (
-                            <p style={{ color: "#ff6b6b", fontSize: "0.8rem", marginTop: 4 }}>
+                            <p id={getErrorId("name")} className="form-error" role="alert">
                               {errors.name}
                             </p>
                           )}
@@ -460,9 +528,10 @@ export default function ContactForm() {
                             placeholder={t("contact.field.company.placeholder")}
                             value={company}
                             onChange={(e) => setCompany(e.target.value)}
+                            {...getFieldA11yProps("company")}
                           />
                           {errors.company && (
-                            <p style={{ color: "#ff6b6b", fontSize: "0.8rem", marginTop: 4 }}>
+                            <p id={getErrorId("company")} className="form-error" role="alert">
                               {errors.company}
                             </p>
                           )}
@@ -477,9 +546,10 @@ export default function ContactForm() {
                             placeholder={t("contact.field.email.placeholder")}
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            {...getFieldA11yProps("email")}
                           />
                           {errors.email && (
-                            <p style={{ color: "#ff6b6b", fontSize: "0.8rem", marginTop: 4 }}>
+                            <p id={getErrorId("email")} className="form-error" role="alert">
                               {errors.email}
                             </p>
                           )}
@@ -531,6 +601,7 @@ export default function ContactForm() {
 
                         <div className="form-group">
                           <label
+                            htmlFor="contactConsent"
                             style={{
                               display: "flex",
                               alignItems: "flex-start",
@@ -542,18 +613,21 @@ export default function ContactForm() {
                             }}
                           >
                             <input
+                              id="contactConsent"
                               type="checkbox"
                               checked={consent}
                               onChange={(e) => {
                                 setConsent(e.target.checked);
                                 setErrors({});
                               }}
+                              aria-invalid={errors.consent ? true : undefined}
+                              aria-describedby={errors.consent ? getErrorId("consent") : undefined}
                               style={{ marginTop: 3, accentColor: "#fcd940" }}
                             />
                             {t("contact.consent.form")}
                           </label>
                           {errors.consent && (
-                            <p style={{ color: "#ff6b6b", fontSize: "0.8rem", marginTop: 4 }}>
+                            <p id={getErrorId("consent")} className="form-error" role="alert">
                               {errors.consent}
                             </p>
                           )}

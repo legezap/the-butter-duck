@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView, type TargetAndTransition } from "framer-motion";
+import { motion, useInView, useReducedMotion, type TargetAndTransition } from "framer-motion";
 import { useRef } from "react";
 
 interface Props {
@@ -50,8 +50,17 @@ export default function RevealOnScroll({
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.1 });
+  const shouldReduceMotion = useReducedMotion();
 
   const { hidden, visible } = variants[direction];
+
+  if (shouldReduceMotion) {
+    return (
+      <div className={className} style={style}>
+        {children}
+      </div>
+    );
+  }
 
   return (
     <motion.div

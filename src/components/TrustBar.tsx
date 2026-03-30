@@ -46,6 +46,7 @@ function LogoItem({ index, isInView }: { index: number; isInView: boolean }) {
         alt={logo.alt}
         width={240}
         height={64}
+        loading="lazy"
         className="tb2-img"
         style={{ objectFit: "contain" }}
       />

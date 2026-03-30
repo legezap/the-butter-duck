@@ -30,15 +30,11 @@ export default function PortfolioPage() {
         <div className="container">
           <RevealOnScroll>
             <span className="section-label">{t("portfoliopage.label")}</span>
-          </RevealOnScroll>
-          <RevealOnScroll delay={0.1}>
             <h1>
               {t("portfolio.title")}
               <br />
               <span className="accent">{t("portfolio.title.accent")}</span>
             </h1>
-          </RevealOnScroll>
-          <RevealOnScroll delay={0.2}>
             <p>{t("portfoliopage.desc")}</p>
           </RevealOnScroll>
         </div>
@@ -61,6 +57,7 @@ export default function PortfolioPage() {
                         alt={`${project.client} — ${project.event}`}
                         width={720}
                         height={450}
+                        loading="lazy"
                         style={{
                           width: "100%",
                           height: "100%",

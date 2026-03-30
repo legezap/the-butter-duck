@@ -28,6 +28,16 @@ const notoArabic = Noto_Sans_Arabic({
   display: "swap",
 });
 
+const localeBootstrapScript = `
+  try {
+    const savedLocale = localStorage.getItem("tbd-lang");
+    const browserLocale = navigator.language?.slice(0, 2);
+    const locale = savedLocale === "ar" || (!savedLocale && browserLocale === "ar") ? "ar" : "en";
+    document.documentElement.lang = locale;
+    document.documentElement.dir = locale === "ar" ? "rtl" : "ltr";
+  } catch {}
+`;
+
 export const metadata: Metadata = {
   title: "The Butter Duck — Global Exhibition Design & Event Production | Dubai",
   description:
@@ -59,8 +69,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${dmSans.variable} ${jakarta.variable} ${notoArabic.variable}`}>
+    <html
+      lang="en"
+      dir="ltr"
+      suppressHydrationWarning
+      className={`${dmSans.variable} ${jakarta.variable} ${notoArabic.variable}`}
+    >
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: localeBootstrapScript,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

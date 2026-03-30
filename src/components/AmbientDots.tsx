@@ -1,20 +1,26 @@
 "use client";
 
-/**
- * Subtle floating gold dots for atmospheric depth on dark sections.
- * Pure CSS animation, no JS dependencies. Renders an absolute-positioned
- * SVG layer meant to sit behind content.
- */
-export default function AmbientDots({ count = 18, seed = 42 }: { count?: number; seed?: number }) {
+import { useMemo } from "react";
+
+function generateDots(count: number, seed: number) {
   let s = seed;
   const rng = () => { s = (s * 16807) % 2147483647; return (s - 1) / 2147483646; };
-  const dots = Array.from({ length: count }, () => ({
+  return Array.from({ length: count }, () => ({
     cx: rng() * 100,
     cy: rng() * 100,
     r: 1 + rng() * 1.5,
     delay: rng() * 8,
     dur: 5 + rng() * 4,
   }));
+}
+
+/**
+ * Subtle floating gold dots for atmospheric depth on dark sections.
+ * Pure CSS animation, no JS dependencies. Renders an absolute-positioned
+ * SVG layer meant to sit behind content.
+ */
+export default function AmbientDots({ count = 18, seed = 42 }: { count?: number; seed?: number }) {
+  const dots = useMemo(() => generateDots(count, seed), [count, seed]);
 
   return (
     <>

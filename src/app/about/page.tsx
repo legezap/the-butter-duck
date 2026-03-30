@@ -43,15 +43,11 @@ export default function AboutPage() {
         <div className="container">
           <RevealOnScroll>
             <span className="section-label">{t("aboutpage.hero.label")}</span>
-          </RevealOnScroll>
-          <RevealOnScroll delay={0.1}>
             <h1>
               {t("aboutpage.title")}
               <br />
               <span className="accent">{t("aboutpage.title.accent")}</span>
             </h1>
-          </RevealOnScroll>
-          <RevealOnScroll delay={0.2}>
             <p>{t("aboutpage.hero.desc")}</p>
           </RevealOnScroll>
         </div>
@@ -67,10 +63,10 @@ export default function AboutPage() {
                 {t("aboutpage.story.title.alt")}{" "}
                 <span className="accent">{t("aboutpage.story.title.accent.alt")}</span>
               </h2>
-              <p style={{ color: "var(--color-text-muted)", lineHeight: 1.8, marginBottom: 16 }}>
+              <p className="body-text" style={{ marginBottom: 16 }}>
                 {t("aboutpage.story.p1")}
               </p>
-              <p style={{ color: "var(--color-text-muted)", lineHeight: 1.8 }}>
+              <p className="body-text">
                 {t("aboutpage.story.p2")}
               </p>
             </div>
@@ -81,6 +77,7 @@ export default function AboutPage() {
                   alt="The Butter Duck UAE HQ"
                   width={720}
                   height={540}
+                  loading="lazy"
                   style={{ width: "100%", height: "auto", objectFit: "cover" }}
                 />
               </div>
@@ -100,10 +97,10 @@ export default function AboutPage() {
       <section className="section-pad">
         <div className="container">
           <RevealOnScroll>
-            <span className="section-label" style={{ textAlign: "center", display: "block" }}>
+            <span className="section-label section-header-center">
               {t("aboutpage.track.label.alt")}
             </span>
-            <h2 style={{ textAlign: "center", marginBottom: 16 }}>
+            <h2 className="section-title-center" style={{ marginBottom: 16 }}>
               {t("aboutpage.track.title.alt")} <span className="accent">{t("aboutpage.track.title.accent.alt")}</span>
             </h2>
           </RevealOnScroll>

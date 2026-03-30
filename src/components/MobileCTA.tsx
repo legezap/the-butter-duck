@@ -12,7 +12,8 @@ export default function MobileCTA() {
     const heroCta = document.querySelector(".hero-cta");
     if (!heroCta) {
       // Not on homepage — always show the bar
-      setVisible(true);
+      // Defer to avoid synchronous setState in effect body
+      requestAnimationFrame(() => setVisible(true));
       return;
     }
 
@@ -30,7 +31,7 @@ export default function MobileCTA() {
 
   return (
     <div className={`mobile-cta-bar${visible ? "" : " hidden"}`}>
-      <Link href="/contact#rfp-form" className="btn btn-primary">
+      <Link href="/contact#rfp-form" className="btn btn-primary" aria-label="Get a free quote">
         {t("mobile.quote")}
       </Link>
       <a
@@ -38,6 +39,7 @@ export default function MobileCTA() {
         target="_blank"
         rel="noopener noreferrer"
         className="btn btn-wa"
+        aria-label="Chat on WhatsApp"
       >
         {t("mobile.whatsapp")}
       </a>

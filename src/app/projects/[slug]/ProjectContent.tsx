@@ -126,73 +126,45 @@ export default function ProjectContent({ project, prev, next }: ProjectContentPr
               <h2>{t("case.overview.title")}</h2>
               <p>{overview}</p>
             </div>
-            <div
-                style={{
-                  background: "var(--color-bg-card)",
-                  border: "1px solid var(--color-border-default)",
-                  borderRadius: "var(--radius-lg)",
-                  padding: "36px",
-                }}
-              >
+            <div className="specs-card">
                 <h3 style={{ marginBottom: 24 }}>
                   {t("case.specs.title")} <span className="accent">{t("case.specs.title.accent")}</span>
                 </h3>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: 20,
-                  }}
-                >
+                <div className="specs-list">
                   <div>
-                    <span
-                      className="text-muted"
-                      style={{ fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: "0.08em" }}
-                    >
+                    <span className="text-muted specs-label">
                       {t("case.specs.client")}
                     </span>
-                    <p style={{ fontWeight: 600, marginTop: 4 }}>
+                    <p className="specs-value">
                       {project.client}
                     </p>
                   </div>
                   <div>
-                    <span
-                      className="text-muted"
-                      style={{ fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: "0.08em" }}
-                    >
+                    <span className="text-muted specs-label">
                       {t("case.specs.event")}
                     </span>
-                    <p style={{ fontWeight: 600, marginTop: 4 }}>
+                    <p className="specs-value">
                       {project.event}
                     </p>
                   </div>
                   <div>
-                    <span
-                      className="text-muted"
-                      style={{ fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: "0.08em" }}
-                    >
+                    <span className="text-muted specs-label">
                       {t("case.specs.location")}
                     </span>
-                    <p style={{ fontWeight: 600, marginTop: 4 }}>
+                    <p className="specs-value">
                       {project.location}
                     </p>
                   </div>
                   <div>
-                    <span
-                      className="text-muted"
-                      style={{ fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: "0.08em" }}
-                    >
+                    <span className="text-muted specs-label">
                       {t("case.specs.size")}
                     </span>
-                    <p style={{ fontWeight: 600, marginTop: 4 }}>
+                    <p className="specs-value">
                       {project.size}
                     </p>
                   </div>
                   <div>
-                    <span
-                      className="text-muted"
-                      style={{ fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: "0.08em" }}
-                    >
+                    <span className="text-muted specs-label">
                       {t("case.specs.type")}
                     </span>
                     <div
@@ -246,20 +218,13 @@ export default function ProjectContent({ project, prev, next }: ProjectContentPr
       )}
 
       {/* Key Features */}
-      <section
-        style={{
-          padding: "72px 0",
-          background: "var(--color-bg-card)",
-          borderTop: "1px solid var(--color-border-default)",
-          borderBottom: "1px solid var(--color-border-default)",
-        }}
-      >
+      <section className="section-bg-card" style={{ padding: "72px 0" }}>
         <div className="container">
           <RevealOnScroll>
-            <span className="section-label" style={{ textAlign: "center", display: "block" }}>
+            <span className="section-label section-header-center">
               {t("case.features")}
             </span>
-            <h2 style={{ textAlign: "center", marginBottom: 56 }}>
+            <h2 className="section-title-center mb-56">
               {t("case.features.title")} <span className="accent">{t("case.features.title.accent")}</span>
             </h2>
           </RevealOnScroll>
@@ -282,36 +247,13 @@ export default function ProjectContent({ project, prev, next }: ProjectContentPr
         <div className="container" style={{ maxWidth: 800 }}>
           <RevealOnScroll>
             <span className="section-label">{t("case.results")}</span>
-            <h2 style={{ marginBottom: 32 }}>
+            <h2 className="mb-32">
               {t("case.results.title")} <span className="accent">{t("case.results.title.accent")}</span>
             </h2>
           </RevealOnScroll>
-          <ul style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+          <ul className="result-list">
             {results.map((result, i) => (
-              <li
-                key={i}
-                style={{
-                  padding: "20px 24px 20px 52px",
-                  background: "var(--color-bg-card)",
-                  border: "1px solid var(--color-border-default)",
-                  borderRadius: "var(--radius-default)",
-                  position: "relative",
-                  color: "var(--color-text-muted)",
-                  fontSize: "0.95rem",
-                  lineHeight: 1.7,
-                }}
-              >
-                <span
-                  style={{
-                    position: "absolute",
-                    left: 20,
-                    top: 20,
-                    color: "var(--color-accent)",
-                    fontWeight: 700,
-                  }}
-                >
-                  &#10003;
-                </span>
+              <li key={i} className="result-item">
                 {result}
               </li>
             ))}
@@ -352,20 +294,8 @@ export default function ProjectContent({ project, prev, next }: ProjectContentPr
       </section>
 
       {/* Prev / Next Navigation */}
-      <section
-        style={{
-          padding: "56px 0",
-          borderTop: "1px solid var(--color-border-default)",
-        }}
-      >
-        <div
-          className="container"
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            gap: 16,
-          }}
-        >
+      <section className="prev-next-nav">
+        <div className="container prev-next-inner">
           {prev ? (
             <Link
               href={`/projects/${prev.slug}`}

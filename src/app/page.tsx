@@ -7,7 +7,6 @@ import CounterAnimation from "@/components/CounterAnimation";
 import Parallax from "@/components/Parallax";
 import AutoPlayVideo from "@/components/AutoPlayVideo";
 import TrustBar from "@/components/TrustBar";
-import DuckBlocks from "@/components/DuckBlocks";
 import { asset } from "@/lib/basePath";
 import { projects } from "@/data/projects";
 import { useI18n } from "@/lib/I18nContext";
@@ -114,26 +113,20 @@ export default function HomePage() {
           />
         </Parallax>
         <div className="hero-overlay" />
-        <div className="container hero-content">
-          <RevealOnScroll delay={0.1}>
+        <RevealOnScroll>
+          <div className="container hero-content">
             <span className="hero-badge">{t("hero.badge")}</span>
-          </RevealOnScroll>
 
-          <RevealOnScroll delay={0.2}>
             <h1>
               {t("hero.title")}{" "}
               <span className="accent">{t("hero.title.accent")}</span>
             </h1>
-          </RevealOnScroll>
 
-          <RevealOnScroll delay={0.35}>
             <p
               className="hero-sub"
               dangerouslySetInnerHTML={{ __html: t("hero.sub") }}
             />
-          </RevealOnScroll>
 
-          <RevealOnScroll delay={0.45}>
             <div className="hero-cta">
               <Link href="/contact#rfp-form" className="btn btn-primary btn-lg">
                 {t("hero.cta.start")} <span className="arrow">&rarr;</span>
@@ -142,35 +135,29 @@ export default function HomePage() {
                 {t("hero.cta.work")}
               </Link>
             </div>
-          </RevealOnScroll>
 
-          <div className="hero-stats">
-            <RevealOnScroll delay={0.5}>
+            <div className="hero-stats">
               <div className="hero-stat">
                 <div className="num">
                   <CounterAnimation target={80} suffix="+" />
                 </div>
                 <div className="label">{t("hero.stat.projects.short")}</div>
               </div>
-            </RevealOnScroll>
-            <RevealOnScroll delay={0.65}>
               <div className="hero-stat">
                 <div className="num">
                   <CounterAnimation target={10} />
                 </div>
                 <div className="label">{t("hero.stat.countries.short")}</div>
               </div>
-            </RevealOnScroll>
-            <RevealOnScroll delay={0.8}>
               <div className="hero-stat">
                 <div className="num">
                   <CounterAnimation target={98} suffix="%+" />
                 </div>
                 <div className="label">{t("hero.stat.ontime.short")}</div>
               </div>
-            </RevealOnScroll>
+            </div>
           </div>
-        </div>
+        </RevealOnScroll>
       </section>
 
       {/* ========== 2. SCROLLING MARQUEE ========== */}
@@ -192,7 +179,7 @@ export default function HomePage() {
         <div className="container">
           <RevealOnScroll>
             <span className="section-label">{t("services.label")}</span>
-            <h2 style={{ marginBottom: 56 }}>
+            <h2 className="mb-56">
               {t("home.services.title")} <span className="accent">{t("home.services.title.accent")}</span>
             </h2>
           </RevealOnScroll>
@@ -219,6 +206,7 @@ export default function HomePage() {
             src={asset("/assets/photos/microsoft-leap.jpg")}
             alt="700 sqm double decker booth at LEAP"
             fill
+            loading="lazy"
             style={{ objectFit: "cover" }}
           />
         </Parallax>
@@ -236,7 +224,7 @@ export default function HomePage() {
         <div className="container">
           <RevealOnScroll>
             <span className="section-label">{t("home.featured.label")}</span>
-            <h2 style={{ marginBottom: 56 }}>
+            <h2 className="mb-56">
               {t("home.featured.title")} <span className="accent">{t("home.featured.title.accent")}</span>
             </h2>
           </RevealOnScroll>
@@ -255,6 +243,7 @@ export default function HomePage() {
                       alt={project.title}
                       width={720}
                       height={450}
+                      loading="lazy"
                       style={{ width: "100%", height: "100%", objectFit: "cover" }}
                     />
                   </div>
@@ -280,20 +269,13 @@ export default function HomePage() {
       </section>
 
       {/* ========== 7. OUR PROCESS ========== */}
-      <section
-        style={{
-          padding: "80px 0",
-          background: "var(--color-bg-card)",
-          borderTop: "1px solid var(--color-border-default)",
-          borderBottom: "1px solid var(--color-border-default)",
-        }}
-      >
+      <section className="section-bg-card" style={{ padding: "80px 0" }}>
         <div className="container">
           <RevealOnScroll>
-            <span className="section-label" style={{ textAlign: "center", display: "block" }}>
+            <span className="section-label section-header-center">
               {t("process.label")}
             </span>
-            <h2 style={{ textAlign: "center", marginBottom: 64 }}>
+            <h2 className="section-title-center" style={{ marginBottom: 64 }}>
               {t("process.title")} <span className="accent">{t("process.title.accent")}</span>
             </h2>
           </RevealOnScroll>
@@ -316,6 +298,7 @@ export default function HomePage() {
             src={asset("/assets/photos/gallery/nespresso-NES-1239.jpg")}
             alt="1200 sqm product launch event — birds eye view"
             fill
+            loading="lazy"
             style={{ objectFit: "cover" }}
           />
         </Parallax>
@@ -335,10 +318,10 @@ export default function HomePage() {
       <section className="section-pad">
         <div className="container">
           <RevealOnScroll>
-            <span className="section-label" style={{ textAlign: "center", display: "block" }}>
+            <span className="section-label section-header-center">
               {t("testimonials.label")}
             </span>
-            <h2 style={{ textAlign: "center", marginBottom: 64 }}>
+            <h2 className="section-title-center" style={{ marginBottom: 64 }}>
               {t("testimonials.title")} <span className="accent">{t("testimonials.title.accent")}</span>
             </h2>
           </RevealOnScroll>
@@ -371,18 +354,18 @@ export default function HomePage() {
                 </h2>
               </RevealOnScroll>
               <p
-                className="text-muted"
-                style={{ lineHeight: 1.8, marginBottom: 16, fontSize: "1.05rem" }}
+                className="text-muted body-text"
+                style={{ marginBottom: 16, fontSize: "1.05rem" }}
               >
                 {t("home.about.p1")}
               </p>
               <p
-                className="text-muted"
-                style={{ lineHeight: 1.8, marginBottom: 36, fontSize: "1.05rem" }}
+                className="text-muted body-text"
+                style={{ marginBottom: 36, fontSize: "1.05rem" }}
               >
                 {t("home.about.p2")}
               </p>
-              <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+              <div className="tag-list">
                 <Link href="/about" className="btn btn-outline">
                   {t("home.about.btn")}
                 </Link>
@@ -400,6 +383,7 @@ export default function HomePage() {
                   alt="The Butter Duck — the team behind your booth"
                   width={640}
                   height={480}
+                  loading="lazy"
                   style={{ width: "100%", height: "auto" }}
                 />
               </div>
@@ -415,11 +399,11 @@ export default function HomePage() {
           <RevealOnScroll>
             <h2>{t("home.cta.title")}</h2>
             <p>{t("home.cta.desc")}</p>
-            <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
+            <div className="flex-center-wrap">
               <Link href="/contact#rfp-form" className="btn">
                 {t("cta.start")} <span className="arrow">&rarr;</span>
               </Link>
-              <Link href="/portfolio" className="btn" style={{ background: "transparent", border: "1px solid rgba(0,0,0,0.3)", color: "var(--color-bg-dark)" }}>
+              <Link href="/portfolio" className="btn btn-outline-dark">
                 {t("cta.see")}
               </Link>
             </div>

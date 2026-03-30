@@ -16,9 +16,13 @@ export default function Parallax({ children, className, speed = 25 }: Props) {
   const prefersReducedMotion = useRef(false);
 
   useEffect(() => {
-    prefersReducedMotion.current = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    prefersReducedMotion.current = mediaQuery.matches;
+
+    const updatePreference = () => {
+      prefersReducedMotion.current = mediaQuery.matches;
+    };
+    mediaQuery.addEventListener("change", updatePreference);
 
     const updateTarget = () => {
       if (!ref.current || prefersReducedMotion.current) return;
@@ -31,6 +35,9 @@ export default function Parallax({ children, className, speed = 25 }: Props) {
 
     const loop = () => {
       if (!ref.current || prefersReducedMotion.current) {
+        if (ref.current && prefersReducedMotion.current) {
+          ref.current.style.transform = "";
+        }
         raf.current = requestAnimationFrame(loop);
         return;
       }
@@ -49,6 +56,7 @@ export default function Parallax({ children, className, speed = 25 }: Props) {
 
     return () => {
       cancelAnimationFrame(raf.current);
+      mediaQuery.removeEventListener("change", updatePreference);
     };
   }, [speed]);
 

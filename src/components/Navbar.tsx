@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef, type FocusEvent, type KeyboardEvent } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -22,13 +22,17 @@ export default function Navbar() {
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
+    // Defer initial check to avoid synchronous setState in effect body
+    requestAnimationFrame(handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
 
   useEffect(() => {
-    setMobileOpen(false);
-    setMobileAccordion(null);
+    // Defer to avoid synchronous setState in effect body
+    requestAnimationFrame(() => {
+      setMobileOpen(false);
+      setMobileAccordion(null);
+    });
     window.scrollTo(0, 0);
   }, [pathname]);
 
@@ -65,9 +69,127 @@ export default function Navbar() {
   ];
 
   const megaTimeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
-  const showMega = (id: string) => { clearTimeout(megaTimeoutRef.current); setMegaOpen(id); };
-  const hideMega = () => { megaTimeoutRef.current = setTimeout(() => setMegaOpen(null), 200); };
-  const keepMega = () => { clearTimeout(megaTimeoutRef.current); };
+  const triggerRefs = useRef<Record<string, HTMLAnchorElement | null>>({
+    services: null,
+    portfolio: null,
+  });
+
+  const keepMega = useCallback(() => {
+    clearTimeout(megaTimeoutRef.current);
+  }, []);
+
+  const showMega = useCallback((id: string) => {
+    keepMega();
+    setMegaOpen(id);
+  }, [keepMega]);
+
+  const hideMega = useCallback(() => {
+    keepMega();
+    megaTimeoutRef.current = setTimeout(() => setMegaOpen(null), 200);
+  }, [keepMega]);
+
+  const closeMega = useCallback((id?: string) => {
+    keepMega();
+    setMegaOpen(null);
+
+    if (id) {
+      requestAnimationFrame(() => triggerRefs.current[id]?.focus());
+    }
+  }, [keepMega]);
+
+  const focusMegaItem = useCallback((id: string, target: "first" | "last") => {
+    const menu = document.getElementById(`mega-${id}`);
+    const items = menu
+      ? Array.from(menu.querySelectorAll<HTMLAnchorElement>('[role="menuitem"]'))
+      : [];
+
+    if (!items.length) return;
+
+    const index = target === "first" ? 0 : items.length - 1;
+    items[index]?.focus();
+  }, []);
+
+  const focusMegaItemByOffset = useCallback((id: string, offset: number) => {
+    const menu = document.getElementById(`mega-${id}`);
+    const items = menu
+      ? Array.from(menu.querySelectorAll<HTMLAnchorElement>('[role="menuitem"]'))
+      : [];
+
+    if (!items.length) return;
+
+    const currentIndex = items.findIndex((item) => item === document.activeElement);
+    const nextIndex =
+      currentIndex === -1
+        ? offset > 0
+          ? 0
+          : items.length - 1
+        : (currentIndex + offset + items.length) % items.length;
+
+    items[nextIndex]?.focus();
+  }, []);
+
+  const handleTriggerKeyDown = useCallback((id: string) => (e: KeyboardEvent<HTMLAnchorElement>) => {
+    if (e.key === "ArrowDown" || e.key === " ") {
+      e.preventDefault();
+      showMega(id);
+      requestAnimationFrame(() => focusMegaItem(id, "first"));
+      return;
+    }
+
+    if (e.key === "ArrowUp") {
+      e.preventDefault();
+      showMega(id);
+      requestAnimationFrame(() => focusMegaItem(id, "last"));
+      return;
+    }
+
+    if (e.key === "Escape") {
+      e.preventDefault();
+      closeMega();
+    }
+  }, [closeMega, focusMegaItem, showMega]);
+
+  const handleMenuKeyDown = useCallback((id: string) => (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      focusMegaItemByOffset(id, 1);
+      return;
+    }
+
+    if (e.key === "ArrowUp") {
+      e.preventDefault();
+      focusMegaItemByOffset(id, -1);
+      return;
+    }
+
+    if (e.key === "Home") {
+      e.preventDefault();
+      focusMegaItem(id, "first");
+      return;
+    }
+
+    if (e.key === "End") {
+      e.preventDefault();
+      focusMegaItem(id, "last");
+      return;
+    }
+
+    if (e.key === "Escape") {
+      e.preventDefault();
+      closeMega(id);
+    }
+  }, [closeMega, focusMegaItem, focusMegaItemByOffset]);
+
+  const handleMegaBlur = useCallback((e: FocusEvent<HTMLElement>) => {
+    if (!e.currentTarget.contains(e.relatedTarget as Node | null)) {
+      keepMega();
+      setMegaOpen(null);
+    }
+  }, [keepMega]);
+
+  useEffect(() => {
+    return () => clearTimeout(megaTimeoutRef.current);
+  }, []);
 
   return (
     <>
@@ -94,20 +216,29 @@ export default function Navbar() {
             <li
               onMouseEnter={() => showMega("services")}
               onMouseLeave={hideMega}
+              onFocus={() => showMega("services")}
+              onBlur={handleMegaBlur}
             >
               <Link
                 href="/services"
+                ref={(node) => {
+                  triggerRefs.current.services = node;
+                }}
                 className={isActive("/services") ? "active" : ""}
                 aria-expanded={megaOpen === "services"}
-                aria-haspopup="true"
+                aria-haspopup="menu"
+                aria-controls="mega-services"
+                onKeyDown={handleTriggerKeyDown("services")}
               >
                 {t("nav.services")} <span className="dd-arrow" aria-hidden="true">▾</span>
               </Link>
               <div
+                id="mega-services"
                 className={`mega-menu${megaOpen === "services" ? " show" : ""}`}
                 onMouseEnter={keepMega}
                 onMouseLeave={hideMega}
                 role="menu"
+                onKeyDown={handleMenuKeyDown("services")}
               >
                 {servicesItems.map((item) => (
                   <Link href={item.href} className="mega-item" role="menuitem" key={item.href}>
@@ -124,21 +255,29 @@ export default function Navbar() {
             <li
               onMouseEnter={() => showMega("portfolio")}
               onMouseLeave={hideMega}
+              onFocus={() => showMega("portfolio")}
+              onBlur={handleMegaBlur}
             >
               <Link
                 href="/portfolio"
+                ref={(node) => {
+                  triggerRefs.current.portfolio = node;
+                }}
                 className={isActive("/portfolio") || pathname.startsWith("/projects") ? "active" : ""}
                 aria-expanded={megaOpen === "portfolio"}
-                aria-haspopup="true"
+                aria-haspopup="menu"
+                aria-controls="mega-portfolio"
+                onKeyDown={handleTriggerKeyDown("portfolio")}
               >
                 {t("nav.portfolio")} <span className="dd-arrow" aria-hidden="true">▾</span>
               </Link>
               <div
+                id="mega-portfolio"
                 className={`mega-menu portfolio-mm${megaOpen === "portfolio" ? " show" : ""}`}
                 onMouseEnter={keepMega}
                 onMouseLeave={hideMega}
                 role="menu"
-                style={{ gridTemplateColumns: "1fr 1fr 1fr 1fr", minWidth: 560 }}
+                onKeyDown={handleMenuKeyDown("portfolio")}
               >
                 {portfolioItems.map((item) => (
                   <Link href={item.href} className="mega-item" role="menuitem" key={item.href} style={{ padding: "8px 12px" }}>
@@ -170,7 +309,7 @@ export default function Navbar() {
             className={`burger${mobileOpen ? " open" : ""}`}
             id="burger"
             onClick={() => setMobileOpen((prev) => !prev)}
-            aria-label="Open menu"
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
           >
             <span /><span /><span />

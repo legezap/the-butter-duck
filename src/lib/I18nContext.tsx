@@ -28,15 +28,18 @@ export function I18nProvider({ children }: { children: ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>("en");
 
   useEffect(() => {
-    const saved = localStorage.getItem("tbd-lang") as Locale | null;
-    if (saved && locales.includes(saved)) {
-      setLocaleState(saved);
-    } else {
-      const browser = navigator.language?.substring(0, 2) as Locale;
-      if (locales.includes(browser)) {
-        setLocaleState(browser);
+    // Defer to avoid synchronous setState in effect body
+    requestAnimationFrame(() => {
+      const saved = localStorage.getItem("tbd-lang") as Locale | null;
+      if (saved && locales.includes(saved)) {
+        setLocaleState(saved);
+      } else {
+        const browser = navigator.language?.substring(0, 2) as Locale;
+        if (locales.includes(browser)) {
+          setLocaleState(browser);
+        }
       }
-    }
+    });
   }, []);
 
   useEffect(() => {
