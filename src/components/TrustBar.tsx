@@ -5,22 +5,16 @@ import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { asset } from "@/lib/basePath";
 import { useI18n } from "@/lib/I18nContext";
+import { TRUST_LOGOS } from "@/data/trust-logos";
 
 /* ------------------------------------------------------------------ */
 /*  LOGO DATA                                                          */
 /* ------------------------------------------------------------------ */
 
-const LOGOS = [
-  { src: asset("/assets/logos/show-01.png"), alt: "GITEX Global" },
-  { src: asset("/assets/logos/show-02.png"), alt: "LEAP" },
-  { src: asset("/assets/logos/show-03.png"), alt: "Airport Show" },
-  { src: asset("/assets/logos/show-04.png"), alt: "Breakbulk Middle East" },
-  { src: asset("/assets/logos/show-05.png"), alt: "Gulfood Manufacturing" },
-  { src: asset("/assets/logos/show-06.png"), alt: "Intersec" },
-  { src: asset("/assets/logos/show-07.png"), alt: "Middle East Coatings Show" },
-  { src: asset("/assets/logos/show-08.png"), alt: "World of Vape" },
-  { src: asset("/assets/logos/show-09.png"), alt: "Light Show" },
-];
+const LOGOS = TRUST_LOGOS.map((logo) => ({
+  src: asset(logo.file),
+  alt: logo.alt,
+}));
 
 /* ------------------------------------------------------------------ */
 /*  SINGLE LOGO                                                        */

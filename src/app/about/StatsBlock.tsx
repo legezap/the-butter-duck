@@ -3,14 +3,7 @@
 import CounterAnimation from "@/components/CounterAnimation";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import { useI18n } from "@/lib/I18nContext";
-import type { TranslationKey } from "@/lib/i18n";
-
-const stats: Array<{ target: number; suffix: string; key: TranslationKey }> = [
-  { target: 80, suffix: "+", key: "stats.projects" },
-  { target: 10, suffix: "", key: "stats.countries" },
-  { target: 15, suffix: "+", key: "stats.industries" },
-  { target: 98, suffix: "%+", key: "stats.ontime" },
-];
+import { STATS } from "@/data/stats";
 
 export default function StatsBlock() {
   const { t } = useI18n();
@@ -20,7 +13,7 @@ export default function StatsBlock() {
       <div className="container">
         <RevealOnScroll>
           <div className="stats-grid">
-            {stats.map((s) => (
+            {STATS.map((s) => (
               <div key={s.key}>
                 <div className="stat-num">
                   <CounterAnimation target={s.target} suffix={s.suffix} />

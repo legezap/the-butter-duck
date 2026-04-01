@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { useI18n } from "@/lib/I18nContext";
 import { asset } from "@/lib/basePath";
 import LanguageSwitcher from "./LanguageSwitcher";
+import { SERVICE_MENU_ITEMS, PORTFOLIO_MENU_ITEMS } from "@/data/navbar";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -50,23 +51,14 @@ export default function Navbar() {
     return pathname.startsWith(href);
   };
 
-  const servicesItems = [
-    { icon: "◆", label: t("mega.exhibition"), desc: t("mega.exhibition.desc"), href: "/services#exhibition-design" },
-    { icon: "⚙", label: t("mega.project"), desc: t("mega.project.desc"), href: "/services#project-management" },
-    { icon: "✨", label: t("mega.concept"), desc: t("mega.concept.desc"), href: "/services#event-design" },
-    { icon: "▶", label: t("mega.media"), desc: t("mega.media.desc"), href: "/services#content-media" },
-  ];
+  const servicesItems = SERVICE_MENU_ITEMS.map((item) => ({
+    icon: item.icon,
+    label: t(item.labelKey),
+    desc: t(item.descKey),
+    href: item.href,
+  }));
 
-  const portfolioItems = [
-    { label: "LEAP", sub: "700 sqm Double Decker", href: "/projects/microsoft-leap" },
-    { label: "Product Launch", sub: "1200 sqm Event", href: "/projects/nespresso-creatista" },
-    { label: "Airport Show", sub: "Open Concept", href: "/projects/vanderlande-airport" },
-    { label: "Breakbulk ME", sub: "Container Design", href: "/projects/spark-breakbulk" },
-    { label: "World of Vape", sub: "Retail Stand", href: "/projects/hoosh-world-of-vape" },
-    { label: "ME Coatings Show", sub: "Double Decker", href: "/projects/sipchem-adipec" },
-    { label: "Gulfood Manufacturing", sub: "Hanging Signage", href: "/projects/interfood-gulfood" },
-    { label: "Intersec", sub: "Compact Design", href: "/projects/altronix-intersec" },
-  ];
+  const portfolioItems = PORTFOLIO_MENU_ITEMS;
 
   const megaTimeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
   const triggerRefs = useRef<Record<string, HTMLAnchorElement | null>>({

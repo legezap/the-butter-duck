@@ -5,41 +5,15 @@ import Link from "next/link";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import AmbientDots from "@/components/AmbientDots";
 import { useI18n } from "@/lib/I18nContext";
-import type { TranslationKey } from "@/lib/i18n";
-import { useDraftPersistence } from "@/hooks/useDraftPersistence";
+
 import { submitRFP } from "@/lib/api";
+import { SERVICE_KEYS, BOOTH_SIZE_KEYS, BUDGET_KEYS } from "@/data/form-options";
 
 const SERVICE_ICONS: React.ReactNode[] = [
   <svg key="s1" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>,
   <svg key="s2" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M9 14l2 2 4-4"/></svg>,
   <svg key="s3" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8z"/></svg>,
   <svg key="s4" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>,
-];
-
-const SERVICE_KEYS: { id: string; labelKey: TranslationKey }[] = [
-  { id: "exhibition-design", labelKey: "contact.svc.exhibition" },
-  { id: "project-management", labelKey: "contact.svc.pm" },
-  { id: "event-design", labelKey: "contact.svc.event" },
-  { id: "content-media", labelKey: "contact.svc.media" },
-];
-
-const BOOTH_SIZE_KEYS: TranslationKey[] = [
-  "contact.size.under20",
-  "contact.size.20_50",
-  "contact.size.50_100",
-  "contact.size.100_200",
-  "contact.size.200_500",
-  "contact.size.500plus",
-  "contact.size.notsure",
-];
-
-const BUDGET_KEYS: TranslationKey[] = [
-  "contact.budget.under50",
-  "contact.budget.50_150",
-  "contact.budget.150_400",
-  "contact.budget.400_1m",
-  "contact.budget.1mplus",
-  "contact.budget.discuss",
 ];
 
 function generateRef(): string {
@@ -77,32 +51,8 @@ export default function ContactForm() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitError, setSubmitError] = useState("");
 
-  // Draft persistence
-  const { draftRestored, initialDraft, clearDraft } = useDraftPersistence({
-    service, eventName, eventDates, eventLocation, boothSize, budget,
-    name, company, email, phone, country, notes, step: String(step),
-  });
-
   // Scroll to form when navigated with #rfp-form hash
   useEffect(() => {
-    if (Object.keys(initialDraft).length > 0) {
-      const g = (camel: string, title?: string) => initialDraft[camel] || (title ? initialDraft[title] : "") || "";
-      const svc = g("service", "Service");
-      if (svc) setService(svc);
-      if (g("eventName", "Event Name")) setEventName(g("eventName", "Event Name"));
-      if (g("eventDates", "Event Dates")) setEventDates(g("eventDates", "Event Dates"));
-      if (g("eventLocation", "Event Location")) setEventLocation(g("eventLocation", "Event Location"));
-      if (g("boothSize", "Booth Size")) setBoothSize(g("boothSize", "Booth Size"));
-      if (g("budget", "Budget Range")) setBudget(g("budget", "Budget Range"));
-      if (g("name", "Contact Name")) setName(g("name", "Contact Name"));
-      if (g("company", "Company")) setCompany(g("company", "Company"));
-      if (g("email", "Email")) setEmail(g("email", "Email"));
-      if (g("phone", "Phone")) setPhone(g("phone", "Phone"));
-      if (g("country", "Country")) setCountry(g("country", "Country"));
-      if (g("notes", "Notes")) setNotes(g("notes", "Notes"));
-      if (initialDraft.step) setStep(Number(initialDraft.step) || 1);
-    }
-
     if (window.location.hash === "#rfp-form") {
       setTimeout(() => {
         const el = document.getElementById("rfp-form");
@@ -112,7 +62,7 @@ export default function ContactForm() {
         }
       }, 300);
     }
-  }, [initialDraft]);
+  }, []);
 
   function getErrorId(field: string) {
     return `${field}-error`;
@@ -128,7 +78,6 @@ export default function ContactForm() {
   }
 
   function handleClearDraft() {
-    clearDraft();
     setService(""); setEventName(""); setEventDates(""); setEventLocation("");
     setBoothSize(""); setBudget(""); setName(""); setCompany("");
     setEmail(""); setPhone(""); setCountry(""); setNotes("");
@@ -319,29 +268,6 @@ export default function ContactForm() {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} noValidate>
-                    {/* Draft restored notice */}
-                    {draftRestored && (
-                      <div style={{
-                        display: "flex", alignItems: "center", justifyContent: "space-between",
-                        background: "var(--color-accent-12)", border: "1px solid var(--color-accent-30)",
-                        borderRadius: 8, padding: "10px 16px", marginBottom: 16, fontSize: "0.8rem",
-                      }}>
-                        <span style={{ color: "var(--color-text-muted)" }}>
-                          {"\uD83D\uDCBE"} Draft restored from your last visit
-                        </span>
-                        <button
-                          type="button"
-                          onClick={handleClearDraft}
-                          style={{
-                            background: "none", border: "none", color: "var(--color-accent)",
-                            cursor: "pointer", fontSize: "0.8rem", fontWeight: 600, padding: "2px 8px",
-                          }}
-                        >
-                          Clear
-                        </button>
-                      </div>
-                    )}
-
                     {submitError && (
                       <div className="form-status error" role="alert">
                         {submitError}

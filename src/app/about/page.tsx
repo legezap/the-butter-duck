@@ -9,17 +9,7 @@ import CapabilitiesSection from "@/components/CapabilitiesSection";
 import StatsBlock from "./StatsBlock";
 import { asset } from "@/lib/basePath";
 import { useI18n } from "@/lib/I18nContext";
-import type { TranslationKey } from "@/lib/i18n";
-
-const timelineYears = ["2019", "2020", "2021", "2022", "2024", "2025"] as const;
-const timelineKeys: Array<{ title: TranslationKey; desc: TranslationKey }> = [
-  { title: "aboutpage.tl.2019.title", desc: "aboutpage.tl.2019.desc" },
-  { title: "aboutpage.tl.2020.title", desc: "aboutpage.tl.2020.desc" },
-  { title: "aboutpage.tl.2021.title", desc: "aboutpage.tl.2021.desc" },
-  { title: "aboutpage.tl.2022.title", desc: "aboutpage.tl.2022.desc" },
-  { title: "aboutpage.tl.2024.title", desc: "aboutpage.tl.2024.desc" },
-  { title: "aboutpage.tl.2025.title", desc: "aboutpage.tl.2025.desc" },
-];
+import { TIMELINE_YEARS, TIMELINE_KEYS } from "@/data/timeline";
 
 export default function AboutPage() {
   const { t } = useI18n();
@@ -105,9 +95,9 @@ export default function AboutPage() {
             </h2>
           </RevealOnScroll>
           <div className="timeline">
-            {timelineKeys.map((tl, i) => (
-              <div key={timelineYears[i]} className="tl-item">
-                <h3>{timelineYears[i]} — {t(tl.title)}</h3>
+            {TIMELINE_KEYS.map((tl, i) => (
+              <div key={TIMELINE_YEARS[i]} className="tl-item">
+                <h3>{TIMELINE_YEARS[i]} — {t(tl.title)}</h3>
                 <p>{t(tl.desc)}</p>
               </div>
             ))}

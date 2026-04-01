@@ -160,8 +160,8 @@ const translations = {
 
     // Testimonials section (homepage)
     "testimonials.label": "Client Feedback",
-    "testimonials.title": "What Our Clients",
-    "testimonials.title.accent": "Say",
+    "testimonials.title": "What Our",
+    "testimonials.title.accent": "Clients Say",
     "testimonials.1.quote": "They don't just build stands — they build experiences. Our LEAP stand was the most talked-about presence at the entire show.",
     "testimonials.1.role": "Regional Events Director",
     "testimonials.1.company": "Global Technology Company",

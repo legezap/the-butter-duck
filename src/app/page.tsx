@@ -7,7 +7,15 @@ import CounterAnimation from "@/components/CounterAnimation";
 import Parallax from "@/components/Parallax";
 import AutoPlayVideo from "@/components/AutoPlayVideo";
 import TrustBar from "@/components/TrustBar";
+import DuckWater from "@/components/DuckWater";
 import { asset } from "@/lib/basePath";
+import {
+  FEATURED_PROJECT_SLUGS,
+  HOME_MARQUEE_KEYS,
+  HOME_PROCESS_STEPS,
+  HOME_SERVICE_ITEMS,
+  HOME_TESTIMONIALS,
+} from "@/data/home";
 import { projects } from "@/data/projects";
 import { useI18n } from "@/lib/I18nContext";
 
@@ -15,58 +23,35 @@ import { useI18n } from "@/lib/I18nContext";
 /*  PAGE                                                               */
 /* ------------------------------------------------------------------ */
 
+const SERVICE_ICONS = {
+  build: (
+    <svg key="build" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+  ),
+  clipboard: (
+    <svg key="clip" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M9 14l2 2 4-4"/></svg>
+  ),
+  sparkle: (
+    <svg key="sparkle" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8z"/></svg>
+  ),
+  play: (
+    <svg key="play" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+  ),
+} as const;
+
 export default function HomePage() {
   const { t } = useI18n();
 
-  const marqueeItems = [
-    t("marquee.exhibition"),
-    t("marquee.event"),
-    t("marquee.brand"),
-    t("marquee.doubledecker"),
-    t("marquee.immersive"),
-    t("marquee.global"),
-  ];
+  const marqueeItems = HOME_MARQUEE_KEYS.map((key) => t(key));
 
-  const serviceIcons = [
-    // Exhibition Design & Build — building/grid
-    <svg key="build" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>,
-    // Project Management — clipboard check
-    <svg key="clip" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M9 14l2 2 4-4"/></svg>,
-    // Conceptual Event Design — sparkles
-    <svg key="sparkle" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8z"/></svg>,
-    // Content & Media — play circle
-    <svg key="play" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>,
-  ];
-
-  const services = [
-    {
-      icon: serviceIcons[0],
-      title: t("svc.exhibition.title"),
-      desc: t("svc.exhibition.desc"),
-      link: "/services#exhibition-design",
-    },
-    {
-      icon: serviceIcons[1],
-      title: t("svc.pm.title"),
-      desc: t("svc.pm.desc"),
-      link: "/services#project-management",
-    },
-    {
-      icon: serviceIcons[2],
-      title: t("svc.event.title"),
-      desc: t("svc.event.desc"),
-      link: "/services#event-design",
-    },
-    {
-      icon: serviceIcons[3],
-      title: t("svc.media.title"),
-      desc: t("svc.media.desc"),
-      link: "/services#content-media",
-    },
-  ];
+  const services = HOME_SERVICE_ITEMS.map((service) => ({
+    icon: SERVICE_ICONS[service.iconKey],
+    title: t(service.titleKey),
+    desc: t(service.descKey),
+    link: service.link,
+  }));
 
   const featuredProjects = projects
-    .filter((p) => ["microsoft-leap", "nespresso-creatista", "spark-breakbulk"].includes(p.slug))
+    .filter((p) => FEATURED_PROJECT_SLUGS.includes(p.slug as (typeof FEATURED_PROJECT_SLUGS)[number]))
     .map((p) => ({
       slug: p.slug,
       title: `${p.client} at ${p.event}`,
@@ -76,30 +61,17 @@ export default function HomePage() {
       image: p.image,
     }));
 
-  const processSteps = [
-    { num: "01", title: t("process.step1.title"), desc: t("process.step1.desc") },
-    { num: "02", title: t("process.step2.title"), desc: t("process.step2.desc") },
-    { num: "03", title: t("process.step3.title"), desc: t("process.step3.desc") },
-    { num: "04", title: t("process.step4.title"), desc: t("process.step4.desc") },
-  ];
+  const processSteps = HOME_PROCESS_STEPS.map((step) => ({
+    num: step.num,
+    title: t(step.titleKey),
+    desc: t(step.descKey),
+  }));
 
-  const testimonials = [
-    {
-      quote: t("testimonials.1.quote"),
-      role: t("testimonials.1.role"),
-      company: t("testimonials.1.company"),
-    },
-    {
-      quote: t("testimonials.2.quote"),
-      role: t("testimonials.2.role"),
-      company: t("testimonials.2.company"),
-    },
-    {
-      quote: t("testimonials.3.quote"),
-      role: t("testimonials.3.role"),
-      company: t("testimonials.3.company"),
-    },
-  ];
+  const testimonials = HOME_TESTIMONIALS.map((item) => ({
+    quote: t(item.quoteKey),
+    role: t(item.roleKey),
+    company: t(item.companyKey),
+  }));
 
   return (
     <>
@@ -269,13 +241,13 @@ export default function HomePage() {
       </section>
 
       {/* ========== 7. OUR PROCESS ========== */}
-      <section className="section-bg-card" style={{ padding: "80px 0" }}>
+      <section className="section-bg-card">
         <div className="container">
           <RevealOnScroll>
             <span className="section-label">
               {t("process.label")}
             </span>
-            <h2 style={{ marginBottom: 64 }}>
+            <h2 className="mb-56">
               {t("process.title")} <span className="accent">{t("process.title.accent")}</span>
             </h2>
           </RevealOnScroll>
@@ -321,7 +293,7 @@ export default function HomePage() {
             <span className="section-label">
               {t("testimonials.label")}
             </span>
-            <h2 style={{ marginBottom: 64 }}>
+            <h2 className="mb-56">
               {t("testimonials.title")} <span className="accent">{t("testimonials.title.accent")}</span>
             </h2>
           </RevealOnScroll>
@@ -375,19 +347,9 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Image */}
+            {/* Duck with water effect */}
             <div className="about-visual">
-              <div className="about-img">
-                <Image
-                  src={asset("/assets/photos/duck-brand.jpg")}
-                  alt="The Butter Duck — the team behind your booth"
-                  width={640}
-                  height={480}
-                  loading="lazy"
-                  style={{ width: "100%", height: "auto" }}
-                />
-              </div>
-              <div className="about-badge">{t("home.about.badge")}</div>
+              <DuckWater badge={t("home.about.badge")} />
             </div>
           </div>
         </div>

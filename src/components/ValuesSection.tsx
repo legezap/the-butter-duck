@@ -2,41 +2,9 @@
 
 import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
+import { VALUE_ICON_PATHS, VALUE_KEYS } from "@/data/about-sections";
 import { useI18n } from "@/lib/I18nContext";
-import type { TranslationKey } from "@/lib/i18n";
 import RevealOnScroll from "./RevealOnScroll";
-
-/* ------------------------------------------------------------------ */
-/*  VALUE DATA                                                         */
-/* ------------------------------------------------------------------ */
-
-const valueKeys: Array<{ title: TranslationKey; desc: TranslationKey }> = [
-  { title: "aboutpage.values.v1.title", desc: "aboutpage.values.v1.desc" },
-  { title: "aboutpage.values.v2.title", desc: "aboutpage.values.v2.desc" },
-  { title: "aboutpage.values.v3.title", desc: "aboutpage.values.v3.desc" },
-  { title: "aboutpage.values.v4.title", desc: "aboutpage.values.v4.desc" },
-  { title: "aboutpage.values.v5.title", desc: "aboutpage.values.v5.desc" },
-  { title: "aboutpage.values.v6.title", desc: "aboutpage.values.v6.desc" },
-];
-
-/* ------------------------------------------------------------------ */
-/*  SVG ICON PATHS  (single-path for draw animation)                   */
-/* ------------------------------------------------------------------ */
-
-const ICON_PATHS = [
-  // Clock — Deadlines Are Sacred
-  "M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 4v6l4 2",
-  // Eye — Senior Eyes Only
-  "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8zM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z",
-  // Receipt — Transparent Pricing
-  "M4 2v20l3-2 3 2 3-2 3 2 3-2 3 2V2l-3 2-3-2-3 2-3-2-3 2zM8 8h8M8 12h6M8 16h4",
-  // Target — Design with Purpose
-  "M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM12 6a6 6 0 1 0 0 12 6 6 0 0 0 0-12zM12 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4z",
-  // Diamond — Build Quality
-  "M6 3h12l4 6-10 13L2 9zM2 9h20M10 3l-4 6 6 13 6-13-4-6",
-  // Globe — Global Reach
-  "M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z",
-];
 
 /* ------------------------------------------------------------------ */
 /*  SINGLE VALUE CARD                                                  */
@@ -89,7 +57,7 @@ function ValueCard({
           strokeLinejoin="round"
         >
           <path
-            d={ICON_PATHS[index]}
+            d={VALUE_ICON_PATHS[index]}
             className={`vs-path ${drawn ? "vs-drawn" : ""}`}
           />
         </svg>
@@ -220,7 +188,7 @@ export default function ValuesSection() {
           </RevealOnScroll>
 
           <div className="vs-grid">
-            {valueKeys.map((v, i) => (
+            {VALUE_KEYS.map((v, i) => (
               <ValueCard
                 key={v.title}
                 index={i}
