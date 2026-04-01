@@ -272,10 +272,10 @@ export default function HomePage() {
       <section className="section-bg-card" style={{ padding: "80px 0" }}>
         <div className="container">
           <RevealOnScroll>
-            <span className="section-label section-header-center">
+            <span className="section-label">
               {t("process.label")}
             </span>
-            <h2 className="section-title-center" style={{ marginBottom: 64 }}>
+            <h2 style={{ marginBottom: 64 }}>
               {t("process.title")} <span className="accent">{t("process.title.accent")}</span>
             </h2>
           </RevealOnScroll>
@@ -318,10 +318,10 @@ export default function HomePage() {
       <section className="section-pad">
         <div className="container">
           <RevealOnScroll>
-            <span className="section-label section-header-center">
+            <span className="section-label">
               {t("testimonials.label")}
             </span>
-            <h2 className="section-title-center" style={{ marginBottom: 64 }}>
+            <h2 style={{ marginBottom: 64 }}>
               {t("testimonials.title")} <span className="accent">{t("testimonials.title.accent")}</span>
             </h2>
           </RevealOnScroll>

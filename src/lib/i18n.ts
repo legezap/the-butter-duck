@@ -65,8 +65,8 @@ const translations = {
     "services.learn": "Learn more",
 
     // Homepage services section (different heading from services page)
-    "home.services.title": "End-to-End Exhibition",
-    "home.services.title.accent": "Solutions",
+    "home.services.title": "End-to-End",
+    "home.services.title.accent": "Exhibition Solutions",
 
     // Service cards (homepage)
     "svc.exhibition.title": "Exhibition Design & Build",
@@ -132,7 +132,7 @@ const translations = {
     "servicespage.cta.btn": "Start a Conversation",
 
     // Cinematic dividers (homepage)
-    "cine.microsoft": "700 sqm. Double Decker. Our Largest Build at LEAP.",
+    "cine.microsoft": "700 sqm. Double Decker.<br/>Our Largest Build at&nbsp;LEAP.",
     "cine.microsoft.sub": "Our largest build to date — a partner-centric stand in Riyadh.",
     "cine.microsoft.sub.full": "Our largest build to date — a fully immersive, two-storey brand experience designed to command the show floor.",
     "cine.impact": "Every Square Meter Engineered for Impact.",
