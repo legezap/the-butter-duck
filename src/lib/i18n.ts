@@ -32,7 +32,7 @@ const translations = {
     // Hero
     "hero.badge": "Your Exhibition Partner",
     "hero.title": "We Build Experiences That",
-    "hero.title.accent": "Command Attention",
+    "hero.title.accent": "Leave a Mark",
     "hero.sub": "Exhibition stands, event production, and immersive brand environments from <strong>25 sqm to 1000+ sqm</strong>. Trusted by industry leaders and global brands across 10 countries.",
     "hero.cta.start": "Start Your Project",
     "hero.cta.work": "View Our Work",
@@ -418,7 +418,7 @@ const translations = {
     "contact.cta.btn": "WhatsApp Us",
 
     // Footer
-    "footer.brand": "Your Exhibition Partner",
+    "footer.brand": "Turning vision into experience, every event, every time. UAE-based exhibition design and event production for global brands.",
     "footer.services": "Services",
     "footer.company": "Company",
     "footer.aboutus": "About Us",
@@ -490,7 +490,7 @@ const translations = {
     // Hero
     "hero.badge": "شريككم في المعارض",
     "hero.title": "نبني تجارب",
-    "hero.title.accent": "تجذب كل الأنظار",
+    "hero.title.accent": "تترك أثراً",
     "hero.sub": "أجنحة معارض، إنتاج فعاليات، وبيئات تفاعلية للعلامات التجارية من <strong>25 م² إلى 1000+ م²</strong>. موثوقون من رواد الصناعة وعلامات تجارية عالمية في 10 دول.",
     "hero.cta.start": "ابدأ مشروعك",
     "hero.cta.work": "عرض أعمالنا",
@@ -876,7 +876,7 @@ const translations = {
     "contact.cta.btn": "واتساب",
 
     // Footer
-    "footer.brand": "شريككم في المعارض",
+    "footer.brand": "نحوّل الرؤية إلى تجربة، في كل فعالية، في كل مرة. تصميم معارض وإنتاج فعاليات من الإمارات للعلامات التجارية العالمية.",
     "footer.services": "الخدمات",
     "footer.company": "الشركة",
     "footer.aboutus": "من نحن",
