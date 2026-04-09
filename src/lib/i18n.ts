@@ -30,7 +30,7 @@ const translations = {
     "mega.media.desc": "Video, graphics, interactive tech",
 
     // Hero
-    "hero.badge": "UAE-Based, Globally Deployed",
+    "hero.badge": "Your Exhibition Partner",
     "hero.title": "We Build Experiences That",
     "hero.title.accent": "Command Attention",
     "hero.sub": "Exhibition stands, event production, and immersive brand environments from <strong>25 sqm to 1000+ sqm</strong>. Trusted by industry leaders and global brands across 10 countries.",
@@ -418,7 +418,7 @@ const translations = {
     "contact.cta.btn": "WhatsApp Us",
 
     // Footer
-    "footer.brand": "Turning vision into experience, every event, every time. UAE-based exhibition design and event production for global brands.",
+    "footer.brand": "Your Exhibition Partner",
     "footer.services": "Services",
     "footer.company": "Company",
     "footer.aboutus": "About Us",
@@ -488,7 +488,7 @@ const translations = {
     "mega.media.desc": "فيديو، رسومات، تقنيات تفاعلية",
 
     // Hero
-    "hero.badge": "مقرنا الإمارات، عملنا عالمي",
+    "hero.badge": "شريككم في المعارض",
     "hero.title": "نبني تجارب",
     "hero.title.accent": "تجذب كل الأنظار",
     "hero.sub": "أجنحة معارض، إنتاج فعاليات، وبيئات تفاعلية للعلامات التجارية من <strong>25 م² إلى 1000+ م²</strong>. موثوقون من رواد الصناعة وعلامات تجارية عالمية في 10 دول.",
@@ -876,7 +876,7 @@ const translations = {
     "contact.cta.btn": "واتساب",
 
     // Footer
-    "footer.brand": "نحوّل الرؤية إلى تجربة، في كل فعالية، في كل مرة. تصميم معارض وإنتاج فعاليات من الإمارات للعلامات التجارية العالمية.",
+    "footer.brand": "شريككم في المعارض",
     "footer.services": "الخدمات",
     "footer.company": "الشركة",
     "footer.aboutus": "من نحن",
