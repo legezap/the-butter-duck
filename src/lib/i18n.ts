@@ -31,8 +31,8 @@ const translations = {
 
     // Hero
     "hero.badge": "Your Exhibition Partner",
-    "hero.title": "",
-    "hero.title.accent": "Your Exhibition Partner",
+    "hero.title": "Your",
+    "hero.title.accent": "Exhibition Partner",
     "hero.sub": "Exhibition stands, event production, and immersive brand environments from <strong>25 sqm to 1000+ sqm</strong>. Trusted by industry leaders and global brands across 10 countries.",
     "hero.cta.start": "Start Your Project",
     "hero.cta.work": "View Our Work",
