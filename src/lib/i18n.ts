@@ -31,8 +31,8 @@ const translations = {
 
     // Hero
     "hero.badge": "Your Exhibition Partner",
-    "hero.title": "Your Exhibition",
-    "hero.title.accent": "Partner",
+    "hero.title": "",
+    "hero.title.accent": "Your Exhibition Partner",
     "hero.sub": "Exhibition stands, event production, and immersive brand environments from <strong>25 sqm to 1000+ sqm</strong>. Trusted by industry leaders and global brands across 10 countries.",
     "hero.cta.start": "Start Your Project",
     "hero.cta.work": "View Our Work",
@@ -489,8 +489,8 @@ const translations = {
 
     // Hero
     "hero.badge": "شريككم في المعارض",
-    "hero.title": "شريكك في",
-    "hero.title.accent": "المعارض",
+    "hero.title": "",
+    "hero.title.accent": "شريكك في المعارض",
     "hero.sub": "أجنحة معارض، إنتاج فعاليات، وبيئات تفاعلية للعلامات التجارية من <strong>25 م² إلى 1000+ م²</strong>. موثوقون من رواد الصناعة وعلامات تجارية عالمية في 10 دول.",
     "hero.cta.start": "ابدأ مشروعك",
     "hero.cta.work": "عرض أعمالنا",
