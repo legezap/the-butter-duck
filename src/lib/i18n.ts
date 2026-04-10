@@ -30,7 +30,7 @@ const translations = {
     "mega.media.desc": "Video, graphics, interactive tech",
 
     // Hero
-    "hero.badge": "Your exhibition partner",
+    "hero.badge": "Design. Build. Deliver.",
     "hero.title": "Your",
     "hero.title.accent": "Exhibition Partner",
     "hero.sub": "Exhibition stands, event production, and immersive brand environments from <strong>25 sqm to 1000+ sqm</strong>. Trusted by industry leaders and global brands across 10 countries.",
@@ -488,7 +488,7 @@ const translations = {
     "mega.media.desc": "فيديو، رسومات، تقنيات تفاعلية",
 
     // Hero
-    "hero.badge": "شريككم في المعارض",
+    "hero.badge": "تصميم. بناء. تسليم.",
     "hero.title": "نصمم وننفذ أجنحة المعارض",
     "hero.title.accent": "في الإمارات",
     "hero.sub": "أجنحة معارض، إنتاج فعاليات، وبيئات تفاعلية للعلامات التجارية من <strong>25 م² إلى 1000+ م²</strong>. موثوقون من رواد الصناعة وعلامات تجارية عالمية في 10 دول.",
