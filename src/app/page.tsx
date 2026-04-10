@@ -87,7 +87,7 @@ export default function HomePage() {
         <div className="hero-overlay" />
         <RevealOnScroll>
           <div className="container hero-content">
-            <span className="hero-badge">{t("hero.badge")}</span>
+            <span className="hero-badge hero-badge-home">{t("hero.badge")}</span>
 
             <h1>
               {t("hero.title")}{" "}

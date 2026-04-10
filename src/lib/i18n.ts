@@ -30,7 +30,7 @@ const translations = {
     "mega.media.desc": "Video, graphics, interactive tech",
 
     // Hero
-    "hero.badge": "Your Exhibition Partner",
+    "hero.badge": "Your exhibition partner",
     "hero.title": "Your",
     "hero.title.accent": "Exhibition Partner",
     "hero.sub": "Exhibition stands, event production, and immersive brand environments from <strong>25 sqm to 1000+ sqm</strong>. Trusted by industry leaders and global brands across 10 countries.",

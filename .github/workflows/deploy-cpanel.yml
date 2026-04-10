@@ -1,0 +1,49 @@
+name: Deploy to cPanel
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - run: npm ci
+
+      - name: Build for cPanel (no basePath)
+        run: npm run build
+        env:
+          DEPLOY_TARGET: cpanel
+
+      - name: Push built site to cpanel-deploy branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Create orphan branch with only built files
+          git checkout --orphan cpanel-deploy-tmp
+          git rm -rf .
+
+          # Copy build output
+          cp -r out/* .
+          cp out/.htaccess . 2>/dev/null || true
+
+          # Commit
+          git add -A
+          git commit -m "Deploy $(date -u +%Y-%m-%d\ %H:%M:%S) from ${GITHUB_SHA::7}"
+
+          # Force-push to cpanel-deploy branch
+          git push origin HEAD:cpanel-deploy --force

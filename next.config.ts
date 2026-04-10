@@ -1,11 +1,11 @@
 import type { NextConfig } from "next";
 
-const isProd = process.env.NODE_ENV === "production";
+const target = process.env.DEPLOY_TARGET;
 
 const nextConfig: NextConfig = {
   output: "export",
-  basePath: isProd ? "/the-butter-duck" : "",
-  assetPrefix: isProd ? "/the-butter-duck/" : "",
+  basePath: target === "github" ? "/the-butter-duck" : "",
+  assetPrefix: target === "github" ? "/the-butter-duck/" : "",
   images: {
     unoptimized: true,
   },
