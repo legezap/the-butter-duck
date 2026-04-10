@@ -13,8 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
@@ -30,21 +28,18 @@ jobs:
 
       - name: Push built site to cpanel-deploy branch
         run: |
+          cd out
+
+          git init
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Create orphan branch with only built files
-          git checkout --orphan cpanel-deploy-tmp
-          git rm -rf .
+          # Copy .cpanel.yml into build output
+          cp ../.cpanel.yml . 2>/dev/null || true
 
-          # Copy build output + deployment config
-          cp -r out/* .
-          cp out/.htaccess . 2>/dev/null || true
-          git checkout main -- .cpanel.yml
-
-          # Commit
           git add -A
           git commit -m "Deploy $(date -u +%Y-%m-%d\ %H:%M:%S) from ${GITHUB_SHA::7}"
 
           # Force-push to cpanel-deploy branch
+          git remote add origin https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git
           git push origin HEAD:cpanel-deploy --force
