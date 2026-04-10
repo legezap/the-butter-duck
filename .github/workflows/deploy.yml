@@ -29,6 +29,7 @@ jobs:
       - run: npm run build
         env:
           DEPLOY_TARGET: github
+          NEXT_PUBLIC_DEPLOY_TARGET: github
 
       - uses: actions/upload-pages-artifact@v3
         with:
