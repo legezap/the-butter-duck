@@ -37,9 +37,10 @@ jobs:
           git checkout --orphan cpanel-deploy-tmp
           git rm -rf .
 
-          # Copy build output
+          # Copy build output + deployment config
           cp -r out/* .
           cp out/.htaccess . 2>/dev/null || true
+          git checkout main -- .cpanel.yml
 
           # Commit
           git add -A
