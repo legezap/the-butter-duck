@@ -27,19 +27,37 @@ jobs:
           DEPLOY_TARGET: cpanel
 
       - name: Push built site to cpanel-deploy branch
+        env:
+          REMOTE_URL: https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git
         run: |
-          cd out
+          mkdir /tmp/deploy
+          cp -r out/* /tmp/deploy/
+          cp out/.htaccess /tmp/deploy/ 2>/dev/null || true
+          cp .cpanel.yml /tmp/deploy/ 2>/dev/null || true
 
-          git init
+          # Clone existing cpanel-deploy branch (or create fresh)
+          if git ls-remote --exit-code --heads "$REMOTE_URL" cpanel-deploy; then
+            git clone --single-branch --branch cpanel-deploy "$REMOTE_URL" /tmp/repo
+          else
+            mkdir /tmp/repo
+            cd /tmp/repo
+            git init
+            git checkout -b cpanel-deploy
+            git remote add origin "$REMOTE_URL"
+            cd -
+          fi
+
+          cd /tmp/repo
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Copy .cpanel.yml into build output
-          cp ../.cpanel.yml . 2>/dev/null || true
+          # Replace all files with new build
+          find . -maxdepth 1 ! -name '.git' ! -name '.' -exec rm -rf {} +
+          cp -r /tmp/deploy/* .
+          cp /tmp/deploy/.htaccess . 2>/dev/null || true
+          cp /tmp/deploy/.cpanel.yml . 2>/dev/null || true
 
           git add -A
+          git diff --cached --quiet && echo "No changes" && exit 0
           git commit -m "Deploy $(date -u +%Y-%m-%d\ %H:%M:%S) from ${GITHUB_SHA::7}"
-
-          # Force-push to cpanel-deploy branch
-          git remote add origin https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git
-          git push origin HEAD:cpanel-deploy --force
+          git push origin cpanel-deploy
