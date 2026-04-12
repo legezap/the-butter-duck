@@ -823,3 +823,178 @@ select.form-input { appearance: none; }
 [dir="rtl"] .ci-text { text-align: right; }
 [dir="rtl"] .ci-text h4 { text-align: right; }
 [dir="rtl"] .ci-text p, [dir="rtl"] .ci-text a { text-align: right; }
+
+/* ============================================================
+   MOBILE LAYOUT FIX — 768px and below
+   Targets: hero visibility, duck sizing, CTA compactness,
+   section spacing, cine-divider height
+   ============================================================ */
+
+@media (max-width: 768px) {
+  /* --- HERO: ensure content is visible above the fold --- */
+  .hero {
+    min-height: 100svh;
+    min-height: 100dvh;
+    align-items: flex-start;
+    padding-top: 72px;
+  }
+  .hero-content {
+    padding-block: 24px 20px;
+  }
+  .hero h1 {
+    white-space: nowrap;
+    font-size: clamp(1.6rem, 7.5vw, 2.8rem);
+    margin-bottom: 14px;
+  }
+  .hero-badge {
+    margin-bottom: 14px;
+  }
+  .hero-sub {
+    font-size: 0.92rem;
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+  .hero-stats {
+    margin-top: 24px;
+  }
+
+  /* --- CINE DIVIDER: reduce height --- */
+  .cine-divider {
+    height: 25vh;
+  }
+  .cine-divider-content h2 {
+    font-size: clamp(1.1rem, 3.5vw, 1.6rem);
+  }
+  .cine-divider-content p {
+    font-size: 0.85rem;
+    margin-top: 8px;
+  }
+
+  /* --- DUCK / ABOUT VISUAL: cap size --- */
+  .about-visual {
+    max-width: 200px;
+    margin: 0 auto;
+  }
+
+  /* --- CTA SECTION: compact padding --- */
+  .cta-section {
+    padding: 40px 0;
+  }
+  .cta-section p {
+    font-size: 1rem;
+    margin: 12px 0 24px;
+  }
+
+  /* --- SECTION SPACING: tighter --- */
+  .section-pad {
+    padding: 40px 0;
+  }
+  .section-bg-card {
+    padding: 40px 0;
+  }
+  .mb-56 {
+    margin-bottom: 28px;
+  }
+
+  /* --- MARQUEE: tighter --- */
+  .scroll-text {
+    padding: 28px 0;
+  }
+
+  /* --- TRUST BAR: tighter --- */
+  .trust-bar {
+    padding: 32px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  /* --- HERO: tighter still, keep text on one line --- */
+  .hero-content {
+    padding-block: 20px 16px;
+  }
+  .hero h1 {
+    white-space: nowrap;
+    font-size: clamp(1.4rem, 7vw, 2.2rem);
+    margin-bottom: 12px;
+  }
+  .hero-badge {
+    margin-bottom: 12px;
+    padding: 6px 16px;
+    font-size: clamp(0.6rem, 1.6vw, 0.72rem);
+  }
+  .hero-sub {
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+  }
+  .hero-stats {
+    margin-top: 20px;
+  }
+  .hero-stat {
+    padding: 16px 6px;
+  }
+
+  /* --- CINE DIVIDER: even smaller --- */
+  .cine-divider {
+    height: 20vh;
+  }
+  .cine-divider-content h2 {
+    font-size: clamp(0.95rem, 3.2vw, 1.3rem);
+  }
+  .cine-divider-content p {
+    font-size: 0.78rem;
+    margin-top: 6px;
+  }
+
+  /* --- DUCK / ABOUT VISUAL: smaller or hidden --- */
+  .about-visual {
+    max-width: 180px;
+  }
+
+  /* --- CTA SECTION: max compact --- */
+  .cta-section {
+    padding: 32px 0;
+  }
+  .cta-section h2 {
+    font-size: clamp(1.4rem, 5vw, 2rem);
+  }
+  .cta-section p {
+    font-size: 0.9rem;
+    margin: 10px 0 24px;
+  }
+
+  /* --- SECTION SPACING: tightest --- */
+  .section-pad {
+    padding: 32px 0;
+  }
+  .section-bg-card {
+    padding: 32px 0;
+  }
+  .mb-56 {
+    margin-bottom: 20px;
+  }
+
+  /* --- MARQUEE: compact --- */
+  .scroll-text {
+    padding: 20px 0;
+  }
+
+  /* --- TRUST BAR: compact --- */
+  .trust-bar {
+    padding: 24px 0;
+  }
+
+  /* --- TESTIMONIALS: compact cards --- */
+  .testimonial-card {
+    padding: 28px 20px;
+  }
+
+  /* --- SERVICE CARDS: compact --- */
+  .service-card {
+    padding: 28px 20px;
+  }
+
+  /* --- PROCESS CARDS: compact --- */
+  .process-card {
+    padding: 28px 20px;
+  }
+}
