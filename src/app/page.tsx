@@ -151,7 +151,7 @@ export default function HomePage() {
       <TrustBar />
 
       {/* ========== 3. SCROLLING MARQUEE ========== */}
-      <Marquee items={marqueeItems} speed={1.2} />
+      <Marquee items={marqueeItems} />
 
       {/* ========== 4. SERVICES OVERVIEW ========== */}
       <section className="section-pad">
@@ -302,14 +302,6 @@ export default function HomePage() {
               >
                 {t("home.about.p2")}
               </p>
-              <div className="tag-list">
-                <Link href="/about" className="btn btn-outline">
-                  {t("home.about.btn")}
-                </Link>
-                <Link href="/contact#rfp-form" className="btn btn-primary">
-                  {t("about.talk")} <span className="arrow">&rarr;</span>
-                </Link>
-              </div>
             </div>
 
             {/* Duck with water effect */}
@@ -328,9 +320,6 @@ export default function HomePage() {
           <div className="flex-center-wrap">
             <Link href="/contact#rfp-form" className="btn">
               {t("cta.start")} <span className="arrow">&rarr;</span>
-            </Link>
-            <Link href="/portfolio" className="btn btn-outline-dark">
-              {t("cta.see")}
             </Link>
           </div>
         </div>

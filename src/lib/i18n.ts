@@ -410,7 +410,7 @@ const translations = {
     "contact.success.home": "Back to Home",
 
     // Contact form — error alert
-    "contact.error.alert": "Something went wrong. Please try again or email us directly at hello@thebutterduck.com",
+    "contact.error.alert": "Something went wrong. Please try again or email us directly at sales@thebutterduck.com",
 
     // Contact page CTA
     "contact.cta.title": "Prefer a Quick Chat?",
@@ -868,7 +868,7 @@ const translations = {
     "contact.success.home": "العودة للرئيسية",
 
     // Contact form — error alert
-    "contact.error.alert": "حدث خطأ. يرجى المحاولة مرة أخرى أو مراسلتنا مباشرة على hello@thebutterduck.com",
+    "contact.error.alert": "حدث خطأ. يرجى المحاولة مرة أخرى أو مراسلتنا مباشرة على sales@thebutterduck.com",
 
     // Contact page CTA
     "contact.cta.title": "تفضل محادثة سريعة؟",

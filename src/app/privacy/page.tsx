@@ -42,7 +42,7 @@ export default function PrivacyPage() {
               <li><strong>License Number:</strong> 4426620.01</li>
               <li><strong>Jurisdiction:</strong> UAE Free Zone</li>
               <li><strong>Registered Address:</strong> Marina Plaza, 29th Floor, Dubai Marina, Dubai, UAE</li>
-              <li><strong>Data Contact:</strong> <a href="mailto:hello@thebutterduck.com">hello@thebutterduck.com</a></li>
+              <li><strong>Data Contact:</strong> <a href="mailto:sales@thebutterduck.com">sales@thebutterduck.com</a></li>
             </ul>
           </div>
 
@@ -152,7 +152,7 @@ export default function PrivacyPage() {
             </ul>
             <p style={{ marginTop: 12 }}>
               To exercise any of these rights, contact us at{" "}
-              <a href="mailto:hello@thebutterduck.com">hello@thebutterduck.com</a>.
+              <a href="mailto:sales@thebutterduck.com">sales@thebutterduck.com</a>.
               We will respond within 30 days.
             </p>
           </div>
@@ -201,7 +201,7 @@ export default function PrivacyPage() {
             <p style={{ marginTop: 12 }}>
               <strong>The Butter Duck Company FZC LLC</strong><br />
               Marina Plaza, 29th Floor, Dubai Marina, Dubai, UAE<br />
-              Email: <a href="mailto:hello@thebutterduck.com">hello@thebutterduck.com</a><br />
+              Email: <a href="mailto:sales@thebutterduck.com">sales@thebutterduck.com</a><br />
               Phone: <a href="tel:+971521477966">+971 52 147 7966</a>
             </p>
           </div>

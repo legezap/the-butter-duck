@@ -42,7 +42,7 @@ export default function TermsPage() {
               <li><strong>License Number:</strong> 4426620.01</li>
               <li><strong>Jurisdiction:</strong> UAE Free Zone</li>
               <li><strong>Registered Address:</strong> Marina Plaza, 29th Floor, Dubai Marina, Dubai, UAE</li>
-              <li><strong>Email:</strong> <a href="mailto:hello@thebutterduck.com">hello@thebutterduck.com</a></li>
+              <li><strong>Email:</strong> <a href="mailto:sales@thebutterduck.com">sales@thebutterduck.com</a></li>
             </ul>
           </div>
 
@@ -180,7 +180,7 @@ export default function TermsPage() {
             <p style={{ marginTop: 12 }}>
               <strong>The Butter Duck Company FZC LLC</strong><br />
               Marina Plaza, 29th Floor, Dubai Marina, Dubai, UAE<br />
-              Email: <a href="mailto:hello@thebutterduck.com">hello@thebutterduck.com</a>
+              Email: <a href="mailto:sales@thebutterduck.com">sales@thebutterduck.com</a>
             </p>
           </div>
         </div>

@@ -109,7 +109,7 @@ export default function RootLayout({
                   longitude: 55.1378,
                 },
                 telephone: "+971521477966",
-                email: "hello@thebutterduck.com",
+                email: "sales@thebutterduck.com",
                 priceRange: "AED 50,000 - 1,000,000+",
                 openingHours: "Su-Th 09:00-18:00",
                 sameAs: [

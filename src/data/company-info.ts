@@ -13,8 +13,7 @@ export const OFFICE = {
 export const CONTACT = {
   phone: "+971 52 147 7966",
   phoneTel: "tel:+971521477966",
-  email: "hello@thebutterduck.com",
-  emailOperations: "sales@thebutterduck.com",
+  email: "sales@thebutterduck.com",
   whatsapp: "https://wa.me/971521477966?text=Hi%2C%20I%27m%20interested%20in%20an%20exhibition%20stand.%20Can%20we%20discuss%3F",
   instagram: "https://instagram.com/thebutterduck",
   instagramHandle: "@thebutterduck",
