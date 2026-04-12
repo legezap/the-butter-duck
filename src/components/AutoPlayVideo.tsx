@@ -45,7 +45,7 @@ export default function AutoPlayVideo({ src, poster, className }: AutoPlayVideoP
       muted
       loop
       playsInline
-      preload="auto"
+      preload="metadata"
       className={className}
       poster={poster}
     >
