@@ -218,15 +218,15 @@ video.hero-bg-img { position: absolute; inset: 0; min-width: 100%; min-height: 1
 @media (max-width: 640px) {
   .hero-badge-home { padding: 8px 18px; letter-spacing: 0.06em; }
   .hero-overlay { background: linear-gradient(180deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.55) 40%, rgba(0,0,0,0.9) 100%); }
-  .hero-stats { grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 32px; }
+  .hero-stats { grid-template-columns: repeat(3, 1fr); gap: 0; }
   .hero-stat { padding: 20px 8px; }
   .hero-stat .num { font-size: clamp(1.8rem, 7vw, 2.4rem); }
   .hero-stat .label { font-size: 0.6rem; letter-spacing: 0.1em; margin-top: 8px; }
   .hero-stat::before { top: 20%; bottom: 20%; left: 0; width: 1px; height: auto; background: linear-gradient(180deg, transparent 0%, var(--color-accent-20) 50%, transparent 100%); }
   .hero-stat:first-child::before { display: none; }
   .hero-cta { flex-direction: column; }
-  .hero-cta .btn { justify-content: center; }
-  .hero-cta .btn-lg { padding: 16px 36px; font-size: 0.9rem; }
+  .hero-cta .btn { justify-content: center; width: 100%; }
+  .hero-cta .btn-lg { padding: 18px 36px; font-size: 0.95rem; }
 }
 
 /* ============================================================
@@ -822,7 +822,7 @@ select.form-input { appearance: none; }
    ============================================================ */
 
 @media (max-width: 768px) {
-  /* --- HERO: ensure content is visible above the fold --- */
+  /* --- HERO: atmospheric spacing, breathing room --- */
   .hero {
     min-height: 100svh;
     min-height: 100dvh;
@@ -830,23 +830,32 @@ select.form-input { appearance: none; }
     padding-top: 72px;
   }
   .hero-content {
-    padding-block: 24px 20px;
+    padding-block: 56px 40px;
   }
   .hero h1 {
-    white-space: nowrap;
-    font-size: clamp(1.6rem, 7.5vw, 2.8rem);
-    margin-bottom: 14px;
+    white-space: normal;
+    font-size: clamp(1.8rem, 7.5vw, 2.8rem);
+    margin-bottom: 24px;
+    line-height: 1.05;
   }
   .hero-badge {
-    margin-bottom: 14px;
+    margin-bottom: 24px;
   }
   .hero-sub {
-    font-size: 0.92rem;
-    margin-bottom: 24px;
-    line-height: 1.6;
+    font-size: 1rem;
+    margin-bottom: 36px;
+    line-height: 1.7;
+  }
+  .hero-cta {
+    gap: 12px;
+    margin-bottom: 0;
+  }
+  .hero-cta .btn {
+    width: 100%;
+    justify-content: center;
   }
   .hero-stats {
-    margin-top: 24px;
+    margin-top: 48px;
   }
 
   /* --- CINE DIVIDER: reduce height --- */
@@ -861,26 +870,29 @@ select.form-input { appearance: none; }
     margin-top: 8px;
   }
 
-  /* --- DUCK / ABOUT VISUAL: hide on mobile --- */
+  /* --- ABOUT: hide duck visual, reduce gap to avoid empty black space --- */
   .about-visual {
     display: none;
+  }
+  .about-grid {
+    gap: 32px;
   }
 
   /* --- CTA SECTION: compact padding --- */
   .cta-section {
-    padding: 40px 0;
+    padding: 48px 0;
   }
   .cta-section p {
     font-size: 1rem;
     margin: 12px 0 24px;
   }
 
-  /* --- SECTION SPACING: tighter --- */
+  /* --- SECTION SPACING: consistent rhythm --- */
   .section-pad {
-    padding: 40px 0;
+    padding: 48px 0;
   }
   .section-bg-card {
-    padding: 40px 0;
+    padding: 48px 0;
   }
   .mb-56 {
     margin-bottom: 28px;
@@ -894,6 +906,33 @@ select.form-input { appearance: none; }
   /* --- TRUST BAR: tighter --- */
   .trust-bar {
     padding: 32px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  /* --- HERO: even more generous on small phones --- */
+  .hero-content {
+    padding-block: 48px 32px;
+  }
+  .hero-sub {
+    font-size: 0.95rem;
+    margin-bottom: 32px;
+  }
+  .hero-stats {
+    margin-top: 40px;
+  }
+
+  /* --- CTA SECTION: compact on small screens --- */
+  .cta-section {
+    padding: 36px 0;
+  }
+
+  /* --- SECTION SPACING: slightly tighter on small phones --- */
+  .section-pad {
+    padding: 40px 0;
+  }
+  .section-bg-card {
+    padding: 40px 0;
   }
 }
 
