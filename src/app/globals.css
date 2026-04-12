@@ -896,10 +896,10 @@ select.form-input { appearance: none; }
     margin-bottom: 28px;
   }
 
-  /* --- SERVICE CARDS: icon + title in one row --- */
-  .service-card { display: flex; flex-direction: row; align-items: flex-start; gap: 16px; }
-  .service-icon { margin-bottom: 0; flex-shrink: 0; }
-  .service-card h3 { font-size: 1rem; }
+  /* --- SERVICE CARDS: icon + title inline, description below --- */
+  .service-card { display: block; }
+  .service-card .service-icon { display: inline-flex; vertical-align: middle; margin-bottom: 0; margin-right: 12px; }
+  .service-card h3 { display: inline; vertical-align: middle; font-size: 1.05rem; }
 
   /* --- MARQUEE: tighter --- */
   .scroll-text {

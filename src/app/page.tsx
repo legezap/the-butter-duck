@@ -178,27 +178,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ========== 5. CINEMATIC DIVIDER — MICROSOFT ========== */}
-      <section className="cine-divider">
-        <Parallax className="cine-divider-bg">
-          <Image
-            src={asset("/assets/photos/microsoft-leap.jpg")}
-            alt="700 sqm double decker booth at LEAP"
-            fill
-            loading="lazy"
-            sizes="100vw"
-            style={{ objectFit: "cover" }}
-          />
-        </Parallax>
-        <div className="cine-divider-overlay" style={{ background: "linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0.5) 70%, rgba(0,0,0,0.7) 100%)" }} />
-        <div className="cine-divider-content container">
-          <div>
-            <h2 dangerouslySetInnerHTML={{ __html: t("cine.microsoft") }} />
-            <p>{t("cine.microsoft.sub.full")}</p>
-          </div>
-        </div>
-      </section>
-
       {/* ========== 6. FEATURED PROJECTS ========== */}
       <section className="section-pad">
         <div className="container">
@@ -268,30 +247,6 @@ export default function HomePage() {
                 <p>{step.desc}</p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ========== 7b. CINEMATIC DIVIDER — NESPRESSO ========== */}
-      <section className="cine-divider">
-        <Parallax className="cine-divider-bg">
-          <Image
-            src={asset("/assets/photos/gallery/nespresso-NES-1239.jpg")}
-            alt="1200 sqm product launch event — birds eye view"
-            fill
-            loading="lazy"
-            sizes="100vw"
-            style={{ objectFit: "cover" }}
-          />
-        </Parallax>
-        <div className="cine-divider-overlay" style={{ background: "linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0.5) 70%, rgba(0,0,0,0.7) 100%)" }} />
-        <div className="cine-divider-content container">
-          <div>
-            <h2>
-              {t("cine.nespresso.title")}{" "}
-              <span className="accent">{t("cine.nespresso.title.accent")}</span>
-            </h2>
-            <p>{t("cine.nespresso.desc")}</p>
           </div>
         </div>
       </section>
@@ -368,18 +323,16 @@ export default function HomePage() {
       {/* ========== 11. CTA SECTION ========== */}
       <section className="cta-section">
         <div className="container">
-          <RevealOnScroll>
-            <h2>{t("home.cta.title")}</h2>
-            <p>{t("home.cta.desc")}</p>
-            <div className="flex-center-wrap">
-              <Link href="/contact#rfp-form" className="btn">
-                {t("cta.start")} <span className="arrow">&rarr;</span>
-              </Link>
-              <Link href="/portfolio" className="btn btn-outline-dark">
-                {t("cta.see")}
-              </Link>
-            </div>
-          </RevealOnScroll>
+          <h2>{t("home.cta.title")}</h2>
+          <p>{t("home.cta.desc")}</p>
+          <div className="flex-center-wrap">
+            <Link href="/contact#rfp-form" className="btn">
+              {t("cta.start")} <span className="arrow">&rarr;</span>
+            </Link>
+            <Link href="/portfolio" className="btn btn-outline-dark">
+              {t("cta.see")}
+            </Link>
+          </div>
         </div>
       </section>
     </>
