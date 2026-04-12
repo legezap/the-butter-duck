@@ -314,6 +314,7 @@ export default function ContactForm() {
                               onClick={() => {
                                 setService(opt.id);
                                 setErrors({});
+                                setTimeout(() => setStep(2), 300);
                               }}
                             >
                               <div style={{ fontSize: "1.4rem", marginBottom: 8 }}>

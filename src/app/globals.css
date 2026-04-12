@@ -209,9 +209,7 @@ video.hero-bg-img { position: absolute; inset: 0; min-width: 100%; min-height: 1
 .hero h1 { margin-bottom: 28px; line-height: 1.0; white-space: nowrap; font-size: clamp(1.8rem, 5.5vw, 5rem); }
 .hero-sub { font-size: 1.2rem; color: rgba(255,255,255,0.75); line-height: 1.7; max-width: 620px; margin-bottom: 48px; }
 .hero-sub strong { color: var(--color-text-primary); font-weight: 600; }
-.hero-cta { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
-.hero-wa-link { display: inline-block; color: #25D366; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.02em; transition: opacity 0.3s; }
-.hero-wa-link:hover { opacity: 0.8; color: #25D366; }
+.hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
 .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 80px; padding-top: 0; border-top: none; position: relative; }
 .hero-stat { text-align: center; padding: 36px 24px; position: relative; }
 .hero-stat::before { content: ''; position: absolute; top: 20%; bottom: 20%; left: 0; width: 1px; background: linear-gradient(180deg, transparent 0%, var(--color-accent-25) 50%, transparent 100%); }
