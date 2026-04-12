@@ -156,12 +156,10 @@ export default function HomePage() {
       {/* ========== 4. SERVICES OVERVIEW ========== */}
       <section className="section-pad">
         <div className="container">
-          <RevealOnScroll>
-            <span className="section-label">{t("services.label")}</span>
-            <h2 className="mb-56">
-              {t("home.services.title")} <span className="accent">{t("home.services.title.accent")}</span>
-            </h2>
-          </RevealOnScroll>
+          <span className="section-label">{t("services.label")}</span>
+          <h2 className="mb-56">
+            {t("home.services.title")} <span className="accent">{t("home.services.title.accent")}</span>
+          </h2>
 
           <div className="services-grid">
             {services.map((svc) => (
@@ -181,12 +179,10 @@ export default function HomePage() {
       {/* ========== 6. FEATURED PROJECTS ========== */}
       <section className="section-pad">
         <div className="container">
-          <RevealOnScroll>
-            <span className="section-label">{t("home.featured.label")}</span>
-            <h2 className="mb-56">
-              {t("home.featured.title")} <span className="accent">{t("home.featured.title.accent")}</span>
-            </h2>
-          </RevealOnScroll>
+          <span className="section-label">{t("home.featured.label")}</span>
+          <h2 className="mb-56">
+            {t("home.featured.title")} <span className="accent">{t("home.featured.title.accent")}</span>
+          </h2>
 
           <div className="portfolio-grid">
             {featuredProjects.map((project) => (
@@ -231,14 +227,12 @@ export default function HomePage() {
       {/* ========== 7. OUR PROCESS ========== */}
       <section className="section-bg-card">
         <div className="container">
-          <RevealOnScroll>
-            <span className="section-label">
-              {t("process.label")}
-            </span>
-            <h2 className="mb-56">
-              {t("process.title")} <span className="accent">{t("process.title.accent")}</span>
-            </h2>
-          </RevealOnScroll>
+          <span className="section-label">
+            {t("process.label")}
+          </span>
+          <h2 className="mb-56">
+            {t("process.title")} <span className="accent">{t("process.title.accent")}</span>
+          </h2>
           <div className="process-grid">
             {processSteps.map((step) => (
               <div key={step.num} className="process-card">
@@ -254,14 +248,12 @@ export default function HomePage() {
       {/* ========== 8. TESTIMONIALS ========== */}
       <section className="section-pad">
         <div className="container">
-          <RevealOnScroll>
-            <span className="section-label">
-              {t("testimonials.label")}
-            </span>
-            <h2 className="mb-56">
-              {t("testimonials.title")} <span className="accent">{t("testimonials.title.accent")}</span>
-            </h2>
-          </RevealOnScroll>
+          <span className="section-label">
+            {t("testimonials.label")}
+          </span>
+          <h2 className="mb-56">
+            {t("testimonials.title")} <span className="accent">{t("testimonials.title.accent")}</span>
+          </h2>
           <div className="testimonials-grid">
             {testimonials.map((tm, i) => (
               <blockquote key={i} className="testimonial-card">
@@ -283,13 +275,11 @@ export default function HomePage() {
           <div className="about-grid">
             {/* Text */}
             <div>
-              <RevealOnScroll>
-                <span className="section-label">{t("about.label")}</span>
-                <h2 style={{ marginBottom: 24 }}>
-                  {t("about.title")}{" "}
-                  <span className="accent">{t("about.title.accent")}</span>
-                </h2>
-              </RevealOnScroll>
+              <span className="section-label">{t("about.label")}</span>
+              <h2 style={{ marginBottom: 24 }}>
+                {t("about.title")}{" "}
+                <span className="accent">{t("about.title.accent")}</span>
+              </h2>
               <p
                 className="text-muted body-text"
                 style={{ marginBottom: 16, fontSize: "1.05rem" }}

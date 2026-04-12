@@ -619,9 +619,9 @@ select.form-input { appearance: none; }
    REDUCED MOTION
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; }
   .hero-bg, .cine-divider-bg { inset: 0; }
-  /* marquee animation paused via global animation-duration override */
+  .scroll-text-track { animation: marquee 60s linear infinite !important; }
   html { scroll-behavior: auto; }
 }
 
