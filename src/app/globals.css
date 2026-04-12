@@ -55,7 +55,7 @@
 
 /* --- Reset --- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-padding-top: 130px; -webkit-text-size-adjust: 100%; }
+html { scroll-padding-top: 80px; -webkit-text-size-adjust: 100%; }
 html:focus-within { scroll-behavior: smooth; }
 body {
   font-family: var(--font-body);
@@ -846,7 +846,10 @@ select.form-input { appearance: none; }
 
   /* --- CINE DIVIDER: reduce height --- */
   .cine-divider {
-    height: 25vh;
+    height: 20vh;
+  }
+  .cine-divider-overlay {
+    background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.35) 20%, rgba(0,0,0,0.35) 80%, rgba(0,0,0,0.5) 100%) !important;
   }
   .cine-divider-content h2 {
     font-size: clamp(1.1rem, 3.5vw, 1.6rem);
@@ -866,10 +869,13 @@ select.form-input { appearance: none; }
 
   /* --- CTA SECTION --- */
   .cta-section {
-    padding: 56px 0;
+    padding: 40px 0;
+  }
+  .cta-section h2 {
+    font-size: clamp(1.4rem, 5vw, 2rem);
   }
   .cta-section p {
-    font-size: 1rem;
+    font-size: 0.95rem;
     margin: 12px 0 24px;
   }
 
@@ -889,6 +895,11 @@ select.form-input { appearance: none; }
   .mb-56 {
     margin-bottom: 28px;
   }
+
+  /* --- SERVICE CARDS: icon + title in one row --- */
+  .service-card { display: flex; flex-direction: row; align-items: flex-start; gap: 16px; }
+  .service-icon { margin-bottom: 0; flex-shrink: 0; }
+  .service-card h3 { font-size: 1rem; }
 
   /* --- MARQUEE: tighter --- */
   .scroll-text {
@@ -928,7 +939,7 @@ select.form-input { appearance: none; }
 
   /* --- CINE DIVIDER: even smaller --- */
   .cine-divider {
-    height: 20vh;
+    height: 15vh;
   }
   .cine-divider-content h2 {
     font-size: clamp(0.95rem, 3.2vw, 1.3rem);

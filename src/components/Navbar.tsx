@@ -29,12 +29,13 @@ export default function Navbar() {
   }, [handleScroll]);
 
   useEffect(() => {
-    // Defer to avoid synchronous setState in effect body
+    // Close menu first, then scroll to top
+    setMobileOpen(false);
+    setMobileAccordion(null);
+    // Use rAF to scroll after menu close renders
     requestAnimationFrame(() => {
-      setMobileOpen(false);
-      setMobileAccordion(null);
+      window.scrollTo({ top: 0, behavior: "instant" });
     });
-    window.scrollTo({ top: 0, behavior: "instant" });
   }, [pathname]);
 
   useEffect(() => {
@@ -44,6 +45,11 @@ export default function Navbar() {
 
   const toggleAccordion = (key: string) => {
     setMobileAccordion((prev) => (prev === key ? null : key));
+  };
+
+  const closeMobileMenu = () => {
+    setMobileOpen(false);
+    setMobileAccordion(null);
   };
 
   const isActive = (href: string) => {
@@ -328,7 +334,7 @@ export default function Navbar() {
       {/* Mobile menu */}
       <div className={`mobile-menu${mobileOpen ? " open" : ""}`} id="mobileMenu">
         <nav>
-          <Link href="/">{t("nav.home")}</Link>
+          <Link href="/" onClick={closeMobileMenu}>{t("nav.home")}</Link>
 
           <div className="mob-accordion">
             <button
@@ -340,7 +346,7 @@ export default function Navbar() {
             </button>
             <div className={`mob-accordion-panel${mobileAccordion === "services" ? " open" : ""}`}>
               {servicesItems.map((item) => (
-                <Link href={item.href} key={item.href}>{item.label}</Link>
+                <Link href={item.href} key={item.href} onClick={closeMobileMenu}>{item.label}</Link>
               ))}
             </div>
           </div>
@@ -355,14 +361,14 @@ export default function Navbar() {
             </button>
             <div className={`mob-accordion-panel${mobileAccordion === "portfolio" ? " open" : ""}`}>
               {portfolioItems.map((item) => (
-                <Link href={item.href} key={item.href}>{item.label}</Link>
+                <Link href={item.href} key={item.href} onClick={closeMobileMenu}>{item.label}</Link>
               ))}
-              <Link href="/portfolio" style={{ marginTop: 8, color: "var(--color-accent)", fontWeight: 600 }}>View All Projects</Link>
+              <Link href="/portfolio" onClick={closeMobileMenu} style={{ marginTop: 8, color: "var(--color-accent)", fontWeight: 600 }}>View All Projects</Link>
             </div>
           </div>
 
-          <Link href="/about">{t("nav.about")}</Link>
-          <Link href="/contact#rfp-form" className="btn btn-primary" style={{ marginTop: 16, justifyContent: "center" }}>
+          <Link href="/about" onClick={closeMobileMenu}>{t("nav.about")}</Link>
+          <Link href="/contact#rfp-form" onClick={closeMobileMenu} className="btn btn-primary" style={{ marginTop: 16, justifyContent: "center" }}>
             {t("nav.quote")}
           </Link>
           <a href="https://wa.me/971521477966?text=Hi%2C%20I%27m%20interested%20in%20an%20exhibition%20stand.%20Can%20we%20discuss%3F" target="_blank" rel="noopener noreferrer" className="btn btn-wa" style={{ width: '100%', marginTop: 8 }}>WhatsApp</a>
