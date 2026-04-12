@@ -104,10 +104,15 @@ export default function HomePage() {
               <span className="accent">{heroTitleAccent}</span>
             </h1>
 
-            <p
-              className="hero-sub"
-              dangerouslySetInnerHTML={{ __html: t("hero.sub") }}
-            />
+            <p className="hero-sub">
+              {t("hero.sub")
+                .split(/(<strong>.*?<\/strong>)/g)
+                .map((part, i) => {
+                  const match = part.match(/^<strong>(.*)<\/strong>$/);
+                  if (match) return <strong key={i}>{match[1]}</strong>;
+                  return part;
+                })}
+            </p>
 
             <div className="hero-cta">
               <Link href="/contact#rfp-form" className="btn btn-primary btn-lg">
@@ -142,11 +147,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ========== 2. SCROLLING MARQUEE ========== */}
-      <Marquee items={marqueeItems} speed={1.2} />
-
-      {/* ========== 3. TRUST BAR ========== */}
+      {/* ========== 2. TRUST BAR ========== */}
       <TrustBar />
+
+      {/* ========== 3. SCROLLING MARQUEE ========== */}
+      <Marquee items={marqueeItems} speed={1.2} />
 
       {/* ========== 4. SERVICES OVERVIEW ========== */}
       <section className="section-pad">
@@ -181,6 +186,7 @@ export default function HomePage() {
             alt="700 sqm double decker booth at LEAP"
             fill
             loading="lazy"
+            sizes="100vw"
             style={{ objectFit: "cover" }}
           />
         </Parallax>
@@ -218,6 +224,7 @@ export default function HomePage() {
                       width={720}
                       height={450}
                       loading="lazy"
+                      sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 33vw"
                       style={{ width: "100%", height: "100%", objectFit: "cover" }}
                     />
                   </div>
@@ -273,6 +280,7 @@ export default function HomePage() {
             alt="1200 sqm product launch event — birds eye view"
             fill
             loading="lazy"
+            sizes="100vw"
             style={{ objectFit: "cover" }}
           />
         </Parallax>

@@ -34,7 +34,7 @@ export default function Navbar() {
       setMobileOpen(false);
       setMobileAccordion(null);
     });
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: "instant" });
   }, [pathname]);
 
   useEffect(() => {
@@ -313,7 +313,16 @@ export default function Navbar() {
       <div
         className={`mob-backdrop${mobileOpen ? " open" : ""}`}
         id="mobBackdrop"
+        role="button"
+        tabIndex={0}
+        aria-label="Close menu"
         onClick={() => setMobileOpen(false)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            setMobileOpen(false);
+          }
+        }}
       />
 
       {/* Mobile menu */}
@@ -356,6 +365,7 @@ export default function Navbar() {
           <Link href="/contact#rfp-form" className="btn btn-primary" style={{ marginTop: 16, justifyContent: "center" }}>
             {t("nav.quote")}
           </Link>
+          <a href="https://wa.me/971521477966?text=Hi%2C%20I%27m%20interested%20in%20an%20exhibition%20stand.%20Can%20we%20discuss%3F" target="_blank" rel="noopener noreferrer" className="btn btn-wa" style={{ width: '100%', marginTop: 8 }}>WhatsApp</a>
         </nav>
       </div>
     </>

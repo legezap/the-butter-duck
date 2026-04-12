@@ -15,14 +15,20 @@ export default function Marquee({ items, speed = 1 }: Props) {
     const track = trackRef.current;
     if (!track) return;
 
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const effectiveSpeed = () => (mq.matches ? 0 : speed);
+
     let raf: number;
     const loop = () => {
-      posRef.current -= speed;
-      const halfWidth = track.scrollWidth / 2;
-      if (Math.abs(posRef.current) >= halfWidth) {
-        posRef.current = 0;
+      const s = effectiveSpeed();
+      if (s > 0) {
+        posRef.current -= s;
+        const halfWidth = track.scrollWidth / 2;
+        if (Math.abs(posRef.current) >= halfWidth) {
+          posRef.current = 0;
+        }
+        track.style.transform = `translate3d(${posRef.current}px, 0, 0)`;
       }
-      track.style.transform = `translate3d(${posRef.current}px, 0, 0)`;
       raf = requestAnimationFrame(loop);
     };
 

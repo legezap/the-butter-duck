@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface Props {
   children: React.ReactNode;
@@ -14,8 +14,13 @@ export default function Parallax({ children, className, speed = 25 }: Props) {
   const target = useRef(0);
   const raf = useRef<number>(0);
   const prefersReducedMotion = useRef(false);
+  const isVisible = useRef(false);
+  const [willChange, setWillChange] = useState(false);
 
   useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     prefersReducedMotion.current = mediaQuery.matches;
 
@@ -24,9 +29,19 @@ export default function Parallax({ children, className, speed = 25 }: Props) {
     };
     mediaQuery.addEventListener("change", updatePreference);
 
+    // IntersectionObserver — only run rAF when visible
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible.current = entry.isIntersecting;
+        setWillChange(entry.isIntersecting);
+      },
+      { rootMargin: "50px" }
+    );
+    observer.observe(el);
+
     const updateTarget = () => {
-      if (!ref.current || prefersReducedMotion.current) return;
-      const rect = ref.current.getBoundingClientRect();
+      if (!el || prefersReducedMotion.current) return;
+      const rect = el.getBoundingClientRect();
       const windowHeight = window.innerHeight;
       const centerOffset =
         (rect.top + rect.height / 2 - windowHeight / 2) / windowHeight;
@@ -34,10 +49,13 @@ export default function Parallax({ children, className, speed = 25 }: Props) {
     };
 
     const loop = () => {
-      if (!ref.current || prefersReducedMotion.current) {
-        if (ref.current && prefersReducedMotion.current) {
-          ref.current.style.transform = "";
-        }
+      if (!isVisible.current) {
+        raf.current = requestAnimationFrame(loop);
+        return;
+      }
+
+      if (prefersReducedMotion.current) {
+        if (el) el.style.transform = "";
         raf.current = requestAnimationFrame(loop);
         return;
       }
@@ -47,7 +65,7 @@ export default function Parallax({ children, className, speed = 25 }: Props) {
       // Lerp towards target — 0.08 gives silk-like easing
       current.current += (target.current - current.current) * 0.08;
 
-      ref.current.style.transform = `translate3d(0, ${current.current}px, 0) scale(1.03)`;
+      el.style.transform = `translate3d(0, ${current.current}px, 0) scale(1.03)`;
 
       raf.current = requestAnimationFrame(loop);
     };
@@ -57,14 +75,14 @@ export default function Parallax({ children, className, speed = 25 }: Props) {
     return () => {
       cancelAnimationFrame(raf.current);
       mediaQuery.removeEventListener("change", updatePreference);
+      observer.disconnect();
     };
   }, [speed]);
 
   return (
     <div
       ref={ref}
-      className={className}
-      style={{ willChange: "transform" }}
+      className={`${className || ""}${willChange ? " parallax-active" : ""}`}
     >
       {children}
     </div>

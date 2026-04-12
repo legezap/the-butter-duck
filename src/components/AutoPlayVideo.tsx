@@ -48,6 +48,8 @@ export default function AutoPlayVideo({ src, poster, className }: AutoPlayVideoP
       preload="metadata"
       className={className}
       poster={poster}
+      aria-hidden="true"
+      tabIndex={-1}
     >
       <source src={src} type="video/mp4" />
     </video>

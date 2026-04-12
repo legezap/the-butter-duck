@@ -256,15 +256,31 @@ export default function ContactForm() {
                   <div style={{ textAlign: "center", padding: "40px 0" }}>
                     <div style={{ fontSize: "3rem", marginBottom: 16 }}>{"\u2705"}</div>
                     <h3 style={{ marginBottom: 8 }}>{t("contact.success.heading")}</h3>
-                    <p style={{ color: "var(--color-text-muted)", marginBottom: 24, lineHeight: 1.7 }}>
+                    <p style={{ color: "var(--color-text-muted)", marginBottom: 12, lineHeight: 1.7 }}>
                       {t("contact.success.reftext")}{" "}
                       <strong style={{ color: "var(--color-accent)" }}>{refCode}</strong>.
                       <br />
                       {t("contact.success.followup")}
                     </p>
-                    <Link href="/" className="btn btn-primary">
-                      {t("contact.success.home")} <span className="arrow">&rarr;</span>
-                    </Link>
+                    <p style={{ color: "var(--color-text-dim)", fontSize: "0.9rem", marginBottom: 24, lineHeight: 1.6 }}>
+                      We&apos;ll respond within 24 hours.
+                    </p>
+                    <div style={{ display: "flex", flexDirection: "column", gap: 12, alignItems: "center" }}>
+                      <Link href="/" className="btn btn-primary">
+                        {t("contact.success.home")} <span className="arrow">&rarr;</span>
+                      </Link>
+                      <a
+                        href="https://wa.me/971521477966?text=Hi%2C%20I%20just%20submitted%20an%20RFP%20and%20would%20like%20to%20chat."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-outline"
+                      >
+                        Want faster? Chat on WhatsApp
+                      </a>
+                      <Link href="/portfolio" className="btn btn-ghost" style={{ fontSize: "0.85rem" }}>
+                        Explore our work while you wait
+                      </Link>
+                    </div>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} noValidate>
@@ -314,7 +330,6 @@ export default function ContactForm() {
                               onClick={() => {
                                 setService(opt.id);
                                 setErrors({});
-                                setTimeout(() => setStep(2), 300);
                               }}
                             >
                               <div style={{ fontSize: "1.4rem", marginBottom: 8 }}>
