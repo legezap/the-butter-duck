@@ -112,9 +112,14 @@ export default function HomePage() {
               <Link href="/contact#rfp-form" className="btn btn-primary btn-lg">
                 {t("hero.cta.start")} <span className="arrow">&rarr;</span>
               </Link>
-              <Link href="/portfolio" className="btn btn-outline btn-lg">
-                {t("hero.cta.work")}
-              </Link>
+              <a
+                href="https://wa.me/971521477966?text=Hi%2C%20I%27m%20interested%20in%20an%20exhibition%20stand.%20Can%20we%20discuss%3F"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-wa btn-lg"
+              >
+                WhatsApp
+              </a>
             </div>
 
             <div className="hero-stats">
@@ -144,7 +149,7 @@ export default function HomePage() {
       {/* ========== 2. SCROLLING MARQUEE ========== */}
       <div className="scroll-text">
         <div className="scroll-text-inner">
-          {[...marqueeItems, ...marqueeItems].map((item, i) => (
+          {[...marqueeItems, ...marqueeItems, ...marqueeItems].map((item, i) => (
             <span key={i} className={i % 2 === 0 ? undefined : "accent-word"}>
               {item} &#9670;
             </span>

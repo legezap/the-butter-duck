@@ -104,6 +104,8 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); letter-spacing: -0.02em; }
 .btn-primary:hover { background: var(--color-accent); color: var(--color-bg-dark); transform: translateY(-2px); box-shadow: 0 0 24px var(--color-accent-30), 0 12px 40px var(--color-accent-20); }
 .btn-outline { border-color: rgba(255,255,255,0.2); color: var(--color-text-primary); background: transparent; }
 .btn-outline:hover { border-color: var(--color-accent); color: var(--color-accent); background: var(--color-accent-05); }
+.btn-wa { background: #25D366; color: #fff; border-color: #25D366; font-weight: 600; }
+.btn-wa:hover { background: #20bd5a; border-color: #20bd5a; transform: translateY(-2px); box-shadow: 0 12px 40px rgba(37,211,102,0.25); }
 .btn-outline-dark { border-color: rgba(0, 0, 0, 0.45); color: var(--color-bg-dark); background: rgba(255, 255, 255, 0.08); }
 .btn-outline-dark:hover { border-color: rgba(0, 0, 0, 0.75); color: var(--color-bg-dark); background: rgba(0, 0, 0, 0.08); }
 .btn-lg { padding: 20px 48px; font-size: 1rem; }
@@ -638,7 +640,7 @@ select.form-input { appearance: none; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
   .hero-bg, .cine-divider-bg { inset: 0; }
-  .scroll-text-inner { animation: none; }
+  .scroll-text-inner { animation: scrollText 60s linear infinite; }
   html { scroll-behavior: auto; }
 }
 
