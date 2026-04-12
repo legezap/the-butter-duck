@@ -40,6 +40,13 @@ const SERVICE_ICONS = {
 
 export default function HomePage() {
   const { t } = useI18n();
+  const heroBadge = t("hero.badge");
+  const heroTitle = t("hero.title");
+  const heroTitleAccent = t("hero.title.accent");
+  const normalizeHeroCopy = (value: string) =>
+    value.toLowerCase().replace(/\s+/g, " ").trim();
+  const fullHeroTitle = [heroTitle, heroTitleAccent].filter(Boolean).join(" ");
+  const showHeroBadge = normalizeHeroCopy(heroBadge) !== normalizeHeroCopy(fullHeroTitle);
 
   const marqueeItems = HOME_MARQUEE_KEYS.map((key) => t(key));
 
@@ -85,13 +92,15 @@ export default function HomePage() {
           />
         </Parallax>
         <div className="hero-overlay" />
-        <RevealOnScroll>
+        <div>
           <div className="container hero-content">
-            <span className="hero-badge hero-badge-home">{t("hero.badge")}</span>
+            {showHeroBadge ? (
+              <span className="hero-badge hero-badge-home">{heroBadge}</span>
+            ) : null}
 
             <h1>
-              {t("hero.title")}{" "}
-              <span className="accent">{t("hero.title.accent")}</span>
+              {heroTitle ? `${heroTitle} ` : ""}
+              <span className="accent">{heroTitleAccent}</span>
             </h1>
 
             <p
@@ -129,7 +138,7 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-        </RevealOnScroll>
+        </div>
       </section>
 
       {/* ========== 2. SCROLLING MARQUEE ========== */}
