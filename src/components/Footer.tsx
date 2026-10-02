@@ -25,8 +25,6 @@ export default function Footer() {
             </Link>
             <p>{t("footer.brand")}</p>
             <div className="footer-social">
-              <a href={CONTACT.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a>
-              <a href={CONTACT.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
               <a href={`mailto:${CONTACT.email}`} aria-label="Email">&#9993;</a>
               <a href={CONTACT.whatsapp} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">WA</a>
             </div>
