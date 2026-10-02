@@ -112,10 +112,6 @@ export default function RootLayout({
                 email: "sales@thebutterduck.com",
                 priceRange: "AED 50,000 - 1,000,000+",
                 openingHours: "Su-Th 09:00-18:00",
-                sameAs: [
-                  "https://instagram.com/thebutterduck",
-                  "https://linkedin.com/company/thebutterduck",
-                ],
                 areaServed: [
                   { "@type": "Country", name: "United Arab Emirates" },
                   { "@type": "Country", name: "Saudi Arabia" },
