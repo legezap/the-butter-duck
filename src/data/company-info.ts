@@ -18,4 +18,5 @@ export const CONTACT = {
   instagram: "https://instagram.com/thebutterduck",
   instagramHandle: "@thebutterduck",
   linkedin: "https://linkedin.com/company/thebutterduck",
+  telegramBot: "https://t.me/TheButterDuckCom_bot",
 } as const;

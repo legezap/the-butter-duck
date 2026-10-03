@@ -424,6 +424,8 @@ const translations = {
     "footer.aboutus": "About Us",
     "footer.contact": "Contact",
     "footer.getintouch": "Get in Touch",
+    "footer.bot.title": "AI Stand Designer",
+    "footer.bot.desc": "Get a stand concept render in Telegram",
 
     // Breadcrumbs
     "bc.home": "Home",
@@ -882,6 +884,8 @@ const translations = {
     "footer.aboutus": "من نحن",
     "footer.contact": "اتصل بنا",
     "footer.getintouch": "تواصل معنا",
+    "footer.bot.title": "مصمم الأجنحة بالذكاء الاصطناعي",
+    "footer.bot.desc": "احصل على تصور لجناحك عبر تيليجرام",
 
     // Breadcrumbs
     "bc.home": "الرئيسية",
