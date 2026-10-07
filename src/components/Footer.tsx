@@ -6,6 +6,9 @@ import { useI18n } from "@/lib/I18nContext";
 import { asset } from "@/lib/basePath";
 import { COMPANY, OFFICE, CONTACT } from "@/data/company-info";
 
+// Telegram bot entry point hidden for now (2026-10-07); set to true to restore.
+const SHOW_TELEGRAM_BOT = false;
+
 export default function Footer() {
   const { t } = useI18n();
 
@@ -28,6 +31,7 @@ export default function Footer() {
               <a href={`mailto:${CONTACT.email}`} aria-label="Email"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
               <a href={CONTACT.whatsapp} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">WA</a>
             </div>
+            {SHOW_TELEGRAM_BOT && (
             <a href={CONTACT.telegramBot} target="_blank" rel="noopener noreferrer" className="footer-bot">
               <span className="footer-bot-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.94 4.3a1.2 1.2 0 0 0-1.62-1.38L2.9 9.6c-.98.38-.97 1.77.02 2.13l4.3 1.56 1.66 5.3c.22.72 1.14.94 1.66.39l2.4-2.5 4.35 3.2c.67.5 1.63.13 1.8-.69zM9.8 14.1l-.5 3.2-1.1-3.6 9.3-6.9z"/></svg></span>
               <span className="footer-bot-text">
@@ -35,6 +39,7 @@ export default function Footer() {
                 <small>{t("footer.bot.desc")}</small>
               </span>
             </a>
+            )}
           </div>
 
           <div className="footer-col">
